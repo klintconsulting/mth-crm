@@ -1,0 +1,145 @@
+{
+  "solution": "MTHCRM",
+  "app": {
+    "uniqueName": "mth_MTHCRM",
+    "name": "MTH CRM",
+    "description": "MT Højgaard CRM - opportunities, accounts and contacts."
+  },
+  "sitemap": [
+    {
+      "id": "mth_area_sales", "title": "Sales",
+      "groups": [
+        { "id": "mth_grp_sales", "title": "Sales", "tables": [ "mth_opportunity" ] },
+        { "id": "mth_grp_customers", "title": "Customers", "tables": [ "account", "contact" ] },
+        { "id": "mth_grp_setup", "title": "Setup", "tables": [ "mth_organizationalunit" ] }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "table": "mth_opportunity", "name": "MTH Active Opportunities", "default": true,
+      "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
+      "order": { "attribute": "mth_closedate", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_opportunityrole", "name": "MTH Opportunity Roles", "default": false,
+      "columns": [ ["mth_role", 180], ["mth_userid", 200] ],
+      "order": { "attribute": "mth_role", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "account", "name": "MTH Active Accounts", "default": false,
+      "columns": [ ["name", 250], ["mth_vatno", 100], ["mth_segment", 140], ["mth_accountstatus", 100], ["address1_city", 120], ["telephone1", 110], ["ownerid", 140] ],
+      "order": { "attribute": "name", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "contact", "name": "MTH Active Contacts", "default": false,
+      "columns": [ ["fullname", 200], ["parentcustomerid", 200], ["jobtitle", 150], ["emailaddress1", 200], ["mobilephone", 110], ["mth_leftdate", 100] ],
+      "order": { "attribute": "fullname", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_organizationalunit", "name": "MTH Active Organizational Units", "default": false,
+      "columns": [ ["mth_name", 220], ["mth_departmentno", 100], ["mth_divisionname", 180], ["mth_businessunitname", 180], ["mth_istenderdepartment", 100] ],
+      "order": { "attribute": "mth_departmentno", "descending": false }, "activeOnly": true
+    }
+  ],
+  "forms": [
+    {
+      "table": "mth_opportunity", "name": "MTH Opportunity",
+      "tabs": [
+        {
+          "name": "general", "label": "General",
+          "columns": [
+            [
+              { "name": "opportunity", "label": "Opportunity", "fields": [ "mth_name", "mth_accountid", "mth_status", "mth_opportunitytype", "ownerid", "mth_closedate", "mth_probability" ] },
+              { "name": "description", "label": "Description", "fields": [ "mth_description", "mth_scope", "mth_nextstep", "mth_nextstephistory" ] }
+            ],
+            [
+              { "name": "amounts", "label": "Amounts", "fields": [ "mth_amount", "mth_estimatedamount", "mth_tenderamount", "mth_calculatedcontractamount", "mth_revenuesplit" ] },
+              { "name": "caseteam", "label": "Case Team", "subgrid": { "id": "CaseTeam", "table": "mth_opportunityrole", "relationship": "mth_opportunity_mth_opportunityrole", "view": "MTH Opportunity Roles" } }
+            ]
+          ]
+        },
+        {
+          "name": "tender", "label": "Tender and Dates",
+          "columns": [
+            [ { "name": "tenderdates", "label": "Tender", "fields": [ "mth_prequalificationdate", "mth_invitationtotenderdate", "mth_invitationtotendertype", "mth_tenderstartdate", "mth_initialtenderdate", "mth_tenderdate" ] } ],
+            [ { "name": "order", "label": "Order", "fields": [ "mth_orderstartdate", "mth_orderenddate", "mth_tenderdepartmentid", "mth_orderdepartmentid", "mth_bcprojectnumber" ] } ]
+          ]
+        },
+        {
+          "name": "classification", "label": "Classification",
+          "columns": [
+            [ { "name": "categories", "label": "Categories", "fields": [ "mth_constructioncategory", "mth_marketcategory", "mth_casetype", "mth_contracttype", "mth_buildingtypes" ] } ],
+            [ { "name": "other", "label": "Other", "fields": [ "mth_leadsource", "mth_iskeyproject", "mth_casenumber", "mth_autocasenumber", "mth_externalopportunityid" ] } ]
+          ]
+        },
+        {
+          "name": "delivery", "label": "Delivery",
+          "columns": [
+            [ { "name": "deliveryaddress", "label": "Delivery Address", "fields": [ "mth_deliveryaddress", "mth_deliveryzip", "mth_deliverycity" ] } ]
+          ]
+        }
+      ]
+    },
+    {
+      "table": "mth_opportunityrole", "name": "MTH Opportunity Role",
+      "tabs": [
+        { "name": "general", "label": "General",
+          "columns": [ [ { "name": "role", "label": "Role", "fields": [ "mth_opportunityid", "mth_role", "mth_userid", "mth_name" ] } ] ] }
+      ]
+    },
+    {
+      "table": "account", "name": "MTH Account",
+      "tabs": [
+        {
+          "name": "general", "label": "General",
+          "columns": [
+            [
+              { "name": "account", "label": "Account", "fields": [ "name", "mth_vatno", "telephone1", "emailaddress1", "websiteurl", "ownerid" ] },
+              { "name": "address", "label": "Address", "fields": [ "address1_line1", "address1_postalcode", "address1_city", "address1_country" ] }
+            ],
+            [
+              { "name": "classification", "label": "Classification", "fields": [ "mth_accountstatus", "mth_segment", "mth_subsegment", "mth_accountcategory", "mth_interestedfor", "mth_tdcid", "mth_leadsourcetext" ] }
+            ]
+          ]
+        },
+        {
+          "name": "related", "label": "Contacts and Opportunities",
+          "columns": [
+            [
+              { "name": "contacts", "label": "Contacts", "subgrid": { "id": "Contacts", "table": "contact", "relationship": "contact_customer_accounts", "view": "MTH Active Contacts" } },
+              { "name": "opportunities", "label": "Opportunities", "subgrid": { "id": "Opportunities", "table": "mth_opportunity", "relationship": "mth_account_mth_opportunity_Account", "view": "MTH Active Opportunities" } }
+            ]
+          ]
+        },
+        {
+          "name": "contracts", "label": "Building Contracts",
+          "columns": [ [ { "name": "buildingcontracts", "label": "Building Contracts", "fields": [ "mth_buildingcontracts" ] } ] ]
+        }
+      ]
+    },
+    {
+      "table": "contact", "name": "MTH Contact",
+      "tabs": [
+        {
+          "name": "general", "label": "General",
+          "columns": [
+            [ { "name": "contact", "label": "Contact", "fields": [ "firstname", "lastname", "parentcustomerid", "jobtitle", "emailaddress1", "mobilephone", "telephone1", "ownerid" ] } ],
+            [
+              { "name": "status", "label": "Employment", "fields": [ "mth_leftdate" ] },
+              { "name": "marketing", "label": "Marketing Agreement", "fields": [ "mth_sendmarketingagreementdate", "mth_marketingagreementsenton", "mth_marketingagreementdate", "mth_marketingagreementreturned" ] }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "table": "mth_organizationalunit", "name": "MTH Organizational Unit",
+      "tabs": [
+        { "name": "general", "label": "General",
+          "columns": [ [ { "name": "unit", "label": "Organizational Unit", "fields": [ "mth_name", "mth_departmentno", "mth_costcenterno", "mth_istenderdepartment" ] } ],
+                       [ { "name": "hierarchy", "label": "Hierarchy", "fields": [ "mth_divisionno", "mth_divisionname", "mth_businessunitno", "mth_businessunitname" ] } ] ] }
+      ]
+    }
+  ]
+}

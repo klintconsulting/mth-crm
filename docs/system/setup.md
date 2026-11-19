@@ -53,4 +53,11 @@ Standardtabellerne `account`, `contact` og `systemuser` ligger i solutionen med 
 
 ## 6. Formularer, visninger og app
 
-*Kommer, når de er bygget.*
+```powershell
+.\scripts\Deploy-App.ps1 -Url https://<org>.crm4.dynamics.com
+pac solution sync --solution-folder solutions/MTHCRM
+```
+
+Scriptet opretter eller opdaterer visninger, formularer, sitemap og appen `mth_MTHCRM` ud fra `scripts/app/app.json`, validerer appen og publicerer. Det skriver appens URL til sidst. Se [app.md](app.md).
+
+**Rækkefølgen er vigtig:** Trin 4 (skema) skal være kørt før trin 6, fordi formularer og visninger slår kolonnerne op i metadata.

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>mth_MTHCRM</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="mth_area_sales" ShowGroups="true">
+      <Titles>
+        <Title LCID="1033" Title="Sales" />
+      </Titles>
+      <Group Id="mth_grp_sales" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Sales" />
+        </Titles>
+        <SubArea Id="mth_sub_mth_opportunity" Entity="mth_opportunity" />
+      </Group>
+      <Group Id="mth_grp_customers" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Customers" />
+        </Titles>
+        <SubArea Id="mth_sub_account" Entity="account" />
+        <SubArea Id="mth_sub_contact" Entity="contact" />
+      </Group>
+      <Group Id="mth_grp_setup" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Setup" />
+        </Titles>
+        <SubArea Id="mth_sub_mth_organizationalunit" Entity="mth_organizationalunit" />
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="MTH CRM" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

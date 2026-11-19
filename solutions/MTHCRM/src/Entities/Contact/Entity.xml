@@ -262,5 +262,7 @@
       <HasRelatedActivities>True</HasRelatedActivities>
     </entity>
   </EntityInfo>
+  <FormXml />
+  <SavedQueries />
   <RibbonDiffXml />
 </Entity>

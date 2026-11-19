@@ -6,6 +6,8 @@
 | `scripts/Deploy-Schema.ps1` | Opretter tabeller, kolonner og opslag fra `schema/schema.json` i solutionen `MTHCRM` | Efter hver ændring af schema.json og ved opbygning af et nyt miljø |
 | `scripts/New-SchemaDoc.ps1` | Genererer `docs/system/datamodel.md` fra schema.json | Efter hver ændring af schema.json |
 | `scripts/schema/schema.json` | Skemadefinitionen (kilde til sandhed) | Rettes i hånden |
+| `scripts/Deploy-App.ps1` | Opretter eller opdaterer visninger, formularer, sitemap og appen fra `app/app.json`, validerer og publicerer | Efter hver ændring af app.json, og efter Deploy-Schema på et nyt miljø |
+| `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json
 

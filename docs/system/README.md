@@ -5,6 +5,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | Dokument | Indhold |
 |---|---|
 | [setup.md](setup.md) | Genskab et miljø fra bunden: værktøjer, login, solution og skema, i rækkefølge |
+| [app.md](app.md) | Appen: navigation, formularer, visninger, og hvordan de ændres |
 | [datamodel.md](datamodel.md) | Alle tabeller, kolonner, valgsæt og relationer. **Genereres** fra `scripts/schema/schema.json` |
 | [decisions.md](decisions.md) | Arkitektur- og designbeslutninger med begrundelse og dato |
 | [scripts.md](scripts.md) | Hvad hvert script i `scripts/` gør, og hvornår det bruges |
@@ -15,7 +16,8 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | Område | Kilde | Bemærkning |
 |---|---|---|
 | Tabeller, kolonner og opslag | `scripts/schema/schema.json` | Oprettes med `scripts/Deploy-Schema.ps1` |
-| Formularer, visninger, app, security roles | `solutions/MTHCRM/src` | Laves i make.powerapps.com og synkes med `pac solution sync` |
+| Formularer, visninger, navigation, app | `scripts/app/app.json` | Oprettes med `scripts/Deploy-App.ps1` og synkes derefter til `solutions/MTHCRM/src` |
+| Security roles og andet | `solutions/MTHCRM/src` | Laves i make.powerapps.com og synkes med `pac solution sync` |
 | Beslutninger | `docs/system/decisions.md` | Opdateres i samme commit som ændringen |
 
 Når skemaet ændres, skal tre ting opdateres i samme commit: `schema.json`, `datamodel.md` (kør `scripts/New-SchemaDoc.ps1`) og den udpakkede solution (kør `pac solution sync`).

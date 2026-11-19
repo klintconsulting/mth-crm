@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>mth_MTHCRM</UniqueName>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="1" schemaName="entity" />
+    <AppModuleComponent type="26" id="{fa97190d-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{52a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{55a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{59a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{5da01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{60a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{c4a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{d1a01b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{06a11b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{29a11b13-38e4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="62" schemaName="mth_MTHCRM" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="MTH CRM" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="MT Højgaard CRM - opportunities, accounts and contacts." languagecode="1033" />
+  </Descriptions>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

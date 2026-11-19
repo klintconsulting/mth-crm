@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{06a11b13-38e4-f111-84e8-000d3a496ae5}</formid>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{10291342-9046-4c22-8b83-c404c2f4f223}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="contact" id="{7b870b17-5b06-4109-baca-1b5173ef735e}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Contact" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9ed98ae6-cd5f-417d-8ae1-de13b4c7c3a8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6b613466-db81-49db-9d8a-c6ac4c49bc11}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{672c22ca-fa3f-4324-b313-c32849cc74a4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{759fd50d-83bc-42b5-bedc-45c43110f096}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Job Title" languagecode="1033" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{262d6926-74b9-41e1-9452-2d582228035d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d8f59fb2-d659-4d65-82e5-87802efed81e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Mobile Phone" languagecode="1033" />
+                        </labels>
+                        <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{768a72f9-eae4-4b9a-a8ee-c4b1245df237}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Business Phone" languagecode="1033" />
+                        </labels>
+                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d288a31f-7537-4938-8685-2478c1ecb3d6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="status" id="{06c79c2a-cf12-478f-8158-506a7bdbb266}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Employment" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{efb652f0-bd5f-4fc9-b673-93de26cd252c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Left Date" languagecode="1033" />
+                        </labels>
+                        <control id="mth_leftdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_leftdate" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="marketing" id="{3746f0e0-4564-4156-ac60-82196ca317dd}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Marketing Agreement" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{fe18c45a-35d9-4e8a-81a4-df8ce21ca4d6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Send Marketing Agreement Date" languagecode="1033" />
+                        </labels>
+                        <control id="mth_sendmarketingagreementdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_sendmarketingagreementdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dcea7147-75e9-46cd-a345-9160fa7562bf}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Marketing Agreement Sent On" languagecode="1033" />
+                        </labels>
+                        <control id="mth_marketingagreementsenton" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_marketingagreementsenton" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7c415c99-7982-44aa-9b29-c06cd43830a6}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Marketing Agreement Date" languagecode="1033" />
+                        </labels>
+                        <control id="mth_marketingagreementdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_marketingagreementdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ef0533ab-9fd3-4ce6-bff1-943fc9e4a795}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Marketing Agreement Returned" languagecode="1033" />
+                        </labels>
+                        <control id="mth_marketingagreementreturned" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_marketingagreementreturned" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="MTH Contact" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

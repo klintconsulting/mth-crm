@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{55a01b13-38e4-f111-84e8-000d3a496ae5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="name" select="1" icon="1" preview="1">
+        <row name="result" id="accountid">
+          <cell name="name" width="250" />
+          <cell name="mth_vatno" width="100" />
+          <cell name="mth_segment" width="140" />
+          <cell name="mth_accountstatus" width="100" />
+          <cell name="address1_city" width="120" />
+          <cell name="telephone1" width="110" />
+          <cell name="ownerid" width="140" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="account">
+          <attribute name="accountid" />
+          <attribute name="name" />
+          <attribute name="mth_vatno" />
+          <attribute name="mth_segment" />
+          <attribute name="mth_accountstatus" />
+          <attribute name="address1_city" />
+          <attribute name="telephone1" />
+          <attribute name="ownerid" />
+          <order attribute="name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MTH Active Accounts" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>
