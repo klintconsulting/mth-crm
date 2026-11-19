@@ -16,10 +16,12 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 
 | Tabel | Formular | Faner |
 |---|---|---|
-| Opportunity | MTH Opportunity | General (stamdata, beskrivelse, beløb, **sagsteam som undergitter**) · Tender and Dates · Classification · Delivery |
+| Opportunity | MTH Opportunity | General (stamdata, beskrivelse, beløb, **sagsteam som undergitter**, **tidslinje**) · Tender and Dates · Classification · Delivery |
 | Opportunity Role | MTH Opportunity Role | General (Salgsmulighed, rolle, bruger) |
-| Account | MTH Account | General (stamdata, adresse, klassifikation) · Contacts and Opportunities (undergitre) · Building Contracts |
-| Contact | MTH Contact | General (stamdata, fratrådt, markedsføringsaftale) |
+| Account | MTH Account | General (stamdata, adresse, klassifikation, **tidslinje**) · Contacts and Opportunities (undergitre) · Building Contracts |
+| Contact | MTH Contact | General (stamdata, fratrådt, markedsføringsaftale, **tidslinje**) |
+
+**Tidslinje** (noter, opslag og aktiviteter som opgaver, mails og møder) ligger i tredje kolonne på fanen General. I `app.json` er det en sektion med `"timeline": true`.
 | Organizational Unit | MTH Organizational Unit | General |
 
 Appen bruger kun disse formularer. Standardformularerne på Account og Contact røres ikke og er ikke med i solutionen.
@@ -47,5 +49,6 @@ Alle visninger viser kun aktive poster (`statecode = 0`).
 ## Kendte begrænsninger i scriptet
 
 - Selve app-posten (navn og beskrivelse) opdateres ikke, hvis appen findes. En PATCH på en upubliceret app opfører sig som en oprettelse. Ret navnet i make.powerapps.com.
-- Formularer har endnu ingen header, tidslinje (noter/aktiviteter) eller forretningsregler.
+- Formularer har endnu ingen header eller forretningsregler.
+- Tabelkomponenter sendes igen ved hver kørsel, fordi `appmodulecomponent.objectid` for tabeller ikke er tabellens MetadataId. `AddAppComponents` er idempotent, så der opstår ingen dubletter.
 - Labels er engelske. Dansk kommer via oversættelse (se beslutning B3).

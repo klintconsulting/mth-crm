@@ -7,20 +7,20 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{d467f82d-1fdb-4337-807d-c007a30d205d}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{cae0949a-86dc-4a71-96d3-541b32092ce6}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="50%">
+            <column width="33%">
               <sections>
-                <section name="opportunity" id="{76cb8fb6-5e61-4607-a6ae-30678139fd4c}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="opportunity" id="{70c28226-8525-4147-bbc7-b1b9182f092a}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Opportunity" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{9d662f02-84b5-4838-9302-8782f17a0da0}" showlabel="true" locklevel="0">
+                      <cell id="{de85759e-5f05-45c7-bcc1-0ee83aaa4db7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
@@ -28,7 +28,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{16ff28a9-bc4d-437b-a576-ad07873a5b63}" showlabel="true" locklevel="0">
+                      <cell id="{c97d1886-ad41-4286-bd98-15b5f336f0d0}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Account" languagecode="1033" />
                         </labels>
@@ -36,7 +36,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d5c29a8c-e499-4356-be7f-59f8b39570d3}" showlabel="true" locklevel="0">
+                      <cell id="{3e51d4e0-62f6-44ba-a102-543a19835c10}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Status" languagecode="1033" />
                         </labels>
@@ -44,7 +44,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{55f4fc78-5937-4cb1-94e7-7e237675af0f}" showlabel="true" locklevel="0">
+                      <cell id="{8e19ed5f-864a-4d0c-adfa-871b50cf4f60}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Opportunity Type" languagecode="1033" />
                         </labels>
@@ -52,7 +52,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{68775061-a87a-4c96-9f2e-933721f3770c}" showlabel="true" locklevel="0">
+                      <cell id="{40ce9890-239d-49d8-872f-57f1375cf579}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Owner" languagecode="1033" />
                         </labels>
@@ -60,7 +60,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ffd1c250-4716-49b1-b616-29d8e5ee4efa}" showlabel="true" locklevel="0">
+                      <cell id="{6a191b91-6ca7-4020-91b2-df19f60b87f2}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Close Date" languagecode="1033" />
                         </labels>
@@ -68,7 +68,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{29640308-6bf7-490a-aedf-e9c39959c3b5}" showlabel="true" locklevel="0">
+                      <cell id="{c90bc6ae-f7ab-4e10-92c1-01dac6bc338b}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Probability (%)" languagecode="1033" />
                         </labels>
@@ -77,13 +77,13 @@
                     </row>
                   </rows>
                 </section>
-                <section name="description" id="{4d7f4274-41cc-40d0-9603-3528abe63191}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="description" id="{3b8e3558-e0be-4855-bcba-17e37a01d344}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Description" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{4d09ab55-6bc7-49a4-8b00-65675240ea84}" showlabel="true" locklevel="0">
+                      <cell id="{482d6f37-9408-46ca-b456-fbb316853b01}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Description" languagecode="1033" />
                         </labels>
@@ -91,7 +91,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{72030d21-349c-46e3-b6d7-4fe267e9b814}" showlabel="true" locklevel="0">
+                      <cell id="{eb251467-c14a-4f77-bd08-dd55444df93f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Scope" languagecode="1033" />
                         </labels>
@@ -99,7 +99,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{df44d910-2cdf-4253-a303-0bcbac87a908}" showlabel="true" locklevel="0">
+                      <cell id="{e4a2a0a8-b492-460c-accc-d94577624aca}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Next Step" languagecode="1033" />
                         </labels>
@@ -107,7 +107,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8c6a5f2c-2806-4b90-a20f-999b7442c270}" showlabel="true" locklevel="0">
+                      <cell id="{9effb91c-d38f-49ed-9c13-d57d8045fb82}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Next Step History" languagecode="1033" />
                         </labels>
@@ -118,15 +118,15 @@
                 </section>
               </sections>
             </column>
-            <column width="50%">
+            <column width="33%">
               <sections>
-                <section name="amounts" id="{bf9aa719-24dc-4773-9086-f7aaf47209fa}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="amounts" id="{b8ddaa61-fd41-4590-a0b5-77bf364aab43}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Amounts" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{e57e8534-d45f-4780-8ed0-50668b56dc09}" showlabel="true" locklevel="0">
+                      <cell id="{2c69790f-2364-4a4a-aa5c-27128e6323c9}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Amount" languagecode="1033" />
                         </labels>
@@ -134,7 +134,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1270a057-6a27-44d8-9809-082d17f73036}" showlabel="true" locklevel="0">
+                      <cell id="{e5a971d3-a274-4e76-b1bd-bd86da8af13c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Estimated Amount" languagecode="1033" />
                         </labels>
@@ -142,7 +142,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ace97b36-5318-411e-8cc1-5f2aaa26dd66}" showlabel="true" locklevel="0">
+                      <cell id="{ca3ccf08-a92f-45c4-9c46-160a79fe8230}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Tender Amount" languagecode="1033" />
                         </labels>
@@ -150,7 +150,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{28bb97b2-308c-42b1-a342-1e9947e6ae5a}" showlabel="true" locklevel="0">
+                      <cell id="{a3c13ce5-dbaf-4a38-ab10-db0cf9c2302d}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Calculated Contract Amount" languagecode="1033" />
                         </labels>
@@ -158,7 +158,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2ec0cff1-d876-46b6-9c8a-c8f217474f91}" showlabel="true" locklevel="0">
+                      <cell id="{d25ca77e-4685-4b4d-88c9-d5407ab6c764}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Revenue Split" languagecode="1033" />
                         </labels>
@@ -167,13 +167,13 @@
                     </row>
                   </rows>
                 </section>
-                <section name="caseteam" id="{1f191bbb-de4c-4233-a60e-a88b2fbaf459}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="caseteam" id="{386f3587-5eab-43d0-8f7a-4fe8a30d3ecf}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Case Team" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{90f6a6b7-d311-4959-a4fc-3f54ea70b6a2}" showlabel="false" rowspan="8" colspan="1" auto="false">
+                      <cell id="{768f83bb-443b-4e8e-a218-967fea81aa1f}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
                           <label description="Case Team" languagecode="1033" />
                         </labels>
@@ -207,22 +207,56 @@
                 </section>
               </sections>
             </column>
+            <column width="33%">
+              <sections>
+                <section name="timeline" id="{de88ef6c-0377-4c19-8ea4-32cb76046464}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5673b029-4b3f-4ae6-a6a0-5bbecbf3cbb6}" showlabel="false" rowspan="12" colspan="1" auto="false">
+                        <labels>
+                          <label description="Timeline" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}">
+                          <parameters>
+                            <DefaultTabId>ActivitiesTab</DefaultTabId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
           </columns>
         </tab>
-        <tab name="tender" id="{1fffaf7f-6923-48a8-887c-e90663acc724}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="tender" id="{7e1829dc-a432-433e-a376-a38ab2a1c82b}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Tender and Dates" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="tenderdates" id="{f4b47aef-235d-4101-98d2-fb61fb4f0645}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="tenderdates" id="{469cd375-c7ca-4c4d-9b1e-d1abef4bca53}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Tender" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{8f38d6b7-b95d-4d45-a8bc-0344e118084a}" showlabel="true" locklevel="0">
+                      <cell id="{3e7b6c1f-1172-4c1f-a04f-62e43894c8d7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Pre-Qualification Date" languagecode="1033" />
                         </labels>
@@ -230,7 +264,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{c89ea5f5-dbf8-438a-ac22-cd6cfaa1c054}" showlabel="true" locklevel="0">
+                      <cell id="{0aa18ed5-f4e5-4020-b27e-a003926d0aa0}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Invitation to Tender Date" languagecode="1033" />
                         </labels>
@@ -238,7 +272,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f397bb1e-de7f-4e88-9a4f-c698ce133f08}" showlabel="true" locklevel="0">
+                      <cell id="{512fd40e-6b52-4944-8c0c-638553e80d5a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Type of Invitation to Tender" languagecode="1033" />
                         </labels>
@@ -246,7 +280,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3abc97ff-76d7-43f3-8104-89c00d775b18}" showlabel="true" locklevel="0">
+                      <cell id="{43befb34-40a2-4350-a849-1c0d1faaba4a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Tender Start Date" languagecode="1033" />
                         </labels>
@@ -254,7 +288,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f5f83847-c3b4-4a8c-aab8-49d269b5e888}" showlabel="true" locklevel="0">
+                      <cell id="{161f534d-db5c-4e28-a57f-d9ab61cc56b4}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Initial Tender Date" languagecode="1033" />
                         </labels>
@@ -262,7 +296,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{b590fb7d-ff82-452d-86bb-4561caa99326}" showlabel="true" locklevel="0">
+                      <cell id="{cc3fd0c1-0c6d-4e32-ba8d-f58416a931de}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Tender Date" languagecode="1033" />
                         </labels>
@@ -275,13 +309,13 @@
             </column>
             <column width="50%">
               <sections>
-                <section name="order" id="{b177ddcb-0265-4abe-8872-6947228f2c2b}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="order" id="{4bdeabff-9fff-4318-94e0-1a4bd02bd673}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Order" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{851f13a9-e041-4877-9d9b-03c5e32c7f45}" showlabel="true" locklevel="0">
+                      <cell id="{0947f5a7-0246-4bc3-8da4-393032e7c386}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Order Start Date" languagecode="1033" />
                         </labels>
@@ -289,7 +323,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{baced90d-1e8c-4e25-b289-ae021f59c7d6}" showlabel="true" locklevel="0">
+                      <cell id="{62e4122b-da62-4e86-9898-b8389258d3ec}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Order End Date" languagecode="1033" />
                         </labels>
@@ -297,7 +331,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{4a3485f8-e977-4405-8359-9bdafdc404ec}" showlabel="true" locklevel="0">
+                      <cell id="{05c40939-f82c-4e48-834f-68a18d97be42}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Tender Department" languagecode="1033" />
                         </labels>
@@ -305,7 +339,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{63f4223c-3e09-4080-8269-2245318acba1}" showlabel="true" locklevel="0">
+                      <cell id="{033843a8-3497-4312-a19c-7d4884c9dec9}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Order Department" languagecode="1033" />
                         </labels>
@@ -313,9 +347,9 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a4ac7f01-fe19-49f4-aa0b-f5ac1ff85679}" showlabel="true" locklevel="0">
+                      <cell id="{2a6e8250-8a8b-41d7-bbe6-d0a6c2cd9f90}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="BC Project Number" languagecode="1033" />
+                          <label description="BC Case Number" languagecode="1033" />
                         </labels>
                         <control id="mth_bcprojectnumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_bcprojectnumber" disabled="false" />
                       </cell>
@@ -326,20 +360,20 @@
             </column>
           </columns>
         </tab>
-        <tab name="classification" id="{06c58cb2-5f96-49d0-9d84-05210fd0207c}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="classification" id="{2e1249e2-5653-4039-b5f3-17d2e34e83db}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Classification" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="categories" id="{d4b44be6-5ae5-445f-83fa-eb63d762409b}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="categories" id="{babe23f0-1b52-45a0-a788-c174c062f074}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Categories" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{d2ad63e5-b689-4640-85f5-c7315b69503e}" showlabel="true" locklevel="0">
+                      <cell id="{f6522b0f-e863-498a-9bff-7963bc987060}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Construction Category" languagecode="1033" />
                         </labels>
@@ -347,7 +381,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{4e88fe77-890e-4684-86cd-d2473bf6d9d8}" showlabel="true" locklevel="0">
+                      <cell id="{d1ea97dd-f65a-40f8-a40c-82a988cc522c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Market Category" languagecode="1033" />
                         </labels>
@@ -355,7 +389,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5037c107-0858-49db-bd1d-30c6a0f464ac}" showlabel="true" locklevel="0">
+                      <cell id="{5812dc22-bd49-4f3f-9103-9fc8937f1e6e}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Type of Case" languagecode="1033" />
                         </labels>
@@ -363,7 +397,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{397b1e7e-ffa3-46b1-9bac-31ebb9761868}" showlabel="true" locklevel="0">
+                      <cell id="{196eaa7d-634e-47f8-b681-a7f9fef93c7c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Type of Contract" languagecode="1033" />
                         </labels>
@@ -371,7 +405,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{9ee38d70-4d73-42e0-9bb5-4594f6c3b25f}" showlabel="true" locklevel="0">
+                      <cell id="{8d91f6b1-6f42-4d50-8f1a-9d969d9228fd}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Building Types" languagecode="1033" />
                         </labels>
@@ -384,13 +418,13 @@
             </column>
             <column width="50%">
               <sections>
-                <section name="other" id="{d17eaa6b-3130-441c-842f-c76ef9c9ad27}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="other" id="{71824548-b961-4e61-965c-135b0c8e4872}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Other" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{7c7a5ed4-e4bf-4dc7-9496-d96e67650dc4}" showlabel="true" locklevel="0">
+                      <cell id="{9e530e30-2f5d-407f-9d08-9b1bb45e4e20}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Lead Source" languagecode="1033" />
                         </labels>
@@ -398,7 +432,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{005f1e66-fd45-4880-9ef8-be860c9bbd78}" showlabel="true" locklevel="0">
+                      <cell id="{5937ea5f-b39f-423b-a5fb-e86f74cd0f1c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Key Project" languagecode="1033" />
                         </labels>
@@ -406,23 +440,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{60e35313-e8ad-47ba-8ad3-da60dfb31210}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Case Number" languagecode="1033" />
-                        </labels>
-                        <control id="mth_casenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_casenumber" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{ead64f7b-4911-4722-8457-b7e5003b843b}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Auto Case Number" languagecode="1033" />
-                        </labels>
-                        <control id="mth_autocasenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_autocasenumber" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{00ff137f-4cf8-4853-bc37-86c657813816}" showlabel="true" locklevel="0">
+                      <cell id="{d634196b-2afd-48e1-9fb4-c9b8f880b5bc}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="External Opportunity" languagecode="1033" />
                         </labels>
@@ -435,20 +453,20 @@
             </column>
           </columns>
         </tab>
-        <tab name="delivery" id="{63bffbb2-b49e-4077-9055-56c5ddcae1ec}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="delivery" id="{59dbcbd5-1088-448f-a105-4130f5876879}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Delivery" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="deliveryaddress" id="{6ac1ed6d-bfd0-4d9c-865b-e1c1132d2ba3}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="deliveryaddress" id="{d6fa1f94-c502-421e-af53-1ffbb9970f01}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Delivery Address" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{7570ff3b-be85-449a-bd6b-6bbb7b25b369}" showlabel="true" locklevel="0">
+                      <cell id="{06788ed6-ac17-4691-87d5-cbdd83e4d1d5}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Delivery Address" languagecode="1033" />
                         </labels>
@@ -456,7 +474,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{40d91943-8c88-49c4-8de5-2bd4c97f9649}" showlabel="true" locklevel="0">
+                      <cell id="{661d3fff-4483-4231-8323-37cc9c06d525}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Delivery Postal Code" languagecode="1033" />
                         </labels>
@@ -464,7 +482,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f79b9edf-ca5e-4bee-96dc-82190c5ae5bb}" showlabel="true" locklevel="0">
+                      <cell id="{3b078f62-1a43-4538-8982-41a78ddee255}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Delivery City" languagecode="1033" />
                         </labels>

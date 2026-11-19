@@ -36,3 +36,11 @@ Starter med Account, Contact og Opportunity.
 
 ## B9 – Ikke med i første version (2026-11-19)
 Lotus Notes-felter (`LN*`, integrationen er nedlagt), NN Markedsdata-felter (`NN_*`, kommer med ny integration), UBW- og projektportalfelter (integrationer, afklares senere), pakkefelter (`DashboardsGSP__*`), konstante felter (`Assignment_criteria__c`, `Inherit_from_Main_Opportunity__c`) og oprydningsfelterne `Last*__c`.
+
+## B10 – Sagsnummer = BC-sagsnummer (2026-11-19)
+Sagsnummeret kommer fra integrationen med Business Central. I Salesforce er `Case_Number__c` altid lig med `BC_Project_Number__c` (label "BC Sagsnr"), og `autosagsnummer__c` er Salesforces interne autonummer.
+**Konsekvens:** Kun én kolonne, `mth_bcprojectnumber` med label "BC Case Number", som BC-integrationen skriver til. `mth_casenumber` og `mth_autocasenumber` blev oprettet og slettet igen.
+
+## B11 – Security roles: Basic User + én MTH-rolle (2026-11-19)
+Tre roller i `scripts/security/roles.json`: **MTH Sales** (læser alt, retter egne sager, vedligeholder Accounts og Kontakter), **MTH Tender Manager** (retter, sletter og omfordeler alle sager) og **MTH CRM Administrator** (alt, inkl. afdelinger og sletning af Accounts og Kontakter). Ingen af de to første kan slette Accounts eller Kontakter.
+**Konsekvens:** Hver bruger skal have systemrollen **Basic User** (noter, aktiviteter, brugerindstillinger) **plus** én MTH-rolle. Rollerne har adgang til appen. Alle rettigheder er på organisationsniveau eller "egne poster", fordi MTH i første omgang kun har én business unit.

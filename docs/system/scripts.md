@@ -8,6 +8,8 @@
 | `scripts/schema/schema.json` | Skemadefinitionen (kilde til sandhed) | Rettes i hånden |
 | `scripts/Deploy-App.ps1` | Opretter eller opdaterer visninger, formularer, sitemap og appen fra `app/app.json`, validerer og publicerer | Efter hver ændring af app.json, og efter Deploy-Schema på et nyt miljø |
 | `scripts/New-TestData.ps1` | Syntetiske testdata: 10 afdelinger, 25 Accounts, 1–3 Kontakter pr. Account, 60 Salgsmuligheder med 1–3 roller. `-Remove` sletter dem igen | Kun i udviklings- og testmiljøer, **aldrig i produktion** |
+| `scripts/Deploy-Roles.ps1` | Opretter eller opdaterer security roles fra `security/roles.json`, erstatter deres rettigheder og giver adgang til appen | Efter hver ændring af roles.json, og efter Deploy-App på et nyt miljø |
+| `scripts/security/roles.json` | Rollerne og deres rettigheder pr. tabel (Create/Read/Write/Delete/Append/AppendTo/Assign/Share × None/Basic/Local/Deep/Global) | Rettes i hånden |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

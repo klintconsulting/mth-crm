@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Role id="{ee5686d5-3ae4-f111-84e8-000d3a496ae5}" name="MTH Sales" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsCustomizable>1</IsCustomizable>
+  <IsAutoAssigned>0</IsAutoAssigned>
+  <Description>Salesperson: creates and maintains own opportunities; reads everything; maintains accounts and contacts.</Description>
+  <RolePrivileges>
+    <RolePrivilege name="prvAppendAccount" level="Global" />
+    <RolePrivilege name="prvAppendContact" level="Global" />
+    <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
+    <RolePrivilege name="prvAppendmth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvAppendToAccount" level="Global" />
+    <RolePrivilege name="prvAppendToContact" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
+    <RolePrivilege name="prvAppendTomth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvAppendTomth_OrganizationalUnit" level="Global" />
+    <RolePrivilege name="prvAssignAccount" level="Basic" />
+    <RolePrivilege name="prvAssignContact" level="Basic" />
+    <RolePrivilege name="prvAssignmth_Opportunity" level="Basic" />
+    <RolePrivilege name="prvAssignmth_OpportunityRole" level="Basic" />
+    <RolePrivilege name="prvCreateAccount" level="Global" />
+    <RolePrivilege name="prvCreateContact" level="Global" />
+    <RolePrivilege name="prvCreatemth_Opportunity" level="Basic" />
+    <RolePrivilege name="prvCreatemth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvDeletemth_Opportunity" level="Basic" />
+    <RolePrivilege name="prvDeletemth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvReadAccount" level="Global" />
+    <RolePrivilege name="prvReadContact" level="Global" />
+    <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
+    <RolePrivilege name="prvReadmth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvReadmth_OrganizationalUnit" level="Global" />
+    <RolePrivilege name="prvReadSharePointData" level="Global" />
+    <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvShareAccount" level="Basic" />
+    <RolePrivilege name="prvShareContact" level="Basic" />
+    <RolePrivilege name="prvSharemth_Opportunity" level="Basic" />
+    <RolePrivilege name="prvSharemth_OpportunityRole" level="Basic" />
+    <RolePrivilege name="prvWriteAccount" level="Global" />
+    <RolePrivilege name="prvWriteContact" level="Global" />
+    <RolePrivilege name="prvWritemth_Opportunity" level="Basic" />
+    <RolePrivilege name="prvWritemth_OpportunityRole" level="Global" />
+    <RolePrivilege name="prvWriteSharePointData" level="Global" />
+  </RolePrivileges>
+</Role>

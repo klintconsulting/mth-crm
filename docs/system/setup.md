@@ -72,4 +72,17 @@ Scriptet opretter eller opdaterer visninger, formularer, sitemap og appen `mth_M
 - **Syntetiske data:** firmanavne, personnavne, CVR-numre og telefonnumre er opdigtede, og e-mails ligger på `example.dk`. Afdelingerne er MTH's 10 mest brugte ordreafdelinger (organisationsdata uden personoplysninger).
 - **Idempotent:** hver post har et fast GUID (MD5 af en nøgle som `opp-12`), og der bruges upsert. Tilfældigheden er seedet (42), så data er de samme fra kørsel til kørsel.
 - **Sagsteam:** alle roller peger på den bruger, der kører scriptet, fordi et udviklermiljø typisk kun har én bruger.
-- Et nyt udviklermiljø har i forvejen Microsofts eksempeldata (10 Accounts og 13 Kontakter). De kan fjernes under Indstillinger, Datahåndtering, Eksempeldata.
+- **Kun danske data:** danske firmanavne og byer. Telefonnumre er "+45 xx xx xx xx" med fastnetserier til Accounts og mobilserier til Kontakter.
+- Et nyt udviklermiljø har i forvejen Microsofts amerikanske eksempeldata ("Fourth Coffee (sample)" m.fl.). Fjern dem med Web API-handlingen `UninstallSampleData`:
+  ```powershell
+  Import-Module .\scripts\Dataverse.psm1; Connect-Dataverse -Url https://<org>.crm4.dynamics.com
+  Invoke-Dataverse POST 'UninstallSampleData' @{}
+  ```
+
+## 8. Security roles
+
+```powershell
+.\scripts\Deploy-Roles.ps1 -Url https://<org>.crm4.dynamics.com
+```
+
+Opretter eller opdaterer rollerne i `scripts/security/roles.json`, **erstatter** deres rettigheder og giver dem adgang til appen. Tildel derefter brugerne **Basic User** plus én MTH-rolle i Power Platform admin center (Miljø, Brugere). Se beslutning B11.

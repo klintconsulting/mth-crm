@@ -61,8 +61,6 @@ Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Name
 | `mth_nextstep` | Next Step | string | maks. 255 | `NextStep` |
 | `mth_nextstephistory` | Next Step History | memo | maks. 32000 | `Next_Step_History__c` |
 | `mth_leadsource` | Lead Source | choice | 6 valg | `LeadSource` |
-| `mth_casenumber` | Case Number | string | maks. 50 | `Case_Number__c` |
-| `mth_autocasenumber` | Auto Case Number | string | maks. 50 | `autosagsnummer__c` |
 | `mth_prequalificationdate` | Pre-Qualification Date | date |  | `Pre_Qualification_Date__c` |
 | `mth_invitationtotenderdate` | Invitation to Tender Date | date |  | `Invitation_To_Tender_Date__c` |
 | `mth_tenderstartdate` | Tender Start Date | date |  | `Tender_Start__c` |
@@ -80,7 +78,7 @@ Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Name
 | `mth_deliveryaddress` | Delivery Address | memo | maks. 1000 | `Delivery_Address__c` |
 | `mth_deliveryzip` | Delivery Postal Code | string | maks. 20 | `Delivery_Zip__c` |
 | `mth_deliverycity` | Delivery City | string | maks. 100 | `Delivery_City__c` |
-| `mth_bcprojectnumber` | BC Project Number | string | maks. 50 | `BC_Project_Number__c` |
+| `mth_bcprojectnumber` | BC Case Number | string | maks. 50 | `BC_Project_Number__c / Case_Number__c (identical)` |
 | `mth_iskeyproject` | Key Project | boolean |  | `Key_Project__c` |
 | `mth_scope` | Scope | memo | maks. 4000 | `Omfang__c` |
 

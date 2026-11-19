@@ -56,6 +56,9 @@
             [
               { "name": "amounts", "label": "Amounts", "fields": [ "mth_amount", "mth_estimatedamount", "mth_tenderamount", "mth_calculatedcontractamount", "mth_revenuesplit" ] },
               { "name": "caseteam", "label": "Case Team", "subgrid": { "id": "CaseTeam", "table": "mth_opportunityrole", "relationship": "mth_opportunity_mth_opportunityrole", "view": "MTH Opportunity Roles" } }
+            ],
+            [
+              { "name": "timeline", "label": "Timeline", "timeline": true }
             ]
           ]
         },
@@ -70,7 +73,7 @@
           "name": "classification", "label": "Classification",
           "columns": [
             [ { "name": "categories", "label": "Categories", "fields": [ "mth_constructioncategory", "mth_marketcategory", "mth_casetype", "mth_contracttype", "mth_buildingtypes" ] } ],
-            [ { "name": "other", "label": "Other", "fields": [ "mth_leadsource", "mth_iskeyproject", "mth_casenumber", "mth_autocasenumber", "mth_externalopportunityid" ] } ]
+            [ { "name": "other", "label": "Other", "fields": [ "mth_leadsource", "mth_iskeyproject", "mth_externalopportunityid" ] } ]
           ]
         },
         {
@@ -100,6 +103,9 @@
             ],
             [
               { "name": "classification", "label": "Classification", "fields": [ "mth_accountstatus", "mth_segment", "mth_subsegment", "mth_accountcategory", "mth_interestedfor", "mth_tdcid", "mth_leadsourcetext" ] }
+            ],
+            [
+              { "name": "timeline", "label": "Timeline", "timeline": true }
             ]
           ]
         },
@@ -128,6 +134,9 @@
             [
               { "name": "status", "label": "Employment", "fields": [ "mth_leftdate" ] },
               { "name": "marketing", "label": "Marketing Agreement", "fields": [ "mth_sendmarketingagreementdate", "mth_marketingagreementsenton", "mth_marketingagreementdate", "mth_marketingagreementreturned" ] }
+            ],
+            [
+              { "name": "timeline", "label": "Timeline", "timeline": true }
             ]
           ]
         }

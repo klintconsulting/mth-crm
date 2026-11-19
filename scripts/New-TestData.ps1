@@ -42,6 +42,11 @@ function MultiVal([string]$table, [string]$col, [int]$max) {
 }
 function Upsert([string]$set, [string]$id, $body) { [void](Invoke-Dataverse PATCH "$set($id)" $body) }
 function DateStr([datetime]$d) { $d.ToString('yyyy-MM-dd') }
+# Danske telefonnumre: 8 cifre, "+45 xx xx xx xx". Fastnet til firmaer, mobilserier til kontakter.
+$landlinePrefixes = 32, 33, 35, 36, 38, 39, 43, 44, 45, 46, 48, 49, 56, 57, 62, 63, 64, 65, 66, 74, 75, 76, 86, 87, 96, 97, 98, 99
+$mobilePrefixes = 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 40, 41, 42, 50, 51, 52, 53, 60, 61, 71, 81, 91, 92, 93
+function DkPhone($prefixes) { '+45 {0} {1:D2} {2:D2} {3:D2}' -f (Pick $prefixes), $rnd.Next(0, 100), $rnd.Next(0, 100), $rnd.Next(0, 100) }
+
 
 # ---------------- Stamdata ----------------
 $departments = @(
@@ -111,7 +116,7 @@ for ($i = 1; $i -le $Accounts; $i++) {
     Upsert 'accounts' (Id "account-$i") @{
         name = $name
         mth_vatno = [string]$rnd.Next(10000000, 99999999)
-        telephone1 = "+45 $($rnd.Next(20,99)) $($rnd.Next(10,99)) $($rnd.Next(10,99)) $($rnd.Next(10,99))"
+        telephone1 = (DkPhone $landlinePrefixes)
         emailaddress1 = "kontakt@$(($name -split ' ')[0].ToLower() -replace '[^a-z]', '')-test.example.dk"
         address1_line1 = "$(Pick $streets) $($rnd.Next(1, 120))"; address1_postalcode = $city[0]; address1_city = $city[1]; address1_country = 'Danmark'
         mth_segment = (OptVal 'account' 'mth_segment')
@@ -125,7 +130,7 @@ for ($i = 1; $i -le $Accounts; $i++) {
         $body = @{
             firstname = $fn; lastname = $ln; jobtitle = (Pick $titles)
             emailaddress1 = "$($fn.ToLower()).$($ln.ToLower())@example.dk" -replace 'ø', 'oe' -replace 'å', 'aa' -replace 'æ', 'ae'
-            mobilephone = "+45 $($rnd.Next(20,99)) $($rnd.Next(10,99)) $($rnd.Next(10,99)) $($rnd.Next(10,99))"
+            mobilephone = (DkPhone $mobilePrefixes)
             'parentcustomerid_account@odata.bind' = "/accounts($(Id "account-$i"))"
         }
         if ($rnd.Next(0, 10) -eq 0) { $body.mth_leftdate = DateStr ((Get-Date).AddDays(-$rnd.Next(30, 900))) }
@@ -165,7 +170,6 @@ for ($i = 1; $i -le $Opportunities; $i++) {
         mth_contracttype = (OptVal 'mth_opportunity' 'mth_contracttype')
         mth_buildingtypes = (MultiVal 'mth_opportunity' 'mth_buildingtypes' 3)
         mth_deliveryaddress = "$(Pick $streets) $($rnd.Next(1, 200))"; mth_deliveryzip = $city[0]; mth_deliverycity = $city[1]
-        mth_casenumber = "TEST-$('{0:D5}' -f (20000 + $i))"
         mth_description = 'Syntetisk testdata, genereret af scripts/New-TestData.ps1.'
         mth_iskeyproject = ($rnd.Next(0, 8) -eq 0)
         'mth_AccountId@odata.bind' = "/accounts($(Id "account-$($rnd.Next(1, $Accounts + 1))"))"

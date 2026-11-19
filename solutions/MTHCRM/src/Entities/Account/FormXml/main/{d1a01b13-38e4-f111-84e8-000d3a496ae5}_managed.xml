@@ -7,20 +7,20 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{043a523d-83bf-4109-a6c3-620c55185e60}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{ca0648b6-04d5-4299-b6bc-8eccd54793ab}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="50%">
+            <column width="33%">
               <sections>
-                <section name="account" id="{6e6f87ec-d5e7-401a-bbb4-be51724b1365}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="account" id="{32bff8bd-8693-49d3-afed-3c138d98080c}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Account" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{e695c0db-71b2-4ef5-a5f9-6d5750443c3a}" showlabel="true" locklevel="0">
+                      <cell id="{bbf9d8b6-1c32-4fea-816c-4ce0c3f9c77f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -28,7 +28,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ce9f3f82-adf6-48d4-a293-c0076351ae82}" showlabel="true" locklevel="0">
+                      <cell id="{84f75d85-bf28-4f9b-8866-2f957d4343b7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -36,7 +36,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{58f00ca7-7879-44f9-b5d6-00731c6f9abb}" showlabel="true" locklevel="0">
+                      <cell id="{dee06c60-6da6-4e7e-9d26-d5f297518d4d}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -44,7 +44,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ec934f33-160f-4549-b305-60a42996845c}" showlabel="true" locklevel="0">
+                      <cell id="{932499dc-634a-4816-a3a2-495c27eeb0bd}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -52,7 +52,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{89ffe27b-443b-4990-ac2d-44c342c81e99}" showlabel="true" locklevel="0">
+                      <cell id="{94f3867e-bff3-493e-b3a4-6814aa3a60da}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -60,7 +60,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d13e81fe-169d-4298-8c15-797b139e65d4}" showlabel="true" locklevel="0">
+                      <cell id="{2a0732fb-4b3c-4de2-a6f4-0af669656342}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -69,13 +69,13 @@
                     </row>
                   </rows>
                 </section>
-                <section name="address" id="{4623e516-e498-4ed8-ae35-187cd14f624e}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="address" id="{5d3c61b7-9282-49ad-a1ab-c8af321fba93}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Address" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{f30025cb-d80e-419b-b468-2cc598e670cb}" showlabel="true" locklevel="0">
+                      <cell id="{25b3c2e6-c016-461c-85b1-c9f43f14cd87}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -83,7 +83,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1aee6a57-111e-4671-9c29-fb72d8adc5b6}" showlabel="true" locklevel="0">
+                      <cell id="{7543a2d9-a289-4b5a-a7e5-bbdb75c28439}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -91,7 +91,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8591624e-391d-4c2f-99ab-6e2bcc60b7e6}" showlabel="true" locklevel="0">
+                      <cell id="{2ed018e9-698f-41a4-b731-dd97d3544fb5}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -99,7 +99,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{776608c7-1ea0-463c-bac8-cdf10c28fe67}" showlabel="true" locklevel="0">
+                      <cell id="{1a91a0ab-d79d-44f1-80ea-b4135791e706}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -110,15 +110,15 @@
                 </section>
               </sections>
             </column>
-            <column width="50%">
+            <column width="33%">
               <sections>
-                <section name="classification" id="{050e45a2-c82e-410d-90c2-222c477fe180}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="classification" id="{cb4dce81-4c3e-466b-8efe-c951b2d5b831}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Classification" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{5da3188b-913d-4775-9dfc-d05c914a7b63}" showlabel="true" locklevel="0">
+                      <cell id="{24d451a4-2605-4501-9d69-b5a3e5427d29}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -126,7 +126,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{fa429b8b-8e9c-4482-96ef-34e001267f49}" showlabel="true" locklevel="0">
+                      <cell id="{46c8571c-de7a-4a76-ae13-ca604ef18e32}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -134,7 +134,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{bdb21510-dfaf-4575-8bed-786749717992}" showlabel="true" locklevel="0">
+                      <cell id="{550c9776-a2b6-45fa-a564-7891494ae4b3}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -142,7 +142,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{ac05fce1-b892-419d-8ef0-ba75bdcabb9e}" showlabel="true" locklevel="0">
+                      <cell id="{9e9f0796-a758-4d45-a972-c37173b84d19}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -150,7 +150,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{aeea421a-90b3-430d-8737-530d1f97b23a}" showlabel="true" locklevel="0">
+                      <cell id="{cec6ae94-a0da-4fb5-ac69-90d871b0b365}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -158,7 +158,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{945385c7-0f5b-4a4c-8e50-f4200bd8af1a}" showlabel="true" locklevel="0">
+                      <cell id="{152a6896-60f2-4a5b-a74b-0d3378d03152}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -166,7 +166,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{b8e1f228-5874-4831-ab94-df9bb9e71b93}" showlabel="true" locklevel="0">
+                      <cell id="{1daa9be5-c8a2-4f00-895e-456ec1247129}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -177,22 +177,56 @@
                 </section>
               </sections>
             </column>
+            <column width="33%">
+              <sections>
+                <section name="timeline" id="{21e59307-d1a4-4213-99f1-0435dbbea859}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f36f3a48-37c9-4d93-9f37-917f094a95bf}" showlabel="false" rowspan="12" colspan="1" auto="false">
+                        <labels>
+                          <label description="Timeline" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}">
+                          <parameters>
+                            <DefaultTabId>ActivitiesTab</DefaultTabId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
           </columns>
         </tab>
-        <tab name="related" id="{c14e1299-2be6-4b4d-9107-aa2097a73a09}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="related" id="{0e0755fe-2d9b-46ee-a5a0-efc7ae892ab1}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Contacts and Opportunities" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="contacts" id="{88bf3299-e521-4b6d-9960-b6e78336a1ac}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="contacts" id="{68ec430d-6178-4313-8112-79eaba587307}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Contacts" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{4ced0898-56b7-489b-8250-b2372af645b5}" showlabel="false" rowspan="8" colspan="1" auto="false">
+                      <cell id="{47319894-b824-4d62-9afd-22f282aef943}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -224,13 +258,13 @@
                     <row />
                   </rows>
                 </section>
-                <section name="opportunities" id="{491d0da9-7177-46a5-8ca7-6ceb874524e2}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="opportunities" id="{4f75550d-8a3f-45e2-b842-8e3d43b5fb78}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Opportunities" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{d8f474da-a271-41f9-89b3-3ed201b8a919}" showlabel="false" rowspan="8" colspan="1" auto="false">
+                      <cell id="{ea29d7f9-ece8-4763-8956-a28e5f98ad69}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -266,20 +300,20 @@
             </column>
           </columns>
         </tab>
-        <tab name="contracts" id="{e92df672-6fc6-4d8e-8561-83d9918f965c}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="contracts" id="{72485a40-8d7e-426b-89d4-e70ceec4a7d8}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Building Contracts" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="buildingcontracts" id="{bea1d3f3-89d0-421f-8eae-b86ca7eb622d}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="buildingcontracts" id="{19270fa6-659d-492c-86a9-5a114bc75c35}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Building Contracts" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{a8fe6a24-d9fc-4eaf-89ef-d9dcae7bbb86}" showlabel="true" locklevel="0">
+                      <cell id="{90c307f8-e064-4574-b503-730f2b56404e}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>

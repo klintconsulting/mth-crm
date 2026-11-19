@@ -86,6 +86,9 @@
       <RootComponent type="1" schemaName="mth_opportunityrole" behavior="0" />
       <RootComponent type="1" schemaName="mth_organizationalunit" behavior="0" />
       <RootComponent type="1" schemaName="systemuser" behavior="1" />
+      <RootComponent type="20" id="{b3f27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="20" id="{ee5686d5-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="20" id="{fef27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="62" schemaName="mth_MTHCRM" behavior="0" />
       <RootComponent type="80" schemaName="mth_MTHCRM" behavior="0" />
     </RootComponents>

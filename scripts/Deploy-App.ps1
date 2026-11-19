@@ -29,6 +29,7 @@ $ClassId = @{
     Boolean = '{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}'
     Lookup = '{270BD3DB-D9AF-4782-9025-509E298DEC0A}'; Customer = '{270BD3DB-D9AF-4782-9025-509E298DEC0A}'; Owner = '{270BD3DB-D9AF-4782-9025-509E298DEC0A}'
     MultiSelect = '{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}'; Subgrid = '{E7A81278-8635-4d9e-8D4D-59480B391C5B}'
+    Timeline = '{06375649-c143-495e-a496-c962e5b4488e}'
 }
 
 function X([string]$s) { [Security.SecurityElement]::Escape($s) }
@@ -92,7 +93,13 @@ foreach ($v in $def.views) {
 # ---- 2. Forms ----
 function New-SectionXml($table, $s) {
     $rows = New-Object Text.StringBuilder
-    if ($s.subgrid) {
+    if ($s.timeline) {
+        # Timeline (notes, posts and activities)
+        $span = 12
+        [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" rowspan=`"$span`" colspan=`"1`" auto=`"false`">$(Lbl $s.label)" +
+            "<control id=`"notescontrol`" classid=`"$($ClassId.Timeline)`"><parameters><DefaultTabId>ActivitiesTab</DefaultTabId></parameters></control></cell></row>")
+        for ($i = 1; $i -lt $span; $i++) { [void]$rows.Append('<row />') }
+    } elseif ($s.subgrid) {
         $sg = $s.subgrid
         $vid = $viewIds["$($sg.table)|$($sg.view)"]
         if (-not $vid) { throw "Subgrid view '$($sg.view)' for $($sg.table) is not defined in app.json" }
@@ -181,9 +188,12 @@ foreach ($t in $tables) { $mid = (Get-TableMeta $t).MetadataId; if (-not $have[$
 foreach ($id in $formIds) { if (-not $have[$id]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.systemform'; formid = $id } } }
 foreach ($id in $viewIds.Values) { if (-not $have[$id]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.savedquery'; savedqueryid = $id } } }
 if (-not $have[$siteMapId]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.sitemap'; sitemapid = $siteMapId } }
+# Note: for table components appmodulecomponent.objectid is not the table's MetadataId, so tables cannot be
+# detected as existing and are always re-sent. AddAppComponents is idempotent, so this creates no duplicates.
 if ($components.Count) {
     [void](Invoke-Dataverse POST 'AddAppComponents' @{ AppId = $appId; Components = $components })
-    Write-Host "  + $($components.Count) app components"
+    $newOther = @($components | Where-Object { $_['@odata.type'] -ne 'Microsoft.Dynamics.CRM.entity' }).Count
+    Write-Host "  + app components: $newOther new forms/views/sitemap, $($components.Count - $newOther) tables (re-applied)"
 }
 
 # ---- 6. Validate and publish ----

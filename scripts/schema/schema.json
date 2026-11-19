@@ -314,20 +314,6 @@
                                                        ]
                                        },
                                        {
-                                           "schemaName":  "mth_CaseNumber",
-                                           "displayName":  "Case Number",
-                                           "type":  "string",
-                                           "source":  "Case_Number__c",
-                                           "maxLength":  50
-                                       },
-                                       {
-                                           "schemaName":  "mth_AutoCaseNumber",
-                                           "displayName":  "Auto Case Number",
-                                           "type":  "string",
-                                           "source":  "autosagsnummer__c",
-                                           "maxLength":  50
-                                       },
-                                       {
                                            "schemaName":  "mth_PreQualificationDate",
                                            "displayName":  "Pre-Qualification Date",
                                            "type":  "date",
@@ -1103,10 +1089,11 @@
                                        },
                                        {
                                            "schemaName":  "mth_BCProjectNumber",
-                                           "displayName":  "BC Project Number",
+                                           "displayName":  "BC Case Number",
                                            "type":  "string",
-                                           "source":  "BC_Project_Number__c",
-                                           "maxLength":  50
+                                           "source":  "BC_Project_Number__c / Case_Number__c (identical)",
+                                           "maxLength":  50,
+                                           "note":  "Case number from Business Central, written by the BC integration."
                                        },
                                        {
                                            "schemaName":  "mth_IsKeyProject",
