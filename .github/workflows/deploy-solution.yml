@@ -1,0 +1,50 @@
+name: deploy-solution
+
+# Pakker MTHCRM som managed og importerer den i det valgte miljø (test/production).
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Målmiljø
+        type: choice
+        options: [test, production]
+        required: true
+      solution_name:
+        description: Solution (unikt navn)
+        default: MTHCRM
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    environment: ${{ inputs.target }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Pak managed solution
+        uses: microsoft/powerplatform-actions/pack-solution@v1
+        with:
+          solution-folder: solutions/${{ inputs.solution_name }}/src
+          solution-file: out/${{ inputs.solution_name }}_managed.zip
+          solution-type: Managed
+
+      - name: Importér
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ vars.ENVIRONMENT_URL }}
+          app-id: ${{ secrets.PP_APP_ID }}
+          client-secret: ${{ secrets.PP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_TENANT_ID }}
+          solution-file: out/${{ inputs.solution_name }}_managed.zip
+          force-overwrite: true
+          publish-changes: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.solution_name }}_managed
+          path: out/${{ inputs.solution_name }}_managed.zip

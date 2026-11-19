@@ -1,0 +1,70 @@
+name: export-solution
+
+# Eksporterer MTHCRM fra udviklingsmiljøet, pakker den ud til kildekode og opretter en pull request.
+on:
+  workflow_dispatch:
+    inputs:
+      solution_name:
+        description: Solution (unikt navn)
+        default: MTHCRM
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  export:
+    runs-on: windows-latest
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Eksportér unmanaged
+        uses: microsoft/powerplatform-actions/export-solution@v1
+        with:
+          environment-url: ${{ vars.ENVIRONMENT_URL }}
+          app-id: ${{ secrets.PP_APP_ID }}
+          client-secret: ${{ secrets.PP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_TENANT_ID }}
+          solution-name: ${{ inputs.solution_name }}
+          solution-output-file: out/${{ inputs.solution_name }}.zip
+          managed: false
+
+      - name: Eksportér managed
+        uses: microsoft/powerplatform-actions/export-solution@v1
+        with:
+          environment-url: ${{ vars.ENVIRONMENT_URL }}
+          app-id: ${{ secrets.PP_APP_ID }}
+          client-secret: ${{ secrets.PP_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.PP_TENANT_ID }}
+          solution-name: ${{ inputs.solution_name }}
+          solution-output-file: out/${{ inputs.solution_name }}_managed.zip
+          managed: true
+
+      # "Both" kræver begge zip-filer side om side (<navn>.zip og <navn>_managed.zip),
+      # så deploy-solution kan pakke en managed solution ud fra kildekoden.
+      - name: Pak ud til kildekode
+        uses: microsoft/powerplatform-actions/unpack-solution@v1
+        with:
+          solution-file: out/${{ inputs.solution_name }}.zip
+          solution-folder: solutions/${{ inputs.solution_name }}/src
+          solution-type: Both
+          overwrite-files: true
+
+      - name: Opret pull request
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $branch = "export/${{ inputs.solution_name }}-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b $branch
+          git add solutions/
+          if (-not (git status --porcelain)) { Write-Host "Ingen ændringer."; exit 0 }
+          git commit -m "Eksport af ${{ inputs.solution_name }} fra dev"
+          git push origin $branch
+          gh pr create --title "Eksport af ${{ inputs.solution_name }} fra dev" --body "Automatisk eksport via export-solution." --base main --head $branch

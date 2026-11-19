@@ -1,0 +1,39 @@
+# Build-output
+bin/
+obj/
+out/
+*.zip
+!docs/**/*.zip
+
+# .NET / Visual Studio
+.vs/
+*.user
+*.suo
+*.snk
+TestResults/
+publish/
+
+# Node / PCF
+node_modules/
+generated/
+
+# Azure Functions
+local.settings.json
+.azurite/
+__azurite_db*
+
+# Hemmeligheder og miljøer
+.env
+.env.*
+*.pfx
+secrets/
+
+# Data – rigtige MTH-data må aldrig committes
+data/
+*.csv
+!docs/analyse/*.csv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
