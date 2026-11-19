@@ -89,7 +89,10 @@ function Invoke-Dataverse {
     }
     try {
         $r = Invoke-WebRequest @params
-        if ($r.Content) { $r.Content | ConvertFrom-Json } else { $r.Headers['OData-EntityId'] }
+        if (-not $r.Content) { return $r.Headers['OData-EntityId'] }
+        # Decode as UTF-8 explicitly (PowerShell 5.1 may guess the wrong charset)
+        $text = [Text.Encoding]::UTF8.GetString($r.RawContentStream.ToArray()).TrimStart([char]0xFEFF)
+        if ($text -match '^\s*[\{\[]') { $text | ConvertFrom-Json } else { $text.Trim() }   # e.g. $count returns plain text
     } catch {
         $msg = $_.ErrorDetails.Message
         if (-not $msg) { $msg = $_.Exception.Message }

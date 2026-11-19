@@ -61,3 +61,15 @@ pac solution sync --solution-folder solutions/MTHCRM
 Scriptet opretter eller opdaterer visninger, formularer, sitemap og appen `mth_MTHCRM` ud fra `scripts/app/app.json`, validerer appen og publicerer. Det skriver appens URL til sidst. Se [app.md](app.md).
 
 **Rækkefølgen er vigtig:** Trin 4 (skema) skal være kørt før trin 6, fordi formularer og visninger slår kolonnerne op i metadata.
+
+## 7. Testdata (kun udvikling og test)
+
+```powershell
+.\scripts\New-TestData.ps1 -Url https://<org>.crm4.dynamics.com           # opret/opdatér
+.\scripts\New-TestData.ps1 -Url https://<org>.crm4.dynamics.com -Remove   # slet igen
+```
+
+- **Syntetiske data:** firmanavne, personnavne, CVR-numre og telefonnumre er opdigtede, og e-mails ligger på `example.dk`. Afdelingerne er MTH's 10 mest brugte ordreafdelinger (organisationsdata uden personoplysninger).
+- **Idempotent:** hver post har et fast GUID (MD5 af en nøgle som `opp-12`), og der bruges upsert. Tilfældigheden er seedet (42), så data er de samme fra kørsel til kørsel.
+- **Sagsteam:** alle roller peger på den bruger, der kører scriptet, fordi et udviklermiljø typisk kun har én bruger.
+- Et nyt udviklermiljø har i forvejen Microsofts eksempeldata (10 Accounts og 13 Kontakter). De kan fjernes under Indstillinger, Datahåndtering, Eksempeldata.
