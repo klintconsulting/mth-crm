@@ -20,7 +20,7 @@ Salesforce' baggrundsbilleder (`SF_Background_31`, Kalvebod) kan ikke vises i en
 | `icon.svg` | App-ikon: emblemet (64×64, PNG indlejret i SVG) |
 | `theme.xml` | Moderne header-farver (`CustomTheme/AppHeaderColors`) |
 
-Billederne er lavet ud fra `mth3.png` med System.Drawing: beskåret, skaleret, og farvet hvidt med en farvematrix. Hvis MTH leverer logoet som SVG, så erstat filerne.
+Billederne er lavet ud fra `mth3.png` med System.Drawing: beskåret og skaleret. Den hvide udgave er lavet pr. pixel: blå bliver hvid, og hvid bliver gennemsigtig. Figurens hoved er nemlig hvide pixels i originalen, ikke et hul, og ville ellers forsvinde i en helt hvid flade. Hvis MTH leverer logoet som SVG, så erstat filerne.
 
 ## Deploy
 
