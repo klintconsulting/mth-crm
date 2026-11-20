@@ -7,6 +7,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | [setup.md](setup.md) | Genskab et miljø fra bunden: værktøjer, login, solution og skema, i rækkefølge |
 | [app.md](app.md) | Appen: navigation, formularer, visninger, og hvordan de ændres |
 | [datamodel.md](datamodel.md) | Alle tabeller, kolonner, valgsæt og relationer. **Genereres** fra `scripts/schema/schema.json` |
+| [smart.md](smart.md) | SMART-integration: byggeprojekter som Leads, lead-køer, konvertering |
 | [esp.md](esp.md) | ESP: fag, entrepriser, underentreprenører, kontakter og tilbudsmails |
 | [sharepoint.md](sharepoint.md) | Projektsite som link på Salgsmuligheden, og hvorfor indlejring af Shared Documents blev fravalgt |
 | [pcf.md](pcf.md) | PCF-kontroller (kommentarfelt med @-vælger): brug, teknik, byg og deploy |

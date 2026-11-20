@@ -64,3 +64,11 @@ Salesforce-strukturen genbruges (Entreprise, UE pr. entreprise), men fag bliver 
 ## B16 – Tilbudsmails: én pr. UE, fra brugeren, status 10 → 24 (2026-11-20)
 Brugerens valg: én mail pr. UE til de valgte kontakter (i stedet for én BCC-mail), afsender er brugerens egen postkasse, og status skifter automatisk fra 10 til 24 ved afsendelse. Skabeloner, evaluering med kommentar, opret kontakt og kopiér entreprise er med i første version.
 **Konsekvens:** Mails er Dataverse-e-mailaktiviteter regarding UE-posten, sendt via en Custom API. Se [esp.md](esp.md).
+
+## B17 – SMART: Lead som i Salesforce, Azure Function, testdata (2026-11-20)
+Brugerens valg: projektfelterne ligger på Lead (og kopieres til Salgsmulighed) som i Salesforce. Dette erstatter Byggeprojekt-tabellen fra B8. Synken kører som C# Azure Function, først lokalt. POC'en bruger anonymiserede SMART-testsvar, og rigtigt API og nøgler kobles på hos MTH.
+**Konsekvens:** Se [smart.md](smart.md).
+
+## B18 – Lead-køer med brugerdefinerede kriterier; første konvertering vinder (2026-11-20)
+Brugerens krav: samme lead kan ramme flere køer, brugerne definerer selv kriterierne, og den første, der konverterer, får leadet, som så lukkes for de andre. Valgt som kø-tabel med faste kriterier frem for delte visninger, fordi det giver medlemmer, notifikationer og overblik.
+**Konsekvens:** `mth_leadqueue` med kriterier og medlemmer, beregnet N:N lead↔kø og konvertering via Custom API med optimistisk samtidighed. Erstatter Salesforce' assignment rules, køer og afdelingsvisninger.

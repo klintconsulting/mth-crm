@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{38b25ee4-bca0-4382-9dd5-6762c8bfe8c0}</savedqueryid>
+    <querytype>8192</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" output-format="xml-platform">
+        <entity name="mth_smartlookup">
+          <attribute name="mth_smartlookupid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Min SMART Lookups" languagecode="1030" />
+      <LocalizedName description="My SMART Lookups" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Alle aktive SMART Lookups" languagecode="1030" />
+      <Description description="All active SMART Lookups" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

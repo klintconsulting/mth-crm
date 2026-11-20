@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{7b8ac208-f19e-473d-8db6-5540f865780d}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_leadid">
+          <cell name="mth_name" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mth_lead">
+          <attribute name="mth_leadid" />
+          <attribute name="mth_name" />
+          <attribute name="createdon" />
+          <order attribute="mth_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Lead Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

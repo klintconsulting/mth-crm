@@ -17,11 +17,18 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_buildingcontract` | Building Contract | Custom | UserOwned | Building_Contract__c (Entreprise) |
 | `mth_collaboratingpartner` | Collaborating Partner | Custom | UserOwned | Collaborating_Partner__c (Samarbejdspartner / UE) |
 | `mth_espemailtemplate` | ESP E-mail Template | Custom | OrganizationOwned | (new) - Salesforce had no templates |
+| `mth_lead` | Lead | Custom | UserOwned | Lead (record type New, LeadSource FaktaNet Live) |
+| `mth_leadqueue` | Lead Queue | Custom | UserOwned | (new) - replaces Salesforce lead queues, assignment rules and per-department list views |
+| `mth_smartlookup` | SMART Lookup | Custom | OrganizationOwned | SMART_Lookup__c |
+| `mth_integrationstate` | Integration State | Custom | OrganizationOwned | SMART_Sync_State__c |
 
 ## Relationer (opslag)
 
 | Relation | Opslagskolonne | Peger på | Sletning | Påkrævet | Kilde |
 |---|---|---|---|---|---|
+| `mth_opportunity_mth_lead_Converted` | `mth_lead.mth_convertedopportunityid` | `mth_opportunity` | RemoveLink |  | ConvertedOpportunityId |
+| `mth_systemuser_mth_lead_ConvertedBy` | `mth_lead.mth_convertedbyid` | `systemuser` | RemoveLink |  | (new) |
+| `mth_lead_mth_opportunity_Lead` | `mth_opportunity.mth_leadid` | `mth_lead` | RemoveLink |  | Lead.ConvertedOpportunityId (reverse) |
 | `mth_trade_mth_buildingcontract` | `mth_buildingcontract.mth_tradeid` | `mth_trade` | Restrict | Ja | Building_Contract__c.Building_Contract__c (picklist) |
 | `mth_opportunity_mth_buildingcontract` | `mth_buildingcontract.mth_opportunityid` | `mth_opportunity` | Parental | Ja | Building_Contract__c.Opportunity__c (master-detail) |
 | `mth_buildingcontract_mth_collabpartner` | `mth_collaboratingpartner.mth_buildingcontractid` | `mth_buildingcontract` | Parental | Ja | Collaborating_Partner__c.Subcontract__c |
@@ -90,6 +97,54 @@ Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Name
 | `mth_iskeyproject` | Key Project | boolean |  | `Key_Project__c` |
 | `mth_projectsiteurl` | Project Site URL | string | maks. 500, Url | `SharepointIntegration / Project Portal (Opportunity_in_Project_Portal__c, Project_Portal_Url__c)` |
 | `mth_scope` | Scope | memo | maks. 4000 | `Omfang__c` |
+| `mth_projectid` | SMART Project Id | string | maks. 50 | `fnl_Project_Id__c (SMART source_id)` |
+| `mth_smartid` | SMART Internal Id | string | maks. 20 | `SMART_Project_Id__c (SMART id)` |
+| `mth_smartlink` | SMART Link | string | maks. 300, Url | `fnl_Link__c` |
+| `mth_projecttitle` | Project Title | string | maks. 1000 | `fnl_Project_Desc__c (title)` |
+| `mth_projecttexts` | Project Description | memo | maks. 100000 | `fnl_Project_Texts__c (description)` |
+| `mth_clientname` | Client (Bygherre) | string | maks. 300 | `Lead.Company (role Bygherre)` |
+| `mth_clientstreet` | Client Street | string | maks. 300 | `Lead.Street (Bygherre main address)` |
+| `mth_clientpostalcode` | Client Postal Code | string | maks. 20 | `Lead.PostalCode` |
+| `mth_clientcity` | Client City | string | maks. 100 | `Lead.City` |
+| `mth_clientcompanytype` | Client Company Type | string | maks. 255 | `fnl_Company_Type_Desc__c` |
+| `mth_clientvatno` | Client VAT No. | string | maks. 50 | `fnl_VAT_no__c (org_nr)` |
+| `mth_clienttdcid` | Client TDC Id | string | maks. 50 | `fnl_TDCID__c (par_id)` |
+| `mth_constructionsite` | Construction Site | string | maks. 300 | `fnl_Construction_Site__c` |
+| `mth_constructiontown` | Construction Town | string | maks. 100 | `fnl_Construction_Town__c` |
+| `mth_constructionzip` | Construction Postal Code | string | maks. 20 | `fnl_Zip_Code__c` |
+| `mth_projectstartdate` | Construction Start | date |  | `fnl_Start_Date__c` |
+| `mth_projectstarttext` | Construction Start (text) | string | maks. 255 | `fnl_Start_Date_Desc__c` |
+| `mth_projectenddate` | Construction End | date |  | `fnl_End_Date__c` |
+| `mth_projectendtext` | Construction End (text) | string | maks. 255 | `fnl_End_Date_Desc__c` |
+| `mth_constructionmonths` | Construction Period (months) | integer | 0–1000 | `fnl_Construction_Period__c` |
+| `mth_projectvalue` | Project Value (DKK m) | decimal |  | `fnl_Value__c (value / 1,000,000)` |
+| `mth_projectvaluetext` | Project Value (text) | string | maks. 255 | `fnl_Value_Desc__c` |
+| `mth_smartcontracttype` | SMART Contract Type | string | maks. 255 | `fnl_Contract_Type__c` |
+| `mth_smartcontracttypecode` | SMART Contract Type Code | string | maks. 50 | `fnl_Contract_Type_Code__c` |
+| `mth_planningstage` | Planning Stage | string | maks. 255 | `fnl_Planning_Stage__c` |
+| `mth_projectstage` | Project Stage | string | maks. 255 | `fnl_Stage__c` |
+| `mth_maincategory` | Main Category | string | maks. 255 | `fnl_Main_Category_Desc__c` |
+| `mth_maincategorycode` | Main Category Code | string | maks. 50 | `fnl_Main_Category_Code__c` |
+| `mth_maindevtype` | Main Development Type | string | maks. 255 | `fnl_Main_Dev_Type_Desc__c` |
+| `mth_maindevtypecode` | Main Development Type Code | string | maks. 50 | `fnl_Main_Dev_Type_Code__c` |
+| `mth_projectcategories` | Categories | memo | maks. 4000 | `fnl_Categories__c ("category - devtype;...")` |
+| `mth_projectcountry` | Country | string | maks. 100 | `fnl_Country_Code__c` |
+| `mth_projectregion` | Region | string | maks. 100 | `fnl_County_Desc__c` |
+| `mth_projectregioncode` | Region Code | string | maks. 50 | `fnl_County_Code__c` |
+| `mth_municipality` | Municipality | string | maks. 100 | `fnl_Municipality_Desc__c` |
+| `mth_municipalitycode` | Municipality Code | string | maks. 50 | `fnl_Municipality_Code__c` |
+| `mth_apartments` | Apartments | integer | 0–1000000 | `fnl_Apartments__c` |
+| `mth_grossfloorarea` | Gross Floor Area (m2) | integer | 0–100000000 | `fnl_Gross_Floor_Area__c` |
+| `mth_netfloorarea` | Net Floor Area (m2) | integer | 0–100000000 | `fnl_Net_Floor_Area__c` |
+| `mth_volume` | Volume (m3) | integer | 0–1000000000 | `fnl_Volume__c` |
+| `mth_storeys` | Storeys | integer | 0–1000 | `fnl_Storeys__c` |
+| `mth_storeysbelowground` | Storeys Below Ground | integer | 0–100 | `fnl_Storeys_Below_Ground__c` |
+| `mth_roleshtml` | Roles | memo | maks. 100000 | `fnl_Roles_RT__c` |
+| `mth_tendershtml` | Tenders | memo | maks. 100000 | `fnl_Tenders__c` |
+| `mth_smartupdatedon` | SMART Updated On | datetime |  | `SMART updated_at` |
+| `mth_leadhistory` | Lead History | memo | maks. 100000 | `fnl_Lead_History__c` |
+| `mth_leadhistorylatest` | Latest Lead Changes | memo | maks. 20000 | `fnl_Lead_History_Latest__c` |
+| `mth_leaddataupdatedon` | Lead Data Updated On | datetime |  | `fnl_Lead_Data_Updated__c / fnl_Last_Updated__c` |
 
 <details><summary>Valg for <code>mth_status</code> (21)</summary>
 
@@ -559,3 +614,131 @@ Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new)
 | `mth_subject` | Subject | string | maks. 400 | `(new)` |
 | `mth_body` | Body (HTML) | memo | maks. 100000 | `(new)` |
 | `mth_isdefault` | Default | boolean |  | `(new)` |
+
+## Lead (`mth_lead`)
+
+Construction project from SMART (Byggefakta). Matches lead queues by criteria; the first user to convert it gets it and it is closed for everyone else.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: fnl_Project_Name__c / LastName (project_name or title)
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_projectid` | SMART Project Id | string | maks. 50 | `fnl_Project_Id__c (SMART source_id)` |
+| `mth_smartid` | SMART Internal Id | string | maks. 20 | `SMART_Project_Id__c (SMART id)` |
+| `mth_smartlink` | SMART Link | string | maks. 300, Url | `fnl_Link__c` |
+| `mth_projecttitle` | Project Title | string | maks. 1000 | `fnl_Project_Desc__c (title)` |
+| `mth_projecttexts` | Project Description | memo | maks. 100000 | `fnl_Project_Texts__c (description)` |
+| `mth_clientname` | Client (Bygherre) | string | maks. 300 | `Lead.Company (role Bygherre)` |
+| `mth_clientstreet` | Client Street | string | maks. 300 | `Lead.Street (Bygherre main address)` |
+| `mth_clientpostalcode` | Client Postal Code | string | maks. 20 | `Lead.PostalCode` |
+| `mth_clientcity` | Client City | string | maks. 100 | `Lead.City` |
+| `mth_clientcompanytype` | Client Company Type | string | maks. 255 | `fnl_Company_Type_Desc__c` |
+| `mth_clientvatno` | Client VAT No. | string | maks. 50 | `fnl_VAT_no__c (org_nr)` |
+| `mth_clienttdcid` | Client TDC Id | string | maks. 50 | `fnl_TDCID__c (par_id)` |
+| `mth_constructionsite` | Construction Site | string | maks. 300 | `fnl_Construction_Site__c` |
+| `mth_constructiontown` | Construction Town | string | maks. 100 | `fnl_Construction_Town__c` |
+| `mth_constructionzip` | Construction Postal Code | string | maks. 20 | `fnl_Zip_Code__c` |
+| `mth_projectstartdate` | Construction Start | date |  | `fnl_Start_Date__c` |
+| `mth_projectstarttext` | Construction Start (text) | string | maks. 255 | `fnl_Start_Date_Desc__c` |
+| `mth_projectenddate` | Construction End | date |  | `fnl_End_Date__c` |
+| `mth_projectendtext` | Construction End (text) | string | maks. 255 | `fnl_End_Date_Desc__c` |
+| `mth_constructionmonths` | Construction Period (months) | integer | 0–1000 | `fnl_Construction_Period__c` |
+| `mth_projectvalue` | Project Value (DKK m) | decimal |  | `fnl_Value__c (value / 1,000,000)` |
+| `mth_projectvaluetext` | Project Value (text) | string | maks. 255 | `fnl_Value_Desc__c` |
+| `mth_smartcontracttype` | SMART Contract Type | string | maks. 255 | `fnl_Contract_Type__c` |
+| `mth_smartcontracttypecode` | SMART Contract Type Code | string | maks. 50 | `fnl_Contract_Type_Code__c` |
+| `mth_planningstage` | Planning Stage | string | maks. 255 | `fnl_Planning_Stage__c` |
+| `mth_projectstage` | Project Stage | string | maks. 255 | `fnl_Stage__c` |
+| `mth_maincategory` | Main Category | string | maks. 255 | `fnl_Main_Category_Desc__c` |
+| `mth_maincategorycode` | Main Category Code | string | maks. 50 | `fnl_Main_Category_Code__c` |
+| `mth_maindevtype` | Main Development Type | string | maks. 255 | `fnl_Main_Dev_Type_Desc__c` |
+| `mth_maindevtypecode` | Main Development Type Code | string | maks. 50 | `fnl_Main_Dev_Type_Code__c` |
+| `mth_projectcategories` | Categories | memo | maks. 4000 | `fnl_Categories__c ("category - devtype;...")` |
+| `mth_projectcountry` | Country | string | maks. 100 | `fnl_Country_Code__c` |
+| `mth_projectregion` | Region | string | maks. 100 | `fnl_County_Desc__c` |
+| `mth_projectregioncode` | Region Code | string | maks. 50 | `fnl_County_Code__c` |
+| `mth_municipality` | Municipality | string | maks. 100 | `fnl_Municipality_Desc__c` |
+| `mth_municipalitycode` | Municipality Code | string | maks. 50 | `fnl_Municipality_Code__c` |
+| `mth_apartments` | Apartments | integer | 0–1000000 | `fnl_Apartments__c` |
+| `mth_grossfloorarea` | Gross Floor Area (m2) | integer | 0–100000000 | `fnl_Gross_Floor_Area__c` |
+| `mth_netfloorarea` | Net Floor Area (m2) | integer | 0–100000000 | `fnl_Net_Floor_Area__c` |
+| `mth_volume` | Volume (m3) | integer | 0–1000000000 | `fnl_Volume__c` |
+| `mth_storeys` | Storeys | integer | 0–1000 | `fnl_Storeys__c` |
+| `mth_storeysbelowground` | Storeys Below Ground | integer | 0–100 | `fnl_Storeys_Below_Ground__c` |
+| `mth_roleshtml` | Roles | memo | maks. 100000 | `fnl_Roles_RT__c` |
+| `mth_tendershtml` | Tenders | memo | maks. 100000 | `fnl_Tenders__c` |
+| `mth_smartupdatedon` | SMART Updated On | datetime |  | `SMART updated_at` |
+| `mth_leadstatus` | Lead Status | choice | 3 valg | `Status` |
+| `mth_convertedon` | Converted On | datetime |  | `(new)` |
+
+<details><summary>Valg for <code>mth_leadstatus</code> (3)</summary>
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | Open | Open |
+| 273280001 | Converted | Converted |
+| 273280002 | Disqualified | Unqualified |
+
+</details>
+
+## Lead Queue (`mth_leadqueue`)
+
+A user-defined queue: leads matching ALL filled-in criteria are placed in the queue (a lead can be in several queues). Members are notified about new leads. Keyword fields: ;-separated, match if ANY keyword occurs (case-insensitive).
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new)
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_description` | Description | memo | maks. 2000 | `(new)` |
+| `mth_isactive` | Active | boolean |  | `(new)` |
+| `mth_notifymembers` | Notify Members About New Leads | boolean |  | `(new)` |
+| `mth_regions` | Regions | multichoice | 5 valg | `SMART region (mth_projectregion)` |
+| `mth_minvalue` | Min. Value (DKK m) | decimal |  | `mth_projectvalue` |
+| `mth_maxvalue` | Max. Value (DKK m) | decimal |  | `mth_projectvalue` |
+| `mth_categorykeywords` | Category / Development Type Contains | string | maks. 1000 | `mth_projectcategories, mth_maincategory, mth_maindevtype` |
+| `mth_stagekeywords` | Planning Stage Contains | string | maks. 1000 | `mth_planningstage, mth_projectstage` |
+| `mth_contracttypekeywords` | Contract Type Contains | string | maks. 1000 | `mth_smartcontracttype` |
+| `mth_textkeywords` | Project Text Contains | string | maks. 1000 | `mth_name, mth_projecttitle, mth_projecttexts` |
+| `mth_excludekeywords` | Exclude If Text Contains | string | maks. 1000 | `mth_name, mth_projecttitle, mth_projecttexts, categories` |
+| `mth_startwithinmonths` | Construction Start Within (months) | integer | 0–240 | `mth_projectstartdate (from today)` |
+| `mth_excludestarted` | Exclude Projects Already Started | boolean |  | `mth_projectstartdate < today` |
+
+<details><summary>Valg for <code>mth_regions</code> (5)</summary>
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | Hovedstaden | Hovedstaden |
+| 273280001 | SjÃ¦lland | SjÃ¦lland |
+| 273280002 | Syddanmark | Syddanmark |
+| 273280003 | Midtjylland | Midtjylland |
+| 273280004 | Nordjylland | Nordjylland |
+
+</details>
+
+## SMART Lookup (`mth_smartlookup`)
+
+Cache of SMART dictionaries (/lookups, countries, regions, districts) used to translate ids to names.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: External_Key__c ("lookup:id")
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_key` | Key | string | maks. 200 | `External_Key__c` |
+| `mth_lookup` | Lookup | string | maks. 100 | `Lookup__c` |
+| `mth_smartlookupid` | SMART Id | string | maks. 50 | `Smart_Id__c` |
+| `mth_smartname` | SMART Name | string | maks. 500 | `Smart_Name__c` |
+| `mth_rsmcode` | RSM Code | string | maks. 50 | `Rsm_Code__c` |
+| `mth_parentsmartid` | Parent SMART Id | string | maks. 50 | `Parent_Smart_Id__c` |
+
+## Integration State (`mth_integrationstate`)
+
+Watermark and status per integration (e.g. SMART projects).
+
+Primær navnekolonne: `mth_name` (tekst, maks. 100). Kilde: Name ("Projects")
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_lastrunat` | Watermark (last run at) | datetime |  | `Last_Run_At__c` |
+| `mth_lookupversion` | Lookup Version | string | maks. 50 | `Lookup_Version__c` |
+| `mth_lastresult` | Last Result | memo | maks. 20000 | `(new) summary of the last run` |
+| `mth_lastfinishedon` | Last Finished On | datetime |  | `(new)` |

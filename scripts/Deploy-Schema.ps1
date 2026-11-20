@@ -43,10 +43,19 @@ function New-AttributeMetadata($c) {
         'memo' {
             $m['@odata.type'] = 'Microsoft.Dynamics.CRM.MemoAttributeMetadata'; $m.AttributeType = 'Memo'; $m.AttributeTypeName = @{ Value = 'MemoType' }
             $m.Format = 'TextArea'; $m.MaxLength = [int]$c.maxLength
+            if ($c.format -eq 'RichText') { $m.FormatName = @{ Value = 'RichText' } }   # HTML content (roles, tenders, history)
+        }
+        'datetime' {
+            $m['@odata.type'] = 'Microsoft.Dynamics.CRM.DateTimeAttributeMetadata'; $m.AttributeType = 'DateTime'; $m.AttributeTypeName = @{ Value = 'DateTimeType' }
+            $m.Format = 'DateAndTime'; $m.DateTimeBehavior = @{ Value = 'UserLocal' }
         }
         'date' {
             $m['@odata.type'] = 'Microsoft.Dynamics.CRM.DateTimeAttributeMetadata'; $m.AttributeType = 'DateTime'; $m.AttributeTypeName = @{ Value = 'DateTimeType' }
             $m.Format = 'DateOnly'; $m.DateTimeBehavior = @{ Value = 'DateOnly' }
+        }
+        'decimal' {
+            $m['@odata.type'] = 'Microsoft.Dynamics.CRM.DecimalAttributeMetadata'; $m.AttributeType = 'Decimal'; $m.AttributeTypeName = @{ Value = 'DecimalType' }
+            $m.Precision = [int]$c.precision; $m.MinValue = -100000000000; $m.MaxValue = 100000000000
         }
         'currency' {
             $m['@odata.type'] = 'Microsoft.Dynamics.CRM.MoneyAttributeMetadata'; $m.AttributeType = 'Money'; $m.AttributeTypeName = @{ Value = 'MoneyType' }

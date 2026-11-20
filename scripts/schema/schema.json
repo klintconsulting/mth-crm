@@ -1116,6 +1116,352 @@
                                            "type":  "memo",
                                            "source":  "Omfang__c",
                                            "maxLength":  4000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectId",
+                                           "displayName":  "SMART Project Id",
+                                           "type":  "string",
+                                           "source":  "fnl_Project_Id__c (SMART source_id)",
+                                           "maxLength":  50,
+                                           "note":  "Upsert key for the SMART sync."
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartId",
+                                           "displayName":  "SMART Internal Id",
+                                           "type":  "string",
+                                           "source":  "SMART_Project_Id__c (SMART id)",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartLink",
+                                           "displayName":  "SMART Link",
+                                           "type":  "string",
+                                           "source":  "fnl_Link__c",
+                                           "maxLength":  300,
+                                           "format":  "Url"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectTitle",
+                                           "displayName":  "Project Title",
+                                           "type":  "string",
+                                           "source":  "fnl_Project_Desc__c (title)",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectTexts",
+                                           "displayName":  "Project Description",
+                                           "type":  "memo",
+                                           "source":  "fnl_Project_Texts__c (description)",
+                                           "maxLength":  100000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientName",
+                                           "displayName":  "Client (Bygherre)",
+                                           "type":  "string",
+                                           "source":  "Lead.Company (role Bygherre)",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientStreet",
+                                           "displayName":  "Client Street",
+                                           "type":  "string",
+                                           "source":  "Lead.Street (Bygherre main address)",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientPostalCode",
+                                           "displayName":  "Client Postal Code",
+                                           "type":  "string",
+                                           "source":  "Lead.PostalCode",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientCity",
+                                           "displayName":  "Client City",
+                                           "type":  "string",
+                                           "source":  "Lead.City",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientCompanyType",
+                                           "displayName":  "Client Company Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Company_Type_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientVatNo",
+                                           "displayName":  "Client VAT No.",
+                                           "type":  "string",
+                                           "source":  "fnl_VAT_no__c (org_nr)",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientTdcId",
+                                           "displayName":  "Client TDC Id",
+                                           "type":  "string",
+                                           "source":  "fnl_TDCID__c (par_id)",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionSite",
+                                           "displayName":  "Construction Site",
+                                           "type":  "string",
+                                           "source":  "fnl_Construction_Site__c",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionTown",
+                                           "displayName":  "Construction Town",
+                                           "type":  "string",
+                                           "source":  "fnl_Construction_Town__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionZip",
+                                           "displayName":  "Construction Postal Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Zip_Code__c",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStartDate",
+                                           "displayName":  "Construction Start",
+                                           "type":  "date",
+                                           "source":  "fnl_Start_Date__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStartText",
+                                           "displayName":  "Construction Start (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_Start_Date_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectEndDate",
+                                           "displayName":  "Construction End",
+                                           "type":  "date",
+                                           "source":  "fnl_End_Date__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectEndText",
+                                           "displayName":  "Construction End (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_End_Date_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionMonths",
+                                           "displayName":  "Construction Period (months)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Construction_Period__c",
+                                           "min":  0,
+                                           "max":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectValue",
+                                           "displayName":  "Project Value (DKK m)",
+                                           "type":  "decimal",
+                                           "source":  "fnl_Value__c (value / 1,000,000)",
+                                           "precision":  2
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectValueText",
+                                           "displayName":  "Project Value (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_Value_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartContractType",
+                                           "displayName":  "SMART Contract Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Contract_Type__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartContractTypeCode",
+                                           "displayName":  "SMART Contract Type Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Contract_Type_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_PlanningStage",
+                                           "displayName":  "Planning Stage",
+                                           "type":  "string",
+                                           "source":  "fnl_Planning_Stage__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStage",
+                                           "displayName":  "Project Stage",
+                                           "type":  "string",
+                                           "source":  "fnl_Stage__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainCategory",
+                                           "displayName":  "Main Category",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Category_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainCategoryCode",
+                                           "displayName":  "Main Category Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Category_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainDevType",
+                                           "displayName":  "Main Development Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Dev_Type_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainDevTypeCode",
+                                           "displayName":  "Main Development Type Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Dev_Type_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectCategories",
+                                           "displayName":  "Categories",
+                                           "type":  "memo",
+                                           "source":  "fnl_Categories__c (\"category - devtype;...\")",
+                                           "maxLength":  4000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectCountry",
+                                           "displayName":  "Country",
+                                           "type":  "string",
+                                           "source":  "fnl_Country_Code__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectRegion",
+                                           "displayName":  "Region",
+                                           "type":  "string",
+                                           "source":  "fnl_County_Desc__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectRegionCode",
+                                           "displayName":  "Region Code",
+                                           "type":  "string",
+                                           "source":  "fnl_County_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_Municipality",
+                                           "displayName":  "Municipality",
+                                           "type":  "string",
+                                           "source":  "fnl_Municipality_Desc__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_MunicipalityCode",
+                                           "displayName":  "Municipality Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Municipality_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_Apartments",
+                                           "displayName":  "Apartments",
+                                           "type":  "integer",
+                                           "source":  "fnl_Apartments__c",
+                                           "min":  0,
+                                           "max":  1000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_GrossFloorArea",
+                                           "displayName":  "Gross Floor Area (m2)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Gross_Floor_Area__c",
+                                           "min":  0,
+                                           "max":  100000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_NetFloorArea",
+                                           "displayName":  "Net Floor Area (m2)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Net_Floor_Area__c",
+                                           "min":  0,
+                                           "max":  100000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_Volume",
+                                           "displayName":  "Volume (m3)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Volume__c",
+                                           "min":  0,
+                                           "max":  1000000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_Storeys",
+                                           "displayName":  "Storeys",
+                                           "type":  "integer",
+                                           "source":  "fnl_Storeys__c",
+                                           "min":  0,
+                                           "max":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_StoreysBelowGround",
+                                           "displayName":  "Storeys Below Ground",
+                                           "type":  "integer",
+                                           "source":  "fnl_Storeys_Below_Ground__c",
+                                           "min":  0,
+                                           "max":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_RolesHtml",
+                                           "displayName":  "Roles",
+                                           "type":  "memo",
+                                           "source":  "fnl_Roles_RT__c",
+                                           "maxLength":  100000,
+                                           "format":  "RichText"
+                                       },
+                                       {
+                                           "schemaName":  "mth_TendersHtml",
+                                           "displayName":  "Tenders",
+                                           "type":  "memo",
+                                           "source":  "fnl_Tenders__c",
+                                           "maxLength":  100000,
+                                           "format":  "RichText"
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartUpdatedOn",
+                                           "displayName":  "SMART Updated On",
+                                           "type":  "datetime",
+                                           "source":  "SMART updated_at"
+                                       },
+                                       {
+                                           "schemaName":  "mth_LeadHistory",
+                                           "displayName":  "Lead History",
+                                           "type":  "memo",
+                                           "source":  "fnl_Lead_History__c",
+                                           "format":  "RichText",
+                                           "note":  "Newest block first. Written by the SMART sync when a converted project changes.",
+                                           "maxLength":  100000
+                                       },
+                                       {
+                                           "schemaName":  "mth_LeadHistoryLatest",
+                                           "displayName":  "Latest Lead Changes",
+                                           "type":  "memo",
+                                           "source":  "fnl_Lead_History_Latest__c",
+                                           "maxLength":  20000,
+                                           "format":  "RichText"
+                                       },
+                                       {
+                                           "schemaName":  "mth_LeadDataUpdatedOn",
+                                           "displayName":  "Lead Data Updated On",
+                                           "type":  "datetime",
+                                           "source":  "fnl_Lead_Data_Updated__c / fnl_Last_Updated__c"
                                        }
                                    ]
                    },
@@ -1810,9 +2156,643 @@
                                            "source":  "(new)"
                                        }
                                    ]
+                   },
+                   {
+                       "schemaName":  "mth_Lead",
+                       "displayName":  "Lead",
+                       "pluralName":  "Leads",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "hasActivities":  true,
+                       "source":  "Lead (record type New, LeadSource FaktaNet Live)",
+                       "description":  "Construction project from SMART (Byggefakta). Matches lead queues by criteria; the first user to convert it gets it and it is closed for everyone else.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Project Name",
+                                       "maxLength":  300,
+                                       "source":  "fnl_Project_Name__c / LastName (project_name or title)"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_ProjectId",
+                                           "displayName":  "SMART Project Id",
+                                           "type":  "string",
+                                           "source":  "fnl_Project_Id__c (SMART source_id)",
+                                           "maxLength":  50,
+                                           "note":  "Upsert key for the SMART sync."
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartId",
+                                           "displayName":  "SMART Internal Id",
+                                           "type":  "string",
+                                           "source":  "SMART_Project_Id__c (SMART id)",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartLink",
+                                           "displayName":  "SMART Link",
+                                           "type":  "string",
+                                           "source":  "fnl_Link__c",
+                                           "maxLength":  300,
+                                           "format":  "Url"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectTitle",
+                                           "displayName":  "Project Title",
+                                           "type":  "string",
+                                           "source":  "fnl_Project_Desc__c (title)",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectTexts",
+                                           "displayName":  "Project Description",
+                                           "type":  "memo",
+                                           "source":  "fnl_Project_Texts__c (description)",
+                                           "maxLength":  100000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientName",
+                                           "displayName":  "Client (Bygherre)",
+                                           "type":  "string",
+                                           "source":  "Lead.Company (role Bygherre)",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientStreet",
+                                           "displayName":  "Client Street",
+                                           "type":  "string",
+                                           "source":  "Lead.Street (Bygherre main address)",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientPostalCode",
+                                           "displayName":  "Client Postal Code",
+                                           "type":  "string",
+                                           "source":  "Lead.PostalCode",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientCity",
+                                           "displayName":  "Client City",
+                                           "type":  "string",
+                                           "source":  "Lead.City",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientCompanyType",
+                                           "displayName":  "Client Company Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Company_Type_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientVatNo",
+                                           "displayName":  "Client VAT No.",
+                                           "type":  "string",
+                                           "source":  "fnl_VAT_no__c (org_nr)",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ClientTdcId",
+                                           "displayName":  "Client TDC Id",
+                                           "type":  "string",
+                                           "source":  "fnl_TDCID__c (par_id)",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionSite",
+                                           "displayName":  "Construction Site",
+                                           "type":  "string",
+                                           "source":  "fnl_Construction_Site__c",
+                                           "maxLength":  300
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionTown",
+                                           "displayName":  "Construction Town",
+                                           "type":  "string",
+                                           "source":  "fnl_Construction_Town__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionZip",
+                                           "displayName":  "Construction Postal Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Zip_Code__c",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStartDate",
+                                           "displayName":  "Construction Start",
+                                           "type":  "date",
+                                           "source":  "fnl_Start_Date__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStartText",
+                                           "displayName":  "Construction Start (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_Start_Date_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectEndDate",
+                                           "displayName":  "Construction End",
+                                           "type":  "date",
+                                           "source":  "fnl_End_Date__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectEndText",
+                                           "displayName":  "Construction End (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_End_Date_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConstructionMonths",
+                                           "displayName":  "Construction Period (months)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Construction_Period__c",
+                                           "min":  0,
+                                           "max":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectValue",
+                                           "displayName":  "Project Value (DKK m)",
+                                           "type":  "decimal",
+                                           "source":  "fnl_Value__c (value / 1,000,000)",
+                                           "precision":  2
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectValueText",
+                                           "displayName":  "Project Value (text)",
+                                           "type":  "string",
+                                           "source":  "fnl_Value_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartContractType",
+                                           "displayName":  "SMART Contract Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Contract_Type__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartContractTypeCode",
+                                           "displayName":  "SMART Contract Type Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Contract_Type_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_PlanningStage",
+                                           "displayName":  "Planning Stage",
+                                           "type":  "string",
+                                           "source":  "fnl_Planning_Stage__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectStage",
+                                           "displayName":  "Project Stage",
+                                           "type":  "string",
+                                           "source":  "fnl_Stage__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainCategory",
+                                           "displayName":  "Main Category",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Category_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainCategoryCode",
+                                           "displayName":  "Main Category Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Category_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainDevType",
+                                           "displayName":  "Main Development Type",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Dev_Type_Desc__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_MainDevTypeCode",
+                                           "displayName":  "Main Development Type Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Main_Dev_Type_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectCategories",
+                                           "displayName":  "Categories",
+                                           "type":  "memo",
+                                           "source":  "fnl_Categories__c (\"category - devtype;...\")",
+                                           "maxLength":  4000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectCountry",
+                                           "displayName":  "Country",
+                                           "type":  "string",
+                                           "source":  "fnl_Country_Code__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectRegion",
+                                           "displayName":  "Region",
+                                           "type":  "string",
+                                           "source":  "fnl_County_Desc__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_ProjectRegionCode",
+                                           "displayName":  "Region Code",
+                                           "type":  "string",
+                                           "source":  "fnl_County_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_Municipality",
+                                           "displayName":  "Municipality",
+                                           "type":  "string",
+                                           "source":  "fnl_Municipality_Desc__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_MunicipalityCode",
+                                           "displayName":  "Municipality Code",
+                                           "type":  "string",
+                                           "source":  "fnl_Municipality_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_Apartments",
+                                           "displayName":  "Apartments",
+                                           "type":  "integer",
+                                           "source":  "fnl_Apartments__c",
+                                           "min":  0,
+                                           "max":  1000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_GrossFloorArea",
+                                           "displayName":  "Gross Floor Area (m2)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Gross_Floor_Area__c",
+                                           "min":  0,
+                                           "max":  100000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_NetFloorArea",
+                                           "displayName":  "Net Floor Area (m2)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Net_Floor_Area__c",
+                                           "min":  0,
+                                           "max":  100000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_Volume",
+                                           "displayName":  "Volume (m3)",
+                                           "type":  "integer",
+                                           "source":  "fnl_Volume__c",
+                                           "min":  0,
+                                           "max":  1000000000
+                                       },
+                                       {
+                                           "schemaName":  "mth_Storeys",
+                                           "displayName":  "Storeys",
+                                           "type":  "integer",
+                                           "source":  "fnl_Storeys__c",
+                                           "min":  0,
+                                           "max":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_StoreysBelowGround",
+                                           "displayName":  "Storeys Below Ground",
+                                           "type":  "integer",
+                                           "source":  "fnl_Storeys_Below_Ground__c",
+                                           "min":  0,
+                                           "max":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_RolesHtml",
+                                           "displayName":  "Roles",
+                                           "type":  "memo",
+                                           "source":  "fnl_Roles_RT__c",
+                                           "maxLength":  100000,
+                                           "format":  "RichText"
+                                       },
+                                       {
+                                           "schemaName":  "mth_TendersHtml",
+                                           "displayName":  "Tenders",
+                                           "type":  "memo",
+                                           "source":  "fnl_Tenders__c",
+                                           "maxLength":  100000,
+                                           "format":  "RichText"
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartUpdatedOn",
+                                           "displayName":  "SMART Updated On",
+                                           "type":  "datetime",
+                                           "source":  "SMART updated_at"
+                                       },
+                                       {
+                                           "schemaName":  "mth_LeadStatus",
+                                           "displayName":  "Lead Status",
+                                           "type":  "choice",
+                                           "source":  "Status",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "Open",
+                                                               "labelDa":  "Ã…ben",
+                                                               "sourceValue":  "Open"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "Converted",
+                                                               "labelDa":  "Konverteret",
+                                                               "sourceValue":  "Converted"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Disqualified",
+                                                               "labelDa":  "Fravalgt",
+                                                               "sourceValue":  "Unqualified"
+                                                           }
+                                                       ]
+                                       },
+                                       {
+                                           "schemaName":  "mth_ConvertedOn",
+                                           "displayName":  "Converted On",
+                                           "type":  "datetime",
+                                           "source":  "(new)"
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_LeadQueue",
+                       "displayName":  "Lead Queue",
+                       "pluralName":  "Lead Queues",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "source":  "(new) - replaces Salesforce lead queues, assignment rules and per-department list views",
+                       "description":  "A user-defined queue: leads matching ALL filled-in criteria are placed in the queue (a lead can be in several queues). Members are notified about new leads. Keyword fields: ;-separated, match if ANY keyword occurs (case-insensitive).",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  200,
+                                       "source":  "(new)"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Description",
+                                           "displayName":  "Description",
+                                           "type":  "memo",
+                                           "source":  "(new)",
+                                           "maxLength":  2000
+                                       },
+                                       {
+                                           "schemaName":  "mth_IsActive",
+                                           "displayName":  "Active",
+                                           "type":  "boolean",
+                                           "source":  "(new)"
+                                       },
+                                       {
+                                           "schemaName":  "mth_NotifyMembers",
+                                           "displayName":  "Notify Members About New Leads",
+                                           "type":  "boolean",
+                                           "source":  "(new)"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Regions",
+                                           "displayName":  "Regions",
+                                           "type":  "multichoice",
+                                           "source":  "SMART region (mth_projectregion)",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "Hovedstaden",
+                                                               "sourceValue":  "Hovedstaden"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "SjÃ¦lland",
+                                                               "sourceValue":  "SjÃ¦lland"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Syddanmark",
+                                                               "sourceValue":  "Syddanmark"
+                                                           },
+                                                           {
+                                                               "value":  273280003,
+                                                               "label":  "Midtjylland",
+                                                               "sourceValue":  "Midtjylland"
+                                                           },
+                                                           {
+                                                               "value":  273280004,
+                                                               "label":  "Nordjylland",
+                                                               "sourceValue":  "Nordjylland"
+                                                           }
+                                                       ]
+                                       },
+                                       {
+                                           "schemaName":  "mth_MinValue",
+                                           "displayName":  "Min. Value (DKK m)",
+                                           "type":  "decimal",
+                                           "source":  "mth_projectvalue",
+                                           "precision":  2
+                                       },
+                                       {
+                                           "schemaName":  "mth_MaxValue",
+                                           "displayName":  "Max. Value (DKK m)",
+                                           "type":  "decimal",
+                                           "source":  "mth_projectvalue",
+                                           "precision":  2
+                                       },
+                                       {
+                                           "schemaName":  "mth_CategoryKeywords",
+                                           "displayName":  "Category / Development Type Contains",
+                                           "type":  "string",
+                                           "source":  "mth_projectcategories, mth_maincategory, mth_maindevtype",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_StageKeywords",
+                                           "displayName":  "Planning Stage Contains",
+                                           "type":  "string",
+                                           "source":  "mth_planningstage, mth_projectstage",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ContractTypeKeywords",
+                                           "displayName":  "Contract Type Contains",
+                                           "type":  "string",
+                                           "source":  "mth_smartcontracttype",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_TextKeywords",
+                                           "displayName":  "Project Text Contains",
+                                           "type":  "string",
+                                           "source":  "mth_name, mth_projecttitle, mth_projecttexts",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_ExcludeKeywords",
+                                           "displayName":  "Exclude If Text Contains",
+                                           "type":  "string",
+                                           "source":  "mth_name, mth_projecttitle, mth_projecttexts, categories",
+                                           "maxLength":  1000
+                                       },
+                                       {
+                                           "schemaName":  "mth_StartWithinMonths",
+                                           "displayName":  "Construction Start Within (months)",
+                                           "type":  "integer",
+                                           "source":  "mth_projectstartdate (from today)",
+                                           "min":  0,
+                                           "max":  240
+                                       },
+                                       {
+                                           "schemaName":  "mth_ExcludeStarted",
+                                           "displayName":  "Exclude Projects Already Started",
+                                           "type":  "boolean",
+                                           "source":  "mth_projectstartdate \u003c today"
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_SmartLookup",
+                       "displayName":  "SMART Lookup",
+                       "pluralName":  "SMART Lookups",
+                       "standard":  false,
+                       "ownership":  "OrganizationOwned",
+                       "source":  "SMART_Lookup__c",
+                       "description":  "Cache of SMART dictionaries (/lookups, countries, regions, districts) used to translate ids to names.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Key",
+                                       "maxLength":  200,
+                                       "source":  "External_Key__c (\"lookup:id\")"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Key",
+                                           "displayName":  "Key",
+                                           "type":  "string",
+                                           "source":  "External_Key__c",
+                                           "maxLength":  200
+                                       },
+                                       {
+                                           "schemaName":  "mth_Lookup",
+                                           "displayName":  "Lookup",
+                                           "type":  "string",
+                                           "source":  "Lookup__c",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartLookupId",
+                                           "displayName":  "SMART Id",
+                                           "type":  "string",
+                                           "source":  "Smart_Id__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_SmartName",
+                                           "displayName":  "SMART Name",
+                                           "type":  "string",
+                                           "source":  "Smart_Name__c",
+                                           "maxLength":  500
+                                       },
+                                       {
+                                           "schemaName":  "mth_RsmCode",
+                                           "displayName":  "RSM Code",
+                                           "type":  "string",
+                                           "source":  "Rsm_Code__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_ParentSmartId",
+                                           "displayName":  "Parent SMART Id",
+                                           "type":  "string",
+                                           "source":  "Parent_Smart_Id__c",
+                                           "maxLength":  50
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_IntegrationState",
+                       "displayName":  "Integration State",
+                       "pluralName":  "Integration States",
+                       "standard":  false,
+                       "ownership":  "OrganizationOwned",
+                       "source":  "SMART_Sync_State__c",
+                       "description":  "Watermark and status per integration (e.g. SMART projects).",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Integration",
+                                       "maxLength":  100,
+                                       "source":  "Name (\"Projects\")"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_LastRunAt",
+                                           "displayName":  "Watermark (last run at)",
+                                           "type":  "datetime",
+                                           "source":  "Last_Run_At__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_LookupVersion",
+                                           "displayName":  "Lookup Version",
+                                           "type":  "string",
+                                           "source":  "Lookup_Version__c",
+                                           "maxLength":  50
+                                       },
+                                       {
+                                           "schemaName":  "mth_LastResult",
+                                           "displayName":  "Last Result",
+                                           "type":  "memo",
+                                           "source":  "(new) summary of the last run",
+                                           "maxLength":  20000
+                                       },
+                                       {
+                                           "schemaName":  "mth_LastFinishedOn",
+                                           "displayName":  "Last Finished On",
+                                           "type":  "datetime",
+                                           "source":  "(new)"
+                                       }
+                                   ]
                    }
                ],
     "lookups":  [
+                    {
+                        "schemaName":  "mth_opportunity_mth_lead_Converted",
+                        "referencing":  "mth_lead",
+                        "referenced":  "mth_opportunity",
+                        "lookupSchemaName":  "mth_ConvertedOpportunityId",
+                        "displayName":  "Converted Opportunity",
+                        "source":  "ConvertedOpportunityId",
+                        "cascade":  "RemoveLink"
+                    },
+                    {
+                        "schemaName":  "mth_systemuser_mth_lead_ConvertedBy",
+                        "referencing":  "mth_lead",
+                        "referenced":  "systemuser",
+                        "lookupSchemaName":  "mth_ConvertedById",
+                        "displayName":  "Converted By",
+                        "source":  "(new)",
+                        "cascade":  "RemoveLink"
+                    },
+                    {
+                        "schemaName":  "mth_lead_mth_opportunity_Lead",
+                        "referencing":  "mth_opportunity",
+                        "referenced":  "mth_lead",
+                        "lookupSchemaName":  "mth_LeadId",
+                        "displayName":  "Lead",
+                        "source":  "Lead.ConvertedOpportunityId (reverse)",
+                        "cascade":  "RemoveLink"
+                    },
                     {
                         "schemaName":  "mth_trade_mth_buildingcontract",
                         "referencing":  "mth_buildingcontract",
@@ -1920,6 +2900,22 @@
                            "source":  "Account.Building_Contracts__c (multi-select)"
                        },
                        {
+                           "schemaName":  "mth_leadqueue_systemuser",
+                           "entity1":  "mth_leadqueue",
+                           "entity2":  "systemuser",
+                           "entity1Label":  "Lead Queues",
+                           "entity2Label":  "Members",
+                           "source":  "(new) queue members"
+                       },
+                       {
+                           "schemaName":  "mth_lead_mth_leadqueue",
+                           "entity1":  "mth_lead",
+                           "entity2":  "mth_leadqueue",
+                           "entity1Label":  "Leads",
+                           "entity2Label":  "Lead Queues",
+                           "source":  "(new) computed: leads matching the queue criteria"
+                       },
+                       {
                            "schemaName":  "mth_collabpartner_contact",
                            "entity1":  "mth_collaboratingpartner",
                            "entity2":  "contact",
@@ -1936,6 +2932,30 @@
                      "columns":  [
                                      "mth_buildingcontractid",
                                      "mth_accountid"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_lead",
+                     "schemaName":  "mth_LeadProjectId",
+                     "displayName":  "SMART Project Id",
+                     "columns":  [
+                                     "mth_projectid"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_smartlookup",
+                     "schemaName":  "mth_SmartLookupKey",
+                     "displayName":  "Key",
+                     "columns":  [
+                                     "mth_key"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_integrationstate",
+                     "schemaName":  "mth_IntegrationName",
+                     "displayName":  "Integration",
+                     "columns":  [
+                                     "mth_name"
                                  ]
                  },
                  {
