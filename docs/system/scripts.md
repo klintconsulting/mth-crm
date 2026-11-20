@@ -14,6 +14,8 @@
 | `scripts/Deploy-Plugins.ps1` | Bygger plugin-assembly'en og registrerer eller opdaterer assembly, typer og trin fra `plugins/steps.json`, plus app-indstillinger | Efter hver ændring i `plugins/` eller steps.json |
 | `scripts/plugins/steps.json` | Plugin-trin (type, besked, tabel, fase, sync/async) og app-indstillinger | Rettes i hånden |
 | `scripts/Deploy-Pcf.ps1` | Tester, bygger og pusher PCF-kontrollerne i `pcf/` og lægger dem i solutionen | Efter hver ændring i `pcf/` |
+| `scripts/Deploy-WebResources.ps1` | Opretter eller opdaterer alle filer i `webresources/` som web resources (navn = sti, f.eks. `mth_/scripts/opportunity.js`) og publicerer dem | Efter hver ændring i `webresources/`, før Deploy-App |
+| `scripts/New-DemoProjectSites.ps1` | DEMO: opretter et projektsite (Microsoft 365-gruppe) pr. sag med status 20–89, lægger eksempeldokumenter i Shared Documents og kobler sitet til sagen | Kun i en test-tenant. Se sharepoint.md |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

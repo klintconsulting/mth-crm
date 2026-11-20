@@ -1102,6 +1102,15 @@
                                            "source":  "Key_Project__c"
                                        },
                                        {
+                                           "schemaName":  "mth_ProjectSiteUrl",
+                                           "displayName":  "Project Site URL",
+                                           "type":  "string",
+                                           "source":  "SharepointIntegration / Project Portal (Opportunity_in_Project_Portal__c, Project_Portal_Url__c)",
+                                           "format":  "Url",
+                                           "note":  "URL of the SharePoint project site. Set by the (future) site provisioning flow. The Project Site tab embeds it when status \u003e= 20.",
+                                           "maxLength":  500
+                                       },
+                                       {
                                            "schemaName":  "mth_Scope",
                                            "displayName":  "Scope",
                                            "type":  "memo",

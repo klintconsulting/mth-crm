@@ -80,6 +80,7 @@ Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Name
 | `mth_deliverycity` | Delivery City | string | maks. 100 | `Delivery_City__c` |
 | `mth_bcprojectnumber` | BC Case Number | string | maks. 50 | `BC_Project_Number__c / Case_Number__c (identical)` |
 | `mth_iskeyproject` | Key Project | boolean |  | `Key_Project__c` |
+| `mth_projectsiteurl` | Project Site URL | string | maks. 500, Url | `SharepointIntegration / Project Portal (Opportunity_in_Project_Portal__c, Project_Portal_Url__c)` |
 | `mth_scope` | Scope | memo | maks. 4000 | `Omfang__c` |
 
 <details><summary>Valg for <code>mth_status</code> (21)</summary>

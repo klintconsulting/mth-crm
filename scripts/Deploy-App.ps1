@@ -113,9 +113,10 @@ function New-SectionXml($table, $s) {
         for ($i = 1; $i -lt $span; $i++) { [void]$rows.Append('<row />') }
     } elseif ($s.subgrid) {
         $sg = $s.subgrid
-        $vid = $viewIds["$($sg.table)|$($sg.view)"]
+        # viewId: use an existing (e.g. Microsoft) view directly; otherwise a view defined in app.json by name
+        $vid = if ($sg.viewId) { $sg.viewId } else { $viewIds["$($sg.table)|$($sg.view)"] }
         if (-not $vid) { throw "Subgrid view '$($sg.view)' for $($sg.table) is not defined in app.json" }
-        $span = 8
+        $span = if ($sg.rows) { [int]$sg.rows } else { 8 }
         [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" rowspan=`"$span`" colspan=`"1`" auto=`"false`">$(Lbl $s.label)" +
             "<control id=`"$($sg.id)`" classid=`"$($ClassId.Subgrid)`" indicationOfSubgrid=`"true`"><parameters>" +
             "<RecordsPerPage>10</RecordsPerPage><AutoExpand>Fixed</AutoExpand><EnableQuickFind>false</EnableQuickFind><EnableViewPicker>false</EnableViewPicker>" +
@@ -142,10 +143,27 @@ foreach ($f in $def.forms) {
         $cols = foreach ($col in $t.columns) {
             "<column width=`"$width%`"><sections>" + ((@($col) | ForEach-Object { New-SectionXml $f.table $_ }) -join '') + '</sections></column>'
         }
-        "<tab name=`"$($t.name)`" id=`"$(G)`" IsUserDefined=`"1`" locklevel=`"0`" showlabel=`"true`" expanded=`"true`">$(Lbl $t.label)<columns>$($cols -join '')</columns></tab>"
+        $vis = if ($t.hidden) { ' visible="false"' } else { '' }   # hidden tabs are shown by form script
+        "<tab name=`"$($t.name)`" id=`"$(G)`" IsUserDefined=`"1`" locklevel=`"0`" showlabel=`"true`" expanded=`"true`"$vis>$(Lbl $t.label)<columns>$($cols -join '')</columns></tab>"
+    }
+    # Form scripts: library + onLoad and onChange handlers (execution context is passed)
+    $events = ''; $libs = ''
+    if ($f.scripts) {
+        $lib = $f.scripts.library
+        $handler = { param($fn) "<Handlers><Handler functionName=`"$fn`" libraryName=`"$lib`" handlerUniqueId=`"$(G)`" enabled=`"true`" parameters=`"`" passExecutionContext=`"true`" /></Handlers>" }
+        $ev = @()
+        if ($f.scripts.onLoad) { $ev += "<event name=`"onload`" application=`"false`" active=`"false`">$(& $handler $f.scripts.onLoad)</event>" }
+        if ($f.scripts.onChange) {
+            foreach ($p in $f.scripts.onChange.PSObject.Properties) {
+                [void](Get-Attr $f.table $p.Name)
+                $ev += "<event name=`"onchange`" application=`"false`" active=`"false`" attribute=`"$($p.Name)`">$(& $handler $p.Value)</event>"
+            }
+        }
+        $events = "<events>$($ev -join '')</events>"
+        $libs = "<formLibraries><Library name=`"$lib`" libraryUniqueId=`"$(G)`" /></formLibraries>"
     }
     $cds = if ($script:ControlDescriptions.Count) { "<controlDescriptions>$($script:ControlDescriptions -join '')</controlDescriptions>" } else { '' }
-    $formXml = "<form><tabs>$($tabs -join '')</tabs>$cds</form>"
+    $formXml = "<form><tabs>$($tabs -join '')</tabs>$events$libs$cds</form>"
     $existing = (Invoke-Dataverse GET "systemforms?`$select=formid&`$filter=name eq '$($f.name)' and objecttypecode eq '$($f.table)' and type eq 2").value
     $body = @{ name = $f.name; objecttypecode = $f.table; type = 2; formxml = $formXml; description = 'Defined in scripts/app/app.json' }
     if ($existing) {
@@ -196,7 +214,7 @@ $have = @{}
 $appUnique = (Invoke-Dataverse GET "appmodules/Microsoft.Dynamics.CRM.RetrieveUnpublishedMultiple()?`$select=appmoduleidunique&`$filter=appmoduleid eq $appId").value[0].appmoduleidunique
 $comp = Invoke-Dataverse GET "appmodulecomponents?`$select=objectid&`$filter=_appmoduleidunique_value eq $appUnique"
 foreach ($c in $comp.value) { $have[[string]$c.objectid] = $true }
-$tables = @($def.sitemap.groups.tables) + @($def.forms.table) + @($def.views.table) + @('systemuser') | Select-Object -Unique
+$tables = @($def.sitemap.groups.tables) + @($def.forms.table) + @($def.views.table) + @('systemuser') + @($def.extraTables) | Where-Object { $_ } | Select-Object -Unique
 $components = @()
 foreach ($t in $tables) { $mid = (Get-TableMeta $t).MetadataId; if (-not $have[$mid]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.entity'; entityid = $mid } } }
 foreach ($id in $formIds) { if (-not $have[$id]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.systemform'; formid = $id } } }

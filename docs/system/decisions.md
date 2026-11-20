@@ -52,3 +52,7 @@ Brugerne vil kunne nævne en kollega i en note (som Chatter). Valgt frem for ind
 ## B13 – Kommentarfelt med @-vælger over tidslinjen (2026-11-20)
 Brugerne forventer en navnevælger, når de taster `@`. Tidslinjens note-editor kan ikke udvides, og indlæg (Posts) med @-vælger kræver Activity Feeds, som kun følger med Dynamics 365-apps.
 **Konsekvens:** Egen PCF-kontrol `mth_Mth.MentionComposer` lige over tidslinjen. Den har en `@`-vælger, understøtter flere modtagere hvor som helst i teksten og gemmer som en almindelig note, så kommentaren vises i tidslinjen, og plugin'et fra B12 sender notifikationerne. Ingen separat kommentarliste, så intet vises to gange. Se [pcf.md](pcf.md).
+
+## B14 – SharePoint Shared Documents indlejret med Dataverses dokumentintegration (2026-11-20)
+Hver Salgsmulighed har sit eget SharePoint-projektsite (som i Salesforce). Brugeren vil se Shared Documents indlejret og ikke et link. En IFRAME blev fravalgt, fordi SharePoint ofte ikke vil vises i en frame.
+**Konsekvens:** Dataverses indbyggede dokumenthåndtering med én `sharepointdocumentlocation` pr. sag og en absolut URL til sagens eget bibliotek. Fanen **Project Site** vises fra status 20 (formularscript). Oprettelsesflowet (site og placering) bygges senere. Se [sharepoint.md](sharepoint.md).
