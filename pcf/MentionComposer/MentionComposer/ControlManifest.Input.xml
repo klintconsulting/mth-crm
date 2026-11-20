@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Mth" constructor="MentionComposer" version="1.0.0" display-name-key="DisplayName" description-key="Description" control-type="standard">
+  <control namespace="Mth" constructor="MentionComposer" version="1.0.1" display-name-key="DisplayName" description-key="Description" control-type="standard">
     <external-service-usage enabled="false"></external-service-usage>
     <!-- Bound to the record's primary name column (text). The control never changes the value. -->
     <type-group name="text">

@@ -1,6 +1,19 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { findActiveToken, insertMention, mentionedUsers, MentionToken, MentionUser, toNoteHtml, userQuery } from "./mention";
 
+/** Minimal typing of the parts of the (deprecated but still available) Xrm.Page API used to refresh the timeline. */
+interface XrmControl {
+    getControlType?: () => string;
+    getName?: () => string;
+    refresh?: () => void;
+}
+interface XrmPage {
+    ui?: { controls?: { get?: () => XrmControl[] } };
+}
+function safe<T>(fn: () => T): T | undefined {
+    try { return fn(); } catch { return undefined; }
+}
+
 /**
  * MentionComposer: a comment box with an @mention picker, placed above the timeline.
  * Several users can be mentioned anywhere in the text: every '@' opens the picker at that position.
@@ -227,14 +240,31 @@ export class MentionComposer implements ComponentFramework.StandardControl<IInpu
         }
     }
 
-    /** Refreshes the standard timeline control (id "notescontrol") so the new note appears. */
+    /**
+     * Refreshes the standard timeline so the new note appears. The timeline is found by control type
+     * ("timelinewall"), with the names "notescontrol"/"Timeline" as fallback. It is refreshed immediately
+     * and once more after a short delay, because the timeline can return its cached list on the first call.
+     */
     private refreshTimeline(): void {
-        try {
-            const xrm = (window as unknown as { Xrm?: { Page?: { getControl?: (n: string) => { refresh?: () => void } | null } } }).Xrm;
-            xrm?.Page?.getControl?.("notescontrol")?.refresh?.();
-        } catch {
-            // not critical: the note is saved and appears on the next refresh
-        }
+        const refresh = (): number => {
+            let count = 0;
+            try {
+                const page = (window as unknown as { Xrm?: { Page?: XrmPage } }).Xrm?.Page;
+                const controls = page?.ui?.controls?.get?.() ?? [];
+                for (const c of controls) {
+                    const type = safe(() => c.getControlType?.());
+                    const name = safe(() => c.getName?.());
+                    if (type === "timelinewall" || name === "notescontrol" || name === "Timeline") {
+                        c.refresh?.();
+                        count++;
+                    }
+                }
+            } catch {
+                // not critical: the note is saved and appears on the next refresh
+            }
+            return count;
+        };
+        if (refresh() > 0) window.setTimeout(refresh, 1500);
     }
 
     // ---------- helpers ----------

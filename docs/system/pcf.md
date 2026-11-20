@@ -19,7 +19,7 @@ På en ny post, der ikke er gemt endnu, er feltet låst med teksten "Gem posten,
 - Feltkontrol uden React og uden eksterne biblioteker. Den er bundet til postens primære navnekolonne (`mth_name`, `name`, `fullname`) og ændrer den aldrig (`getOutputs` returnerer intet).
 - Brugersøgning via `context.webAPI` på `systemuser`: `isdisabled eq false and accessmode eq 0`, `contains(fullname)` eller `startswith(internalemailaddress)`, top 8, med 200 ms debounce.
 - Noten oprettes via `context.webAPI.createRecord("annotation")` med `objectid_<tabel>@odata.bind`. Entity set-navnet hentes med `context.utils.getEntityMetadata`.
-- Tidslinjen genindlæses via `Xrm.Page.getControl("notescontrol").refresh()`. Fejler det, gemmes noten alligevel.
+- Tidslinjen genindlæses automatisk efter Send. Kontrollen gennemløber `Xrm.Page.ui.controls`, finder tidslinjen på kontroltypen `timelinewall` (med navnene `notescontrol`/`Timeline` som reserve) og kalder `refresh()` med det samme og igen efter 1,5 sekunder, fordi første kald kan returnere tidslinjens cache. Fejler det, er noten gemt alligevel og vises ved næste genindlæsning. (Fra version 1.0.1. I 1.0.0 blev der kun kaldt `getControl("notescontrol")`, som ikke ramte tidslinjen.)
 - Tekster på engelsk (1033) og dansk (1030) i `strings/*.resx`. Brugerens sprog afgør, hvilke der vises.
 - Ren logik (find `@`-ordet ved markøren, indsæt omtale, find nævnte, HTML-escape, OData-forespørgsel) ligger i `mention.ts` og er dækket af 13 tests i `tests/mention.test.ts`.
 
