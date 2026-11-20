@@ -17,7 +17,9 @@ Selve oprettelsen af projektsites (flowet fra Salesforce' SharePoint-integration
 | Fanen "Project Site" | Skjult fra start (`"hidden": true`). Indeholder Project Site URL og undergitteret `SharedDocuments` (tabel `sharepointdocument`, Microsofts visning "Document Associated Grid" `0016f9f3-41cc-4276-9d11-04308d15858d`) | app.json |
 | Synlighed | `mth_/scripts/opportunity.js`: viser fanen, når statuskode ≥ 20 (`MIN_STATUS`) og posten er gemt. Kører ved indlæsning og ved ændring af `mth_status` | webresources/, app.json (`scripts`) |
 
-> **Ikke absolutte URL'er.** Server-baseret integration understøtter ikke dokumentplaceringer med `absoluteurl`. Guiden nægter at slå integrationen til ("Absolute URLs Detected"), så længe der findes nogen. Dette blev opdaget og rettet 2026-11-20.
+> **Rækkefølge og absolutte URL'er.** Server-baseret integration understøtter ikke dokumentplaceringer med `absoluteurl`. Guiden nægter at slå integrationen til ("Absolute URLs Detected"), så længe der findes nogen, og **også så længe der findes ekstra `sharepointsite`-poster ud over standardsitet**. Kør derfor guiden **før** projektsites registreres. Bagefter er det normalt at tilføje andre site collections. Opdaget 2026-11-20: guiden blev først gennemført, efter at projektsite-posterne var fjernet midlertidigt.
+
+**Projektsites i produktion:** I MTH's miljø ligger Dataverse og MTH's SharePoint i samme tenant, så de eksisterende projektsites kan kobles på uden at flytte noget. Fyld `mth_projectsiteurl` fra Salesforce (`Project_Portal_Url__c`) ved migreringen og kør `scripts/Set-ProjectSiteLocations.ps1`. **POC'en kan ikke vise MTH's rigtige sites**, fordi udviklingsmiljøet ligger i en anden tenant. Dataverse kan ikke indlejre dokumenter fra en anden organisations SharePoint.
 
 Dokumentgitteret henter filerne fra SharePoint med **brugerens egne SharePoint-rettigheder**. En bruger, der ikke er medlem af projektsitet, ser derfor ikke dokumenterne.
 
@@ -50,5 +52,6 @@ Dokumentgitteret henter filerne fra SharePoint med **brugerens egne SharePoint-r
    ```
    Alternativt i Power Platform admin center: miljøet, Settings, Integration, **Document management settings**.
 4. `Deploy-WebResources.ps1` og derefter `Deploy-App.ps1`.
+5. Kobl projektsites på sagerne: `.\scripts\Set-ProjectSiteLocations.ps1 -Url https://<org>.crm4.dynamics.com [-LibraryName "Shared Documents"]`. Det opretter en `sharepointsite` pr. projektsite og en relativ placering på sagen ud fra `mth_projectsiteurl`.
 
 SharePoint Online i samme tenant som Dataverse kræver ingen yderligere godkendelse (server-baseret integration).
