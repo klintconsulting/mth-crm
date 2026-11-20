@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\MentionParser.cs" Link="MentionParser.cs" />
+    <Compile Include="..\..\plugins\Mth.Crm.Plugins\EmailTemplateRenderer.cs" Link="EmailTemplateRenderer.cs" />
   </ItemGroup>
 
   <ItemGroup>

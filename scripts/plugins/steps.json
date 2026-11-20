@@ -17,6 +17,27 @@
       "rank": 1
     }
   ],
+  "customApis": [
+    {
+      "uniqueName": "mth_SendPartnerEmail",
+      "displayName": "Send Partner E-mail",
+      "description": "Sends one tender e-mail for one collaborating partner to its selected contacts from the calling user, regarding the partner. Status 10 -> 24. SendToSelf sends a test to the caller.",
+      "type": "Mth.Crm.Plugins.SendPartnerEmail",
+      "isFunction": false,
+      "request": [
+        { "name": "PartnerId", "type": "Guid", "optional": false },
+        { "name": "Subject", "type": "String", "optional": false },
+        { "name": "Body", "type": "String", "optional": false },
+        { "name": "AttachmentsJson", "type": "String", "optional": true },
+        { "name": "SendToSelf", "type": "Boolean", "optional": true }
+      ],
+      "response": [
+        { "name": "Result", "type": "String" },
+        { "name": "EmailId", "type": "String" },
+        { "name": "Message", "type": "String" }
+      ]
+    }
+  ],
   "appSettings": [
     { "app": "mth_MTHCRM", "setting": "AllowNotificationsEarlyAccess", "value": "true", "note": "In-app notifications (bell icon) - required by NoteMentionNotifier" }
   ]

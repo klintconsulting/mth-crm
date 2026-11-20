@@ -1,0 +1,18 @@
+<customapi uniquename="mth_SendPartnerEmail">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Sends one tender e-mail for one collaborating partner to its selected contacts from the calling user, regarding the partner. Status 10 -&gt; 24. SendToSelf sends a test to the caller.">
+    <label description="Sends one tender e-mail for one collaborating partner to its selected contacts from the calling user, regarding the partner. Status 10 -&gt; 24. SendToSelf sends a test to the caller." languagecode="1033" />
+  </description>
+  <displayname default="Send Partner E-mail">
+    <label description="Send Partner E-mail" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>mth_SendPartnerEmail</name>
+  <plugintypeid>
+    <plugintypeexportkey>b559b44f-bde4-f111-84e8-000d3a496ae5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

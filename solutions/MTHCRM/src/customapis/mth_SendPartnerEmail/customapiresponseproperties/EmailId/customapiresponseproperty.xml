@@ -1,0 +1,8 @@
+<customapiresponseproperty uniquename="EmailId">
+  <displayname default="EmailId">
+    <label description="EmailId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>mth_SendPartnerEmail.EmailId</name>
+  <type>10</type>
+</customapiresponseproperty>

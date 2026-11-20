@@ -66,6 +66,43 @@ foreach ($s in $def.steps) {
     }
 }
 
+# 3b. Custom APIs (plugin type + request parameters + response properties)
+$paramTypes = @{ Boolean = 0; DateTime = 1; Decimal = 2; Entity = 3; EntityCollection = 4; EntityReference = 5; Float = 6; Integer = 7; Money = 8; Picklist = 9; String = 10; StringArray = 11; Guid = 12 }
+foreach ($api in @($def.customApis)) {
+    if (-not $api) { continue }
+    $pt = (Invoke-Dataverse GET "plugintypes?`$select=plugintypeid&`$filter=typename eq '$($api.type)' and _pluginassemblyid_value eq $asmId").value
+    $typeId = if ($pt) { $pt[0].plugintypeid } else {
+        Write-Host "  + type $($api.type)"
+        IdOf (Invoke-Dataverse POST 'plugintypes' @{ typename = $api.type; name = $api.type; friendlyname = $api.type; 'pluginassemblyid@odata.bind' = "/pluginassemblies($asmId)" }) }
+    $ex = (Invoke-Dataverse GET "customapis?`$select=customapiid&`$filter=uniquename eq '$($api.uniqueName)'").value
+    if ($ex) {
+        $apiId = $ex[0].customapiid
+        [void](Invoke-Dataverse PATCH "customapis($apiId)" @{ displayname = $api.displayName; description = $api.description; 'PluginTypeId@odata.bind' = "/plugintypes($typeId)" } -Solution $sol)
+        Write-Host "  ~ custom API $($api.uniqueName)"
+    } else {
+        $apiId = IdOf (Invoke-Dataverse POST 'customapis' @{
+            uniquename = $api.uniqueName; name = $api.uniqueName; displayname = $api.displayName; description = $api.description
+            bindingtype = 0; isfunction = [bool]$api.isFunction; isprivate = $false; allowedcustomprocessingsteptype = 0
+            'PluginTypeId@odata.bind' = "/plugintypes($typeId)" } -Solution $sol)
+        Write-Host "  + custom API $($api.uniqueName)"
+    }
+    # Parameters cannot change type after creation: existing ones (by unique name) are kept as they are.
+    $existingReq = @((Invoke-Dataverse GET "customapirequestparameters?`$select=uniquename&`$filter=_customapiid_value eq $apiId").value.uniquename)
+    foreach ($p in $api.request) {
+        if ($existingReq -contains $p.name) { continue }
+        [void](Invoke-Dataverse POST 'customapirequestparameters' @{ uniquename = $p.name; name = "$($api.uniqueName).$($p.name)"; displayname = $p.name
+            type = $paramTypes[$p.type]; isoptional = [bool]$p.optional; 'CustomAPIId@odata.bind' = "/customapis($apiId)" } -Solution $sol)
+        Write-Host "    + request $($p.name) ($($p.type))"
+    }
+    $existingResp = @((Invoke-Dataverse GET "customapiresponseproperties?`$select=uniquename&`$filter=_customapiid_value eq $apiId").value.uniquename)
+    foreach ($p in $api.response) {
+        if ($existingResp -contains $p.name) { continue }
+        [void](Invoke-Dataverse POST 'customapiresponseproperties' @{ uniquename = $p.name; name = "$($api.uniqueName).$($p.name)"; displayname = $p.name
+            type = $paramTypes[$p.type]; 'CustomAPIId@odata.bind' = "/customapis($apiId)" } -Solution $sol)
+        Write-Host "    + response $($p.name) ($($p.type))"
+    }
+}
+
 # 4. App settings
 foreach ($a in $def.appSettings) {
     $appId = (Invoke-Dataverse GET "appmodules?`$select=appmoduleid&`$filter=uniquename eq '$($a.app)'").value[0].appmoduleid

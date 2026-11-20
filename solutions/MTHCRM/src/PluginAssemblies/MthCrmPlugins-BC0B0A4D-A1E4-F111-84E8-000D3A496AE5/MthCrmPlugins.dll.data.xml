@@ -8,5 +8,8 @@
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.NoteMentionNotifier, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="bf0b0a4d-a1e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.NoteMentionNotifier">
       <FriendlyName>Mth.Crm.Plugins.NoteMentionNotifier</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.SendPartnerEmail, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="b559b44f-bde4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.SendPartnerEmail">
+      <FriendlyName>Mth.Crm.Plugins.SendPartnerEmail</FriendlyName>
+    </PluginType>
   </PluginTypes>
 </PluginAssembly>

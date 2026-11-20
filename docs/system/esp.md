@@ -41,6 +41,31 @@ mth_opportunity 1 ──< mth_buildingcontract >── 1 mth_trade >──< acco
 ## Testdata
 `scripts/New-EspTestData.ps1`: 30 opdigtede underentreprenører med 1–3 fag og 1–2 kontakter, 4 entrepriser på hver af de 3 største sager med status 20–89, 2–4 UE'er pr. entreprise med valgt kontakt, og 2 skabeloner. `-Remove` sletter igen.
 
+## Afsendelse: Custom API `mth_SendPartnerEmail`
+
+Plugin `Mth.Crm.Plugins.SendPartnerEmail`, registreret med `Deploy-Plugins.ps1` (`scripts/plugins/steps.json`, sektion `customApis`). Global handling, synkron.
+
+| Input | Type | |
+|---|---|---|
+| `PartnerId` | Guid | UE-posten (`mth_collaboratingpartner`) |
+| `Subject`, `Body` | String | Skabelon med pladsholdere. Body er HTML |
+| `AttachmentsJson` | String (valgfri) | `[{"fileName","mimeType","base64"}]` |
+| `SendToSelf` | Boolean (valgfri) | Testmail til den kaldende bruger: emne `[TEST] …`, viser hvem den ville være sendt til, ingen regarding, ingen statusændring |
+
+| Output | |
+|---|---|
+| `Result` | `sent`, `skipped` (ingen valgte kontakter med e-mail) eller `test` |
+| `EmailId`, `Message` | Mailens id og en tekst til brugeren |
+
+**Forløb for én UE:** henter UE, entreprise, sag, afsender og valgte kontakter (N:N, aktive, med e-mail) → fletter pladsholdere (`EmailTemplateRenderer`) → opretter `email` fra brugeren til kontakterne, regarding UE'en → vedhæfter filer (`activitymimeattachment`) → `GetTrackingTokenEmail` + `SendEmail` (sendes via brugerens postkasse med server-side sync) → sætter `mth_lastemailsent` = i dag og status 10 → 24.
+
+**Én UE pr. kald.** Et synkront plugin kører i én transaktion, så klienten kalder API'en én gang pr. UE. En fejl hos én UE stopper derfor ikke de andre, og brugeren kan se resultatet pr. UE.
+
+**Pladsholdere:** `{{Opportunity}}`, `{{CaseNumber}}` (BC-sagsnr.), `{{BuildingContract}}`, `{{TenderDeadline}}` (f.eks. "4. december 2026"), `{{Partner}}`, `{{ContactFirstName}}` ("Anne", "Anne og Bo", "Anne, Bo og Carl"; ingen kontakter giver "alle"), `{{Sender}}`. Store og små bogstaver er ligegyldige. Tomme værdier vises som "–". Ukendte pladsholdere bliver stående, så fejl ses i testmailen. Værdier HTML-kodes i brødteksten (kun `& < > " '`, så æøå bevares). Dækket af 12 enhedstests.
+
+**Afprøvet 2026-11-20:** testmail til sig selv (status uændret, vedhæftning med) og en rigtig afsendelse til én UE (mailen sendt, regarding UE'en, status 10 → 24, sidste mail sat).
+
+**Testdata må ikke kunne nå rigtige modtagere:** opdigtede adresser ligger på det reserverede domæne `example.com` (RFC 2606). Til en rigtig afsendelsestest sættes en kontakt midlertidigt til egen adresse.
+
 ## Mangler (næste trin)
-- Custom API til afsendelse af mails (én pr. UE, status 10 → 24).
 - PCF-arbejdsrummet "Udbud" på Salgsmuligheden.

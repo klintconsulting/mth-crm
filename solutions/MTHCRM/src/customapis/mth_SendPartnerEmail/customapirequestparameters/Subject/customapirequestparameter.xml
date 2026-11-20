@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="Subject">
+  <displayname default="Subject">
+    <label description="Subject" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>mth_SendPartnerEmail.Subject</name>
+  <type>10</type>
+</customapirequestparameter>

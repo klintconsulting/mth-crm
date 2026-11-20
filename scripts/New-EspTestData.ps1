@@ -68,7 +68,7 @@ for ($i = 1; $i -le $Subcontractors; $i++) {
     $usedNames[$name] = $true
     $town = Pick $towns
     $id = Id "ue-$i"
-    $domain = (Ascii (($name -split ' ')[0] + ($name -split ' ')[1])) + '-test.example.dk'
+    $domain = (Ascii (($name -split ' ')[0] + ($name -split ' ')[1])) + '.test.example.com'
     Upsert 'accounts' $id @{
         name = $name; mth_vatno = [string]$rnd.Next(10000000, 99999999); telephone1 = (DkPhone $landline); emailaddress1 = "tilbud@$domain"
         address1_line1 = "$(Pick @('Industrivej', 'Håndværkervej', 'Erhvervsparken', 'Fabriksvej', 'Mileparken')) $($rnd.Next(1, 80))"

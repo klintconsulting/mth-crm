@@ -2,7 +2,7 @@
 .SYNOPSIS
   Opretter syntetiske testdata i et udviklingsmiljø: afdelinger, Accounts, Kontakter,
   Salgsmuligheder og sagsteam. Alle firmaer, personer, CVR-numre og e-mails er OPDIGTEDE
-  (e-mails på example.dk). Afdelingsnavnene er MTH's rigtige afdelinger (ingen persondata).
+  (e-mails på example.com). Afdelingsnavnene er MTH's rigtige afdelinger (ingen persondata).
 
   Idempotent: hver post har et fast GUID afledt af en nøgle, og der bruges upsert (PATCH),
   så en ny kørsel opdaterer de samme poster i stedet for at lave dubletter.
@@ -117,7 +117,7 @@ for ($i = 1; $i -le $Accounts; $i++) {
         name = $name
         mth_vatno = [string]$rnd.Next(10000000, 99999999)
         telephone1 = (DkPhone $landlinePrefixes)
-        emailaddress1 = "kontakt@$(($name -split ' ')[0].ToLower() -replace '[^a-z]', '')-test.example.dk"
+        emailaddress1 = "kontakt@$(($name -split ' ')[0].ToLower() -replace '[^a-z]', '').test.example.com"
         address1_line1 = "$(Pick $streets) $($rnd.Next(1, 120))"; address1_postalcode = $city[0]; address1_city = $city[1]; address1_country = 'Danmark'
         mth_segment = (OptVal 'account' 'mth_segment')
         mth_subsegment = (OptVal 'account' 'mth_subsegment')
@@ -129,7 +129,7 @@ for ($i = 1; $i -le $Accounts; $i++) {
         $fn = Pick $firstNames; $ln = Pick $lastNames
         $body = @{
             firstname = $fn; lastname = $ln; jobtitle = (Pick $titles)
-            emailaddress1 = "$($fn.ToLower()).$($ln.ToLower())@example.dk" -replace 'ø', 'oe' -replace 'å', 'aa' -replace 'æ', 'ae'
+            emailaddress1 = "$($fn.ToLower()).$($ln.ToLower())@example.com" -replace 'ø', 'oe' -replace 'å', 'aa' -replace 'æ', 'ae'
             mobilephone = (DkPhone $mobilePrefixes)
             'parentcustomerid_account@odata.bind' = "/accounts($(Id "account-$i"))"
         }

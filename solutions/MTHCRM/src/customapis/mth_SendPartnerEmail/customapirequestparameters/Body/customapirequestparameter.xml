@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="Body">
+  <displayname default="Body">
+    <label description="Body" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>mth_SendPartnerEmail.Body</name>
+  <type>10</type>
+</customapirequestparameter>

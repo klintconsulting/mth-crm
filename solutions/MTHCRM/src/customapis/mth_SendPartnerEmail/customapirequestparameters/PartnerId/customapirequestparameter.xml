@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="PartnerId">
+  <displayname default="PartnerId">
+    <label description="PartnerId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>mth_SendPartnerEmail.PartnerId</name>
+  <type>12</type>
+</customapirequestparameter>
