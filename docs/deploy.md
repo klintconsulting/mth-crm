@@ -22,6 +22,21 @@
 - **export-solution** (manuel): eksporterer `MTHCRM` fra `dev`, pakker den ud til `solutions/MTHCRM/src` og opretter en pull request.
 - **deploy-solution** (manuel): pakker solutionen som managed og importerer den i det valgte miljø.
 
+## E-mail (server-side synkronisering)
+
+Brugere kan først sende mail fra løsningen, når deres postkasse i Dataverse er **godkendt** og **testet og aktiveret**. Ellers får de beskeden om, at deres mail er deaktiveret.
+
+1. Brugeren skal have en Exchange Online-postkasse (licens med Exchange Online).
+2. En global administrator eller Exchange-administrator godkender e-mailadressen: Power Platform admin center, miljøet, Settings, Email, Mailboxes, vælg postkasserne og **Approve Email**.
+3. Vælg **Test & Enable Mailboxes**. Status for indgående og udgående mail skal blive "Success".
+
+Via Web API (som brugt i udviklermiljøet 2026-11-20):
+
+```powershell
+Invoke-Dataverse PATCH "mailboxes(<mailboxid>)" @{ emailrouteraccessapproval = 1 }        # Approve
+Invoke-Dataverse PATCH "mailboxes(<mailboxid>)" @{ testemailconfigurationscheduled = $true }  # Test & Enable
+```
+
 ## Det følger ikke med i solutionen
 
 - **Data:** migreres separat og køres inde hos MTH direkte fra Salesforce.
