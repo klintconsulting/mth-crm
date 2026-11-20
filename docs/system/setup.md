@@ -110,3 +110,12 @@ Kræver Node.js 22+. Bygger, tester og pusher kontrollerne i `pcf/` og lægger d
 ```
 
 Kræver .NET 9 SDK og en konto, der er Owner på abonnementet, fordi skabelonen tildeler roller. Scriptet opretter Function App, storage og logning, deployer koden og opretter application useren i Dataverse. Se [smart.md](smart.md#drift-i-azure).
+
+## 12. Branding (efter trin 6)
+
+```powershell
+.\scripts\Deploy-WebResources.ps1 -Url https://<org>.crm4.dynamics.com
+.\scripts\Deploy-Branding.ps1 -Url https://<org>.crm4.dynamics.com
+```
+
+MTH-farver, logo og app-ikon. Tema-poster følger ikke med i solutionen, så trinnet skal køres i hvert miljø, også efter import i test og produktion. Se [branding.md](branding.md).

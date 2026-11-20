@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modern app header theme for the MTH CRM app (app setting CustomThemeDefinition = mth_/branding/theme.xml).
+     Colours from the Salesforce theme "MTH" (branding set LEXTHEMINGMTH): brand #002F67, page background #2C365A. -->
+<CustomTheme>
+  <AppHeaderColors
+    background="#002F67"
+    foreground="#FFFFFF"
+    backgroundHover="#0B4185"
+    foregroundHover="#FFFFFF"
+    backgroundPressed="#2C365A"
+    foregroundPressed="#FFFFFF"
+    backgroundSelected="#2C365A"
+    foregroundSelected="#FFFFFF" />
+</CustomTheme>

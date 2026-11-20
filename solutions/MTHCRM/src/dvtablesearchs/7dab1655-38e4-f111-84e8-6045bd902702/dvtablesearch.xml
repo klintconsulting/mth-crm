@@ -1,0 +1,11 @@
+<dvtablesearch dvtablesearchid="7dab1655-38e4-f111-84e8-6045bd902702">
+  <appmoduleuniquename>mth_MTHCRM</appmoduleuniquename>
+  <iscustomizable>1</iscustomizable>
+  <m365appmoduleid>
+    <uniquename>mth_MTHCRM</uniquename>
+  </m365appmoduleid>
+  <name>M365_Primary_model_mth_MTHCRM</name>
+  <searchtype>0</searchtype>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</dvtablesearch>

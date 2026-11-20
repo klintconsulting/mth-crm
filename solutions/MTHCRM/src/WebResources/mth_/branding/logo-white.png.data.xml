@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{27b8df91-e7e4-f111-84e8-000d3a496ae5}</WebResourceId>
+  <Name>mth_/branding/logo-white.png</Name>
+  <DisplayName>mth_/branding/logo-white.png</DisplayName>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/mth_brandinglogo-whitepng27B8DF91-E7E4-F111-84E8-000D3A496AE5</FileName>
+</WebResource>

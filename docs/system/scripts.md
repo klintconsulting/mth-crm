@@ -14,13 +14,14 @@
 | `scripts/Deploy-Plugins.ps1` | Bygger plugin-assembly'en og registrerer eller opdaterer assembly, typer og trin fra `plugins/steps.json`, plus app-indstillinger | Efter hver ændring i `plugins/` eller steps.json |
 | `scripts/plugins/steps.json` | Plugin-trin (type, besked, tabel, fase, sync/async) og app-indstillinger | Rettes i hånden |
 | `scripts/Deploy-Pcf.ps1` | Tester, bygger og pusher PCF-kontrollerne i `pcf/` og lægger dem i solutionen. `-Controls MentionComposer,TenderWorkspace` | Efter hver ændring i `pcf/` |
-| `scripts/Deploy-WebResources.ps1` | Opretter eller opdaterer alle filer i `webresources/` som web resources (navn = sti, f.eks. `mth_/scripts/opportunity.js`) og publicerer dem | Efter hver ændring i `webresources/`, før Deploy-App (bruges ikke p.t., ingen web resources) |
+| `scripts/Deploy-WebResources.ps1` | Opretter eller opdaterer alle filer i `webresources/` som web resources (navn = sti, f.eks. `mth_/scripts/opportunity.js`) og publicerer dem | Efter hver ændring i `webresources/`, før Deploy-App og Deploy-Branding |
 | `scripts/New-DemoProjectSites.ps1` | DEMO: opretter et projektsite (Microsoft 365-gruppe) pr. sag med status 20–89, lægger eksempeldokumenter i Shared Documents og sætter Project Site URL på sagen | Kun i en test-tenant. Se sharepoint.md |
 | `scripts/Import-Trades.ps1` + `scripts/data/trades.json` | Fagkataloget (213 fag) upsertes på nøglen `mth_code`. Stamdata, også til produktion | Efter Deploy-Schema på et nyt miljø |
 | `scripts/New-EspTestData.ps1` | ESP-testdata: underentreprenører med fag og kontakter, entrepriser, UE-tilknytninger, skabeloner. `-Remove` sletter | Kun udvikling og test |
 | `scripts/New-SmartTestData.ps1` | Syntetiske SMART-svar til `functions/SmartSync/testdata` (`-Variant 2` ændrer projekter) | Test af SMART-synken |
 | `scripts/New-DemoLeadQueues.ps1` | 4 demo-lead-køer med kriterier og medlemmer (dig + demobrugere). `-Remove` sletter | Kun demo |
 | `scripts/Deploy-SmartSyncAzure.ps1` + `infra/smartsync.json` | Deployer SMART-synken til Azure: ressourcegruppe, ARM-skabelon (Flex Consumption, managed identity), kode og application user i Dataverse med Basic User + MTH Integration. `-RunNow` kører den én gang. Login med device code; refresh-token i `%LOCALAPPDATA%\mth-crm\az-refresh-token.txt` | Efter Deploy-Roles, og efter hver ændring i `functions/SmartSync`. Se smart.md |
+| `scripts/Deploy-Branding.ps1` | MTH-branding: tema-posten "MTH" (farver og logo, standardtema), moderne header-farver (`CustomThemeDefinition`) og app-ikon. Filerne ligger i `webresources/mth_/branding/` | Efter Deploy-WebResources og Deploy-App på et nyt miljø. Se branding.md |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

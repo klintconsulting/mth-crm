@@ -98,6 +98,10 @@
       <RootComponent type="20" id="{ee5686d5-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="20" id="{f1b50080-dee4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="20" id="{fef27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/branding/icon.svg" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/branding/logo-white.png" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/branding/logo.png" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/branding/theme.xml" behavior="0" />
       <RootComponent type="61" schemaName="mth_/scripts/lead.js" behavior="0" />
       <RootComponent type="62" schemaName="mth_MTHCRM" behavior="0" />
       <RootComponent type="66" schemaName="mth_Mth.MentionComposer" behavior="0" />
@@ -111,12 +115,6 @@
       <RootComponent type="92" id="{d9dc176d-d3e4-f111-84e8-000d3a496ae5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
-      <MissingDependency>
-        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
-          <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
-        </Required>
-        <Dependent type="80" schemaName="mth_MTHCRM" displayName="MTH CRM" />
-      </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (9.0.26103.1005)">
           <package appName="msdynce_Activities" version="9.0.26104.261016001">msdynce_EnableUCIByDefault (9.0.26104.261016001)</package>
@@ -142,6 +140,12 @@
           <package appName="PowerAppsAppFramework Package" version="1.0.0.30">PowerAppsAppFramework_Anchor (1.0.0.30)</package>
         </Required>
         <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mth_MTHCRM,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="mth_MTHCRM" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mth_MTHCRM,settingdefinitionid.uniquename=CustomThemeDefinition" id.parentappmoduleid.uniquename="mth_MTHCRM" id.settingdefinitionid.uniquename="CustomThemeDefinition" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

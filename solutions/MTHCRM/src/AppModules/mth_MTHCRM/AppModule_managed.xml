@@ -2,7 +2,7 @@
 <AppModule>
   <UniqueName>mth_MTHCRM</UniqueName>
   <IntroducedVersion>0.1.0.0</IntroducedVersion>
-  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <WebResourceId>47e1748b-e7e4-f111-84e8-000d3a496ae5</WebResourceId>
   <OptimizedFor></OptimizedFor>
   <statecode>0</statecode>
   <statuscode>1</statuscode>
@@ -69,6 +69,10 @@
     <appsetting settingdefinitionid.uniquename="AppChannel">
       <iscustomizable>1</iscustomizable>
       <value>1</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="CustomThemeDefinition">
+      <iscustomizable>1</iscustomizable>
+      <value>mth_/branding/theme.xml</value>
     </appsetting>
   </appsettings>
 </AppModule>
