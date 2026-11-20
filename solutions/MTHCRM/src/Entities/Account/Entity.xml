@@ -3,6 +3,18 @@
   <Name LocalizedName="Account" OriginalName="">Account</Name>
   <EntityInfo>
     <entity Name="Account">
+      <LocalizedNames>
+        <LocalizedName description="Account" languagecode="1033" />
+        <LocalizedName description="Firma" languagecode="1030" />
+      </LocalizedNames>
+      <LocalizedCollectionNames>
+        <LocalizedCollectionName description="Accounts" languagecode="1033" />
+        <LocalizedCollectionName description="Firmaer" languagecode="1030" />
+      </LocalizedCollectionNames>
+      <Descriptions>
+        <Description description="Business that represents a customer or potential customer. The company that is billed in business transactions." languagecode="1033" />
+        <Description description="En virksomhed, der repræsenterer en kunde eller potentiel kunde. Virksomheden, der faktureres ved forretningstransaktioner." languagecode="1030" />
+      </Descriptions>
       <attributes>
         <attribute PhysicalName="mth_AccountCategory">
           <Type>multiselectpicklist</Type>
@@ -1659,9 +1671,9 @@
       <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
       <IsConnectionsEnabled>1</IsConnectionsEnabled>
       <EntityColor>#794300</EntityColor>
-      <IsDocumentManagementEnabled>1</IsDocumentManagementEnabled>
+      <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
       <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
-      <IsOneNoteIntegrationEnabled>1</IsOneNoteIntegrationEnabled>
+      <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
       <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>
       <IsSLAEnabled>0</IsSLAEnabled>
       <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>

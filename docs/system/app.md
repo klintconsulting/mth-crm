@@ -16,7 +16,7 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 
 | Tabel | Formular | Faner |
 |---|---|---|
-| Opportunity | MTH Opportunity | General (stamdata, beskrivelse, beløb, **sagsteam som undergitter**, **tidslinje**) · Tender and Dates · Classification · Delivery |
+| Opportunity | MTH Opportunity | General (stamdata inkl. **Project Site URL**-link, beskrivelse, beløb, **sagsteam som undergitter**, **tidslinje**) · Tender and Dates · Classification · Delivery |
 | Opportunity Role | MTH Opportunity Role | General (Salgsmulighed, rolle, bruger) |
 | Account | MTH Account | General (stamdata, adresse, klassifikation, **tidslinje**) · Contacts and Opportunities (undergitre) · Building Contracts |
 | Contact | MTH Contact | General (stamdata, fratrådt, markedsføringsaftale, **tidslinje**) |

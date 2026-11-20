@@ -3412,7 +3412,7 @@
       <IsCollaboration>0</IsCollaboration>
       <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
       <IsConnectionsEnabled>0</IsConnectionsEnabled>
-      <IsDocumentManagementEnabled>1</IsDocumentManagementEnabled>
+      <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
       <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
       <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
       <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>

@@ -1,8 +1,7 @@
 ﻿<#
 .SYNOPSIS
   DEMO: Opretter et SharePoint-projektsite (Microsoft 365-gruppe) pr. Salgsmulighed med status >= 20,
-  lægger eksempeldokumenter i Shared Documents og kobler sitet til sagen i Dataverse
-  (mth_projectsiteurl + sharepointsite pr. projektsite + relativ sharepointdocumentlocation).
+  lægger eksempeldokumenter i Shared Documents og sætter Project Site URL (mth_projectsiteurl) på sagen.
   Viser hvad det rigtige oprettelsesflow skal gøre. KUN i en test-tenant.
 
 .EXAMPLE
@@ -73,23 +72,9 @@ foreach ($o in $opps) {
     }
     Write-Host "    $($files.Count) dokumenter i Shared Documents"
 
-    # ---- Dataverse: site-URL, SharePoint-site og RELATIV dokumentplacering på sagen ----
-    # Server-based SharePoint integration does not support absolute-URL document locations.
-    # Supported model: the project site is a sharepointsite record, and the opportunity's location
-    # is relative (library URL segment, e.g. "Delte dokumenter" on Danish sites) under that site.
+    # ---- Dataverse: kun linket til sitet (åbnes i ny fane fra sagen, som i Salesforce) ----
     $siteUrl = $site.webUrl.TrimEnd('/')
-    $libraryUrl = [uri]::UnescapeDataString($drive.webUrl).TrimEnd('/')
-    $libraryName = $libraryUrl.Substring($libraryUrl.LastIndexOf('/') + 1)
     [void](Invoke-Dataverse PATCH "mth_opportunities($($o.mth_opportunityid))" @{ mth_projectsiteurl = $siteUrl })
-    $sp = (Invoke-Dataverse GET "sharepointsites?`$select=sharepointsiteid&`$filter=absoluteurl eq '$siteUrl'").value
-    $spId = if ($sp) { $sp[0].sharepointsiteid } else {
-        [regex]::Match([string](Invoke-Dataverse POST 'sharepointsites' @{ name = "Projekt - $($o.mth_name)"; absoluteurl = $siteUrl; isdefault = $false }), '[0-9a-f]{8}-[0-9a-f-]{27}').Value }
-    $loc = (Invoke-Dataverse GET "sharepointdocumentlocations?`$select=sharepointdocumentlocationid&`$filter=_regardingobjectid_value eq $($o.mth_opportunityid)").value
-    foreach ($l in $loc) { [void](Invoke-Dataverse DELETE "sharepointdocumentlocations($($l.sharepointdocumentlocationid))") }
-    [void](Invoke-Dataverse POST 'sharepointdocumentlocations' @{
-        name = 'Shared Documents'; relativeurl = $libraryName
-        'parentsiteorlocation_sharepointsite@odata.bind' = "/sharepointsites($spId)"
-        'regardingobjectid_mth_opportunity@odata.bind' = "/mth_opportunities($($o.mth_opportunityid))" })
-    Write-Host "    koblet: $siteUrl + '$libraryName'"
+    Write-Host "    Project Site URL: $siteUrl"
 }
 Write-Host 'Done.'

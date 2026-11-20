@@ -102,10 +102,3 @@ Bygger `plugins/Mth.Crm.Plugins` i Release, registrerer assembly, plugin-typer o
 .\scripts\Deploy-App.ps1 -Url https://<org>.crm4.dynamics.com
 ```n
 Kræver Node.js 22+. Bygger, tester og pusher kontrollerne i `pcf/` og lægger dem i solutionen `MTHCRM`. Kør derefter Deploy-App igen, fordi formularerne refererer til kontrollen. **På et helt nyt miljø** skal trin 10 køres før trin 6, ellers kan formularerne ikke gemmes. Se [pcf.md](pcf.md).
-
-## 11. SharePoint-dokumenter på Salgsmuligheden
-
-```powershell
-.\scripts\Deploy-WebResources.ps1 -Url https://<org>.crm4.dynamics.com   # formularscript (før Deploy-App)
-```n
-Slå dokumenthåndtering til på `mth_opportunity` og opret standard-SharePoint-sitet. Se [sharepoint.md](sharepoint.md). På et helt nyt miljø skal web resources deployes **før** trin 6, fordi formularen refererer til scriptet.

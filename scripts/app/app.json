@@ -5,7 +5,6 @@
     "name": "MTH CRM",
     "description": "MT Højgaard CRM - opportunities, accounts and contacts."
   },
-  "extraTables": [ "sharepointdocument", "sharepointdocumentlocation" ],
   "sitemap": [
     {
       "id": "mth_area_sales", "title": "Sales",
@@ -51,7 +50,7 @@
           "name": "general", "label": "General",
           "columns": [
             [
-              { "name": "opportunity", "label": "Opportunity", "fields": [ "mth_name", "mth_accountid", "mth_status", "mth_opportunitytype", "ownerid", "mth_closedate", "mth_probability" ] },
+              { "name": "opportunity", "label": "Opportunity", "fields": [ "mth_name", "mth_accountid", "mth_status", "mth_opportunitytype", "ownerid", "mth_closedate", "mth_probability", "mth_projectsiteurl" ] },
               { "name": "description", "label": "Description", "fields": [ "mth_description", "mth_scope", "mth_nextstep", "mth_nextstephistory" ] }
             ],
             [
@@ -82,24 +81,8 @@
           "columns": [
             [ { "name": "deliveryaddress", "label": "Delivery Address", "fields": [ "mth_deliveryaddress", "mth_deliveryzip", "mth_deliverycity" ] } ]
           ]
-        },
-        {
-          "name": "projectsite", "label": "Project Site", "hidden": true,
-          "columns": [
-            [
-              { "name": "projectsiteurl", "label": "Project Site", "fields": [ "mth_projectsiteurl" ] },
-              { "name": "shareddocuments", "label": "Shared Documents",
-                "subgrid": { "id": "SharedDocuments", "table": "sharepointdocument", "relationship": "mth_opportunity_SharePointDocuments",
-                             "viewId": "0016f9f3-41cc-4276-9d11-04308d15858d", "rows": 16 } }
-            ]
-          ]
         }
-      ],
-      "scripts": {
-        "library": "mth_/scripts/opportunity.js",
-        "onLoad": "Mth.Opportunity.onLoad",
-        "onChange": { "mth_status": "Mth.Opportunity.onStatusChange" }
-      }
+      ]
     },
     {
       "table": "mth_opportunityrole", "name": "MTH Opportunity Role",
