@@ -55,4 +55,4 @@ Brugerne forventer en navnevælger, når de taster `@`. Tidslinjens note-editor 
 
 ## B14 – SharePoint Shared Documents indlejret med Dataverses dokumentintegration (2026-11-20)
 Hver Salgsmulighed har sit eget SharePoint-projektsite (som i Salesforce). Brugeren vil se Shared Documents indlejret og ikke et link. En IFRAME blev fravalgt, fordi SharePoint ofte ikke vil vises i en frame.
-**Konsekvens:** Dataverses indbyggede dokumenthåndtering med én `sharepointdocumentlocation` pr. sag og en absolut URL til sagens eget bibliotek. Fanen **Project Site** vises fra status 20 (formularscript). Oprettelsesflowet (site og placering) bygges senere. Se [sharepoint.md](sharepoint.md).
+**Konsekvens:** Dataverses indbyggede server-baserede dokumenthåndtering. Hvert projektsite er en `sharepointsite`, og sagen har én *relativ* `sharepointdocumentlocation` til biblioteket under sitet. Absolutte URL'er understøttes ikke af server-baseret integration og blokerer slå-til-guiden. Fanen **Project Site** vises fra status 20 (formularscript). Oprettelsesflowet (site og placering) bygges senere. Se [sharepoint.md](sharepoint.md).
