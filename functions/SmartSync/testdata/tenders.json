@@ -1,0 +1,187 @@
+{
+    "result":  {
+                   "meta":  {
+                                "offset":  0,
+                                "total":  8,
+                                "size":  8
+                            },
+                   "data":  [
+                                {
+                                    "id":  7001,
+                                    "prequalification_date_text":  "01-04-2027",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-03-2027",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500003,
+                                    "last_day_application_text":  "01-05-2027",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af boligbyggeri, etape som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7002,
+                                    "prequalification_date_text":  "01-06-2027",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-05-2027",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500006,
+                                    "last_day_application_text":  "01-07-2027",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af nyt hovedkontor som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7003,
+                                    "prequalification_date_text":  "01-04-2026",
+                                    "deleted":  false,
+                                    "tender_type_id":  2,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-03-2026",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500009,
+                                    "last_day_application_text":  "01-05-2026",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af kloakseparering som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7004,
+                                    "prequalification_date_text":  "01-10-2026",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-09-2026",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500012,
+                                    "last_day_application_text":  "01-11-2026",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af idrætshal som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7005,
+                                    "prequalification_date_text":  "01-10-2027",
+                                    "deleted":  false,
+                                    "tender_type_id":  2,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-09-2027",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500015,
+                                    "last_day_application_text":  "01-11-2027",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af ny produktionshal som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7006,
+                                    "prequalification_date_text":  "01-09-2026",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-08-2026",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500018,
+                                    "last_day_application_text":  "01-10-2026",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af boligbyggeri, etape som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7007,
+                                    "prequalification_date_text":  "01-01-2028",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-12-2027",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500021,
+                                    "last_day_application_text":  "01-02-2028",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af nyt hovedkontor som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                },
+                                {
+                                    "id":  7008,
+                                    "prequalification_date_text":  "01-07-2026",
+                                    "deleted":  false,
+                                    "tender_type_id":  1,
+                                    "tender_status_id":  1,
+                                    "tender_type_card":  {
+                                                             "id":  1,
+                                                             "name":  "Offentlig"
+                                                         },
+                                    "first_day_materials_text":  "01-06-2026",
+                                    "company_role_id":  46,
+                                    "description":  "Udbud af hovedentreprise.",
+                                    "project_id":  500024,
+                                    "last_day_application_text":  "01-08-2026",
+                                    "archived":  0,
+                                    "content_standard":  "Udbud af kloakseparering som hovedentreprise. Prækvalifikation af 5 tilbudsgivere.",
+                                    "company_role_card":  {
+                                                              "id":  46,
+                                                              "name":  "Hovedentreprenør"
+                                                          }
+                                }
+                            ]
+               }
+}

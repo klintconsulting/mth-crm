@@ -1,0 +1,286 @@
+{
+    "result":  {
+                   "meta":  {
+                                "offset":  0,
+                                "total":  15,
+                                "size":  15
+                            },
+                   "data":  [
+                                {
+                                    "city":  "Aarhus",
+                                    "id":  900001,
+                                    "org_nr":  "35510013",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Aarhus",
+                                                          "postcode_text":  "8000",
+                                                          "street_number":  "40",
+                                                          "street":  "Rådhuspladsen",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "55",
+                                    "name":  "Fjordby Kommune",
+                                    "street":  "Stationsvej",
+                                    "postcode_text":  "8000",
+                                    "company_type_id":  2,
+                                    "par_id":  "925922256"
+                                },
+                                {
+                                    "city":  "Hillerød",
+                                    "id":  900002,
+                                    "org_nr":  "66482630",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Hillerød",
+                                                          "postcode_text":  "3400",
+                                                          "street_number":  "30",
+                                                          "street":  "Torvet",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "12",
+                                    "name":  "Bølgehavn Boligselskab",
+                                    "street":  "Stationsvej",
+                                    "postcode_text":  "3400",
+                                    "company_type_id":  4,
+                                    "par_id":  "427085452"
+                                },
+                                {
+                                    "city":  "Frederikshavn",
+                                    "id":  900003,
+                                    "org_nr":  "37873259",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Frederikshavn",
+                                                          "postcode_text":  "9900",
+                                                          "street_number":  "1",
+                                                          "street":  "Havnegade",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "31",
+                                    "name":  "Region Midtland",
+                                    "street":  "Rådhuspladsen",
+                                    "postcode_text":  "9900",
+                                    "company_type_id":  3,
+                                    "par_id":  "558861636"
+                                },
+                                {
+                                    "city":  "Roskilde",
+                                    "id":  900004,
+                                    "org_nr":  "45644783",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Roskilde",
+                                                          "postcode_text":  "4000",
+                                                          "street_number":  "1",
+                                                          "street":  "Havnegade",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "37",
+                                    "name":  "Nordlys Ejendomme A/S",
+                                    "street":  "Torvet",
+                                    "postcode_text":  "4000",
+                                    "company_type_id":  1,
+                                    "par_id":  "826639041"
+                                },
+                                {
+                                    "city":  "Aarhus",
+                                    "id":  900005,
+                                    "org_nr":  "76567664",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Aarhus",
+                                                          "postcode_text":  "8000",
+                                                          "street_number":  "5",
+                                                          "street":  "Havnegade",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "1",
+                                    "name":  "Havnestaden Udvikling A/S",
+                                    "street":  "Rådhuspladsen",
+                                    "postcode_text":  "8000",
+                                    "company_type_id":  1,
+                                    "par_id":  "227106215"
+                                },
+                                {
+                                    "city":  "Esbjerg",
+                                    "id":  900006,
+                                    "org_nr":  "33947972",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Esbjerg",
+                                                          "postcode_text":  "6700",
+                                                          "street_number":  "35",
+                                                          "street":  "Havnegade",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "20",
+                                    "name":  "Engbo Andelsboligforening",
+                                    "street":  "Torvet",
+                                    "postcode_text":  "6700",
+                                    "company_type_id":  4,
+                                    "par_id":  "187848708"
+                                },
+                                {
+                                    "city":  "Herning",
+                                    "id":  900007,
+                                    "org_nr":  "58934526",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Herning",
+                                                          "postcode_text":  "7400",
+                                                          "street_number":  "5",
+                                                          "street":  "Rådhuspladsen",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "37",
+                                    "name":  "Skovlund Kommune",
+                                    "street":  "Stationsvej",
+                                    "postcode_text":  "7400",
+                                    "company_type_id":  2,
+                                    "par_id":  "178469705"
+                                },
+                                {
+                                    "city":  "Næstved",
+                                    "id":  900008,
+                                    "org_nr":  "81052309",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Næstved",
+                                                          "postcode_text":  "4700",
+                                                          "street_number":  "16",
+                                                          "street":  "Havnegade",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "15",
+                                    "name":  "Dansk Testinstitut (Staten)",
+                                    "street":  "Rådhuspladsen",
+                                    "postcode_text":  "4700",
+                                    "company_type_id":  5,
+                                    "par_id":  "854062260"
+                                },
+                                {
+                                    "city":  "Roskilde",
+                                    "id":  900009,
+                                    "org_nr":  "19928321",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Roskilde",
+                                                          "postcode_text":  "4000",
+                                                          "street_number":  "42",
+                                                          "street":  "Torvet",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "16",
+                                    "name":  "Kystens Logistik A/S",
+                                    "street":  "Torvet",
+                                    "postcode_text":  "4000",
+                                    "company_type_id":  1,
+                                    "par_id":  "760618965"
+                                },
+                                {
+                                    "city":  "Roskilde",
+                                    "id":  900010,
+                                    "org_nr":  "29997923",
+                                    "addresses":  [
+                                                      {
+                                                          "city":  "Roskilde",
+                                                          "postcode_text":  "4000",
+                                                          "street_number":  "34",
+                                                          "street":  "Torvet",
+                                                          "address_type_id":  1,
+                                                          "main":  true
+                                                      }
+                                                  ],
+                                    "street_number":  "37",
+                                    "name":  "Lindholm Kommune",
+                                    "street":  "Rådhuspladsen",
+                                    "postcode_text":  "4000",
+                                    "company_type_id":  2,
+                                    "par_id":  "813166392"
+                                },
+                                {
+                                    "city":  "Aalborg",
+                                    "id":  900011,
+                                    "org_nr":  "47101292",
+                                    "addresses":  [
+
+                                                  ],
+                                    "street_number":  "73",
+                                    "name":  "Tegnestuen Lys \u0026 Rum ApS",
+                                    "street":  "Erhvervsvej",
+                                    "postcode_text":  "9000",
+                                    "company_type_id":  1
+                                },
+                                {
+                                    "city":  "Aarhus",
+                                    "id":  900012,
+                                    "org_nr":  "94111171",
+                                    "addresses":  [
+
+                                                  ],
+                                    "street_number":  "38",
+                                    "name":  "Konstruktion Nord A/S",
+                                    "street":  "Erhvervsvej",
+                                    "postcode_text":  "8000",
+                                    "company_type_id":  1
+                                },
+                                {
+                                    "city":  "Vejle",
+                                    "id":  900013,
+                                    "org_nr":  "86710256",
+                                    "addresses":  [
+
+                                                  ],
+                                    "street_number":  "65",
+                                    "name":  "Rådgivning Syd ApS",
+                                    "street":  "Erhvervsvej",
+                                    "postcode_text":  "7100",
+                                    "company_type_id":  1
+                                },
+                                {
+                                    "city":  "Herning",
+                                    "id":  900014,
+                                    "org_nr":  "99053153",
+                                    "addresses":  [
+
+                                                  ],
+                                    "street_number":  "56",
+                                    "name":  "Arkitema Test A/S",
+                                    "street":  "Erhvervsvej",
+                                    "postcode_text":  "7400",
+                                    "company_type_id":  1
+                                },
+                                {
+                                    "city":  "Næstved",
+                                    "id":  900015,
+                                    "org_nr":  "24209632",
+                                    "addresses":  [
+
+                                                  ],
+                                    "street_number":  "85",
+                                    "name":  "Ingeniørhuset Øst A/S",
+                                    "street":  "Erhvervsvej",
+                                    "postcode_text":  "4700",
+                                    "company_type_id":  1
+                                }
+                            ]
+               }
+}

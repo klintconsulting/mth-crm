@@ -725,7 +725,7 @@ Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: External_Key__c ("lo
 |---|---|---|---|---|
 | `mth_key` | Key | string | maks. 200 | `External_Key__c` |
 | `mth_lookup` | Lookup | string | maks. 100 | `Lookup__c` |
-| `mth_smartlookupid` | SMART Id | string | maks. 50 | `Smart_Id__c` |
+| `mth_smartitemid` | SMART Id | string | maks. 50 | `Smart_Id__c (not mth_SmartLookupId: that is the table's primary key name)` |
 | `mth_smartname` | SMART Name | string | maks. 500 | `Smart_Name__c` |
 | `mth_rsmcode` | RSM Code | string | maks. 50 | `Rsm_Code__c` |
 | `mth_parentsmartid` | Parent SMART Id | string | maks. 50 | `Parent_Smart_Id__c` |

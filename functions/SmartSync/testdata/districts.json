@@ -1,0 +1,95 @@
+{
+    "result":  {
+                   "meta":  {
+                                "offset":  0,
+                                "total":  14,
+                                "size":  14
+                            },
+                   "data":  [
+                                {
+                                    "rsm_code":  "851",
+                                    "name":  "Aalborg",
+                                    "id":  851,
+                                    "region_id":  81
+                                },
+                                {
+                                    "rsm_code":  "813",
+                                    "name":  "Frederikshavn",
+                                    "id":  813,
+                                    "region_id":  81
+                                },
+                                {
+                                    "rsm_code":  "751",
+                                    "name":  "Aarhus",
+                                    "id":  751,
+                                    "region_id":  82
+                                },
+                                {
+                                    "rsm_code":  "615",
+                                    "name":  "Horsens",
+                                    "id":  615,
+                                    "region_id":  82
+                                },
+                                {
+                                    "rsm_code":  "657",
+                                    "name":  "Herning",
+                                    "id":  657,
+                                    "region_id":  82
+                                },
+                                {
+                                    "rsm_code":  "461",
+                                    "name":  "Odense",
+                                    "id":  461,
+                                    "region_id":  83
+                                },
+                                {
+                                    "rsm_code":  "621",
+                                    "name":  "Kolding",
+                                    "id":  621,
+                                    "region_id":  83
+                                },
+                                {
+                                    "rsm_code":  "561",
+                                    "name":  "Esbjerg",
+                                    "id":  561,
+                                    "region_id":  83
+                                },
+                                {
+                                    "rsm_code":  "630",
+                                    "name":  "Vejle",
+                                    "id":  630,
+                                    "region_id":  83
+                                },
+                                {
+                                    "rsm_code":  "101",
+                                    "name":  "København",
+                                    "id":  101,
+                                    "region_id":  84
+                                },
+                                {
+                                    "rsm_code":  "173",
+                                    "name":  "Lyngby-Taarbæk",
+                                    "id":  173,
+                                    "region_id":  84
+                                },
+                                {
+                                    "rsm_code":  "219",
+                                    "name":  "Hillerød",
+                                    "id":  219,
+                                    "region_id":  84
+                                },
+                                {
+                                    "rsm_code":  "265",
+                                    "name":  "Roskilde",
+                                    "id":  265,
+                                    "region_id":  85
+                                },
+                                {
+                                    "rsm_code":  "370",
+                                    "name":  "Næstved",
+                                    "id":  370,
+                                    "region_id":  85
+                                }
+                            ]
+               }
+}

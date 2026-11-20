@@ -2692,10 +2692,10 @@
                                            "maxLength":  100
                                        },
                                        {
-                                           "schemaName":  "mth_SmartLookupId",
+                                           "schemaName":  "mth_SmartItemId",
                                            "displayName":  "SMART Id",
                                            "type":  "string",
-                                           "source":  "Smart_Id__c",
+                                           "source":  "Smart_Id__c (not mth_SmartLookupId: that is the table\u0027s primary key name)",
                                            "maxLength":  50
                                        },
                                        {

@@ -1,0 +1,41 @@
+{
+    "result":  {
+                   "meta":  {
+                                "offset":  0,
+                                "total":  5,
+                                "size":  5
+                            },
+                   "data":  [
+                                {
+                                    "rsm_code":  "1081",
+                                    "country_id":  2,
+                                    "name":  "Nordjylland",
+                                    "id":  81
+                                },
+                                {
+                                    "rsm_code":  "1082",
+                                    "country_id":  2,
+                                    "name":  "Midtjylland",
+                                    "id":  82
+                                },
+                                {
+                                    "rsm_code":  "1083",
+                                    "country_id":  2,
+                                    "name":  "Syddanmark",
+                                    "id":  83
+                                },
+                                {
+                                    "rsm_code":  "1084",
+                                    "country_id":  2,
+                                    "name":  "Hovedstaden",
+                                    "id":  84
+                                },
+                                {
+                                    "rsm_code":  "1085",
+                                    "country_id":  2,
+                                    "name":  "Sjælland",
+                                    "id":  85
+                                }
+                            ]
+               }
+}

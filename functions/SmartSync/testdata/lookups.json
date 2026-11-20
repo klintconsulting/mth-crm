@@ -1,0 +1,290 @@
+{
+    "result":  {
+                   "dict":  {
+                                "items":  [
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "1",
+                                                                    "name":  "Totalentreprise",
+                                                                    "id":  1
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "2",
+                                                                    "name":  "Hovedentreprise",
+                                                                    "id":  2
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "3",
+                                                                    "name":  "Fagentreprise",
+                                                                    "id":  3
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "4",
+                                                                    "name":  "Storentreprise",
+                                                                    "id":  4
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "5",
+                                                                    "name":  "Partnering",
+                                                                    "id":  5
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "6",
+                                                                    "name":  "OPP",
+                                                                    "id":  6
+                                                                }
+                                                            ],
+                                                  "lookup":  "contract_types"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "1",
+                                                                    "name":  "Idé/planlægning",
+                                                                    "id":  1
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "2",
+                                                                    "name":  "Projektering",
+                                                                    "id":  2
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "3",
+                                                                    "name":  "Udbud",
+                                                                    "id":  3
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "4",
+                                                                    "name":  "Udførelse",
+                                                                    "id":  4
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "5",
+                                                                    "name":  "Afsluttet",
+                                                                    "id":  5
+                                                                }
+                                                            ],
+                                                  "lookup":  "project_stages"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "11",
+                                                                    "name":  "Idéoplæg",
+                                                                    "id":  11
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "12",
+                                                                    "name":  "Lokalplan",
+                                                                    "id":  12
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "21",
+                                                                    "name":  "Dispositionsforslag",
+                                                                    "id":  21
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "22",
+                                                                    "name":  "Projektforslag",
+                                                                    "id":  22
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "23",
+                                                                    "name":  "Hovedprojekt",
+                                                                    "id":  23
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "31",
+                                                                    "name":  "Prækvalifikation",
+                                                                    "id":  31
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "32",
+                                                                    "name":  "Licitation",
+                                                                    "id":  32
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "41",
+                                                                    "name":  "Byggestart",
+                                                                    "id":  41
+                                                                }
+                                                            ],
+                                                  "lookup":  "detailed_stages"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "10",
+                                                                    "name":  "Bolig",
+                                                                    "id":  10
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "20",
+                                                                    "name":  "Erhverv",
+                                                                    "id":  20
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "30",
+                                                                    "name":  "Institution",
+                                                                    "id":  30
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "40",
+                                                                    "name":  "Anlæg",
+                                                                    "id":  40
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "50",
+                                                                    "name":  "Industri",
+                                                                    "id":  50
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "60",
+                                                                    "name":  "Kultur og fritid",
+                                                                    "id":  60
+                                                                }
+                                                            ],
+                                                  "lookup":  "categories"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "1",
+                                                                    "name":  "Nybyggeri",
+                                                                    "id":  1
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "2",
+                                                                    "name":  "Renovering",
+                                                                    "id":  2
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "3",
+                                                                    "name":  "Tilbygning",
+                                                                    "id":  3
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "4",
+                                                                    "name":  "Nedrivning",
+                                                                    "id":  4
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "5",
+                                                                    "name":  "Transformation",
+                                                                    "id":  5
+                                                                }
+                                                            ],
+                                                  "lookup":  "development_types"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "20",
+                                                                    "name":  "Bygherre",
+                                                                    "id":  20
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "21",
+                                                                    "name":  "Totalrådgiver",
+                                                                    "id":  21
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "22",
+                                                                    "name":  "Arkitekt",
+                                                                    "id":  22
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "23",
+                                                                    "name":  "Ingeniør",
+                                                                    "id":  23
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "24",
+                                                                    "name":  "Hovedentreprenør",
+                                                                    "id":  24
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "25",
+                                                                    "name":  "Bygherrerådgiver",
+                                                                    "id":  25
+                                                                }
+                                                            ],
+                                                  "lookup":  "company_roles"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "46",
+                                                                    "name":  "Hovedentreprenør",
+                                                                    "id":  46
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "47",
+                                                                    "name":  "Totalentreprenør",
+                                                                    "id":  47
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "48",
+                                                                    "name":  "Fagentreprenør",
+                                                                    "id":  48
+                                                                }
+                                                            ],
+                                                  "lookup":  "company_role_tender"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "1",
+                                                                    "name":  "Privat virksomhed",
+                                                                    "id":  1
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "2",
+                                                                    "name":  "Kommune",
+                                                                    "id":  2
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "3",
+                                                                    "name":  "Region",
+                                                                    "id":  3
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "4",
+                                                                    "name":  "Boligselskab",
+                                                                    "id":  4
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "5",
+                                                                    "name":  "Stat",
+                                                                    "id":  5
+                                                                }
+                                                            ],
+                                                  "lookup":  "company_types"
+                                              },
+                                              {
+                                                  "items":  [
+                                                                {
+                                                                    "rsm_code":  "1",
+                                                                    "name":  "Offentlig",
+                                                                    "id":  1
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "2",
+                                                                    "name":  "Begrænset",
+                                                                    "id":  2
+                                                                },
+                                                                {
+                                                                    "rsm_code":  "3",
+                                                                    "name":  "Privat",
+                                                                    "id":  3
+                                                                }
+                                                            ],
+                                                  "lookup":  "tender_types"
+                                              }
+                                          ],
+                                "version":  1795175943,
+                                "language_id":  3
+                            }
+               }
+}

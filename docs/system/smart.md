@@ -52,8 +52,31 @@ Input `LeadId`. Output `OpportunityId` og `Message`. Plugin `ConvertLead` (synkr
 
 **Rettigheder** (`security/roles.json`): alle roller læser og redigerer leads (Global) og læser opslag og synkstatus. Sales opretter og redigerer egne køer. Tender Manager og Administrator kan alle køer.
 
+## SMART-synken (`functions/SmartSync`)
+
+| Projekt | Indhold |
+|---|---|
+| `SmartSync.Core` | SMART-modeller, `ISmartSource` (`HttpSmartSource` = rigtigt API, `FileSmartSource` = mappe med svar i samme format), `LookupCache`, `SmartMapper` (feltmapping), `OpportunityHistory` (konverterede sager), `DataverseClient` (Web API, genforsøg ved 429/5xx) og `SyncRunner` (én kørsel) |
+| `SmartSync.Cli` | Lokal kørsel: `dotnet SmartSync.Cli\bin\Debug\net9.0\smart-sync.dll --env <url> --source file:testdata [--dry-run]`. Logger ind med token-cachen fra `scripts/Dataverse.psm1` eller en app-registrering (`DATAVERSE_TENANT_ID/CLIENT_ID/CLIENT_SECRET`). Kør DLL'en via `dotnet`, fordi firmaets politik blokerer usignerede `.exe` |
+| `SmartSync.Functions` | Azure Function (isolated, .NET 9) med timer `%SMART_SCHEDULE%` (standard `0 0 6 * * 1-5` = kl. 7 dansk vintertid, hverdage som i Salesforce). Indstillinger i `local.settings.example.json` |
+| `SmartSync.Tests` | 17 tests: mapping mod Salesforce-testklassens COWI-eksempel, udbud, roller, datoer, værdi, afkortning, manglende opslag, historik og testdatafilerne |
+| `testdata/` | Syntetiske SMART-svar fra `scripts/New-SmartTestData.ps1` (25 projekter, 8 udbud, 15 firmaer, opdigtede navne og example.com-mails). `-Variant 2` ændrer hvert 4. projekt til test af opdateringer |
+
+**En kørsel** (`SyncRunner`):
+1. Watermark fra `mth_integrationstate` "SMART Projects" (første gang: nu − 1 døgn).
+2. Ordbøger: `/lookups` + lande, regioner og kommuner. Kun nye eller ændrede rækker skrives til `mth_smartlookup`. I Salesforce blev ca. 3.600 rækker skrevet hver dag, fordi "version" er et tidsstempel.
+3. Projekter med `updated_at` i vinduet. Pr. side på 50: udbud via `updates[]` (seneste REGISTERED/UNREGISTERED pr. udbud afgør) med fallback på `project_id`, og firmaer for rollerne.
+4. Pr. projekt: **konverteret** (aktiv Salgsmulighed type External med samme `mth_projectid`) → opdatér ændrede kolonner og skriv historik. **Åbent lead** → opdatér kun ændrede kolonner, så køerne ikke genberegnes unødigt. **Lukket lead uden sag** → spring over. **Nyt** → opret åbent lead, hvorefter køplugin'et fordeler det.
+5. Watermark rykkes til kørslens start eller til `updated_at` for det første projekt, der fejlede, så fejl prøves igen næste gang. Resultatet gemmes i `mth_lastresult`.
+
+**Konverterede sager** (`OpportunityHistory`): Logger ændringer i projekttitel, byggestadie, budget (mill), byggestart, slut dato, kontrakttype, byggeplads, postnr., by, kommune, land, kvadratmeter, etager og etager under jorden, nyeste blok først (`<b>dd-MM-yyyy HH:mm</b><br><b>Label</b> ændret fra <b>"…"</b> til <b>"…"</b>`), med datoer som dd-MM-yyyy og tal med dansk komma. Øvrige projektkolonner opdateres uden log. Ved status 01/05 følger ordrestart/-slut, lukkedato (byggestart − 2 mdr.), beskrivelse og estimeret beløb SMART. **Afvigelse fra Salesforce:** "Projekt navn" logges på projekttitlen, fordi Salgsmulighedens navn tilhører brugeren.
+
+**Afprøvet 2026-11-20 mod udviklermiljøet:** 25 nye leads blev fordelt i 4 demokøer (5/4/4/3) med notifikationer. Kørsel 2 med samme data gav 25 uændrede og 0 opslag skrevet. Efter konvertering af et lead og variant 2 blev Salgsmuligheden opdateret med 4 loggede ændringer (stadie, budget, start, slut), og 6 åbne leads blev opdateret.
+
+**Rigtigt API hos MTH:** `SMART_SOURCE=api` + `SMART_CLIENT_ID/SECRET` (Key Vault). Ingen kodeændring. Afprøv først med `--dry-run` mod et testmiljø.
+
 ## Status
 - [x] Trin 1: datamodel (2026-11-20)
 - [x] Trin 2: kø-matching og notifikation (plugin) og konvertering (Custom API, første vinder) (2026-11-20)
-- [ ] Trin 3: SMART-synk (C#, Azure Function-projekt) med testdata
+- [x] Trin 3: SMART-synk (C#, Azure Function-projekt) med testdata (2026-11-20). Deploy til Azure mangler (app-registrering + Function App)
 - [ ] Trin 4: app (Lead- og kø-formularer, "Leads i mine køer", Konvertér-knap)

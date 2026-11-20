@@ -18,6 +18,8 @@
 | `scripts/New-DemoProjectSites.ps1` | DEMO: opretter et projektsite (Microsoft 365-gruppe) pr. sag med status 20–89, lægger eksempeldokumenter i Shared Documents og sætter Project Site URL på sagen | Kun i en test-tenant. Se sharepoint.md |
 | `scripts/Import-Trades.ps1` + `scripts/data/trades.json` | Fagkataloget (213 fag) upsertes på nøglen `mth_code`. Stamdata, også til produktion | Efter Deploy-Schema på et nyt miljø |
 | `scripts/New-EspTestData.ps1` | ESP-testdata: underentreprenører med fag og kontakter, entrepriser, UE-tilknytninger, skabeloner. `-Remove` sletter | Kun udvikling og test |
+| `scripts/New-SmartTestData.ps1` | Syntetiske SMART-svar til `functions/SmartSync/testdata` (`-Variant 2` ændrer projekter) | Test af SMART-synken |
+| `scripts/New-DemoLeadQueues.ps1` | 4 demo-lead-køer med kriterier og medlemmer (dig + demobrugere). `-Remove` sletter | Kun demo |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json
