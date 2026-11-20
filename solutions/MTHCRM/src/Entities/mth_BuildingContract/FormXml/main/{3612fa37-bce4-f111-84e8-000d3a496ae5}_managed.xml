@@ -7,62 +7,62 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{b3ffe7a0-3d00-4a33-9c4a-4cf04783f79f}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{fece418f-cbdf-48bb-a31b-6d8025cd73ae}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="contract" id="{7fe1e389-f451-4b0a-b6d2-c905c865da8a}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="contract" id="{84a66314-db77-4ec1-9b61-9594bbb1f206}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Building Contract" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{98707910-26e2-4664-b252-2098d8acafb6}" showlabel="true" locklevel="0">
+                      <cell id="{f94df3b5-c874-49ee-ad76-a1275e0a2d9a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Opportunity" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_opportunityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_opportunityid" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d3310c5b-cafa-468a-975d-5982cf53c483}" showlabel="true" locklevel="0">
+                      <cell id="{6cb04283-fdcd-47e2-900f-1bbc6db9b76d}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Trade" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_tradeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_tradeid" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3394b627-2003-4330-bf18-eb7ded217e92}" showlabel="true" locklevel="0">
+                      <cell id="{f0fd919d-9bb1-4a83-9ff4-f280b181a456}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Alternative Name" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_alternativename" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_alternativename" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{60c7b80a-f2bd-4ce2-bd9e-640d06495632}" showlabel="true" locklevel="0">
+                      <cell id="{c8cf915d-7924-4458-9da7-2407b19a48b4}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Name" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{cbedd85f-4792-412e-98f8-e9e97f4150da}" showlabel="true" locklevel="0">
+                      <cell id="{df8ddf17-6b3e-49b9-99b3-7e698450c69e}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Tender Deadline" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_tenderdeadline" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_tenderdeadline" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{993895bb-5cb8-4c4f-b732-8d3928cc2fee}" showlabel="true" locklevel="0">
+                      <cell id="{493a30f2-6a40-4fbb-b7e0-01ca0f3498ec}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
                       </cell>
@@ -73,15 +73,15 @@
             </column>
             <column width="50%">
               <sections>
-                <section name="partners" id="{40865aa5-c6a2-4859-8ca6-1e57499aac57}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="partners" id="{9a111c79-6196-4408-ba49-cb83fa9e7c2a}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Collaborating Partners" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{8bf5d61f-c2c5-435d-9fc5-fd675e14dfb9}" showlabel="false" rowspan="12" colspan="1" auto="false">
+                      <cell id="{fafb1f76-2fa7-4a87-b8c3-a2da47bd9b0a}" showlabel="false" rowspan="12" colspan="1" auto="false">
                         <labels>
-                          <label description="Collaborating Partners" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="Partners" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>

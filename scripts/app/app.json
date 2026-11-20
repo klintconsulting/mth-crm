@@ -84,6 +84,12 @@
           ]
         },
         {
+          "name": "esp", "label": "Tender (ESP)",
+          "columns": [
+            [ { "name": "tenderworkspace", "label": "Tender workspace", "pcf": { "control": "mth_Mth.TenderWorkspace", "rows": 30 } } ]
+          ]
+        },
+        {
           "name": "tender", "label": "Tender and Dates",
           "columns": [
             [ { "name": "tenderdates", "label": "Tender", "fields": [ "mth_prequalificationdate", "mth_invitationtotenderdate", "mth_invitationtotendertype", "mth_tenderstartdate", "mth_initialtenderdate", "mth_tenderdate" ] } ],

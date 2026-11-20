@@ -67,5 +67,26 @@ Plugin `Mth.Crm.Plugins.SendPartnerEmail`, registreret med `Deploy-Plugins.ps1` 
 
 **Testdata må ikke kunne nå rigtige modtagere:** opdigtede adresser ligger på det reserverede domæne `example.com` (RFC 2606). Til en rigtig afsendelsestest sættes en kontakt midlertidigt til egen adresse.
 
-## Mangler (næste trin)
-- PCF-arbejdsrummet "Udbud" på Salgsmuligheden.
+## Arbejdsrummet "Tender (ESP)" (PCF `mth_Mth.TenderWorkspace`)
+
+Fanen **Tender (ESP)** på Salgsmuligheden. Virtuel PCF-kontrol i React 16.14 og Fluent UI 9.46 (platformens biblioteker) i `pcf/TenderWorkspace`. Engelske og danske tekster i `strings.ts` (brugerens sprog).
+
+| Område | Funktion |
+|---|---|
+| **Entrepriser** (venstre) | "Tilføj entreprise…": søg i de 213 fag på navn eller kode. Findes faget allerede på sagen, vælges den eksisterende (som i Salesforce). Hvert kort viser navn, fag, **tilbudsfrist** (rød = overskredet, gul = inden for 7 dage) og antal UE'er pr. status. ✎ redigerer alternativt navn og frist, ✕ sletter (med UE'er, efter bekræftelse). "Alle entrepriser" viser alle UE'er på sagen |
+| **Samarbejdspartnere** (højre) | Tabel med UE (link til Account), entreprise (ved "alle"), **kontakter som badges**, **status**, **evaluering** og **kommentar**. Status, evaluering og kommentar rettes direkte i rækken og gemmes med det samme uden at genindlæse siden. Gul, Rød og Sort kræver en kommentar (dialog), og annulleres den, ændres intet. Afkrydsning bruges til mail |
+| **Kontakter** | Klik på kontakt-badges: UE'ens kontakter med afkrydsning (gemmes med det samme) og **"Ny kontakt"** (fornavn, efternavn, e-mail påkrævet), som oprettes på Account og vælges. Røde badges/teksten "Ingen kontakter valgt" viser, hvem der ikke kan få mail |
+| **Find UE** | Panel fra højre for den valgte entreprise. Filtre: **fag** (forudvalgt entreprisens fag, eller "Alle fag"), **region** (postnummerintervaller uden overlap: Hovedstaden inkl. Bornholm 1000–3799, Sjælland 4000–4999, Fyn 5000–5999, Syd- og Sønderjylland 6000–6999, Midtjylland 7000–8999, Nordjylland 9000–9999), **navn**, og "**Skjul UE'er, der tidligere er evalueret rød eller sort**" (standard til). Resultater viser by og **tidligere evalueringer** (antal pr. farve fra alle entrepriser). UE'er, der allerede er på entreprisen, er markeret og kan ikke vælges igen. Maks. 200 resultater. "Tilføj" opretter UE'er med status 10. Har Account'en præcis én kontakt med e-mail, vælges den automatisk |
+| **Send mail (n)** | For de afkrydsede UE'er, på tværs af entrepriser. Skabelon (standardskabelonen forudvalgt), emne, tekst i en simpel editor (fed, kursiv, punktliste, **indsæt felt**), vedhæftninger. **Forhåndsvisning pr. UE** med flettede felter og modtagere. UE'er uden kontakter med e-mail vises som "springes over". **"Send test til mig"** og **"Send til n UE'er"** med fremdriftslinje og resultat pr. UE (sendt, sprunget over, fejlet). Kalder `mth_SendPartnerEmail` én gang pr. UE |
+| **Kopiér til anden sag** | For den valgte entreprise: søg målsag (navn eller BC-sagsnummer), vælg UE'er. Genbruger en entreprise med samme fag på målsagen eller opretter en. UE'er, der allerede findes dér, springes over (ingen dubletter). Nye får status 10 og samme valgte kontakter |
+
+**Teknik:** al dataadgang i `api.ts` via Dataverse Web API med brugerens session (`fetch`, same-origin), fordi N:N-til/fravalg, FetchXML med intersect-link og Custom API'en ikke findes i `context.webAPI`. Søgning: FetchXML på `account` med link til intersect-tabellen `mth_account_mth_trade`. Ren logik i `logic.ts` (regioner, frist, statusoversigt, evalueringsregler, skabelonfletning som serveren, sanitering af forhåndsvisning, escaping) er dækket af 12 tests i `tests/logic.test.ts`.
+
+**Ikoner:** `@fluentui/react-icons` bruges ikke. Pakken er ikke et platformbibliotek og trækker `@griffel/react` med, som kræver `react/jsx-runtime` (React 17+). Det fejler med platformens React 16.14 og gav en bundle på 7,4 MB. Små tegn-ikoner i `components/icons.tsx` i stedet (bundle ca. 160 KB i dev).
+
+**Afprøvet 2026-11-20:** build, lint og 12 tests. Alle Web API-forespørgsler og skrivestier, som kontrollen bruger, er kørt mod udviklermiljøet. **Brugerfladen er ikke afprøvet i browseren af udvikleren.**
+
+## Kendte begrænsninger
+- Editoren bruger `document.execCommand` (forældet, men understøttet i alle browsere) og er bevidst simpel.
+- Vedhæftninger sendes base64 med hvert kald (én UE pr. kald). Store filer til mange UE'er er langsomme.
+- Valideringsreglen fra Salesforce (`Check_Contract_Amount`: evaluering påkrævet ved kontrakt > 5 mio.) er ikke genskabt.

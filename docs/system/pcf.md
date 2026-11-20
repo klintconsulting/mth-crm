@@ -3,6 +3,7 @@
 | Kontrol | Mappe | Bruges på | Formål |
 |---|---|---|---|
 | `mth_Mth.MentionComposer` | `pcf/MentionComposer` | Opportunity, Account og Contact, lige over tidslinjen | Kommentarfelt med `@`-vælger. Opretter en note på posten |
+| `mth_Mth.TenderWorkspace` | `pcf/TenderWorkspace` | Opportunity, fanen Tender (ESP) | Arbejdsrum til entrepriser, UE'er, kontakter, evaluering, søgning, kopiering og tilbudsmails (React + Fluent UI 9). Se [esp.md](esp.md) |
 
 ## MentionComposer: kommentar med @omtale
 

@@ -7,20 +7,20 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{51aed9b7-4ead-4705-8a87-cc3d4265687f}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{db595c9d-635b-43fd-8366-9fa518f1ec63}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="trade" id="{a8eefdf5-9c47-4b4c-8132-e72d4264c995}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="trade" id="{e8776d8c-95bb-47a2-a49c-5b15829985f4}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Trade" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{ffa9b140-d752-44cd-87fb-09b8d4f6292b}" showlabel="true" locklevel="0">
+                      <cell id="{40fe2a9f-ad5c-4ba6-9fea-320f2eccc24c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Name" languagecode="1033" />
                           <label description="Name" languagecode="1030" />
@@ -29,7 +29,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{fe2a94d4-857b-4937-a840-1d43f0aa990d}" showlabel="true" locklevel="0">
+                      <cell id="{20c95b6b-2392-468a-bc10-6cf6af73c7a6}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Code" languagecode="1033" />
                         </labels>
@@ -37,7 +37,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e1c22d58-ed0c-416e-bcd1-6580bce3195d}" showlabel="true" locklevel="0">
+                      <cell id="{749d21e8-410f-4ba2-bbb7-dc87e8e93d64}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Salesforce Value" languagecode="1033" />
                         </labels>

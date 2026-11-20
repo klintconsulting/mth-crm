@@ -8,7 +8,7 @@
 #>
 param(
     [Parameter(Mandatory)][string]$Url,
-    [string[]]$Controls = @('MentionComposer'),
+    [string[]]$Controls = @('MentionComposer', 'TenderWorkspace'),
     [string]$Solution = 'MTHCRM',
     [string]$PublisherPrefix = 'mth'
 )

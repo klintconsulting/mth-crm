@@ -7,93 +7,93 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{45b74d7e-3c11-4a3c-873c-c605d056353a}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{62e4c456-125c-4ac1-9ea3-b1cbe57da218}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="33%">
               <sections>
-                <section name="partner" id="{8599dc13-a34d-4be7-b05b-fb6451ea64ca}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="partner" id="{316885fa-08e3-46a6-b736-d46c05d60092}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Partner" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{1af8597b-7c1f-4af7-b1d4-4b0021b70726}" showlabel="true" locklevel="0">
+                      <cell id="{5e08e85e-0d4f-474c-98d9-6cf00519769e}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Account" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_accountid" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2db06885-8663-4c3d-8b20-31731355baf2}" showlabel="true" locklevel="0">
+                      <cell id="{260eb9d4-f359-426d-8b06-84d7962e3a43}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Building Contract" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_buildingcontractid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_buildingcontractid" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3aae52e0-4062-4e37-a227-b712d00ec046}" showlabel="true" locklevel="0">
+                      <cell id="{b5ef199c-3251-437a-be3e-5118161be16b}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Partner Type" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_partnertype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_partnertype" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{44b882ac-1c54-4850-8bc4-9dbacc21ff3f}" showlabel="true" locklevel="0">
+                      <cell id="{d8e23c97-a70b-4bfb-a4d7-6a4f3357740c}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Status" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_status" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_status" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{dc3c178a-135b-49d8-b5b6-25ec4a36572d}" showlabel="true" locklevel="0">
+                      <cell id="{24e9c7bc-a2e4-43e9-93f5-b3baefc11752}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Last E-mail Sent" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_lastemailsent" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_lastemailsent" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{408373cf-a487-45dc-9a88-f8d73818655c}" showlabel="true" locklevel="0">
+                      <cell id="{a36ba154-5189-48fe-9861-166847a677f6}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Comments" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_comments" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_comments" disabled="false" />
                       </cell>
                     </row>
                   </rows>
                 </section>
-                <section name="evaluation" id="{d8e3bc09-ae45-4036-9b93-ca742e9228d4}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="evaluation" id="{ff3a8d52-8b87-4c5f-ba06-2ca2c0c61206}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Tender Evaluation" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{8d0a16b4-6229-42df-9004-e8060641afa8}" showlabel="true" locklevel="0">
+                      <cell id="{b480a576-f3f5-4b3d-b2d0-85cce27bf696}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Tender Evaluation" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_tenderevaluation" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_tenderevaluation" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{6b1e97f9-9ae0-4661-b957-ff162e833c38}" showlabel="true" locklevel="0">
+                      <cell id="{eb23ceb6-60ab-4ef6-b089-914916f1493c}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Tender Evaluation Comment" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_tenderevaluationcomment" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_tenderevaluationcomment" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5aba8988-0cf7-481d-a562-b013d48b59e1}" showlabel="true" locklevel="0">
+                      <cell id="{cdb4146a-1cc5-454b-a46c-94db4e63500d}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Contract Amount" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_contractamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="mth_contractamount" disabled="false" />
                       </cell>
@@ -104,13 +104,13 @@
             </column>
             <column width="33%">
               <sections>
-                <section name="contacts" id="{66dc8039-fc03-447f-8c61-fadea562eaca}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="contacts" id="{7140c0bd-d533-4bd5-8cf0-bc8db3d00fc7}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Selected Contacts" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{938b0b28-0422-4833-b0d9-18a5ff8bc943}" showlabel="false" rowspan="6" colspan="1" auto="false">
+                      <cell id="{fb20cca8-a5bf-4bc7-aeec-e2ebfe5c4abb}" showlabel="false" rowspan="6" colspan="1" auto="false">
                         <labels>
                           <label description="Selected Contacts" languagecode="1033" />
                         </labels>
@@ -144,13 +144,13 @@
             </column>
             <column width="33%">
               <sections>
-                <section name="timeline" id="{25e5586c-7a5f-4ccd-b535-c8aec52f43db}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="timeline" id="{d9e67266-1784-420e-98fe-82c09cfcce33}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Timeline" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{a4e94bce-371f-4a5c-b392-8e83a4c1e22f}" showlabel="false" rowspan="12" colspan="1" auto="false">
+                      <cell id="{ebf04296-d893-4593-b5f1-aebb90b76407}" showlabel="false" rowspan="12" colspan="1" auto="false">
                         <labels>
                           <label description="Timeline" languagecode="1033" />
                         </labels>

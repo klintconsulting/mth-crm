@@ -105,6 +105,20 @@ function New-SectionXml($table, $s) {
         }
         $script:ControlDescriptions += $cd + '</controlDescription>'
     }
+    if ($s.pcf) {
+        # Generic PCF control bound to the primary name column, spanning several rows (e.g. the tender workspace)
+        $nameAttr = (Get-TableMeta $table).NameAttr
+        $uid = G
+        $span = if ($s.pcf.rows) { [int]$s.pcf.rows } else { 10 }
+        [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" rowspan=`"$span`" colspan=`"1`" auto=`"false`" locklevel=`"0`">$(Lbl $s.label)" +
+            "<control id=`"$($nameAttr)_$($s.name)`" classid=`"$($ClassId.String)`" datafieldname=`"$nameAttr`" disabled=`"false`" uniqueid=`"$uid`" /></cell></row>")
+        for ($i = 1; $i -lt $span; $i++) { [void]$rows.Append('<row />') }
+        $cd = "<controlDescription forControl=`"$uid`"><customControl id=`"$($ClassId.String)`"><parameters><datafieldname>$nameAttr</datafieldname></parameters></customControl>"
+        foreach ($ff in 0, 1, 2) {
+            $cd += "<customControl name=`"$($s.pcf.control)`" formFactor=`"$ff`"><parameters><value type=`"SingleLine.Text`">$nameAttr</value></parameters></customControl>"
+        }
+        $script:ControlDescriptions += $cd + '</controlDescription>'
+    }
     if ($s.timeline) {
         # Timeline (notes, posts and activities)
         $span = 12
