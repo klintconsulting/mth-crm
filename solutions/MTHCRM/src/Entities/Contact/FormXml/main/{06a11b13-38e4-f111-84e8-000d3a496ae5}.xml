@@ -23,6 +23,7 @@
                       <cell id="{a46fa533-14e5-4d41-96c7-6130766f0357}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="First Name" languagecode="1033" />
+                          <label description="Fornavn" languagecode="1030" />
                         </labels>
                         <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
                       </cell>
@@ -31,6 +32,7 @@
                       <cell id="{69b71984-1d7e-4bf8-aa39-bce04bc6fe12}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Last Name" languagecode="1033" />
+                          <label description="Efternavn" languagecode="1030" />
                         </labels>
                         <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
                       </cell>
@@ -39,6 +41,7 @@
                       <cell id="{6c573ee4-1468-4f80-b675-9778ee566d8d}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Company Name" languagecode="1033" />
+                          <label description="Firmanavn" languagecode="1030" />
                         </labels>
                         <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" />
                       </cell>
@@ -47,6 +50,7 @@
                       <cell id="{10475e92-7b9e-4cd9-b74d-eee005656e4a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Job Title" languagecode="1033" />
+                          <label description="Stilling" languagecode="1030" />
                         </labels>
                         <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
                       </cell>
@@ -55,6 +59,7 @@
                       <cell id="{b18b1467-8c3d-416b-8527-9cf9b9eacf84}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Email" languagecode="1033" />
+                          <label description="Mail" languagecode="1030" />
                         </labels>
                         <control id="emailaddress1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="emailaddress1" disabled="false" />
                       </cell>
@@ -63,6 +68,7 @@
                       <cell id="{642cc336-550e-4bd3-aaec-4c63b2d621aa}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Mobile Phone" languagecode="1033" />
+                          <label description="Mobiltelefon" languagecode="1030" />
                         </labels>
                         <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
                       </cell>
@@ -71,6 +77,7 @@
                       <cell id="{1fb29820-caf1-4eb7-8918-b05a0d842145}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Business Phone" languagecode="1033" />
+                          <label description="Telefon (arbejde)" languagecode="1030" />
                         </labels>
                         <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
                       </cell>
@@ -79,6 +86,7 @@
                       <cell id="{77f13782-cf2e-4541-97bc-1f5fb320efa1}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Owner" languagecode="1033" />
+                          <label description="Ejer" languagecode="1030" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
                       </cell>

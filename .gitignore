@@ -10,6 +10,8 @@ out/
 *.user
 *.suo
 *.snk
+# Plugin-signeringsnøglen SKAL med (samme nøgle = samme assembly-identitet i Dataverse). Den er ikke hemmelig.
+!plugins/**/*.snk
 TestResults/
 publish/
 

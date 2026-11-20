@@ -42,6 +42,10 @@
     <Description description="MT Højgaard CRM - opportunities, accounts and contacts." languagecode="1033" />
   </Descriptions>
   <appsettings>
+    <appsetting settingdefinitionid.uniquename="AllowNotificationsEarlyAccess">
+      <iscustomizable>1</iscustomizable>
+      <value>true</value>
+    </appsetting>
     <appsetting settingdefinitionid.uniquename="AppChannel">
       <iscustomizable>1</iscustomizable>
       <value>1</value>

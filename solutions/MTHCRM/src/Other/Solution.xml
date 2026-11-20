@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.26103.165" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26103.165" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26103.00165">
+<ImportExportXml version="9.2.26104.153" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26104.153" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26104.00153">
   <SolutionManifest>
     <UniqueName>MTHCRM</UniqueName>
     <LocalizedNames>
@@ -91,6 +91,8 @@
       <RootComponent type="20" id="{fef27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="62" schemaName="mth_MTHCRM" behavior="0" />
       <RootComponent type="80" schemaName="mth_MTHCRM" behavior="0" />
+      <RootComponent type="91" id="{bc0b0a4d-a1e4-f111-84e8-000d3a496ae5}" schemaName="Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" behavior="0" />
+      <RootComponent type="92" id="{c00b0a4d-a1e4-f111-84e8-000d3a496ae5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -98,6 +100,12 @@
           <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
         </Required>
         <Dependent type="80" schemaName="mth_MTHCRM" displayName="MTH CRM" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AllowNotificationsEarlyAccess" solution="AppNotifications (10.0.0.17)" id.uniquename="AllowNotificationsEarlyAccess">
+          <package appName="PowerAppsUnifiedClientExtensionApp Package" version="1.0.0.103">PowerAppsUnifiedClientExtensionApp_Anchor (1.0.0.103)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=mth_MTHCRM,settingdefinitionid.uniquename=AllowNotificationsEarlyAccess" id.parentappmoduleid.uniquename="mth_MTHCRM" id.settingdefinitionid.uniquename="AllowNotificationsEarlyAccess" />
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.28)" id.uniquename="AppChannel">

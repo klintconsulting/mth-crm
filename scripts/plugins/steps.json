@@ -1,0 +1,23 @@
+{
+  "solution": "MTHCRM",
+  "assembly": {
+    "name": "Mth.Crm.Plugins",
+    "project": "plugins/Mth.Crm.Plugins/Mth.Crm.Plugins.csproj",
+    "dll": "plugins/Mth.Crm.Plugins/bin/Release/net462/Mth.Crm.Plugins.dll"
+  },
+  "steps": [
+    {
+      "type": "Mth.Crm.Plugins.NoteMentionNotifier",
+      "name": "Mth.Crm.Plugins.NoteMentionNotifier: Create of annotation",
+      "description": "Sends an in-app notification to users @mentioned in a new note.",
+      "message": "Create",
+      "table": "annotation",
+      "stage": 40,
+      "mode": "Asynchronous",
+      "rank": 1
+    }
+  ],
+  "appSettings": [
+    { "app": "mth_MTHCRM", "setting": "AllowNotificationsEarlyAccess", "value": "true", "note": "In-app notifications (bell icon) - required by NoteMentionNotifier" }
+  ]
+}

@@ -86,3 +86,11 @@ Scriptet opretter eller opdaterer visninger, formularer, sitemap og appen `mth_M
 ```
 
 Opretter eller opdaterer rollerne i `scripts/security/roles.json`, **erstatter** deres rettigheder og giver dem adgang til appen. Tildel derefter brugerne **Basic User** plus én MTH-rolle i Power Platform admin center (Miljø, Brugere). Se beslutning B11.
+
+## 9. Plugins (efter trin 6 og 8)
+
+```powershell
+.\scripts\Deploy-Plugins.ps1 -Url https://<org>.crm4.dynamics.com
+```
+
+Bygger `plugins/Mth.Crm.Plugins` i Release, registrerer assembly, plugin-typer og trin fra `scripts/plugins/steps.json` og slår in-app notifications til i appen. Kræver .NET SDK. Se [plugins.md](plugins.md).

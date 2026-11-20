@@ -10,6 +10,8 @@
 | `scripts/New-TestData.ps1` | Syntetiske testdata: 10 afdelinger, 25 Accounts, 1–3 Kontakter pr. Account, 60 Salgsmuligheder med 1–3 roller. `-Remove` sletter dem igen | Kun i udviklings- og testmiljøer, **aldrig i produktion** |
 | `scripts/Deploy-Roles.ps1` | Opretter eller opdaterer security roles fra `security/roles.json`, erstatter deres rettigheder og giver adgang til appen | Efter hver ændring af roles.json, og efter Deploy-App på et nyt miljø |
 | `scripts/security/roles.json` | Rollerne og deres rettigheder pr. tabel (Create/Read/Write/Delete/Append/AppendTo/Assign/Share × None/Basic/Local/Deep/Global) | Rettes i hånden |
+| `scripts/Deploy-Plugins.ps1` | Bygger plugin-assembly'en og registrerer eller opdaterer assembly, typer og trin fra `plugins/steps.json`, plus app-indstillinger | Efter hver ændring i `plugins/` eller steps.json |
+| `scripts/plugins/steps.json` | Plugin-trin (type, besked, tabel, fase, sync/async) og app-indstillinger | Rettes i hånden |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

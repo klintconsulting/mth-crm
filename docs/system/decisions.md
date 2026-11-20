@@ -44,3 +44,7 @@ Sagsnummeret kommer fra integrationen med Business Central. I Salesforce er `Cas
 ## B11 – Security roles: Basic User + én MTH-rolle (2026-11-19)
 Tre roller i `scripts/security/roles.json`: **MTH Sales** (læser alt, retter egne sager, vedligeholder Accounts og Kontakter), **MTH Tender Manager** (retter, sletter og omfordeler alle sager) og **MTH CRM Administrator** (alt, inkl. afdelinger og sletning af Accounts og Kontakter). Ingen af de to første kan slette Accounts eller Kontakter.
 **Konsekvens:** Hver bruger skal have systemrollen **Basic User** (noter, aktiviteter, brugerindstillinger) **plus** én MTH-rolle. Rollerne har adgang til appen. Alle rettigheder er på organisationsniveau eller "egne poster", fordi MTH i første omgang kun har én business unit.
+
+## B12 – @omtale i noter med in-app notifikation (2026-11-20)
+Brugerne vil kunne nævne en kollega i en note (som Chatter). Valgt frem for indlæg (Posts) med @omtale, som ikke giver besked, og frem for Teams, hvor samtalen ikke ligger på posten.
+**Konsekvens:** Det asynkrone plugin `NoteMentionNotifier` på oprettelse af noter. `@Fulde Navn` eller `@initialer` (mail-alias) giver en in-app notifikation med link til posten. In-app notifications er slået til i appen. Se [plugins.md](plugins.md).
