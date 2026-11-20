@@ -55,3 +55,18 @@ Dokumentgitteret henter filerne fra SharePoint med **brugerens egne SharePoint-r
 5. Kobl projektsites på sagerne: `.\scripts\Set-ProjectSiteLocations.ps1 -Url https://<org>.crm4.dynamics.com [-LibraryName "Shared Documents"]`. Det opretter en `sharepointsite` pr. projektsite og en relativ placering på sagen ud fra `mth_projectsiteurl`.
 
 SharePoint Online i samme tenant som Dataverse kræver ingen yderligere godkendelse (server-baseret integration).
+
+## Kendt begrænsning: mapper i projektsites (2026-11-20)
+
+Dataverses dokumentgitter **viser rodniveauet** i sagens projektbibliotek korrekt (filer og mapper), men **kan ikke navigere ned i en mappe**, når biblioteket ligger i et andet site end standardsitet. Fejlen er:
+
+> Folder "proj-61a80e0a" has been renamed or deleted from SharePoint. It was expected inside "https://…/sites/proj-61a80e0a/Delte dokumenter" path.
+
+Gitteret beregner mappestien forkert og tolker sitets sti som en mappe i biblioteket. Afprøvet uden held:
+- projektsite som selvstændig `sharepointsite` med absolut URL (rodniveau virker, mapper fejler)
+- projektsite som `sharepointsite` under standardsitet med relativ sti `sites/proj-xxxx` (rodniveau virker, mapper fejler)
+- guiden Document Management Settings kørt for projektsitet (ingen effekt)
+
+Integrationen er beregnet til mapper under ét fælles site og understøtter ikke "ét site pr. sag" fuldt ud.
+
+**Konsekvens:** Brug **Open Location** (åbner biblioteket i SharePoint) til at gå ned i mapper, eller byg en egen filvisning (PCF via Microsoft Graph). Se beslutning B14.
