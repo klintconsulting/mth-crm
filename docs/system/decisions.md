@@ -72,3 +72,7 @@ Brugerens valg: projektfelterne ligger på Lead (og kopieres til Salgsmulighed) 
 ## B18 – Lead-køer med brugerdefinerede kriterier; første konvertering vinder (2026-11-20)
 Brugerens krav: samme lead kan ramme flere køer, brugerne definerer selv kriterierne, og den første, der konverterer, får leadet, som så lukkes for de andre. Valgt som kø-tabel med faste kriterier frem for delte visninger, fordi det giver medlemmer, notifikationer og overblik.
 **Konsekvens:** `mth_leadqueue` med kriterier og medlemmer, beregnet N:N lead↔kø og konvertering via Custom API med optimistisk samtidighed. Erstatter Salesforce' assignment rules, køer og afdelingsvisninger.
+
+## B19 – SMART-synk i Azure med managed identity og Flex Consumption (2026-11-20)
+Function App'en logger på Dataverse med sin egen managed identity, som er registreret som application user. Den bruger ikke en app-registrering med klienthemmelighed, så der er ingen hemmelighed at gemme, udskifte eller lække. Storage og Application Insights tilgås også med identiteten. Hostingplanen er Flex Consumption: Microsofts anbefalede serverløse plan for nye Function Apps, hvor Linux Consumption er på vej ud. Infrastrukturen er en ARM-skabelon, der deployes med REST, fordi Azure CLI ikke er tilladt på alle maskiner.
+**Konsekvens:** Security role "MTH Integration" til integrationer. Tidsplanen angives i UTC. Kun SMART-API'ets egne nøgler skal i Key Vault hos MTH. Se [smart.md](smart.md#drift-i-azure).

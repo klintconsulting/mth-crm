@@ -75,6 +75,36 @@ Input `LeadId`. Output `OpportunityId` og `Message`. Plugin `ConvertLead` (synkr
 
 **Rigtigt API hos MTH:** `SMART_SOURCE=api` + `SMART_CLIENT_ID/SECRET` (Key Vault). Ingen kodeændring. Afprøv først med `--dry-run` mod et testmiljø.
 
+## Drift i Azure
+
+Deployes med `scripts/Deploy-SmartSyncAzure.ps1` (kun Azure REST API, kræver hverken Azure CLI eller Az-modulet). Infrastrukturen er beskrevet i `infra/smartsync.json` (ARM-skabelon). Scriptet kan køres igen efter kodeændringer.
+
+```powershell
+.\scripts\Deploy-Roles.ps1 -Url https://<org>.crm4.dynamics.com      # rollen "MTH Integration" skal findes
+.\scripts\Deploy-SmartSyncAzure.ps1 -SubscriptionId <id> -DataverseUrl https://<org>.crm4.dynamics.com [-SmartSource api] [-RunNow]
+```
+
+| Ressource (ressourcegruppe `rg-mthcrm-smartsync`, Sweden Central) | Indstilling |
+|---|---|
+| Function App `mthcrm-smartsync-<suffix>` | Flex Consumption (FC1), Linux, .NET 9 isolated, maks. 40 instanser à 2 GB. Systemtildelt managed identity |
+| Storage account | Kun adgang med identitet (delte nøgler slået fra). Containeren `app-package` holder kodepakken. Identiteten har *Storage Blob Data Owner* |
+| Log Analytics + Application Insights | Logning med Entra-godkendelse (lokal godkendelse slået fra). Identiteten har *Monitoring Metrics Publisher* |
+
+**Ingen hemmeligheder (B19):** Function App'ens managed identity er registreret i Dataverse som **application user** med rollerne *Basic User* og *MTH Integration*. Rollen kan læse og skrive leads, SMART-opslag og integrationsstatus, opdatere salgsmuligheder, læse køer og Accounts og sende notifikationer. Koden henter token med `ManagedIdentityTokenProvider`. Kun hvis `DATAVERSE_CLIENT_SECRET` er sat, bruges en app-registrering i stedet.
+
+**App settings** (sættes af skabelonen): `DATAVERSE_URL`, `SMART_SOURCE` (`file:testdata` i POC'en, hvor testdataene ligger i pakken), `SMART_SCHEDULE` (`0 0 6 * * 1-5`). Tidsplanen er i **UTC**, fordi Flex Consumption ikke understøtter tidszoner: kl. 7 dansk vintertid og kl. 8 sommertid. Historikken på salgsmuligheder skrives i dansk tid (`Europe/Copenhagen`).
+
+**Det rigtige API hos MTH:** kør scriptet med `-SmartSource api`, og tilføj `SMART_CLIENT_ID` og `SMART_CLIENT_SECRET` som Key Vault-referencer på Function App'en. Testdataene kan derefter fjernes fra `SmartSync.Functions.csproj`.
+
+**Kør manuelt:** `-RunNow` kalder `POST https://<app>.azurewebsites.net/admin/functions/SmartSync` med host-masternøglen. Resultatet står i `mth_integrationstate` ("SMART Projects", `mth_lastresult`) og i Application Insights.
+
+**Faldgruber, der er løst i scriptet:**
+- Zip-filen bygges med `/` i stinavnene. I Windows PowerShell 5.1 skriver `Compress-Archive` og `ZipFile.CreateFromDirectory` `\`, og så afviser Flex pakken med "Cannot find required .azurefunctions directory".
+- Upload-kaldet (`/api/publish`) svarer, før pakken er valideret, så scriptet venter på `/api/deployments/latest`.
+- Den første kørsel af funktionen kan give 404 i et par minutter, mens værten starter.
+
+**Afprøvet 2026-11-20:** deploy fra bunden til abonnementet "MTH CRM POC" og manuel kørsel. Synken kørte som application useren: 25 projekter, 6 leads opdateret, 2 salgsmuligheder opdateret (1 med historik), 0 fejl. Køpluginnet kørte uden fejl.
+
 ## Appen
 
 **Navigation:** gruppen **Leads** med *Lead* og *Lead Queue* øverst i området Sales.
@@ -108,7 +138,7 @@ Input `LeadId`. Output `OpportunityId` og `Message`. Plugin `ConvertLead` (synkr
 ## Status
 - [x] Trin 1: datamodel (2026-11-20)
 - [x] Trin 2: kø-matching og notifikation (plugin) og konvertering (Custom API, første vinder) (2026-11-20)
-- [x] Trin 3: SMART-synk (C#, Azure Function-projekt) med testdata (2026-11-20). Deploy til Azure mangler (app-registrering + Function App)
+- [x] Trin 3: SMART-synk (C#, Azure Function-projekt) med testdata (2026-11-20). Deploy, se nedenfor
 - [x] Trin 4: app (Lead- og kø-formularer, "Leads i mine køer", Konvertér-knap) (2026-11-20)
-- [ ] Deploy af synken til Azure (app-registrering, application user, Function App i abonnementet "MTH CRM POC")
+- [x] Deploy af synken til Azure (Flex Consumption, managed identity som application user) i abonnementet "MTH CRM POC" (2026-11-20)
 - [ ] Danske labels (afventer dansk sprog i miljøet, B3)

@@ -10,7 +10,7 @@
 | `scripts/New-TestData.ps1` | Syntetiske testdata: 10 afdelinger, 25 Accounts, 1–3 Kontakter pr. Account, 60 Salgsmuligheder med 1–3 roller. `-Remove` sletter dem igen | Kun i udviklings- og testmiljøer, **aldrig i produktion** |
 | `scripts/New-DemoUsers.ps1` | Opretter 3 fiktive demobrugere (Anne Hansen `ah`, Lars Nielsen `ln`, Mette Sørensen `ms`) i Entra ID via Graph, tildeler `POWERAPPS_DEV`-licens og tilføjer dem til miljøet med Basic User + MTH Sales. Startadgangskoder skrives til `%LOCALAPPDATA%\mth-crm\demo-users.txt` | Kun i en konsulent- eller test-tenant, **aldrig i MTH's tenant**. Efter Deploy-Roles |
 | `scripts/Deploy-Roles.ps1` | Opretter eller opdaterer security roles fra `security/roles.json`, erstatter deres rettigheder og giver adgang til appen | Efter hver ændring af roles.json, og efter Deploy-App på et nyt miljø |
-| `scripts/security/roles.json` | Rollerne og deres rettigheder pr. tabel (Create/Read/Write/Delete/Append/AppendTo/Assign/Share × None/Basic/Local/Deep/Global) | Rettes i hånden |
+| `scripts/security/roles.json` | Rollerne og deres rettigheder pr. tabel (Create/Read/Write/Delete/Append/AppendTo/Assign/Share × None/Basic/Local/Deep/Global). Tabelnavnet `_global` bruges til rettigheder uden tabel, f.eks. `SendAppNotification` | Rettes i hånden |
 | `scripts/Deploy-Plugins.ps1` | Bygger plugin-assembly'en og registrerer eller opdaterer assembly, typer og trin fra `plugins/steps.json`, plus app-indstillinger | Efter hver ændring i `plugins/` eller steps.json |
 | `scripts/plugins/steps.json` | Plugin-trin (type, besked, tabel, fase, sync/async) og app-indstillinger | Rettes i hånden |
 | `scripts/Deploy-Pcf.ps1` | Tester, bygger og pusher PCF-kontrollerne i `pcf/` og lægger dem i solutionen. `-Controls MentionComposer,TenderWorkspace` | Efter hver ændring i `pcf/` |
@@ -20,6 +20,7 @@
 | `scripts/New-EspTestData.ps1` | ESP-testdata: underentreprenører med fag og kontakter, entrepriser, UE-tilknytninger, skabeloner. `-Remove` sletter | Kun udvikling og test |
 | `scripts/New-SmartTestData.ps1` | Syntetiske SMART-svar til `functions/SmartSync/testdata` (`-Variant 2` ændrer projekter) | Test af SMART-synken |
 | `scripts/New-DemoLeadQueues.ps1` | 4 demo-lead-køer med kriterier og medlemmer (dig + demobrugere). `-Remove` sletter | Kun demo |
+| `scripts/Deploy-SmartSyncAzure.ps1` + `infra/smartsync.json` | Deployer SMART-synken til Azure: ressourcegruppe, ARM-skabelon (Flex Consumption, managed identity), kode og application user i Dataverse med Basic User + MTH Integration. `-RunNow` kører den én gang. Login med device code; refresh-token i `%LOCALAPPDATA%\mth-crm\az-refresh-token.txt` | Efter Deploy-Roles, og efter hver ændring i `functions/SmartSync`. Se smart.md |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

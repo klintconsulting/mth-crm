@@ -41,6 +41,10 @@ public sealed class SyncRunner
 
     public SyncRunner(ISmartSource smart, DataverseClient dv, Action<string> log) { _smart = smart; _dv = dv; _log = log; }
 
+    /// <summary>Danish wall-clock time for the history text (the Azure host runs in UTC). IANA id works on Linux and on Windows (.NET 6+).</summary>
+    internal static DateTime DanishNow() =>
+        TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Europe/Copenhagen"));
+
     public async Task<SyncResult> RunAsync(SyncOptions o, CancellationToken ct = default)
     {
         var r = new SyncResult();
@@ -116,7 +120,7 @@ public sealed class SyncRunner
                 {
                     var current = Plain(opp);
                     var status = current.GetValueOrDefault("mth_status") is decimal s ? (int)s - OptionBase : (int?)null;
-                    var h = OpportunityHistory.Build(current, fields, status, DateTime.Now);
+                    var h = OpportunityHistory.Build(current, fields, status, DanishNow());
                     if (h.Update.Count == 0) { r.Unchanged++; continue; }
                     if (!o.DryRun) await _dv.PatchAsync($"mth_opportunities({opp["mth_opportunityid"]})", h.Update, ct);
                     r.OpportunitiesUpdated++; if (h.Changes.Count > 0) r.HistoryEntries++;

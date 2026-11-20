@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Role id="{f1b50080-dee4-f111-84e8-000d3a496ae5}" name="MTH Integration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsCustomizable>1</IsCustomizable>
+  <IsAutoAssigned>0</IsAutoAssigned>
+  <Description>Application user for integrations (SMART sync Azure Function): creates/updates leads and SMART lookups, updates converted opportunities, writes the integration watermark. Assigned together with Basic User. Not for people.</Description>
+  <RolePrivileges>
+    <RolePrivilege name="prvAppendmth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvAppendmth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
+    <RolePrivilege name="prvAppendmth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvAppendToAccount" level="Global" />
+    <RolePrivilege name="prvAppendTomth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
+    <RolePrivilege name="prvAppendTomth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvCreateappnotification" level="Global" />
+    <RolePrivilege name="prvCreatemth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvCreatemth_Lead" level="Global" />
+    <RolePrivilege name="prvCreatemth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvReadAccount" level="Global" />
+    <RolePrivilege name="prvReadappnotification" level="Global" />
+    <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvReadmth_Lead" level="Global" />
+    <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
+    <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvReadSharePointData" level="Global" />
+    <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvSendAppNotification" level="Global" />
+    <RolePrivilege name="prvWritemth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvWritemth_Lead" level="Global" />
+    <RolePrivilege name="prvWritemth_Opportunity" level="Global" />
+    <RolePrivilege name="prvWritemth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvWriteSharePointData" level="Global" />
+  </RolePrivileges>
+</Role>

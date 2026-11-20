@@ -7,7 +7,8 @@ namespace Mth.SmartSync.Functions;
 /// Timer-triggered SMART sync (replaces the Salesforce scheduled batch "weekdays at 07:00").
 /// Schedule: app setting SMART_SCHEDULE (NCRONTAB, default "0 0 6 * * 1-5" = 06:00 UTC = 07:00 Danish winter time, Mon-Fri).
 /// Settings (app settings / Key Vault references):
-///   DATAVERSE_URL, DATAVERSE_TENANT_ID, DATAVERSE_CLIENT_ID, DATAVERSE_CLIENT_SECRET   (application user in Dataverse)
+///   DATAVERSE_URL                                                   (the Function App's managed identity is an application user in Dataverse)
+///   DATAVERSE_TENANT_ID, DATAVERSE_CLIENT_ID, DATAVERSE_CLIENT_SECRET  (optional: app registration with secret instead of managed identity)
 ///   SMART_SOURCE = "api" (default) or "file:&lt;folder&gt;" for test data deployed with the app
 ///   SMART_API_URL (default https://api.smart.byggefakta.dk), SMART_CLIENT_ID, SMART_CLIENT_SECRET
 /// </summary>
@@ -28,7 +29,10 @@ public sealed class SmartSyncFunction
             ? new FileSmartSource(Path.Combine(AppContext.BaseDirectory, source[5..]))
             : new HttpSmartSource(new HttpClient { BaseAddress = new Uri(Setting("SMART_API_URL", "https://api.smart.byggefakta.dk")) },
                 Setting("SMART_CLIENT_ID"), Setting("SMART_CLIENT_SECRET"));
-        var tokens = new ClientSecretTokenProvider(Setting("DATAVERSE_TENANT_ID"), Setting("DATAVERSE_CLIENT_ID"), Setting("DATAVERSE_CLIENT_SECRET"), env);
+        // Managed identity by default (Azure). Client secret only if DATAVERSE_CLIENT_SECRET is set (e.g. local run against a test environment).
+        ITokenProvider tokens = string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DATAVERSE_CLIENT_SECRET"))
+            ? new ManagedIdentityTokenProvider(env)
+            : new ClientSecretTokenProvider(Setting("DATAVERSE_TENANT_ID"), Setting("DATAVERSE_CLIENT_ID"), Setting("DATAVERSE_CLIENT_SECRET"), env);
 
         var runner = new SyncRunner(smart, new DataverseClient(env, tokens), m => _log.LogInformation("{Message}", m));
         var result = await runner.RunAsync(new SyncOptions(), ct);

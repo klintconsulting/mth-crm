@@ -100,5 +100,13 @@ Bygger `plugins/Mth.Crm.Plugins` i Release, registrerer assembly, plugin-typer o
 ```powershell
 .\scripts\Deploy-Pcf.ps1 -Url https://<org>.crm4.dynamics.com
 .\scripts\Deploy-App.ps1 -Url https://<org>.crm4.dynamics.com
-```n
+```
 Kræver Node.js 22+. Bygger, tester og pusher kontrollerne i `pcf/` og lægger dem i solutionen `MTHCRM`. Kør derefter Deploy-App igen, fordi formularerne refererer til kontrollen. **På et helt nyt miljø** skal trin 10 køres før trin 6, ellers kan formularerne ikke gemmes. Se [pcf.md](pcf.md).
+
+## 11. SMART-synken i Azure (efter trin 8 og 9)
+
+```powershell
+.\scripts\Deploy-SmartSyncAzure.ps1 -SubscriptionId <id> -DataverseUrl https://<org>.crm4.dynamics.com -RunNow
+```
+
+Kræver .NET 9 SDK og en konto, der er Owner på abonnementet, fordi skabelonen tildeler roller. Scriptet opretter Function App, storage og logning, deployer koden og opretter application useren i Dataverse. Se [smart.md](smart.md#drift-i-azure).

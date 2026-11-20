@@ -1,4 +1,4 @@
-{
+﻿{
     "solution":  "MTHCRM",
     "app":  "mth_MTHCRM",
     "note":  "Users get the system role \u0027Basic User\u0027 (core privileges such as notes, activities, user settings) PLUS exactly one MTH role. Depth: None | Basic (own records) | Local (own business unit) | Deep (BU and child BUs) | Global (organisation).",
@@ -76,7 +76,14 @@
                                                              },
                                          "mth_integrationstate":  {
                                                                       "Read":  "Global"
-                                                                  }
+                                                                  },
+                                         "appnotification":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global"
+                                                             },
+                                         "_global":  {
+                                                         "SendAppNotification":  "Global"
+                                                     }
                                      }
                   },
                   {
@@ -152,7 +159,14 @@
                                                              },
                                          "mth_integrationstate":  {
                                                                       "Read":  "Global"
-                                                                  }
+                                                                  },
+                                         "appnotification":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global"
+                                                             },
+                                         "_global":  {
+                                                         "SendAppNotification":  "Global"
+                                                     }
                                      }
                   },
                   {
@@ -242,7 +256,63 @@
                                                                       "Read":  "Global",
                                                                       "Write":  "Global",
                                                                       "Delete":  "Global"
-                                                                  }
+                                                                  },
+                                         "appnotification":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global"
+                                                             },
+                                         "_global":  {
+                                                         "SendAppNotification":  "Global"
+                                                     }
+                                     }
+                  },
+                  {
+                      "name":  "MTH Integration",
+                      "description":  "Application user for integrations (SMART sync Azure Function): creates/updates leads and SMART lookups, updates converted opportunities, writes the integration watermark. Assigned together with Basic User. Not for people.",
+                      "privileges":  {
+                                         "mth_lead":  {
+                                                          "Create":  "Global",
+                                                          "Read":  "Global",
+                                                          "Write":  "Global",
+                                                          "Append":  "Global",
+                                                          "AppendTo":  "Global"
+                                                      },
+                                         "mth_opportunity":  {
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Global",
+                                                                 "Append":  "Global",
+                                                                 "AppendTo":  "Global"
+                                                             },
+                                         "mth_smartlookup":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Global",
+                                                                 "Append":  "Global",
+                                                                 "AppendTo":  "Global"
+                                                             },
+                                         "mth_integrationstate":  {
+                                                                      "Create":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global"
+                                                                  },
+                                         "mth_leadqueue":  {
+                                                               "Read":  "Global",
+                                                               "Append":  "Global",
+                                                               "AppendTo":  "Global"
+                                                           },
+                                         "account":  {
+                                                         "Read":  "Global",
+                                                         "AppendTo":  "Global"
+                                                     },
+                                         "appnotification":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global"
+                                                             },
+                                         "_global":  {
+                                                         "SendAppNotification":  "Global"
+                                                     }
                                      }
                   }
               ]

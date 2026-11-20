@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.0.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.3.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.0" />
@@ -17,6 +18,8 @@
     <ProjectReference Include="..\SmartSync.Core\SmartSync.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <!-- Synthetic SMART test data, used when SMART_SOURCE = file:testdata (POC). Remove when the real API is used. -->
+    <None Include="..\testdata\*.json" Link="testdata\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <None Update="host.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></None>
     <None Update="local.settings.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><CopyToPublishDirectory>Never</CopyToPublishDirectory></None>
   </ItemGroup>

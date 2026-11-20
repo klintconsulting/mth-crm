@@ -41,5 +41,5 @@ Invoke-Dataverse PATCH "mailboxes(<mailboxid>)" @{ testemailconfigurationschedul
 
 - **Data:** migreres separat og køres inde hos MTH direkte fra Salesforce.
 - **Værdier for miljøvariabler og forbindelser:** sættes ved import.
-- **Azure Functions og Key Vault:** deployes separat.
+- **Azure Functions og Key Vault:** deployes separat. SMART-synken deployes med `scripts/Deploy-SmartSyncAzure.ps1` mod MTH's abonnement, kørt af MTH's IT eller fra GitHub Actions. Den opretter selv application useren i Dataverse, men kræver Owner på ressourcegruppen. SMART-nøglerne skal i Key Vault. Se `docs/system/smart.md`.
 - **Tildeling af brugere og roller.**

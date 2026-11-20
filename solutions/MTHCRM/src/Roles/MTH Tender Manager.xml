@@ -24,6 +24,7 @@
     <RolePrivilege name="prvAssignmth_Opportunity" level="Global" />
     <RolePrivilege name="prvAssignmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreateAccount" level="Global" />
+    <RolePrivilege name="prvCreateappnotification" level="Global" />
     <RolePrivilege name="prvCreateContact" level="Global" />
     <RolePrivilege name="prvCreatemth_Lead" level="Basic" />
     <RolePrivilege name="prvCreatemth_LeadQueue" level="Global" />
@@ -34,6 +35,7 @@
     <RolePrivilege name="prvDeletemth_Opportunity" level="Global" />
     <RolePrivilege name="prvDeletemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvReadAccount" level="Global" />
+    <RolePrivilege name="prvReadappnotification" level="Global" />
     <RolePrivilege name="prvReadContact" level="Global" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
@@ -44,6 +46,7 @@
     <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
     <RolePrivilege name="prvReadSharePointData" level="Global" />
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvSendAppNotification" level="Global" />
     <RolePrivilege name="prvShareAccount" level="Global" />
     <RolePrivilege name="prvShareContact" level="Global" />
     <RolePrivilege name="prvSharemth_Lead" level="Basic" />

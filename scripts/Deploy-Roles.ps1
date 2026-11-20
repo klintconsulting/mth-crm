@@ -23,7 +23,8 @@ if (-not $appId) { throw "App $($def.app) not found (run Deploy-App.ps1 first)" 
 # Privilege name -> id cache
 $privCache = @{}
 function Get-PrivilegeId([string]$op, [string]$table) {
-    $name = "prv$op$table"
+    # Table "_global" holds privileges that belong to no table, e.g. "SendAppNotification" -> prvSendAppNotification
+    $name = if ($table -eq '_global') { "prv$op" } else { "prv$op$table" }
     if (-not $privCache.ContainsKey($name)) {
         $p = (Invoke-Dataverse GET "privileges?`$select=privilegeid,name&`$filter=name eq '$name'").value
         if (-not $p) { throw "Privilege $name not found" }
