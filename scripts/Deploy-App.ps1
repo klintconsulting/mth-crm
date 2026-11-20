@@ -93,6 +93,18 @@ foreach ($v in $def.views) {
 # ---- 2. Forms ----
 function New-SectionXml($table, $s) {
     $rows = New-Object Text.StringBuilder
+    if ($s.composer) {
+        # PCF comment box with @mention picker (mth_Mth.MentionComposer), bound to the primary name column.
+        $nameAttr = (Get-TableMeta $table).NameAttr
+        $uid = G
+        [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" locklevel=`"0`">$(Lbl 'Comment')" +
+            "<control id=`"$($nameAttr)_composer`" classid=`"$($ClassId.String)`" datafieldname=`"$nameAttr`" disabled=`"false`" uniqueid=`"$uid`" /></cell></row>")
+        $cd = "<controlDescription forControl=`"$uid`"><customControl id=`"$($ClassId.String)`"><parameters><datafieldname>$nameAttr</datafieldname></parameters></customControl>"
+        foreach ($ff in 0, 1, 2) {
+            $cd += "<customControl name=`"$($s.composerControl)`" formFactor=`"$ff`"><parameters><value type=`"SingleLine.Text`">$nameAttr</value></parameters></customControl>"
+        }
+        $script:ControlDescriptions += $cd + '</controlDescription>'
+    }
     if ($s.timeline) {
         # Timeline (notes, posts and activities)
         $span = 12
@@ -124,6 +136,7 @@ function New-SectionXml($table, $s) {
 }
 $formIds = @()
 foreach ($f in $def.forms) {
+    $script:ControlDescriptions = @()
     $tabs = foreach ($t in $f.tabs) {
         $width = [math]::Floor(100 / @($t.columns).Count)
         $cols = foreach ($col in $t.columns) {
@@ -131,7 +144,8 @@ foreach ($f in $def.forms) {
         }
         "<tab name=`"$($t.name)`" id=`"$(G)`" IsUserDefined=`"1`" locklevel=`"0`" showlabel=`"true`" expanded=`"true`">$(Lbl $t.label)<columns>$($cols -join '')</columns></tab>"
     }
-    $formXml = "<form><tabs>$($tabs -join '')</tabs></form>"
+    $cds = if ($script:ControlDescriptions.Count) { "<controlDescriptions>$($script:ControlDescriptions -join '')</controlDescriptions>" } else { '' }
+    $formXml = "<form><tabs>$($tabs -join '')</tabs>$cds</form>"
     $existing = (Invoke-Dataverse GET "systemforms?`$select=formid&`$filter=name eq '$($f.name)' and objecttypecode eq '$($f.table)' and type eq 2").value
     $body = @{ name = $f.name; objecttypecode = $f.table; type = 2; formxml = $formXml; description = 'Defined in scripts/app/app.json' }
     if ($existing) {

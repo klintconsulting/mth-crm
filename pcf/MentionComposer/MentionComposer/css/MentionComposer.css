@@ -1,0 +1,32 @@
+.mth-mc { font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, Roboto, sans-serif; font-size: 14px; width: 100%; }
+.mth-mc-editor { position: relative; }
+.mth-mc-input {
+    box-sizing: border-box; width: 100%; min-height: 64px; resize: vertical; padding: 8px 10px;
+    border: 1px solid #8a8886; border-radius: 4px; font: inherit; color: #323130; background: #fff;
+}
+.mth-mc-input:focus { outline: none; border-color: #0f6cbd; box-shadow: 0 0 0 1px #0f6cbd; }
+.mth-mc-input:disabled { background: #f3f2f1; color: #a19f9d; }
+.mth-mc-list {
+    position: absolute; z-index: 10; left: 0; right: 0; top: 100%; margin: 2px 0 0; padding: 4px 0; list-style: none;
+    background: #fff; border: 1px solid #c8c6c4; border-radius: 4px; box-shadow: 0 6px 14px rgba(0, 0, 0, .13); max-height: 280px; overflow-y: auto;
+}
+.mth-mc-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; cursor: pointer; }
+.mth-mc-item:hover, .mth-mc-active { background: #edebe9; }
+.mth-mc-avatar {
+    flex: none; width: 28px; height: 28px; border-radius: 50%; background: #0f6cbd; color: #fff;
+    font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+}
+.mth-mc-name { font-weight: 600; color: #323130; white-space: nowrap; }
+.mth-mc-mail { color: #605e5c; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mth-mc-empty { padding: 6px 10px; color: #605e5c; }
+.mth-mc-footer { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.mth-mc-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; flex: 1; min-width: 0; }
+.mth-mc-chips-label { color: #605e5c; font-size: 12px; }
+.mth-mc-chip { background: #ebf3fc; color: #0f548c; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+.mth-mc-status { color: #605e5c; font-size: 12px; }
+.mth-mc-status.mth-mc-error { color: #a4262c; }
+.mth-mc-send {
+    flex: none; padding: 5px 16px; border: none; border-radius: 4px; background: #0f6cbd; color: #fff; font: inherit; font-weight: 600; cursor: pointer;
+}
+.mth-mc-send:hover:not(:disabled) { background: #115ea3; }
+.mth-mc-send:disabled { background: #f3f2f1; color: #a19f9d; cursor: default; }

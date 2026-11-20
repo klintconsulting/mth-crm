@@ -90,6 +90,7 @@
       <RootComponent type="20" id="{ee5686d5-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="20" id="{fef27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="62" schemaName="mth_MTHCRM" behavior="0" />
+      <RootComponent type="66" schemaName="mth_Mth.MentionComposer" behavior="0" />
       <RootComponent type="80" schemaName="mth_MTHCRM" behavior="0" />
       <RootComponent type="91" id="{bc0b0a4d-a1e4-f111-84e8-000d3a496ae5}" schemaName="Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" behavior="0" />
       <RootComponent type="92" id="{c00b0a4d-a1e4-f111-84e8-000d3a496ae5}" behavior="0" />

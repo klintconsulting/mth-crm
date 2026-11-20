@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Mth" constructor="MentionComposer" version="1.0.0" display-name-key="DisplayName" description-key="Description" control-type="standard">
+    <external-service-usage enabled="false"></external-service-usage>
+    <!-- Bound to the record's primary name column (text). The control never changes the value. -->
+    <type-group name="text">
+      <type>SingleLine.Text</type>
+      <type>SingleLine.TextArea</type>
+    </type-group>
+    <property name="value" display-name-key="Value" description-key="Value_Desc" of-type-group="text" usage="bound" required="true" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/MentionComposer.css" order="1" />
+      <resx path="strings/MentionComposer.1033.resx" version="1.0.0" />
+      <resx path="strings/MentionComposer.1030.resx" version="1.0.0" />
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

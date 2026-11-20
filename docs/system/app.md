@@ -20,9 +20,9 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 | Opportunity Role | MTH Opportunity Role | General (Salgsmulighed, rolle, bruger) |
 | Account | MTH Account | General (stamdata, adresse, klassifikation, **tidslinje**) · Contacts and Opportunities (undergitre) · Building Contracts |
 | Contact | MTH Contact | General (stamdata, fratrådt, markedsføringsaftale, **tidslinje**) |
-
-**Tidslinje** (noter, opslag og aktiviteter som opgaver, mails og møder) ligger i tredje kolonne på fanen General. I `app.json` er det en sektion med `"timeline": true`.
 | Organizational Unit | MTH Organizational Unit | General |
+
+**Tidslinje** (noter, opslag og aktiviteter som opgaver, mails og møder) ligger i tredje kolonne på fanen General med **kommentarfeltet med @-vælger** (PCF `MentionComposer`, se [pcf.md](pcf.md)) lige over. I `app.json` er det en sektion med `"composer": true` og `"timeline": true`.
 
 Appen bruger kun disse formularer. Standardformularerne på Account og Contact røres ikke og er ikke med i solutionen.
 

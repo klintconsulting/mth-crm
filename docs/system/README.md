@@ -7,6 +7,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | [setup.md](setup.md) | Genskab et miljø fra bunden: værktøjer, login, solution og skema, i rækkefølge |
 | [app.md](app.md) | Appen: navigation, formularer, visninger, og hvordan de ændres |
 | [datamodel.md](datamodel.md) | Alle tabeller, kolonner, valgsæt og relationer. **Genereres** fra `scripts/schema/schema.json` |
+| [pcf.md](pcf.md) | PCF-kontroller (kommentarfelt med @-vælger): brug, teknik, byg og deploy |
 | [plugins.md](plugins.md) | C#-plugins: hvad de gør, regler, test, deploy og fejlsøgning |
 | [decisions.md](decisions.md) | Arkitektur- og designbeslutninger med begrundelse og dato |
 | [scripts.md](scripts.md) | Hvad hvert script i `scripts/` gør, og hvornår det bruges |

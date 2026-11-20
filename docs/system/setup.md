@@ -94,3 +94,11 @@ Opretter eller opdaterer rollerne i `scripts/security/roles.json`, **erstatter**
 ```
 
 Bygger `plugins/Mth.Crm.Plugins` i Release, registrerer assembly, plugin-typer og trin fra `scripts/plugins/steps.json` og slår in-app notifications til i appen. Kræver .NET SDK. Se [plugins.md](plugins.md).
+
+## 10. PCF-kontroller (efter trin 9, før en ny kørsel af trin 6)
+
+```powershell
+.\scripts\Deploy-Pcf.ps1 -Url https://<org>.crm4.dynamics.com
+.\scripts\Deploy-App.ps1 -Url https://<org>.crm4.dynamics.com
+```n
+Kræver Node.js 22+. Bygger, tester og pusher kontrollerne i `pcf/` og lægger dem i solutionen `MTHCRM`. Kør derefter Deploy-App igen, fordi formularerne refererer til kontrollen. **På et helt nyt miljø** skal trin 10 køres før trin 6, ellers kan formularerne ikke gemmes. Se [pcf.md](pcf.md).

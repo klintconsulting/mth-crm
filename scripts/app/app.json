@@ -58,7 +58,7 @@
               { "name": "caseteam", "label": "Case Team", "subgrid": { "id": "CaseTeam", "table": "mth_opportunityrole", "relationship": "mth_opportunity_mth_opportunityrole", "view": "MTH Opportunity Roles" } }
             ],
             [
-              { "name": "timeline", "label": "Timeline", "timeline": true }
+              { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
         },
@@ -105,7 +105,7 @@
               { "name": "classification", "label": "Classification", "fields": [ "mth_accountstatus", "mth_segment", "mth_subsegment", "mth_accountcategory", "mth_interestedfor", "mth_tdcid", "mth_leadsourcetext" ] }
             ],
             [
-              { "name": "timeline", "label": "Timeline", "timeline": true }
+              { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
         },
@@ -136,7 +136,7 @@
               { "name": "marketing", "label": "Marketing Agreement", "fields": [ "mth_sendmarketingagreementdate", "mth_marketingagreementsenton", "mth_marketingagreementdate", "mth_marketingagreementreturned" ] }
             ],
             [
-              { "name": "timeline", "label": "Timeline", "timeline": true }
+              { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
         }

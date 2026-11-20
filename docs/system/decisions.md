@@ -48,3 +48,7 @@ Tre roller i `scripts/security/roles.json`: **MTH Sales** (læser alt, retter eg
 ## B12 – @omtale i noter med in-app notifikation (2026-11-20)
 Brugerne vil kunne nævne en kollega i en note (som Chatter). Valgt frem for indlæg (Posts) med @omtale, som ikke giver besked, og frem for Teams, hvor samtalen ikke ligger på posten.
 **Konsekvens:** Det asynkrone plugin `NoteMentionNotifier` på oprettelse af noter. `@Fulde Navn` eller `@initialer` (mail-alias) giver en in-app notifikation med link til posten. In-app notifications er slået til i appen. Se [plugins.md](plugins.md).
+
+## B13 – Kommentarfelt med @-vælger over tidslinjen (2026-11-20)
+Brugerne forventer en navnevælger, når de taster `@`. Tidslinjens note-editor kan ikke udvides, og indlæg (Posts) med @-vælger kræver Activity Feeds, som kun følger med Dynamics 365-apps.
+**Konsekvens:** Egen PCF-kontrol `mth_Mth.MentionComposer` lige over tidslinjen. Den har en `@`-vælger, understøtter flere modtagere hvor som helst i teksten og gemmer som en almindelig note, så kommentaren vises i tidslinjen, og plugin'et fra B12 sender notifikationerne. Ingen separat kommentarliste, så intet vises to gange. Se [pcf.md](pcf.md).
