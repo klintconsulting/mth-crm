@@ -16,6 +16,8 @@
 | `scripts/Deploy-Pcf.ps1` | Tester, bygger og pusher PCF-kontrollerne i `pcf/` og lægger dem i solutionen | Efter hver ændring i `pcf/` |
 | `scripts/Deploy-WebResources.ps1` | Opretter eller opdaterer alle filer i `webresources/` som web resources (navn = sti, f.eks. `mth_/scripts/opportunity.js`) og publicerer dem | Efter hver ændring i `webresources/`, før Deploy-App (bruges ikke p.t., ingen web resources) |
 | `scripts/New-DemoProjectSites.ps1` | DEMO: opretter et projektsite (Microsoft 365-gruppe) pr. sag med status 20–89, lægger eksempeldokumenter i Shared Documents og sætter Project Site URL på sagen | Kun i en test-tenant. Se sharepoint.md |
+| `scripts/Import-Trades.ps1` + `scripts/data/trades.json` | Fagkataloget (213 fag) upsertes på nøglen `mth_code`. Stamdata, også til produktion | Efter Deploy-Schema på et nyt miljø |
+| `scripts/New-EspTestData.ps1` | ESP-testdata: underentreprenører med fag og kontakter, entrepriser, UE-tilknytninger, skabeloner. `-Remove` sletter | Kun udvikling og test |
 | `scripts/app/app.json` | Definitionen af appen: navigation, visninger og formularer (faner, kolonner, sektioner, felter, undergitre) | Rettes i hånden |
 
 ## schema.json

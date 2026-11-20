@@ -1388,1084 +1388,6 @@
                                                        ]
                                        },
                                        {
-                                           "schemaName":  "mth_BuildingContracts",
-                                           "displayName":  "Building Contracts",
-                                           "type":  "multichoice",
-                                           "source":  "Building_Contracts__c",
-                                           "options":  [
-                                                           {
-                                                               "value":  273280000,
-                                                               "label":  "Alle",
-                                                               "sourceValue":  "Alle"
-                                                           },
-                                                           {
-                                                               "value":  273280001,
-                                                               "label":  "ABA-anlæg - 22105",
-                                                               "sourceValue":  "ABA-anlæg - 22105"
-                                                           },
-                                                           {
-                                                               "value":  273280002,
-                                                               "label":  "Additiver - 21211",
-                                                               "sourceValue":  "Additiver - 21211"
-                                                           },
-                                                           {
-                                                               "value":  273280003,
-                                                               "label":  "Adgangskontrol - 22104",
-                                                               "sourceValue":  "Adgangskontrol - 22104"
-                                                           },
-                                                           {
-                                                               "value":  273280004,
-                                                               "label":  "Advokat - 23301",
-                                                               "sourceValue":  "Advokat - 23301"
-                                                           },
-                                                           {
-                                                               "value":  273280005,
-                                                               "label":  "Afdækning,curing m.v. - 21210",
-                                                               "sourceValue":  "Afdækning,curing m.v. - 21210"
-                                                           },
-                                                           {
-                                                               "value":  273280006,
-                                                               "label":  "Afløbstilslutning - 24007",
-                                                               "sourceValue":  "Afløbstilslutning - 24007"
-                                                           },
-                                                           {
-                                                               "value":  273280007,
-                                                               "label":  "Altaner - 21409",
-                                                               "sourceValue":  "Altaner - 21409"
-                                                           },
-                                                           {
-                                                               "value":  273280008,
-                                                               "label":  "Anlægsarbejder - UE - 22001",
-                                                               "sourceValue":  "Anlægsarbejder - UE - 22001"
-                                                           },
-                                                           {
-                                                               "value":  273280009,
-                                                               "label":  "Arbejdsmiljø - 21014",
-                                                               "sourceValue":  "Arbejdsmiljø - 21014"
-                                                           },
-                                                           {
-                                                               "value":  273280010,
-                                                               "label":  "Arkitekt - 23306",
-                                                               "sourceValue":  "Arkitekt - 23306"
-                                                           },
-                                                           {
-                                                               "value":  273280011,
-                                                               "label":  "Armering - 21202",
-                                                               "sourceValue":  "Armering - 21202"
-                                                           },
-                                                           {
-                                                               "value":  273280012,
-                                                               "label":  "Artskonto mangler - 21037",
-                                                               "sourceValue":  "Artskonto mangler - 21037"
-                                                           },
-                                                           {
-                                                               "value":  273280013,
-                                                               "label":  "Asfalt - UE - 22012",
-                                                               "sourceValue":  "Asfalt - UE - 22012"
-                                                           },
-                                                           {
-                                                               "value":  273280014,
-                                                               "label":  "Automatik - 22113",
-                                                               "sourceValue":  "Automatik - 22113"
-                                                           },
-                                                           {
-                                                               "value":  273280015,
-                                                               "label":  "Badeværelseskabiner - 21411",
-                                                               "sourceValue":  "Badeværelseskabiner - 21411"
-                                                           },
-                                                           {
-                                                               "value":  273280016,
-                                                               "label":  "Belægninger - UE - 22010",
-                                                               "sourceValue":  "Belægninger - UE - 22010"
-                                                           },
-                                                           {
-                                                               "value":  273280017,
-                                                               "label":  "Belægningsmaterialer - 21226",
-                                                               "sourceValue":  "Belægningsmaterialer - 21226"
-                                                           },
-                                                           {
-                                                               "value":  273280018,
-                                                               "label":  "Benzin - arbejdsplads - 21033",
-                                                               "sourceValue":  "Benzin - arbejdsplads - 21033"
-                                                           },
-                                                           {
-                                                               "value":  273280019,
-                                                               "label":  "Benzin - maskiner - 23105",
-                                                               "sourceValue":  "Benzin - maskiner - 23105"
-                                                           },
-                                                           {
-                                                               "value":  273280020,
-                                                               "label":  "Beton støbt på stedet - UE - 22022",
-                                                               "sourceValue":  "Beton støbt på stedet - UE - 22022"
-                                                           },
-                                                           {
-                                                               "value":  273280021,
-                                                               "label":  "Betonarbejder - UE - 22020",
-                                                               "sourceValue":  "Betonarbejder - UE - 22020"
-                                                           },
-                                                           {
-                                                               "value":  273280022,
-                                                               "label":  "Betonelelementer - 21410",
-                                                               "sourceValue":  "Betonelelementer - 21410"
-                                                           },
-                                                           {
-                                                               "value":  273280023,
-                                                               "label":  "Betonrenovering - UE - 22021",
-                                                               "sourceValue":  "Betonrenovering - UE - 22021"
-                                                           },
-                                                           {
-                                                               "value":  273280024,
-                                                               "label":  "Biler leje - 23008",
-                                                               "sourceValue":  "Biler leje - 23008"
-                                                           },
-                                                           {
-                                                               "value":  273280025,
-                                                               "label":  "Blikkenslager - UE - 22047",
-                                                               "sourceValue":  "Blikkenslager - UE - 22047"
-                                                           },
-                                                           {
-                                                               "value":  273280026,
-                                                               "label":  "Boring, skæring \u0026 sprængning - UE - 22025",
-                                                               "sourceValue":  "Boring, skæring \u0026 sprængning - UE - 22025"
-                                                           },
-                                                           {
-                                                               "value":  273280027,
-                                                               "label":  "Branddøre - UE - 22056",
-                                                               "sourceValue":  "Branddøre - UE - 22056"
-                                                           },
-                                                           {
-                                                               "value":  273280028,
-                                                               "label":  "Brolægger - UE - 22011",
-                                                               "sourceValue":  "Brolægger - UE - 22011"
-                                                           },
-                                                           {
-                                                               "value":  273280029,
-                                                               "label":  "Brøndfundering - UE - 22007",
-                                                               "sourceValue":  "Brøndfundering - UE - 22007"
-                                                           },
-                                                           {
-                                                               "value":  273280030,
-                                                               "label":  "Bundsikring - 21224",
-                                                               "sourceValue":  "Bundsikring - 21224"
-                                                           },
-                                                           {
-                                                               "value":  273280031,
-                                                               "label":  "Byggetilladelse - 24002",
-                                                               "sourceValue":  "Byggetilladelse - 24002"
-                                                           },
-                                                           {
-                                                               "value":  273280032,
-                                                               "label":  "Campdrift - 21025",
-                                                               "sourceValue":  "Campdrift - 21025"
-                                                           },
-                                                           {
-                                                               "value":  273280033,
-                                                               "label":  "Campindretning - 21024",
-                                                               "sourceValue":  "Campindretning - 21024"
-                                                           },
-                                                           {
-                                                               "value":  273280034,
-                                                               "label":  "Cement og mørtel - 21205",
-                                                               "sourceValue":  "Cement og mørtel - 21205"
-                                                           },
-                                                           {
-                                                               "value":  273280035,
-                                                               "label":  "Container incl. tømning - 21022",
-                                                               "sourceValue":  "Container incl. tømning - 21022"
-                                                           },
-                                                           {
-                                                               "value":  273280036,
-                                                               "label":  "Cykelskure - UE - 22049",
-                                                               "sourceValue":  "Cykelskure - UE - 22049"
-                                                           },
-                                                           {
-                                                               "value":  273280037,
-                                                               "label":  "Diesel - arbejdsplads - 21032",
-                                                               "sourceValue":  "Diesel - arbejdsplads - 21032"
-                                                           },
-                                                           {
-                                                               "value":  273280038,
-                                                               "label":  "Diesel - maskiner - 23104",
-                                                               "sourceValue":  "Diesel - maskiner - 23104"
-                                                           },
-                                                           {
-                                                               "value":  273280039,
-                                                               "label":  "Div. Leverancer - UE - 22064",
-                                                               "sourceValue":  "Div. Leverancer - UE - 22064"
-                                                           },
-                                                           {
-                                                               "value":  273280040,
-                                                               "label":  "Diverse byggepladsomkostninger - 21012",
-                                                               "sourceValue":  "Diverse byggepladsomkostninger - 21012"
-                                                           },
-                                                           {
-                                                               "value":  273280041,
-                                                               "label":  "Diverse indkøb træ - 21113",
-                                                               "sourceValue":  "Diverse indkøb træ - 21113"
-                                                           },
-                                                           {
-                                                               "value":  273280042,
-                                                               "label":  "Diverse vedr. betonarbejder - 21237",
-                                                               "sourceValue":  "Diverse vedr. betonarbejder - 21237"
-                                                           },
-                                                           {
-                                                               "value":  273280043,
-                                                               "label":  "Dykkerarbejde - UE - 22003",
-                                                               "sourceValue":  "Dykkerarbejde - UE - 22003"
-                                                           },
-                                                           {
-                                                               "value":  273280044,
-                                                               "label":  "Ejendomsmægler - 23302",
-                                                               "sourceValue":  "Ejendomsmægler - 23302"
-                                                           },
-                                                           {
-                                                               "value":  273280045,
-                                                               "label":  "El - arbejdsplads - 21029",
-                                                               "sourceValue":  "El - arbejdsplads - 21029"
-                                                           },
-                                                           {
-                                                               "value":  273280046,
-                                                               "label":  "El - skurby - 21030",
-                                                               "sourceValue":  "El - skurby - 21030"
-                                                           },
-                                                           {
-                                                               "value":  273280047,
-                                                               "label":  "El-arbejde - 22101",
-                                                               "sourceValue":  "El-arbejde - 22101"
-                                                           },
-                                                           {
-                                                               "value":  273280048,
-                                                               "label":  "Elementmontage - UE - 22024",
-                                                               "sourceValue":  "Elementmontage - UE - 22024"
-                                                           },
-                                                           {
-                                                               "value":  273280049,
-                                                               "label":  "Elevator/kran/escalator - 22108",
-                                                               "sourceValue":  "Elevator/kran/escalator - 22108"
-                                                           },
-                                                           {
-                                                               "value":  273280050,
-                                                               "label":  "El-ingeniør - 23312",
-                                                               "sourceValue":  "El-ingeniør - 23312"
-                                                           },
-                                                           {
-                                                               "value":  273280051,
-                                                               "label":  "Eltilslutning - 24006",
-                                                               "sourceValue":  "Eltilslutning - 24006"
-                                                           },
-                                                           {
-                                                               "value":  273280052,
-                                                               "label":  "Etagedæk - 21403",
-                                                               "sourceValue":  "Etagedæk - 21403"
-                                                           },
-                                                           {
-                                                               "value":  273280053,
-                                                               "label":  "Facadebeklædning - 21102",
-                                                               "sourceValue":  "Facadebeklædning - 21102"
-                                                           },
-                                                           {
-                                                               "value":  273280054,
-                                                               "label":  "Facader (døre/vinduer) - UE - 22044",
-                                                               "sourceValue":  "Facader (døre/vinduer) - UE - 22044"
-                                                           },
-                                                           {
-                                                               "value":  273280055,
-                                                               "label":  "Finish - UE - 22026",
-                                                               "sourceValue":  "Finish - UE - 22026"
-                                                           },
-                                                           {
-                                                               "value":  273280056,
-                                                               "label":  "Fjernvarme  - arbejdsplads - 21036",
-                                                               "sourceValue":  "Fjernvarme  - arbejdsplads - 21036"
-                                                           },
-                                                           {
-                                                               "value":  273280057,
-                                                               "label":  "Fjernvarmetilslutning - 24005",
-                                                               "sourceValue":  "Fjernvarmetilslutning - 24005"
-                                                           },
-                                                           {
-                                                               "value":  273280058,
-                                                               "label":  "Fliser \u0026 klinker - 21216",
-                                                               "sourceValue":  "Fliser \u0026 klinker - 21216"
-                                                           },
-                                                           {
-                                                               "value":  273280059,
-                                                               "label":  "Fodpaneler - 21110",
-                                                               "sourceValue":  "Fodpaneler - 21110"
-                                                           },
-                                                           {
-                                                               "value":  273280060,
-                                                               "label":  "Forbrugsgods - 21013",
-                                                               "sourceValue":  "Forbrugsgods - 21013"
-                                                           },
-                                                           {
-                                                               "value":  273280061,
-                                                               "label":  "Fornybare energikilder - arbejdsplads - 21035",
-                                                               "sourceValue":  "Fornybare energikilder - arbejdsplads - 21035"
-                                                           },
-                                                           {
-                                                               "value":  273280062,
-                                                               "label":  "Fornybare energikilder - maskiner - 23107",
-                                                               "sourceValue":  "Fornybare energikilder - maskiner - 23107"
-                                                           },
-                                                           {
-                                                               "value":  273280063,
-                                                               "label":  "Forsikringer - maskiner - 23109",
-                                                               "sourceValue":  "Forsikringer - maskiner - 23109"
-                                                           },
-                                                           {
-                                                               "value":  273280064,
-                                                               "label":  "Forskalling, incl. leje - 21207",
-                                                               "sourceValue":  "Forskalling, incl. leje - 21207"
-                                                           },
-                                                           {
-                                                               "value":  273280065,
-                                                               "label":  "Friktionsfyld - 21223",
-                                                               "sourceValue":  "Friktionsfyld - 21223"
-                                                           },
-                                                           {
-                                                               "value":  273280066,
-                                                               "label":  "Fugning - UE - 22062",
-                                                               "sourceValue":  "Fugning - UE - 22062"
-                                                           },
-                                                           {
-                                                               "value":  273280067,
-                                                               "label":  "Fyrings- og marinegasolie - arbejdsplads - 21034",
-                                                               "sourceValue":  "Fyrings- og marinegasolie - arbejdsplads - 21034"
-                                                           },
-                                                           {
-                                                               "value":  273280068,
-                                                               "label":  "Færdigblandet beton - 21204",
-                                                               "sourceValue":  "Færdigblandet beton - 21204"
-                                                           },
-                                                           {
-                                                               "value":  273280069,
-                                                               "label":  "Gartner - UE - 22009",
-                                                               "sourceValue":  "Gartner - UE - 22009"
-                                                           },
-                                                           {
-                                                               "value":  273280070,
-                                                               "label":  "Gas - arbejdsplads - 21031",
-                                                               "sourceValue":  "Gas - arbejdsplads - 21031"
-                                                           },
-                                                           {
-                                                               "value":  273280071,
-                                                               "label":  "Gas - maskiner - 23103",
-                                                               "sourceValue":  "Gas - maskiner - 23103"
-                                                           },
-                                                           {
-                                                               "value":  273280072,
-                                                               "label":  "Gasanlæg - 22116",
-                                                               "sourceValue":  "Gasanlæg - 22116"
-                                                           },
-                                                           {
-                                                               "value":  273280073,
-                                                               "label":  "Gasbeton \u0026 Lecablokke - 21209",
-                                                               "sourceValue":  "Gasbeton \u0026 Lecablokke - 21209"
-                                                           },
-                                                           {
-                                                               "value":  273280074,
-                                                               "label":  "Gastilslutning - 24009",
-                                                               "sourceValue":  "Gastilslutning - 24009"
-                                                           },
-                                                           {
-                                                               "value":  273280075,
-                                                               "label":  "Geotekniker - 23314",
-                                                               "sourceValue":  "Geotekniker - 23314"
-                                                           },
-                                                           {
-                                                               "value":  273280076,
-                                                               "label":  "Glarmester - UE - 22046",
-                                                               "sourceValue":  "Glarmester - UE - 22046"
-                                                           },
-                                                           {
-                                                               "value":  273280077,
-                                                               "label":  "Grundvandssænkning - UE - 22016",
-                                                               "sourceValue":  "Grundvandssænkning - UE - 22016"
-                                                           },
-                                                           {
-                                                               "value":  273280078,
-                                                               "label":  "Grus og tilsl.mat.incl.kørsel - 21206",
-                                                               "sourceValue":  "Grus og tilsl.mat.incl.kørsel - 21206"
-                                                           },
-                                                           {
-                                                               "value":  273280079,
-                                                               "label":  "Gulvbelægning - UE - 22039",
-                                                               "sourceValue":  "Gulvbelægning - UE - 22039"
-                                                           },
-                                                           {
-                                                               "value":  273280080,
-                                                               "label":  "Gulve - 21109",
-                                                               "sourceValue":  "Gulve - 21109"
-                                                           },
-                                                           {
-                                                               "value":  273280081,
-                                                               "label":  "Halfeneisen \u0026 beslag - 21219",
-                                                               "sourceValue":  "Halfeneisen \u0026 beslag - 21219"
-                                                           },
-                                                           {
-                                                               "value":  273280082,
-                                                               "label":  "Havne- og toldafgifter - 23206",
-                                                               "sourceValue":  "Havne- og toldafgifter - 23206"
-                                                           },
-                                                           {
-                                                               "value":  273280083,
-                                                               "label":  "Hegn - UE - 22017",
-                                                               "sourceValue":  "Hegn - UE - 22017"
-                                                           },
-                                                           {
-                                                               "value":  273280084,
-                                                               "label":  "Hegn, porte, m.v. - 21405",
-                                                               "sourceValue":  "Hegn, porte, m.v. - 21405"
-                                                           },
-                                                           {
-                                                               "value":  273280085,
-                                                               "label":  "Hejse leje - 23004",
-                                                               "sourceValue":  "Hejse leje - 23004"
-                                                           },
-                                                           {
-                                                               "value":  273280086,
-                                                               "label":  "Håndlister, rækværker, m.v. - 21106",
-                                                               "sourceValue":  "Håndlister, rækværker, m.v. - 21106"
-                                                           },
-                                                           {
-                                                               "value":  273280087,
-                                                               "label":  "Indervægge - 21101",
-                                                               "sourceValue":  "Indervægge - 21101"
-                                                           },
-                                                           {
-                                                               "value":  273280088,
-                                                               "label":  "Indv. døre, træ - 21104",
-                                                               "sourceValue":  "Indv. døre, træ - 21104"
-                                                           },
-                                                           {
-                                                               "value":  273280089,
-                                                               "label":  "Ingeniør - 23308",
-                                                               "sourceValue":  "Ingeniør - 23308"
-                                                           },
-                                                           {
-                                                               "value":  273280090,
-                                                               "label":  "Installationer ingeniør - 23310",
-                                                               "sourceValue":  "Installationer ingeniør - 23310"
-                                                           },
-                                                           {
-                                                               "value":  273280091,
-                                                               "label":  "Intern Tømrer - UE - 22066",
-                                                               "sourceValue":  "Intern Tømrer - UE - 22066"
-                                                           },
-                                                           {
-                                                               "value":  273280092,
-                                                               "label":  "Inventar - 21412",
-                                                               "sourceValue":  "Inventar - 21412"
-                                                           },
-                                                           {
-                                                               "value":  273280093,
-                                                               "label":  "Inventar - UE - 22063",
-                                                               "sourceValue":  "Inventar - UE - 22063"
-                                                           },
-                                                           {
-                                                               "value":  273280094,
-                                                               "label":  "Isoleringsmaterialer - 21221",
-                                                               "sourceValue":  "Isoleringsmaterialer - 21221"
-                                                           },
-                                                           {
-                                                               "value":  273280095,
-                                                               "label":  "IT- \u0026 telefoninstallationsanlæg - 22102",
-                                                               "sourceValue":  "IT- \u0026 telefoninstallationsanlæg - 22102"
-                                                           },
-                                                           {
-                                                               "value":  273280096,
-                                                               "label":  "Jord \u0026 kloak - UE - 22006",
-                                                               "sourceValue":  "Jord \u0026 kloak - UE - 22006"
-                                                           },
-                                                           {
-                                                               "value":  273280097,
-                                                               "label":  "Jord \u0026 terrænarbejde - UE - 22005",
-                                                               "sourceValue":  "Jord \u0026 terrænarbejde - UE - 22005"
-                                                           },
-                                                           {
-                                                               "value":  273280098,
-                                                               "label":  "Jordmaterialer - 21222",
-                                                               "sourceValue":  "Jordmaterialer - 21222"
-                                                           },
-                                                           {
-                                                               "value":  273280099,
-                                                               "label":  "Kajudstyr - 21235",
-                                                               "sourceValue":  "Kajudstyr - 21235"
-                                                           },
-                                                           {
-                                                               "value":  273280100,
-                                                               "label":  "Kantsten, fliser m.v. - 21230",
-                                                               "sourceValue":  "Kantsten, fliser m.v. - 21230"
-                                                           },
-                                                           {
-                                                               "value":  273280101,
-                                                               "label":  "Kloak og dræn - 21227",
-                                                               "sourceValue":  "Kloak og dræn - 21227"
-                                                           },
-                                                           {
-                                                               "value":  273280102,
-                                                               "label":  "Konsulenthonorar - 23305",
-                                                               "sourceValue":  "Konsulenthonorar - 23305"
-                                                           },
-                                                           {
-                                                               "value":  273280103,
-                                                               "label":  "Kontrolforanstaltninger - 21016",
-                                                               "sourceValue":  "Kontrolforanstaltninger - 21016"
-                                                           },
-                                                           {
-                                                               "value":  273280104,
-                                                               "label":  "Kraner leje - 23009",
-                                                               "sourceValue":  "Kraner leje - 23009"
-                                                           },
-                                                           {
-                                                               "value":  273280105,
-                                                               "label":  "Kunststofbelægning - UE - 22040",
-                                                               "sourceValue":  "Kunststofbelægning - UE - 22040"
-                                                           },
-                                                           {
-                                                               "value":  273280106,
-                                                               "label":  "Køkken - UE - 22057",
-                                                               "sourceValue":  "Køkken - UE - 22057"
-                                                           },
-                                                           {
-                                                               "value":  273280107,
-                                                               "label":  "Køkkener - 21406",
-                                                               "sourceValue":  "Køkkener - 21406"
-                                                           },
-                                                           {
-                                                               "value":  273280108,
-                                                               "label":  "Køleanlæg - 22114",
-                                                               "sourceValue":  "Køleanlæg - 22114"
-                                                           },
-                                                           {
-                                                               "value":  273280109,
-                                                               "label":  "Kørsel materialer - 21212",
-                                                               "sourceValue":  "Kørsel materialer - 21212"
-                                                           },
-                                                           {
-                                                               "value":  273280110,
-                                                               "label":  "Kørsel og fragt - 23202",
-                                                               "sourceValue":  "Kørsel og fragt - 23202"
-                                                           },
-                                                           {
-                                                               "value":  273280111,
-                                                               "label":  "Landinspektør - 23313",
-                                                               "sourceValue":  "Landinspektør - 23313"
-                                                           },
-                                                           {
-                                                               "value":  273280112,
-                                                               "label":  "Landskabsarkitekt - 23307",
-                                                               "sourceValue":  "Landskabsarkitekt - 23307"
-                                                           },
-                                                           {
-                                                               "value":  273280113,
-                                                               "label":  "Lemme, m.v. - 21105",
-                                                               "sourceValue":  "Lemme, m.v. - 21105"
-                                                           },
-                                                           {
-                                                               "value":  273280114,
-                                                               "label":  "Letbetonmontage - UE - 22028",
-                                                               "sourceValue":  "Letbetonmontage - UE - 22028"
-                                                           },
-                                                           {
-                                                               "value":  273280115,
-                                                               "label":  "Lette facader - UE - 22042",
-                                                               "sourceValue":  "Lette facader - UE - 22042"
-                                                           },
-                                                           {
-                                                               "value":  273280116,
-                                                               "label":  "Lette vægge/lofter - UE - 22052",
-                                                               "sourceValue":  "Lette vægge/lofter - UE - 22052"
-                                                           },
-                                                           {
-                                                               "value":  273280117,
-                                                               "label":  "Lofter - 21108",
-                                                               "sourceValue":  "Lofter - 21108"
-                                                           },
-                                                           {
-                                                               "value":  273280118,
-                                                               "label":  "Luftfragt - 23204",
-                                                               "sourceValue":  "Luftfragt - 23204"
-                                                           },
-                                                           {
-                                                               "value":  273280119,
-                                                               "label":  "Løfteudstyr leje - 23015",
-                                                               "sourceValue":  "Løfteudstyr leje - 23015"
-                                                           },
-                                                           {
-                                                               "value":  273280120,
-                                                               "label":  "Maler - UE - 22059",
-                                                               "sourceValue":  "Maler - UE - 22059"
-                                                           },
-                                                           {
-                                                               "value":  273280121,
-                                                               "label":  "Marinegasolie - maskiner - 23106",
-                                                               "sourceValue":  "Marinegasolie - maskiner - 23106"
-                                                           },
-                                                           {
-                                                               "value":  273280122,
-                                                               "label":  "Materielleje, anlæg ekstern - 23006",
-                                                               "sourceValue":  "Materielleje, anlæg ekstern - 23006"
-                                                           },
-                                                           {
-                                                               "value":  273280123,
-                                                               "label":  "Materielleje, beton ekstern - 23005",
-                                                               "sourceValue":  "Materielleje, beton ekstern - 23005"
-                                                           },
-                                                           {
-                                                               "value":  273280124,
-                                                               "label":  "Membran - UE - 22038",
-                                                               "sourceValue":  "Membran - UE - 22038"
-                                                           },
-                                                           {
-                                                               "value":  273280125,
-                                                               "label":  "Miljøarbejde - UE - 22008",
-                                                               "sourceValue":  "Miljøarbejde - UE - 22008"
-                                                           },
-                                                           {
-                                                               "value":  273280126,
-                                                               "label":  "Miljøundersøgelser - 23315",
-                                                               "sourceValue":  "Miljøundersøgelser - 23315"
-                                                           },
-                                                           {
-                                                               "value":  273280127,
-                                                               "label":  "Mobilkraner leje - 23010",
-                                                               "sourceValue":  "Mobilkraner leje - 23010"
-                                                           },
-                                                           {
-                                                               "value":  273280128,
-                                                               "label":  "Murer - UE - 22030",
-                                                               "sourceValue":  "Murer - UE - 22030"
-                                                           },
-                                                           {
-                                                               "value":  273280129,
-                                                               "label":  "Murermaterialer - 21215",
-                                                               "sourceValue":  "Murermaterialer - 21215"
-                                                           },
-                                                           {
-                                                               "value":  273280130,
-                                                               "label":  "Nedhængte lofter - 21107",
-                                                               "sourceValue":  "Nedhængte lofter - 21107"
-                                                           },
-                                                           {
-                                                               "value":  273280131,
-                                                               "label":  "Nedrivning - UE - 22018",
-                                                               "sourceValue":  "Nedrivning - UE - 22018"
-                                                           },
-                                                           {
-                                                               "value":  273280132,
-                                                               "label":  "Off. myndigheder - 24001",
-                                                               "sourceValue":  "Off. myndigheder - 24001"
-                                                           },
-                                                           {
-                                                               "value":  273280133,
-                                                               "label":  "Overfladebehandling - UE - 22027",
-                                                               "sourceValue":  "Overfladebehandling - UE - 22027"
-                                                           },
-                                                           {
-                                                               "value":  273280134,
-                                                               "label":  "Pakkeomkostninger - 23201",
-                                                               "sourceValue":  "Pakkeomkostninger - 23201"
-                                                           },
-                                                           {
-                                                               "value":  273280135,
-                                                               "label":  "Pladsdrift - 21021",
-                                                               "sourceValue":  "Pladsdrift - 21021"
-                                                           },
-                                                           {
-                                                               "value":  273280136,
-                                                               "label":  "Pladsindretning - 21020",
-                                                               "sourceValue":  "Pladsindretning - 21020"
-                                                           },
-                                                           {
-                                                               "value":  273280137,
-                                                               "label":  "Platforme leje - 23001",
-                                                               "sourceValue":  "Platforme leje - 23001"
-                                                           },
-                                                           {
-                                                               "value":  273280138,
-                                                               "label":  "Porte - UE - 22055",
-                                                               "sourceValue":  "Porte - UE - 22055"
-                                                           },
-                                                           {
-                                                               "value":  273280139,
-                                                               "label":  "Pæle - UE - 22013",
-                                                               "sourceValue":  "Pæle - UE - 22013"
-                                                           },
-                                                           {
-                                                               "value":  273280140,
-                                                               "label":  "Pælekapning - UE - 22014",
-                                                               "sourceValue":  "Pælekapning - UE - 22014"
-                                                           },
-                                                           {
-                                                               "value":  273280141,
-                                                               "label":  "Rengøring - arbejdsplads - 21010",
-                                                               "sourceValue":  "Rengøring - arbejdsplads - 21010"
-                                                           },
-                                                           {
-                                                               "value":  273280142,
-                                                               "label":  "Rengøring - UE - 22060",
-                                                               "sourceValue":  "Rengøring - UE - 22060"
-                                                           },
-                                                           {
-                                                               "value":  273280143,
-                                                               "label":  "Renoveringsmaterialer - 21111",
-                                                               "sourceValue":  "Renoveringsmaterialer - 21111"
-                                                           },
-                                                           {
-                                                               "value":  273280144,
-                                                               "label":  "Reservedele og vedligeholdelse - 23102",
-                                                               "sourceValue":  "Reservedele og vedligeholdelse - 23102"
-                                                           },
-                                                           {
-                                                               "value":  273280145,
-                                                               "label":  "Revisor - 23303",
-                                                               "sourceValue":  "Revisor - 23303"
-                                                           },
-                                                           {
-                                                               "value":  273280146,
-                                                               "label":  "Sand- og ralleverancer - UE - 22004",
-                                                               "sourceValue":  "Sand- og ralleverancer - UE - 22004"
-                                                           },
-                                                           {
-                                                               "value":  273280147,
-                                                               "label":  "Sikkerhedsforanstaltninger - 21015",
-                                                               "sourceValue":  "Sikkerhedsforanstaltninger - 21015"
-                                                           },
-                                                           {
-                                                               "value":  273280148,
-                                                               "label":  "Skrot - 21028",
-                                                               "sourceValue":  "Skrot - 21028"
-                                                           },
-                                                           {
-                                                               "value":  273280149,
-                                                               "label":  "Skurleje - 23003",
-                                                               "sourceValue":  "Skurleje - 23003"
-                                                           },
-                                                           {
-                                                               "value":  273280150,
-                                                               "label":  "Skære-/bore-/slibematerialer - 21234",
-                                                               "sourceValue":  "Skære-/bore-/slibematerialer - 21234"
-                                                           },
-                                                           {
-                                                               "value":  273280151,
-                                                               "label":  "Smed - UE - 22048",
-                                                               "sourceValue":  "Smed - UE - 22048"
-                                                           },
-                                                           {
-                                                               "value":  273280152,
-                                                               "label":  "Smøre- og hydraulikolie - 23101",
-                                                               "sourceValue":  "Smøre- og hydraulikolie - 23101"
-                                                           },
-                                                           {
-                                                               "value":  273280153,
-                                                               "label":  "Snedker - UE - 22041",
-                                                               "sourceValue":  "Snedker - UE - 22041"
-                                                           },
-                                                           {
-                                                               "value":  273280154,
-                                                               "label":  "Solafskærmning - UE - 22061",
-                                                               "sourceValue":  "Solafskærmning - UE - 22061"
-                                                           },
-                                                           {
-                                                               "value":  273280155,
-                                                               "label":  "Solceller - 22107",
-                                                               "sourceValue":  "Solceller - 22107"
-                                                           },
-                                                           {
-                                                               "value":  273280156,
-                                                               "label":  "Specialmørtler \u0026 epoxy - 21214",
-                                                               "sourceValue":  "Specialmørtler \u0026 epoxy - 21214"
-                                                           },
-                                                           {
-                                                               "value":  273280157,
-                                                               "label":  "Sprinkler - 22112",
-                                                               "sourceValue":  "Sprinkler - 22112"
-                                                           },
-                                                           {
-                                                               "value":  273280158,
-                                                               "label":  "Sprængstof og detonatorer - 21233",
-                                                               "sourceValue":  "Sprængstof og detonatorer - 21233"
-                                                           },
-                                                           {
-                                                               "value":  273280159,
-                                                               "label":  "Spuns \u0026 pæle - 21228",
-                                                               "sourceValue":  "Spuns \u0026 pæle - 21228"
-                                                           },
-                                                           {
-                                                               "value":  273280160,
-                                                               "label":  "Spunsning - UE - 22015",
-                                                               "sourceValue":  "Spunsning - UE - 22015"
-                                                           },
-                                                           {
-                                                               "value":  273280161,
-                                                               "label":  "Spændarmering - UE - 22023",
-                                                               "sourceValue":  "Spændarmering - UE - 22023"
-                                                           },
-                                                           {
-                                                               "value":  273280162,
-                                                               "label":  "Stabiltgrus - 21225",
-                                                               "sourceValue":  "Stabiltgrus - 21225"
-                                                           },
-                                                           {
-                                                               "value":  273280163,
-                                                               "label":  "Stikledninger - 24004",
-                                                               "sourceValue":  "Stikledninger - 24004"
-                                                           },
-                                                           {
-                                                               "value":  273280164,
-                                                               "label":  "Stillads leje - 23002",
-                                                               "sourceValue":  "Stillads leje - 23002"
-                                                           },
-                                                           {
-                                                               "value":  273280165,
-                                                               "label":  "Storkøkkener - UE - 22058",
-                                                               "sourceValue":  "Storkøkkener - UE - 22058"
-                                                           },
-                                                           {
-                                                               "value":  273280166,
-                                                               "label":  "Stål/alufacader - UE - 22045",
-                                                               "sourceValue":  "Stål/alufacader - UE - 22045"
-                                                           },
-                                                           {
-                                                               "value":  273280167,
-                                                               "label":  "Ståldøre - 21413",
-                                                               "sourceValue":  "Ståldøre - 21413"
-                                                           },
-                                                           {
-                                                               "value":  273280168,
-                                                               "label":  "Stålkonstruktioner - UE - 22050",
-                                                               "sourceValue":  "Stålkonstruktioner - UE - 22050"
-                                                           },
-                                                           {
-                                                               "value":  273280169,
-                                                               "label":  "Stålmaterialer - 21236",
-                                                               "sourceValue":  "Stålmaterialer - 21236"
-                                                           },
-                                                           {
-                                                               "value":  273280170,
-                                                               "label":  "Ståltrapper - 21414",
-                                                               "sourceValue":  "Ståltrapper - 21414"
-                                                           },
-                                                           {
-                                                               "value":  273280171,
-                                                               "label":  "Svagstrøm diverse - 22106",
-                                                               "sourceValue":  "Svagstrøm diverse - 22106"
-                                                           },
-                                                           {
-                                                               "value":  273280172,
-                                                               "label":  "Søfragt - 23203",
-                                                               "sourceValue":  "Søfragt - 23203"
-                                                           },
-                                                           {
-                                                               "value":  273280173,
-                                                               "label":  "Tag/vægkassetter - 21402",
-                                                               "sourceValue":  "Tag/vægkassetter - 21402"
-                                                           },
-                                                           {
-                                                               "value":  273280174,
-                                                               "label":  "Tagdækning - UE - 22037",
-                                                               "sourceValue":  "Tagdækning - UE - 22037"
-                                                           },
-                                                           {
-                                                               "value":  273280175,
-                                                               "label":  "Tagelementer - UE - 22035",
-                                                               "sourceValue":  "Tagelementer - UE - 22035"
-                                                           },
-                                                           {
-                                                               "value":  273280176,
-                                                               "label":  "Tagkonstruktion - 21401",
-                                                               "sourceValue":  "Tagkonstruktion - 21401"
-                                                           },
-                                                           {
-                                                               "value":  273280177,
-                                                               "label":  "Tagsten - 21203",
-                                                               "sourceValue":  "Tagsten - 21203"
-                                                           },
-                                                           {
-                                                               "value":  273280178,
-                                                               "label":  "Teknisk isolering - 22115",
-                                                               "sourceValue":  "Teknisk isolering - 22115"
-                                                           },
-                                                           {
-                                                               "value":  273280179,
-                                                               "label":  "Tilslutningsafgifter - 24003",
-                                                               "sourceValue":  "Tilslutningsafgifter - 24003"
-                                                           },
-                                                           {
-                                                               "value":  273280180,
-                                                               "label":  "Timebaserede omkostninger - 21027",
-                                                               "sourceValue":  "Timebaserede omkostninger - 21027"
-                                                           },
-                                                           {
-                                                               "value":  273280181,
-                                                               "label":  "Trapper - 21404",
-                                                               "sourceValue":  "Trapper - 21404"
-                                                           },
-                                                           {
-                                                               "value":  273280182,
-                                                               "label":  "Trapper af træ/indv.trapper - UE - 22036",
-                                                               "sourceValue":  "Trapper af træ/indv.trapper - UE - 22036"
-                                                           },
-                                                           {
-                                                               "value":  273280183,
-                                                               "label":  "Træ og plader generelt - 21220",
-                                                               "sourceValue":  "Træ og plader generelt - 21220"
-                                                           },
-                                                           {
-                                                               "value":  273280184,
-                                                               "label":  "Trægulve - UE - 22033",
-                                                               "sourceValue":  "Trægulve - UE - 22033"
-                                                           },
-                                                           {
-                                                               "value":  273280185,
-                                                               "label":  "TV \u0026 antennetilslutning - 24008",
-                                                               "sourceValue":  "TV \u0026 antennetilslutning - 24008"
-                                                           },
-                                                           {
-                                                               "value":  273280186,
-                                                               "label":  "Tyverialarm - 22103",
-                                                               "sourceValue":  "Tyverialarm - 22103"
-                                                           },
-                                                           {
-                                                               "value":  273280187,
-                                                               "label":  "Tyverisikring - arbejdsplads - 21017",
-                                                               "sourceValue":  "Tyverisikring - arbejdsplads - 21017"
-                                                           },
-                                                           {
-                                                               "value":  273280188,
-                                                               "label":  "Tømrer/snedker - UE - 22032",
-                                                               "sourceValue":  "Tømrer/snedker - UE - 22032"
-                                                           },
-                                                           {
-                                                               "value":  273280189,
-                                                               "label":  "Uddybning - UE - 22002",
-                                                               "sourceValue":  "Uddybning - UE - 22002"
-                                                           },
-                                                           {
-                                                               "value":  273280190,
-                                                               "label":  "Udtørring - 21039",
-                                                               "sourceValue":  "Udtørring - 21039"
-                                                           },
-                                                           {
-                                                               "value":  273280191,
-                                                               "label":  "Udviklingshonorarer - 23316",
-                                                               "sourceValue":  "Udviklingshonorarer - 23316"
-                                                           },
-                                                           {
-                                                               "value":  273280192,
-                                                               "label":  "Vagt - arbejdsplads - 21011",
-                                                               "sourceValue":  "Vagt - arbejdsplads - 21011"
-                                                           },
-                                                           {
-                                                               "value":  273280193,
-                                                               "label":  "Vejskilte og tilbehør - 21232",
-                                                               "sourceValue":  "Vejskilte og tilbehør - 21232"
-                                                           },
-                                                           {
-                                                               "value":  273280194,
-                                                               "label":  "Ventilation - 22111",
-                                                               "sourceValue":  "Ventilation - 22111"
-                                                           },
-                                                           {
-                                                               "value":  273280195,
-                                                               "label":  "Vinduer og udv. døre - 21103",
-                                                               "sourceValue":  "Vinduer og udv. døre - 21103"
-                                                           },
-                                                           {
-                                                               "value":  273280196,
-                                                               "label":  "Vinduesarbejder - UE - 22043",
-                                                               "sourceValue":  "Vinduesarbejder - UE - 22043"
-                                                           },
-                                                           {
-                                                               "value":  273280197,
-                                                               "label":  "Vinterforanstaltninger - 21038",
-                                                               "sourceValue":  "Vinterforanstaltninger - 21038"
-                                                           },
-                                                           {
-                                                               "value":  273280198,
-                                                               "label":  "VVS-installationer - 22109",
-                                                               "sourceValue":  "VVS-installationer - 22109"
-                                                           },
-                                                           {
-                                                               "value":  273280199,
-                                                               "label":  "Væg- og tagbeklædning - UE - 22031",
-                                                               "sourceValue":  "Væg- og tagbeklædning - UE - 22031"
-                                                           },
-                                                           {
-                                                               "value":  273280200,
-                                                               "label":  "Vægtafgift - maskiner - 23108",
-                                                               "sourceValue":  "Vægtafgift - maskiner - 23108"
-                                                           },
-                                                           {
-                                                               "value":  273280201,
-                                                               "label":  "Værkstedsudstyr leje - 23007",
-                                                               "sourceValue":  "Værkstedsudstyr leje - 23007"
-                                                           },
-                                                           {
-                                                               "value":  273280202,
-                                                               "label":  "Værktøj (\u003c13.200) - 21018",
-                                                               "sourceValue":  "Værktøj (\u003c13.200) - 21018"
-                                                           },
-                                                           {
-                                                               "value":  273280203,
-                                                               "label":  "Øvrige installationsentrepriser - 22117",
-                                                               "sourceValue":  "Øvrige installationsentrepriser - 22117"
-                                                           },
-                                                           {
-                                                               "value":  273280204,
-                                                               "label":  "Øvrige lejer arbejdsplads - 23016",
-                                                               "sourceValue":  "Øvrige lejer arbejdsplads - 23016"
-                                                           },
-                                                           {
-                                                               "value":  273280205,
-                                                               "label":  "Øvrige materialer - 21231",
-                                                               "sourceValue":  "Øvrige materialer - 21231"
-                                                           },
-                                                           {
-                                                               "value":  273280206,
-                                                               "label":  "Øvrige transportudgifter - 23207",
-                                                               "sourceValue":  "Øvrige transportudgifter - 23207"
-                                                           },
-                                                           {
-                                                               "value":  273280207,
-                                                               "label":  "Øvrige tømrermaterialer - 21114",
-                                                               "sourceValue":  "Øvrige tømrermaterialer - 21114"
-                                                           },
-                                                           {
-                                                               "value":  273280208,
-                                                               "label":  "Øvrige uspec. anlægsentrepriser - UE - 22019",
-                                                               "sourceValue":  "Øvrige uspec. anlægsentrepriser - UE - 22019"
-                                                           },
-                                                           {
-                                                               "value":  273280209,
-                                                               "label":  "Øvrige uspec. bygge og anlægsentrepriser - UE - 22065",
-                                                               "sourceValue":  "Øvrige uspec. bygge og anlægsentrepriser - UE - 22065"
-                                                           },
-                                                           {
-                                                               "value":  273280210,
-                                                               "label":  "Øvrigt snedkerarbejde - 21112",
-                                                               "sourceValue":  "Øvrigt snedkerarbejde - 21112"
-                                                           },
-                                                           {
-                                                               "value":  273280211,
-                                                               "label":  "Leasing/leje gulplade biler - 29010",
-                                                               "sourceValue":  "Leasing/leje gulplade biler - 29010"
-                                                           },
-                                                           {
-                                                               "value":  273280212,
-                                                               "label":  "Kontorartikler - 45030",
-                                                               "sourceValue":  "Kontorartikler - 45030"
-                                                           },
-                                                           {
-                                                               "value":  273280213,
-                                                               "label":  "750 - Pakkeomkos",
-                                                               "sourceValue":  "750 - Pakkeomkos"
-                                                           }
-                                                       ]
-                                       },
-                                       {
                                            "schemaName":  "mth_InterestedFor",
                                            "displayName":  "Customer Is Interesting For",
                                            "type":  "multichoice",
@@ -2606,9 +1528,331 @@
                                            "source":  "Marketing_Agreement_Sent_on__c"
                                        }
                                    ]
+                   },
+                   {
+                       "schemaName":  "mth_Trade",
+                       "displayName":  "Trade",
+                       "pluralName":  "Trades",
+                       "standard":  false,
+                       "ownership":  "OrganizationOwned",
+                       "source":  "Global value set Building_Contracts (Account/Opportunity/Building_Contract__c picklists)",
+                       "description":  "Trade catalogue (fag). Accounts are linked to the trades they can deliver; a building contract is for one trade.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  200,
+                                       "source":  "value label before \" - code\""
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Code",
+                                           "displayName":  "Code",
+                                           "type":  "string",
+                                           "source":  "value label after \" - \"",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_SourceValue",
+                                           "displayName":  "Salesforce Value",
+                                           "type":  "string",
+                                           "source":  "full picklist value, used for migration",
+                                           "maxLength":  255
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_BuildingContract",
+                       "displayName":  "Building Contract",
+                       "pluralName":  "Building Contracts",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "source":  "Building_Contract__c (Entreprise)",
+                       "description":  "Building contract (entreprise) on an opportunity: one trade package that subcontractors are invited to tender for.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  300,
+                                       "source":  "Used_Building_Contract_Name__c (alternative name or trade)"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_AlternativeName",
+                                           "displayName":  "Alternative Name",
+                                           "type":  "string",
+                                           "source":  "Alternative_Building_Contract_Name__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_TenderDeadline",
+                                           "displayName":  "Tender Deadline",
+                                           "type":  "date",
+                                           "source":  "Tender_Deadline__c"
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_CollaboratingPartner",
+                       "displayName":  "Collaborating Partner",
+                       "pluralName":  "Collaborating Partners",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "hasActivities":  true,
+                       "source":  "Collaborating_Partner__c (Samarbejdspartner / UE)",
+                       "description":  "A partner (account) invited on a building contract. Selected contacts are an N:N to contact. E-mails are activities regarding this record.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  200,
+                                       "source":  "Name (account name)"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Status",
+                                           "displayName":  "Status",
+                                           "type":  "choice",
+                                           "source":  "Subcontractor_Status__c",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280010,
+                                                               "label":  "10 Selected for tender round",
+                                                               "labelDa":  "10 Udvalgt til tilbudsrunde",
+                                                               "sourceValue":  "10"
+                                                           },
+                                                           {
+                                                               "value":  273280020,
+                                                               "label":  "20 Wants to submit tender",
+                                                               "labelDa":  "20 Ã˜nsker at give tilbud",
+                                                               "sourceValue":  "20"
+                                                           },
+                                                           {
+                                                               "value":  273280022,
+                                                               "label":  "22 Will get back",
+                                                               "labelDa":  "22 Vender tilbage",
+                                                               "sourceValue":  "22"
+                                                           },
+                                                           {
+                                                               "value":  273280024,
+                                                               "label":  "24 Awaiting tender",
+                                                               "labelDa":  "24 Afventer tilbud",
+                                                               "sourceValue":  "24"
+                                                           },
+                                                           {
+                                                               "value":  273280030,
+                                                               "label":  "30 Tender received",
+                                                               "labelDa":  "30 Tilbud modtaget",
+                                                               "sourceValue":  "30"
+                                                           },
+                                                           {
+                                                               "value":  273280060,
+                                                               "label":  "60 Contract signed",
+                                                               "labelDa":  "60 Kontrakt indgÃ¥et",
+                                                               "sourceValue":  "60"
+                                                           },
+                                                           {
+                                                               "value":  273280090,
+                                                               "label":  "90 Deselected for the job",
+                                                               "labelDa":  "90 Fravalgt til opgave",
+                                                               "sourceValue":  "90"
+                                                           },
+                                                           {
+                                                               "value":  273280091,
+                                                               "label":  "91 Deselected for tender round",
+                                                               "labelDa":  "91 Fravalgt til tilbudsrunde",
+                                                               "sourceValue":  "91"
+                                                           },
+                                                           {
+                                                               "value":  273280092,
+                                                               "label":  "92 Declines to submit tender",
+                                                               "labelDa":  "92 Ã˜nsker ikke at give tilbud",
+                                                               "sourceValue":  "92"
+                                                           },
+                                                           {
+                                                               "value":  273280095,
+                                                               "label":  "95 Tender never received",
+                                                               "labelDa":  "95 Tilbud aldrig modtaget",
+                                                               "sourceValue":  "95"
+                                                           },
+                                                           {
+                                                               "value":  273280097,
+                                                               "label":  "97 Tender not compliant",
+                                                               "labelDa":  "97 Tilbud ikke konditionsmÃ¦ssigt",
+                                                               "sourceValue":  "97"
+                                                           },
+                                                           {
+                                                               "value":  273280099,
+                                                               "label":  "99 To be deleted",
+                                                               "labelDa":  "99 Slettes",
+                                                               "sourceValue":  "99"
+                                                           }
+                                                       ],
+                                           "note":  "Option value = 273280000 + status code. Sending a tender e-mail moves 10 -\u003e 24."
+                                       },
+                                       {
+                                           "schemaName":  "mth_PartnerType",
+                                           "displayName":  "Partner Type",
+                                           "type":  "choice",
+                                           "source":  "Collaborating_Partner_Type__c",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "Subcontractor",
+                                                               "labelDa":  "UnderentreprenÃ¸r",
+                                                               "sourceValue":  "Subcontractor"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "Supplier",
+                                                               "labelDa":  "LeverandÃ¸r",
+                                                               "sourceValue":  "Supplier"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Advisor",
+                                                               "labelDa":  "RÃ¥dgiver",
+                                                               "sourceValue":  "Advisor"
+                                                           }
+                                                       ]
+                                       },
+                                       {
+                                           "schemaName":  "mth_Comments",
+                                           "displayName":  "Comments",
+                                           "type":  "memo",
+                                           "source":  "Subcontractor_Comments__c",
+                                           "maxLength":  4000
+                                       },
+                                       {
+                                           "schemaName":  "mth_TenderEvaluation",
+                                           "displayName":  "Tender Evaluation",
+                                           "type":  "choice",
+                                           "source":  "Tender_Evaluation__c (global value set Evaluation)",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "Green",
+                                                               "labelDa":  "GrÃ¸n",
+                                                               "sourceValue":  "10"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "Yellow",
+                                                               "labelDa":  "Gul",
+                                                               "sourceValue":  "5"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Red",
+                                                               "labelDa":  "RÃ¸d",
+                                                               "sourceValue":  "0"
+                                                           },
+                                                           {
+                                                               "value":  273280003,
+                                                               "label":  "Black",
+                                                               "labelDa":  "Sort",
+                                                               "sourceValue":  "-1"
+                                                           }
+                                                       ],
+                                           "note":  "Yellow, Red and Black require a comment."
+                                       },
+                                       {
+                                           "schemaName":  "mth_TenderEvaluationComment",
+                                           "displayName":  "Tender Evaluation Comment",
+                                           "type":  "string",
+                                           "source":  "Tender_Evaluation_Comments__c",
+                                           "maxLength":  255
+                                       },
+                                       {
+                                           "schemaName":  "mth_ContractAmount",
+                                           "displayName":  "Contract Amount",
+                                           "type":  "currency",
+                                           "source":  "Contract_Amount__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_LastEmailSent",
+                                           "displayName":  "Last E-mail Sent",
+                                           "type":  "date",
+                                           "source":  "(new) set when a tender e-mail is sent"
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_EspEmailTemplate",
+                       "displayName":  "ESP E-mail Template",
+                       "pluralName":  "ESP E-mail Templates",
+                       "standard":  false,
+                       "ownership":  "OrganizationOwned",
+                       "source":  "(new) - Salesforce had no templates",
+                       "description":  "E-mail template for tender e-mails to partners. Placeholders: {{Opportunity}}, {{CaseNumber}}, {{BuildingContract}}, {{TenderDeadline}}, {{Partner}}, {{ContactFirstName}}, {{Sender}}.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  200,
+                                       "source":  "(new)"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Subject",
+                                           "displayName":  "Subject",
+                                           "type":  "string",
+                                           "source":  "(new)",
+                                           "maxLength":  400
+                                       },
+                                       {
+                                           "schemaName":  "mth_Body",
+                                           "displayName":  "Body (HTML)",
+                                           "type":  "memo",
+                                           "source":  "(new)",
+                                           "maxLength":  100000
+                                       },
+                                       {
+                                           "schemaName":  "mth_IsDefault",
+                                           "displayName":  "Default",
+                                           "type":  "boolean",
+                                           "source":  "(new)"
+                                       }
+                                   ]
                    }
                ],
     "lookups":  [
+                    {
+                        "schemaName":  "mth_trade_mth_buildingcontract",
+                        "referencing":  "mth_buildingcontract",
+                        "referenced":  "mth_trade",
+                        "lookupSchemaName":  "mth_TradeId",
+                        "displayName":  "Trade",
+                        "source":  "Building_Contract__c.Building_Contract__c (picklist)",
+                        "cascade":  "Restrict",
+                        "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_opportunity_mth_buildingcontract",
+                        "referencing":  "mth_buildingcontract",
+                        "referenced":  "mth_opportunity",
+                        "lookupSchemaName":  "mth_OpportunityId",
+                        "displayName":  "Opportunity",
+                        "source":  "Building_Contract__c.Opportunity__c (master-detail)",
+                        "cascade":  "Parental",
+                        "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_buildingcontract_mth_collabpartner",
+                        "referencing":  "mth_collaboratingpartner",
+                        "referenced":  "mth_buildingcontract",
+                        "lookupSchemaName":  "mth_BuildingContractId",
+                        "displayName":  "Building Contract",
+                        "source":  "Collaborating_Partner__c.Subcontract__c",
+                        "cascade":  "Parental",
+                        "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_account_mth_collabpartner",
+                        "referencing":  "mth_collaboratingpartner",
+                        "referenced":  "account",
+                        "lookupSchemaName":  "mth_AccountId",
+                        "displayName":  "Account",
+                        "source":  "Collaborating_Partner__c.Account__c (master-detail)",
+                        "cascade":  "Restrict",
+                        "required":  true
+                    },
                     {
                         "schemaName":  "mth_account_mth_opportunity_Account",
                         "referencing":  "mth_opportunity",
@@ -2665,5 +1909,42 @@
                         "cascade":  "Restrict",
                         "required":  true
                     }
-                ]
+                ],
+    "manyToMany":  [
+                       {
+                           "schemaName":  "mth_account_mth_trade",
+                           "entity1":  "account",
+                           "entity2":  "mth_trade",
+                           "entity1Label":  "Accounts",
+                           "entity2Label":  "Trades",
+                           "source":  "Account.Building_Contracts__c (multi-select)"
+                       },
+                       {
+                           "schemaName":  "mth_collabpartner_contact",
+                           "entity1":  "mth_collaboratingpartner",
+                           "entity2":  "contact",
+                           "entity1Label":  "Collaborating Partners",
+                           "entity2Label":  "Selected Contacts",
+                           "source":  "Collaborating_Partner__c.Selected_Contacts__c (;-separated ids)"
+                       }
+                   ],
+    "keys":  [
+                 {
+                     "table":  "mth_collaboratingpartner",
+                     "schemaName":  "mth_BuildingContractAccount",
+                     "displayName":  "Building Contract + Account",
+                     "columns":  [
+                                     "mth_buildingcontractid",
+                                     "mth_accountid"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_trade",
+                     "schemaName":  "mth_TradeCode",
+                     "displayName":  "Trade Code",
+                     "columns":  [
+                                     "mth_code"
+                                 ]
+                 }
+             ]
 }

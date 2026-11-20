@@ -23,11 +23,20 @@
         <SubArea Id="mth_sub_account" Entity="account" />
         <SubArea Id="mth_sub_contact" Entity="contact" />
       </Group>
+      <Group Id="mth_grp_tender" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Tender (ESP)" />
+        </Titles>
+        <SubArea Id="mth_sub_mth_buildingcontract" Entity="mth_buildingcontract" />
+        <SubArea Id="mth_sub_mth_collaboratingpartner" Entity="mth_collaboratingpartner" />
+      </Group>
       <Group Id="mth_grp_setup" IsProfile="false">
         <Titles>
           <Title LCID="1033" Title="Setup" />
         </Titles>
         <SubArea Id="mth_sub_mth_organizationalunit" Entity="mth_organizationalunit" />
+        <SubArea Id="mth_sub_mth_trade" Entity="mth_trade" />
+        <SubArea Id="mth_sub_mth_espemailtemplate" Entity="mth_espemailtemplate" />
       </Group>
     </Area>
   </SiteMap>

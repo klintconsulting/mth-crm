@@ -82,9 +82,13 @@
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="1" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="mth_buildingcontract" behavior="0" />
+      <RootComponent type="1" schemaName="mth_collaboratingpartner" behavior="0" />
+      <RootComponent type="1" schemaName="mth_espemailtemplate" behavior="0" />
       <RootComponent type="1" schemaName="mth_opportunity" behavior="0" />
       <RootComponent type="1" schemaName="mth_opportunityrole" behavior="0" />
       <RootComponent type="1" schemaName="mth_organizationalunit" behavior="0" />
+      <RootComponent type="1" schemaName="mth_trade" behavior="0" />
       <RootComponent type="1" schemaName="systemuser" behavior="1" />
       <RootComponent type="20" id="{b3f27edb-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="20" id="{ee5686d5-3ae4-f111-84e8-000d3a496ae5}" behavior="0" />

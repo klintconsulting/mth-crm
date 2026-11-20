@@ -56,3 +56,11 @@ Brugerne forventer en navnevælger, når de taster `@`. Tidslinjens note-editor 
 ## B14 – Projektsite som link, der åbnes i ny fane (2026-11-20)
 Hver Salgsmulighed har sit eget SharePoint-projektsite. Det blev afprøvet at vise sitets Shared Documents indlejret med Dataverses dokumentintegration, men mappenavigation virker ikke i et site pr. sag (se [sharepoint.md](sharepoint.md)). Brugerens beslutning: **bare et link, der åbner sitet i en ny fane, som i Salesforce.**
 **Konsekvens:** Kolonnen `mth_projectsiteurl` (URL-format) på fanen General. Ingen dokumentintegration, ingen dokumentplaceringer og intet formularscript. Oprettelsesflowet skal kun skrive sitets URL. Ved migrering fyldes kolonnen fra `Project_Portal_Url__c`.
+
+## B15 – ESP: samme struktur, fag som tabel, kontakter som relation (2026-11-20)
+Salesforce-strukturen genbruges (Entreprise, UE pr. entreprise), men fag bliver en tabel (`mth_trade`) med N:N til Account i stedet for et multivalg med 214 værdier, og valgte kontakter bliver en N:N til Kontakt i stedet for tekstfelter med id'er og mails. Dette afgør også det åbne spørgsmål om Building Contracts på Account. Kolonnen `account.mth_buildingcontracts` er slettet.
+**Konsekvens:** Se [esp.md](esp.md).
+
+## B16 – Tilbudsmails: én pr. UE, fra brugeren, status 10 → 24 (2026-11-20)
+Brugerens valg: én mail pr. UE til de valgte kontakter (i stedet for én BCC-mail), afsender er brugerens egen postkasse, og status skifter automatisk fra 10 til 24 ved afsendelse. Skabeloner, evaluering med kommentar, opret kontakt og kopiér entreprise er med i første version.
+**Konsekvens:** Mails er Dataverse-e-mailaktiviteter regarding UE-posten, sendt via en Custom API. Se [esp.md](esp.md).

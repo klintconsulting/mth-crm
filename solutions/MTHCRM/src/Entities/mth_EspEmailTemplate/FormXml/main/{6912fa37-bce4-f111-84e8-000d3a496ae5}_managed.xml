@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6912fa37-bce4-f111-84e8-000d3a496ae5}</formid>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{5b3dfe5d-bc8b-4736-bb6a-8b4d6b8e6f5b}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="template" id="{c2c07ec3-16fd-482e-a838-42155def0152}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Template" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1aef706d-5960-4f78-ae99-7becddf893aa}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ff76d589-96eb-4342-9dce-51c175937338}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Default" languagecode="1033" />
+                        </labels>
+                        <control id="mth_isdefault" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_isdefault" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{58d838b5-5357-4978-960d-b29d95289ea2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Subject" languagecode="1033" />
+                        </labels>
+                        <control id="mth_subject" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_subject" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{015b4c7a-2012-47ea-b479-573e05838707}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Body (HTML)" languagecode="1033" />
+                        </labels>
+                        <control id="mth_body" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_body" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="MTH ESP E-mail Template" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -101,7 +101,7 @@ foreach ($t in $schema.tables | Where-Object { -not $_.standard }) {
             '@odata.type' = 'Microsoft.Dynamics.CRM.EntityMetadata'; SchemaName = $t.schemaName
             DisplayName = (Label $t.displayName); DisplayCollectionName = (Label $t.pluralName)
             Description = (Label "$($t.description) Source: Salesforce $($t.source).")
-            OwnershipType = $t.ownership; IsActivity = $false; HasNotes = $true; HasActivities = ($t.schemaName -eq 'mth_Opportunity')
+            OwnershipType = $t.ownership; IsActivity = $false; HasNotes = $true; HasActivities = ([bool]$t.hasActivities -or $t.schemaName -eq 'mth_Opportunity')
             Attributes = @($primary)
         }
         [void](Invoke-Dataverse POST 'EntityDefinitions' $body -Solution $sol)
@@ -137,6 +137,37 @@ foreach ($r in $schema.lookups) {
         }
         [void](Invoke-Dataverse POST 'RelationshipDefinitions' $body -Solution $sol)
         Write-Host "  + relationship $($r.schemaName)"; $created++
+    }
+}
+
+# 3b. Many-to-many relationships
+foreach ($r in @($schema.manyToMany)) {
+    if (-not $r) { continue }
+    if (-not $WhatIfPreference -and (Exists "RelationshipDefinitions(SchemaName='$($r.schemaName)')")) { Write-Host "  = N:N $($r.schemaName)"; $skipped++; continue }
+    if ($PSCmdlet.ShouldProcess($r.schemaName, "Create N:N $($r.entity1) <-> $($r.entity2)")) {
+        $menu = { param($label) @{ Behavior = 'UseLabel'; Group = 'Details'; Order = 10000; Label = (Label $label) } }
+        $body = [ordered]@{
+            '@odata.type' = 'Microsoft.Dynamics.CRM.ManyToManyRelationshipMetadata'; SchemaName = $r.schemaName
+            Entity1LogicalName = $r.entity1; Entity2LogicalName = $r.entity2; IntersectEntityName = $r.schemaName.ToLower()
+            Entity1AssociatedMenuConfiguration = (& $menu $r.entity2Label)
+            Entity2AssociatedMenuConfiguration = (& $menu $r.entity1Label)
+        }
+        [void](Invoke-Dataverse POST 'RelationshipDefinitions' $body -Solution $sol)
+        Write-Host "  + N:N $($r.schemaName)"; $created++
+    }
+}
+
+# 3c. Alternate keys (prevent duplicates, e.g. same partner twice on a building contract)
+foreach ($k in @($schema.keys)) {
+    if (-not $k) { continue }
+    $ln = $k.table.ToLower()
+    $existing = $null
+    if (-not $WhatIfPreference) { $existing = (Invoke-Dataverse GET "EntityDefinitions(LogicalName='$ln')/Keys?`$select=SchemaName&`$filter=SchemaName eq '$($k.schemaName)'").value }
+    if ($existing) { Write-Host "  = key $($k.schemaName)"; $skipped++; continue }
+    if ($PSCmdlet.ShouldProcess("$ln.$($k.schemaName)", "Create alternate key ($($k.columns -join ', '))")) {
+        [void](Invoke-Dataverse POST "EntityDefinitions(LogicalName='$ln')/Keys" @{
+            SchemaName = $k.schemaName; DisplayName = (Label $k.displayName); KeyAttributes = @($k.columns) } -Solution $sol)
+        Write-Host "  + key $($k.schemaName) ($($k.columns -join ', '))"; $created++
     }
 }
 

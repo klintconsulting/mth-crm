@@ -11,7 +11,8 @@
       "groups": [
         { "id": "mth_grp_sales", "title": "Sales", "tables": [ "mth_opportunity" ] },
         { "id": "mth_grp_customers", "title": "Customers", "tables": [ "account", "contact" ] },
-        { "id": "mth_grp_setup", "title": "Setup", "tables": [ "mth_organizationalunit" ] }
+        { "id": "mth_grp_tender", "title": "Tender (ESP)", "tables": [ "mth_buildingcontract", "mth_collaboratingpartner" ] },
+        { "id": "mth_grp_setup", "title": "Setup", "tables": [ "mth_organizationalunit", "mth_trade", "mth_espemailtemplate" ] }
       ]
     }
   ],
@@ -40,6 +41,26 @@
       "table": "mth_organizationalunit", "name": "MTH Active Organizational Units", "default": false,
       "columns": [ ["mth_name", 220], ["mth_departmentno", 100], ["mth_divisionname", 180], ["mth_businessunitname", 180], ["mth_istenderdepartment", 100] ],
       "order": { "attribute": "mth_departmentno", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_trade", "name": "MTH Active Trades", "default": true,
+      "columns": [ ["mth_name", 260], ["mth_code", 90] ],
+      "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_buildingcontract", "name": "MTH Active Building Contracts", "default": true,
+      "columns": [ ["mth_name", 250], ["mth_opportunityid", 220], ["mth_tradeid", 200], ["mth_tenderdeadline", 110] ],
+      "order": { "attribute": "mth_tenderdeadline", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_collaboratingpartner", "name": "MTH Active Collaborating Partners", "default": true,
+      "columns": [ ["mth_name", 220], ["mth_buildingcontractid", 200], ["mth_status", 190], ["mth_tenderevaluation", 100], ["mth_lastemailsent", 110], ["mth_comments", 220] ],
+      "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_espemailtemplate", "name": "MTH Active ESP E-mail Templates", "default": true,
+      "columns": [ ["mth_name", 220], ["mth_subject", 300], ["mth_isdefault", 80] ],
+      "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
     }
   ],
   "forms": [
@@ -119,8 +140,9 @@
           ]
         },
         {
-          "name": "contracts", "label": "Building Contracts",
-          "columns": [ [ { "name": "buildingcontracts", "label": "Building Contracts", "fields": [ "mth_buildingcontracts" ] } ] ]
+          "name": "trades", "label": "Trades",
+          "columns": [ [ { "name": "trades", "label": "Trades the account can deliver (used to find subcontractors)",
+                           "subgrid": { "id": "Trades", "table": "mth_trade", "relationship": "mth_account_mth_trade", "view": "MTH Active Trades", "rows": 12 } } ] ]
         }
       ]
     },
@@ -149,6 +171,41 @@
           "columns": [ [ { "name": "unit", "label": "Organizational Unit", "fields": [ "mth_name", "mth_departmentno", "mth_costcenterno", "mth_istenderdepartment" ] } ],
                        [ { "name": "hierarchy", "label": "Hierarchy", "fields": [ "mth_divisionno", "mth_divisionname", "mth_businessunitno", "mth_businessunitname" ] } ] ] }
       ]
+    },
+    {
+      "table": "mth_trade", "name": "MTH Trade",
+      "tabs": [ { "name": "general", "label": "General", "columns": [ [ { "name": "trade", "label": "Trade", "fields": [ "mth_name", "mth_code", "mth_sourcevalue" ] } ] ] } ]
+    },
+    {
+      "table": "mth_buildingcontract", "name": "MTH Building Contract",
+      "tabs": [
+        { "name": "general", "label": "General",
+          "columns": [
+            [ { "name": "contract", "label": "Building Contract", "fields": [ "mth_opportunityid", "mth_tradeid", "mth_alternativename", "mth_name", "mth_tenderdeadline", "ownerid" ] } ],
+            [ { "name": "partners", "label": "Collaborating Partners",
+                "subgrid": { "id": "Partners", "table": "mth_collaboratingpartner", "relationship": "mth_buildingcontract_mth_collabpartner", "view": "MTH Active Collaborating Partners", "rows": 12 } } ]
+          ] }
+      ]
+    },
+    {
+      "table": "mth_collaboratingpartner", "name": "MTH Collaborating Partner",
+      "tabs": [
+        { "name": "general", "label": "General",
+          "columns": [
+            [
+              { "name": "partner", "label": "Partner", "fields": [ "mth_accountid", "mth_buildingcontractid", "mth_partnertype", "mth_status", "mth_lastemailsent", "mth_comments" ] },
+              { "name": "evaluation", "label": "Tender Evaluation", "fields": [ "mth_tenderevaluation", "mth_tenderevaluationcomment", "mth_contractamount" ] }
+            ],
+            [ { "name": "contacts", "label": "Selected Contacts",
+                "subgrid": { "id": "SelectedContacts", "table": "contact", "relationship": "mth_collabpartner_contact", "view": "MTH Active Contacts", "rows": 6 } } ],
+            [ { "name": "timeline", "label": "Timeline", "timeline": true } ]
+          ] }
+      ]
+    },
+    {
+      "table": "mth_espemailtemplate", "name": "MTH ESP E-mail Template",
+      "tabs": [ { "name": "general", "label": "General",
+                  "columns": [ [ { "name": "template", "label": "Template", "fields": [ "mth_name", "mth_isdefault", "mth_subject", "mth_body" ] } ] ] } ]
     }
   ]
 }

@@ -7,20 +7,20 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{1fda805f-5b4a-4c84-829e-e9ce5d4540e0}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{8d1d3bb3-1f04-4db6-8df5-4e83ae2d8b1a}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="role" id="{30ece8eb-247d-435a-a482-ea9b4b4153c5}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="role" id="{41f8ad5f-ace1-4393-acea-97daa7021e05}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Role" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{7db2d895-5bd0-4156-86ad-ee6f1b0740fa}" showlabel="true" locklevel="0">
+                      <cell id="{e583ad26-a4c3-49fa-bb1c-c2cbc3271adf}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -28,7 +28,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3b9b16f4-a758-4683-9dc6-56307248c82d}" showlabel="true" locklevel="0">
+                      <cell id="{ec622196-79d7-458a-b8d1-f0534c9ce0d7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -36,7 +36,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5b4b2f9a-d198-44b5-8f03-38c32d5c2f24}" showlabel="true" locklevel="0">
+                      <cell id="{88cd1a1a-cedb-49e6-9649-c4c6d07103cd}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -44,7 +44,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1bc10ef5-6b9d-42ee-b892-c3079bafb2dc}" showlabel="true" locklevel="0">
+                      <cell id="{e2633826-4b35-4281-a7f6-d0d5f5eebc9c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>

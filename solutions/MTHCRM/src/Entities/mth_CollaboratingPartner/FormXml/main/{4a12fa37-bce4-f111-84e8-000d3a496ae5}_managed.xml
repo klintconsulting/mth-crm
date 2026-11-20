@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{4a12fa37-bce4-f111-84e8-000d3a496ae5}</formid>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{45b74d7e-3c11-4a3c-873c-c605d056353a}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section name="partner" id="{8599dc13-a34d-4be7-b05b-fb6451ea64ca}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Partner" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1af8597b-7c1f-4af7-b1d4-4b0021b70726}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Account" languagecode="1033" />
+                        </labels>
+                        <control id="mth_accountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_accountid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2db06885-8663-4c3d-8b20-31731355baf2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Building Contract" languagecode="1033" />
+                        </labels>
+                        <control id="mth_buildingcontractid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_buildingcontractid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3aae52e0-4062-4e37-a227-b712d00ec046}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Partner Type" languagecode="1033" />
+                        </labels>
+                        <control id="mth_partnertype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_partnertype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{44b882ac-1c54-4850-8bc4-9dbacc21ff3f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="mth_status" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_status" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dc3c178a-135b-49d8-b5b6-25ec4a36572d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last E-mail Sent" languagecode="1033" />
+                        </labels>
+                        <control id="mth_lastemailsent" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_lastemailsent" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{408373cf-a487-45dc-9a88-f8d73818655c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Comments" languagecode="1033" />
+                        </labels>
+                        <control id="mth_comments" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_comments" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="evaluation" id="{d8e3bc09-ae45-4036-9b93-ca742e9228d4}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Tender Evaluation" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8d0a16b4-6229-42df-9004-e8060641afa8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Tender Evaluation" languagecode="1033" />
+                        </labels>
+                        <control id="mth_tenderevaluation" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_tenderevaluation" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6b1e97f9-9ae0-4661-b957-ff162e833c38}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Tender Evaluation Comment" languagecode="1033" />
+                        </labels>
+                        <control id="mth_tenderevaluationcomment" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_tenderevaluationcomment" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5aba8988-0cf7-481d-a562-b013d48b59e1}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Contract Amount" languagecode="1033" />
+                        </labels>
+                        <control id="mth_contractamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="mth_contractamount" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="contacts" id="{66dc8039-fc03-447f-8c61-fadea562eaca}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Selected Contacts" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{938b0b28-0422-4833-b0d9-18a5ff8bc943}" showlabel="false" rowspan="6" colspan="1" auto="false">
+                        <labels>
+                          <label description="Selected Contacts" languagecode="1033" />
+                        </labels>
+                        <control id="SelectedContacts" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <RecordsPerPage>10</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserView>false</IsUserView>
+                            <ViewId>{59a01b13-38e4-f111-84e8-000d3a496ae5}</ViewId>
+                            <TargetEntityType>contact</TargetEntityType>
+                            <ViewIds>{59a01b13-38e4-f111-84e8-000d3a496ae5}</ViewIds>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RelationshipName>mth_collabpartner_contact</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section name="timeline" id="{25e5586c-7a5f-4ccd-b535-c8aec52f43db}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a4e94bce-371f-4a5c-b392-8e83a4c1e22f}" showlabel="false" rowspan="12" colspan="1" auto="false">
+                        <labels>
+                          <label description="Timeline" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}">
+                          <parameters>
+                            <DefaultTabId>ActivitiesTab</DefaultTabId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="MTH Collaborating Partner" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

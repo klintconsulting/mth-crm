@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{beeaf031-bce4-f111-84e8-000d3a496ae5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_buildingcontractid">
+          <cell name="mth_name" width="250" />
+          <cell name="mth_opportunityid" width="220" />
+          <cell name="mth_tradeid" width="200" />
+          <cell name="mth_tenderdeadline" width="110" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mth_buildingcontract">
+          <attribute name="mth_buildingcontractid" />
+          <attribute name="mth_name" />
+          <attribute name="mth_opportunityid" />
+          <attribute name="mth_tradeid" />
+          <attribute name="mth_tenderdeadline" />
+          <order attribute="mth_tenderdeadline" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MTH Active Building Contracts" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

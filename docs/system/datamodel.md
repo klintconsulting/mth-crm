@@ -13,11 +13,19 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_opportunityrole` | Opportunity Role | Custom | UserOwned | Role lookups on Opportunity (numbered variants 21/22/23/24 are merged): Tender_Manager2__c, Project_Manager2__c, Tender_Responsible2__c, Tender_Coordinator21__c, Tender_Calculator21__c, Pre_Q_Responsible21__c, Bid_Manager2__c, Projekteringsleder__c, Guarantee_Responsible21__c, Primary_Responsible2__c |
 | `account` | Account | Standard |  | Account |
 | `contact` | Contact | Standard |  | Contact |
+| `mth_trade` | Trade | Custom | OrganizationOwned | Global value set Building_Contracts (Account/Opportunity/Building_Contract__c picklists) |
+| `mth_buildingcontract` | Building Contract | Custom | UserOwned | Building_Contract__c (Entreprise) |
+| `mth_collaboratingpartner` | Collaborating Partner | Custom | UserOwned | Collaborating_Partner__c (Samarbejdspartner / UE) |
+| `mth_espemailtemplate` | ESP E-mail Template | Custom | OrganizationOwned | (new) - Salesforce had no templates |
 
 ## Relationer (opslag)
 
 | Relation | Opslagskolonne | Peger på | Sletning | Påkrævet | Kilde |
 |---|---|---|---|---|---|
+| `mth_trade_mth_buildingcontract` | `mth_buildingcontract.mth_tradeid` | `mth_trade` | Restrict | Ja | Building_Contract__c.Building_Contract__c (picklist) |
+| `mth_opportunity_mth_buildingcontract` | `mth_buildingcontract.mth_opportunityid` | `mth_opportunity` | Parental | Ja | Building_Contract__c.Opportunity__c (master-detail) |
+| `mth_buildingcontract_mth_collabpartner` | `mth_collaboratingpartner.mth_buildingcontractid` | `mth_buildingcontract` | Parental | Ja | Collaborating_Partner__c.Subcontract__c |
+| `mth_account_mth_collabpartner` | `mth_collaboratingpartner.mth_accountid` | `account` | Restrict | Ja | Collaborating_Partner__c.Account__c (master-detail) |
 | `mth_account_mth_opportunity_Account` | `mth_opportunity.mth_accountid` | `account` | Restrict |  | AccountId |
 | `mth_orgunit_mth_opportunity_OrderDept` | `mth_opportunity.mth_orderdepartmentid` | `mth_organizationalunit` | Restrict |  | Order_Department__c |
 | `mth_orgunit_mth_opportunity_TenderDept` | `mth_opportunity.mth_tenderdepartmentid` | `mth_organizationalunit` | Restrict |  | Tender_Department__c |
@@ -365,7 +373,6 @@ Standardkolonner, der bruges:
 | `mth_segment` | Segment | choice | 4 valg | `Segment__c` |
 | `mth_subsegment` | Sub-Segment | choice | 12 valg | `Sub_Segment__c` |
 | `mth_accountstatus` | Account Status | choice | 2 valg | `Status__c` |
-| `mth_buildingcontracts` | Building Contracts | multichoice | 214 valg | `Building_Contracts__c` |
 | `mth_interestedfor` | Customer Is Interesting For | multichoice | 9 valg | `Kunden_er_interessant_for__c` |
 | `mth_tdcid` | TDC ID | string | maks. 50 | `TDC_ID__c` |
 | `mth_leadsourcetext` | Lead Source | string | maks. 255 | `Lead_Source__c` |
@@ -420,227 +427,6 @@ Standardkolonner, der bruges:
 
 </details>
 
-<details><summary>Valg for <code>mth_buildingcontracts</code> (214)</summary>
-
-| Værdi | Label | Salesforce-værdi |
-|---|---|---|
-| 273280000 | Alle | Alle |
-| 273280001 | ABA-anlæg - 22105 | ABA-anlæg - 22105 |
-| 273280002 | Additiver - 21211 | Additiver - 21211 |
-| 273280003 | Adgangskontrol - 22104 | Adgangskontrol - 22104 |
-| 273280004 | Advokat - 23301 | Advokat - 23301 |
-| 273280005 | Afdækning,curing m.v. - 21210 | Afdækning,curing m.v. - 21210 |
-| 273280006 | Afløbstilslutning - 24007 | Afløbstilslutning - 24007 |
-| 273280007 | Altaner - 21409 | Altaner - 21409 |
-| 273280008 | Anlægsarbejder - UE - 22001 | Anlægsarbejder - UE - 22001 |
-| 273280009 | Arbejdsmiljø - 21014 | Arbejdsmiljø - 21014 |
-| 273280010 | Arkitekt - 23306 | Arkitekt - 23306 |
-| 273280011 | Armering - 21202 | Armering - 21202 |
-| 273280012 | Artskonto mangler - 21037 | Artskonto mangler - 21037 |
-| 273280013 | Asfalt - UE - 22012 | Asfalt - UE - 22012 |
-| 273280014 | Automatik - 22113 | Automatik - 22113 |
-| 273280015 | Badeværelseskabiner - 21411 | Badeværelseskabiner - 21411 |
-| 273280016 | Belægninger - UE - 22010 | Belægninger - UE - 22010 |
-| 273280017 | Belægningsmaterialer - 21226 | Belægningsmaterialer - 21226 |
-| 273280018 | Benzin - arbejdsplads - 21033 | Benzin - arbejdsplads - 21033 |
-| 273280019 | Benzin - maskiner - 23105 | Benzin - maskiner - 23105 |
-| 273280020 | Beton støbt på stedet - UE - 22022 | Beton støbt på stedet - UE - 22022 |
-| 273280021 | Betonarbejder - UE - 22020 | Betonarbejder - UE - 22020 |
-| 273280022 | Betonelelementer - 21410 | Betonelelementer - 21410 |
-| 273280023 | Betonrenovering - UE - 22021 | Betonrenovering - UE - 22021 |
-| 273280024 | Biler leje - 23008 | Biler leje - 23008 |
-| 273280025 | Blikkenslager - UE - 22047 | Blikkenslager - UE - 22047 |
-| 273280026 | Boring, skæring & sprængning - UE - 22025 | Boring, skæring & sprængning - UE - 22025 |
-| 273280027 | Branddøre - UE - 22056 | Branddøre - UE - 22056 |
-| 273280028 | Brolægger - UE - 22011 | Brolægger - UE - 22011 |
-| 273280029 | Brøndfundering - UE - 22007 | Brøndfundering - UE - 22007 |
-| 273280030 | Bundsikring - 21224 | Bundsikring - 21224 |
-| 273280031 | Byggetilladelse - 24002 | Byggetilladelse - 24002 |
-| 273280032 | Campdrift - 21025 | Campdrift - 21025 |
-| 273280033 | Campindretning - 21024 | Campindretning - 21024 |
-| 273280034 | Cement og mørtel - 21205 | Cement og mørtel - 21205 |
-| 273280035 | Container incl. tømning - 21022 | Container incl. tømning - 21022 |
-| 273280036 | Cykelskure - UE - 22049 | Cykelskure - UE - 22049 |
-| 273280037 | Diesel - arbejdsplads - 21032 | Diesel - arbejdsplads - 21032 |
-| 273280038 | Diesel - maskiner - 23104 | Diesel - maskiner - 23104 |
-| 273280039 | Div. Leverancer - UE - 22064 | Div. Leverancer - UE - 22064 |
-| 273280040 | Diverse byggepladsomkostninger - 21012 | Diverse byggepladsomkostninger - 21012 |
-| 273280041 | Diverse indkøb træ - 21113 | Diverse indkøb træ - 21113 |
-| 273280042 | Diverse vedr. betonarbejder - 21237 | Diverse vedr. betonarbejder - 21237 |
-| 273280043 | Dykkerarbejde - UE - 22003 | Dykkerarbejde - UE - 22003 |
-| 273280044 | Ejendomsmægler - 23302 | Ejendomsmægler - 23302 |
-| 273280045 | El - arbejdsplads - 21029 | El - arbejdsplads - 21029 |
-| 273280046 | El - skurby - 21030 | El - skurby - 21030 |
-| 273280047 | El-arbejde - 22101 | El-arbejde - 22101 |
-| 273280048 | Elementmontage - UE - 22024 | Elementmontage - UE - 22024 |
-| 273280049 | Elevator/kran/escalator - 22108 | Elevator/kran/escalator - 22108 |
-| 273280050 | El-ingeniør - 23312 | El-ingeniør - 23312 |
-| 273280051 | Eltilslutning - 24006 | Eltilslutning - 24006 |
-| 273280052 | Etagedæk - 21403 | Etagedæk - 21403 |
-| 273280053 | Facadebeklædning - 21102 | Facadebeklædning - 21102 |
-| 273280054 | Facader (døre/vinduer) - UE - 22044 | Facader (døre/vinduer) - UE - 22044 |
-| 273280055 | Finish - UE - 22026 | Finish - UE - 22026 |
-| 273280056 | Fjernvarme  - arbejdsplads - 21036 | Fjernvarme  - arbejdsplads - 21036 |
-| 273280057 | Fjernvarmetilslutning - 24005 | Fjernvarmetilslutning - 24005 |
-| 273280058 | Fliser & klinker - 21216 | Fliser & klinker - 21216 |
-| 273280059 | Fodpaneler - 21110 | Fodpaneler - 21110 |
-| 273280060 | Forbrugsgods - 21013 | Forbrugsgods - 21013 |
-| 273280061 | Fornybare energikilder - arbejdsplads - 21035 | Fornybare energikilder - arbejdsplads - 21035 |
-| 273280062 | Fornybare energikilder - maskiner - 23107 | Fornybare energikilder - maskiner - 23107 |
-| 273280063 | Forsikringer - maskiner - 23109 | Forsikringer - maskiner - 23109 |
-| 273280064 | Forskalling, incl. leje - 21207 | Forskalling, incl. leje - 21207 |
-| 273280065 | Friktionsfyld - 21223 | Friktionsfyld - 21223 |
-| 273280066 | Fugning - UE - 22062 | Fugning - UE - 22062 |
-| 273280067 | Fyrings- og marinegasolie - arbejdsplads - 21034 | Fyrings- og marinegasolie - arbejdsplads - 21034 |
-| 273280068 | Færdigblandet beton - 21204 | Færdigblandet beton - 21204 |
-| 273280069 | Gartner - UE - 22009 | Gartner - UE - 22009 |
-| 273280070 | Gas - arbejdsplads - 21031 | Gas - arbejdsplads - 21031 |
-| 273280071 | Gas - maskiner - 23103 | Gas - maskiner - 23103 |
-| 273280072 | Gasanlæg - 22116 | Gasanlæg - 22116 |
-| 273280073 | Gasbeton & Lecablokke - 21209 | Gasbeton & Lecablokke - 21209 |
-| 273280074 | Gastilslutning - 24009 | Gastilslutning - 24009 |
-| 273280075 | Geotekniker - 23314 | Geotekniker - 23314 |
-| 273280076 | Glarmester - UE - 22046 | Glarmester - UE - 22046 |
-| 273280077 | Grundvandssænkning - UE - 22016 | Grundvandssænkning - UE - 22016 |
-| 273280078 | Grus og tilsl.mat.incl.kørsel - 21206 | Grus og tilsl.mat.incl.kørsel - 21206 |
-| 273280079 | Gulvbelægning - UE - 22039 | Gulvbelægning - UE - 22039 |
-| 273280080 | Gulve - 21109 | Gulve - 21109 |
-| 273280081 | Halfeneisen & beslag - 21219 | Halfeneisen & beslag - 21219 |
-| 273280082 | Havne- og toldafgifter - 23206 | Havne- og toldafgifter - 23206 |
-| 273280083 | Hegn - UE - 22017 | Hegn - UE - 22017 |
-| 273280084 | Hegn, porte, m.v. - 21405 | Hegn, porte, m.v. - 21405 |
-| 273280085 | Hejse leje - 23004 | Hejse leje - 23004 |
-| 273280086 | Håndlister, rækværker, m.v. - 21106 | Håndlister, rækværker, m.v. - 21106 |
-| 273280087 | Indervægge - 21101 | Indervægge - 21101 |
-| 273280088 | Indv. døre, træ - 21104 | Indv. døre, træ - 21104 |
-| 273280089 | Ingeniør - 23308 | Ingeniør - 23308 |
-| 273280090 | Installationer ingeniør - 23310 | Installationer ingeniør - 23310 |
-| 273280091 | Intern Tømrer - UE - 22066 | Intern Tømrer - UE - 22066 |
-| 273280092 | Inventar - 21412 | Inventar - 21412 |
-| 273280093 | Inventar - UE - 22063 | Inventar - UE - 22063 |
-| 273280094 | Isoleringsmaterialer - 21221 | Isoleringsmaterialer - 21221 |
-| 273280095 | IT- & telefoninstallationsanlæg - 22102 | IT- & telefoninstallationsanlæg - 22102 |
-| 273280096 | Jord & kloak - UE - 22006 | Jord & kloak - UE - 22006 |
-| 273280097 | Jord & terrænarbejde - UE - 22005 | Jord & terrænarbejde - UE - 22005 |
-| 273280098 | Jordmaterialer - 21222 | Jordmaterialer - 21222 |
-| 273280099 | Kajudstyr - 21235 | Kajudstyr - 21235 |
-| 273280100 | Kantsten, fliser m.v. - 21230 | Kantsten, fliser m.v. - 21230 |
-| 273280101 | Kloak og dræn - 21227 | Kloak og dræn - 21227 |
-| 273280102 | Konsulenthonorar - 23305 | Konsulenthonorar - 23305 |
-| 273280103 | Kontrolforanstaltninger - 21016 | Kontrolforanstaltninger - 21016 |
-| 273280104 | Kraner leje - 23009 | Kraner leje - 23009 |
-| 273280105 | Kunststofbelægning - UE - 22040 | Kunststofbelægning - UE - 22040 |
-| 273280106 | Køkken - UE - 22057 | Køkken - UE - 22057 |
-| 273280107 | Køkkener - 21406 | Køkkener - 21406 |
-| 273280108 | Køleanlæg - 22114 | Køleanlæg - 22114 |
-| 273280109 | Kørsel materialer - 21212 | Kørsel materialer - 21212 |
-| 273280110 | Kørsel og fragt - 23202 | Kørsel og fragt - 23202 |
-| 273280111 | Landinspektør - 23313 | Landinspektør - 23313 |
-| 273280112 | Landskabsarkitekt - 23307 | Landskabsarkitekt - 23307 |
-| 273280113 | Lemme, m.v. - 21105 | Lemme, m.v. - 21105 |
-| 273280114 | Letbetonmontage - UE - 22028 | Letbetonmontage - UE - 22028 |
-| 273280115 | Lette facader - UE - 22042 | Lette facader - UE - 22042 |
-| 273280116 | Lette vægge/lofter - UE - 22052 | Lette vægge/lofter - UE - 22052 |
-| 273280117 | Lofter - 21108 | Lofter - 21108 |
-| 273280118 | Luftfragt - 23204 | Luftfragt - 23204 |
-| 273280119 | Løfteudstyr leje - 23015 | Løfteudstyr leje - 23015 |
-| 273280120 | Maler - UE - 22059 | Maler - UE - 22059 |
-| 273280121 | Marinegasolie - maskiner - 23106 | Marinegasolie - maskiner - 23106 |
-| 273280122 | Materielleje, anlæg ekstern - 23006 | Materielleje, anlæg ekstern - 23006 |
-| 273280123 | Materielleje, beton ekstern - 23005 | Materielleje, beton ekstern - 23005 |
-| 273280124 | Membran - UE - 22038 | Membran - UE - 22038 |
-| 273280125 | Miljøarbejde - UE - 22008 | Miljøarbejde - UE - 22008 |
-| 273280126 | Miljøundersøgelser - 23315 | Miljøundersøgelser - 23315 |
-| 273280127 | Mobilkraner leje - 23010 | Mobilkraner leje - 23010 |
-| 273280128 | Murer - UE - 22030 | Murer - UE - 22030 |
-| 273280129 | Murermaterialer - 21215 | Murermaterialer - 21215 |
-| 273280130 | Nedhængte lofter - 21107 | Nedhængte lofter - 21107 |
-| 273280131 | Nedrivning - UE - 22018 | Nedrivning - UE - 22018 |
-| 273280132 | Off. myndigheder - 24001 | Off. myndigheder - 24001 |
-| 273280133 | Overfladebehandling - UE - 22027 | Overfladebehandling - UE - 22027 |
-| 273280134 | Pakkeomkostninger - 23201 | Pakkeomkostninger - 23201 |
-| 273280135 | Pladsdrift - 21021 | Pladsdrift - 21021 |
-| 273280136 | Pladsindretning - 21020 | Pladsindretning - 21020 |
-| 273280137 | Platforme leje - 23001 | Platforme leje - 23001 |
-| 273280138 | Porte - UE - 22055 | Porte - UE - 22055 |
-| 273280139 | Pæle - UE - 22013 | Pæle - UE - 22013 |
-| 273280140 | Pælekapning - UE - 22014 | Pælekapning - UE - 22014 |
-| 273280141 | Rengøring - arbejdsplads - 21010 | Rengøring - arbejdsplads - 21010 |
-| 273280142 | Rengøring - UE - 22060 | Rengøring - UE - 22060 |
-| 273280143 | Renoveringsmaterialer - 21111 | Renoveringsmaterialer - 21111 |
-| 273280144 | Reservedele og vedligeholdelse - 23102 | Reservedele og vedligeholdelse - 23102 |
-| 273280145 | Revisor - 23303 | Revisor - 23303 |
-| 273280146 | Sand- og ralleverancer - UE - 22004 | Sand- og ralleverancer - UE - 22004 |
-| 273280147 | Sikkerhedsforanstaltninger - 21015 | Sikkerhedsforanstaltninger - 21015 |
-| 273280148 | Skrot - 21028 | Skrot - 21028 |
-| 273280149 | Skurleje - 23003 | Skurleje - 23003 |
-| 273280150 | Skære-/bore-/slibematerialer - 21234 | Skære-/bore-/slibematerialer - 21234 |
-| 273280151 | Smed - UE - 22048 | Smed - UE - 22048 |
-| 273280152 | Smøre- og hydraulikolie - 23101 | Smøre- og hydraulikolie - 23101 |
-| 273280153 | Snedker - UE - 22041 | Snedker - UE - 22041 |
-| 273280154 | Solafskærmning - UE - 22061 | Solafskærmning - UE - 22061 |
-| 273280155 | Solceller - 22107 | Solceller - 22107 |
-| 273280156 | Specialmørtler & epoxy - 21214 | Specialmørtler & epoxy - 21214 |
-| 273280157 | Sprinkler - 22112 | Sprinkler - 22112 |
-| 273280158 | Sprængstof og detonatorer - 21233 | Sprængstof og detonatorer - 21233 |
-| 273280159 | Spuns & pæle - 21228 | Spuns & pæle - 21228 |
-| 273280160 | Spunsning - UE - 22015 | Spunsning - UE - 22015 |
-| 273280161 | Spændarmering - UE - 22023 | Spændarmering - UE - 22023 |
-| 273280162 | Stabiltgrus - 21225 | Stabiltgrus - 21225 |
-| 273280163 | Stikledninger - 24004 | Stikledninger - 24004 |
-| 273280164 | Stillads leje - 23002 | Stillads leje - 23002 |
-| 273280165 | Storkøkkener - UE - 22058 | Storkøkkener - UE - 22058 |
-| 273280166 | Stål/alufacader - UE - 22045 | Stål/alufacader - UE - 22045 |
-| 273280167 | Ståldøre - 21413 | Ståldøre - 21413 |
-| 273280168 | Stålkonstruktioner - UE - 22050 | Stålkonstruktioner - UE - 22050 |
-| 273280169 | Stålmaterialer - 21236 | Stålmaterialer - 21236 |
-| 273280170 | Ståltrapper - 21414 | Ståltrapper - 21414 |
-| 273280171 | Svagstrøm diverse - 22106 | Svagstrøm diverse - 22106 |
-| 273280172 | Søfragt - 23203 | Søfragt - 23203 |
-| 273280173 | Tag/vægkassetter - 21402 | Tag/vægkassetter - 21402 |
-| 273280174 | Tagdækning - UE - 22037 | Tagdækning - UE - 22037 |
-| 273280175 | Tagelementer - UE - 22035 | Tagelementer - UE - 22035 |
-| 273280176 | Tagkonstruktion - 21401 | Tagkonstruktion - 21401 |
-| 273280177 | Tagsten - 21203 | Tagsten - 21203 |
-| 273280178 | Teknisk isolering - 22115 | Teknisk isolering - 22115 |
-| 273280179 | Tilslutningsafgifter - 24003 | Tilslutningsafgifter - 24003 |
-| 273280180 | Timebaserede omkostninger - 21027 | Timebaserede omkostninger - 21027 |
-| 273280181 | Trapper - 21404 | Trapper - 21404 |
-| 273280182 | Trapper af træ/indv.trapper - UE - 22036 | Trapper af træ/indv.trapper - UE - 22036 |
-| 273280183 | Træ og plader generelt - 21220 | Træ og plader generelt - 21220 |
-| 273280184 | Trægulve - UE - 22033 | Trægulve - UE - 22033 |
-| 273280185 | TV & antennetilslutning - 24008 | TV & antennetilslutning - 24008 |
-| 273280186 | Tyverialarm - 22103 | Tyverialarm - 22103 |
-| 273280187 | Tyverisikring - arbejdsplads - 21017 | Tyverisikring - arbejdsplads - 21017 |
-| 273280188 | Tømrer/snedker - UE - 22032 | Tømrer/snedker - UE - 22032 |
-| 273280189 | Uddybning - UE - 22002 | Uddybning - UE - 22002 |
-| 273280190 | Udtørring - 21039 | Udtørring - 21039 |
-| 273280191 | Udviklingshonorarer - 23316 | Udviklingshonorarer - 23316 |
-| 273280192 | Vagt - arbejdsplads - 21011 | Vagt - arbejdsplads - 21011 |
-| 273280193 | Vejskilte og tilbehør - 21232 | Vejskilte og tilbehør - 21232 |
-| 273280194 | Ventilation - 22111 | Ventilation - 22111 |
-| 273280195 | Vinduer og udv. døre - 21103 | Vinduer og udv. døre - 21103 |
-| 273280196 | Vinduesarbejder - UE - 22043 | Vinduesarbejder - UE - 22043 |
-| 273280197 | Vinterforanstaltninger - 21038 | Vinterforanstaltninger - 21038 |
-| 273280198 | VVS-installationer - 22109 | VVS-installationer - 22109 |
-| 273280199 | Væg- og tagbeklædning - UE - 22031 | Væg- og tagbeklædning - UE - 22031 |
-| 273280200 | Vægtafgift - maskiner - 23108 | Vægtafgift - maskiner - 23108 |
-| 273280201 | Værkstedsudstyr leje - 23007 | Værkstedsudstyr leje - 23007 |
-| 273280202 | Værktøj (<13.200) - 21018 | Værktøj (<13.200) - 21018 |
-| 273280203 | Øvrige installationsentrepriser - 22117 | Øvrige installationsentrepriser - 22117 |
-| 273280204 | Øvrige lejer arbejdsplads - 23016 | Øvrige lejer arbejdsplads - 23016 |
-| 273280205 | Øvrige materialer - 21231 | Øvrige materialer - 21231 |
-| 273280206 | Øvrige transportudgifter - 23207 | Øvrige transportudgifter - 23207 |
-| 273280207 | Øvrige tømrermaterialer - 21114 | Øvrige tømrermaterialer - 21114 |
-| 273280208 | Øvrige uspec. anlægsentrepriser - UE - 22019 | Øvrige uspec. anlægsentrepriser - UE - 22019 |
-| 273280209 | Øvrige uspec. bygge og anlægsentrepriser - UE - 22065 | Øvrige uspec. bygge og anlægsentrepriser - UE - 22065 |
-| 273280210 | Øvrigt snedkerarbejde - 21112 | Øvrigt snedkerarbejde - 21112 |
-| 273280211 | Leasing/leje gulplade biler - 29010 | Leasing/leje gulplade biler - 29010 |
-| 273280212 | Kontorartikler - 45030 | Kontorartikler - 45030 |
-| 273280213 | 750 - Pakkeomkos | 750 - Pakkeomkos |
-
-</details>
-
 <details><summary>Valg for <code>mth_interestedfor</code> (9)</summary>
 
 | Værdi | Label | Salesforce-værdi |
@@ -679,3 +465,97 @@ Standardkolonner, der bruges:
 | `mth_marketingagreementreturned` | Marketing Agreement Returned | string | maks. 100 | `Marketing_Agreement_Returned__c` |
 | `mth_sendmarketingagreementdate` | Send Marketing Agreement Date | date |  | `Send_Marketing_Agreement_Date__c` |
 | `mth_marketingagreementsenton` | Marketing Agreement Sent On | date |  | `Marketing_Agreement_Sent_on__c` |
+
+## Trade (`mth_trade`)
+
+Trade catalogue (fag). Accounts are linked to the trades they can deliver; a building contract is for one trade.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: value label before " - code"
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_code` | Code | string | maks. 20 | `value label after " - "` |
+| `mth_sourcevalue` | Salesforce Value | string | maks. 255 | `full picklist value, used for migration` |
+
+## Building Contract (`mth_buildingcontract`)
+
+Building contract (entreprise) on an opportunity: one trade package that subcontractors are invited to tender for.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Used_Building_Contract_Name__c (alternative name or trade)
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_alternativename` | Alternative Name | string | maks. 255 | `Alternative_Building_Contract_Name__c` |
+| `mth_tenderdeadline` | Tender Deadline | date |  | `Tender_Deadline__c` |
+
+## Collaborating Partner (`mth_collaboratingpartner`)
+
+A partner (account) invited on a building contract. Selected contacts are an N:N to contact. E-mails are activities regarding this record.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: Name (account name)
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_status` | Status | choice | 12 valg | `Subcontractor_Status__c` |
+| `mth_partnertype` | Partner Type | choice | 3 valg | `Collaborating_Partner_Type__c` |
+| `mth_comments` | Comments | memo | maks. 4000 | `Subcontractor_Comments__c` |
+| `mth_tenderevaluation` | Tender Evaluation | choice | 4 valg | `Tender_Evaluation__c (global value set Evaluation)` |
+| `mth_tenderevaluationcomment` | Tender Evaluation Comment | string | maks. 255 | `Tender_Evaluation_Comments__c` |
+| `mth_contractamount` | Contract Amount | currency |  | `Contract_Amount__c` |
+| `mth_lastemailsent` | Last E-mail Sent | date |  | `(new) set when a tender e-mail is sent` |
+
+<details><summary>Valg for <code>mth_status</code> (12)</summary>
+
+Option value = 273280000 + status code. Sending a tender e-mail moves 10 -> 24.
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280010 | 10 Selected for tender round | 10 |
+| 273280020 | 20 Wants to submit tender | 20 |
+| 273280022 | 22 Will get back | 22 |
+| 273280024 | 24 Awaiting tender | 24 |
+| 273280030 | 30 Tender received | 30 |
+| 273280060 | 60 Contract signed | 60 |
+| 273280090 | 90 Deselected for the job | 90 |
+| 273280091 | 91 Deselected for tender round | 91 |
+| 273280092 | 92 Declines to submit tender | 92 |
+| 273280095 | 95 Tender never received | 95 |
+| 273280097 | 97 Tender not compliant | 97 |
+| 273280099 | 99 To be deleted | 99 |
+
+</details>
+
+<details><summary>Valg for <code>mth_partnertype</code> (3)</summary>
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | Subcontractor | Subcontractor |
+| 273280001 | Supplier | Supplier |
+| 273280002 | Advisor | Advisor |
+
+</details>
+
+<details><summary>Valg for <code>mth_tenderevaluation</code> (4)</summary>
+
+Yellow, Red and Black require a comment.
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | Green | 10 |
+| 273280001 | Yellow | 5 |
+| 273280002 | Red | 0 |
+| 273280003 | Black | -1 |
+
+</details>
+
+## ESP E-mail Template (`mth_espemailtemplate`)
+
+E-mail template for tender e-mails to partners. Placeholders: {{Opportunity}}, {{CaseNumber}}, {{BuildingContract}}, {{TenderDeadline}}, {{Partner}}, {{ContactFirstName}}, {{Sender}}.
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new)
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_subject` | Subject | string | maks. 400 | `(new)` |
+| `mth_body` | Body (HTML) | memo | maks. 100000 | `(new)` |
+| `mth_isdefault` | Default | boolean |  | `(new)` |
