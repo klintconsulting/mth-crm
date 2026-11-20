@@ -1,0 +1,37 @@
+<appaction uniquename="mth_Lead_Convert">
+  <appmoduleid>
+    <uniquename>mth_MTHCRM</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Convert">
+    <label description="Convert" languagecode="1033" />
+  </buttonlabeltext>
+  <buttontooltipdescription default="Convert to an opportunity. The first one to convert gets the lead.">
+    <label description="Convert to an opportunity. The first one to convert gets the lead." languagecode="1033" />
+  </buttontooltipdescription>
+  <buttontooltiptitle default="Convert">
+    <label description="Convert" languagecode="1033" />
+  </buttontooltiptitle>
+  <context>1</context>
+  <contextentity>
+    <logicalname>mth_lead</logicalname>
+  </contextentity>
+  <contextvalue>mth_lead</contextvalue>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Convert</name>
+  <onclickeventjavascriptfunctionname>Mth.Lead.convert</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>6d53624e-dce4-f111-84e8-000d3a496ae5</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>10.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

@@ -29,6 +29,11 @@
     <AppModuleComponent type="26" id="{beeaf031-bce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="26" id="{ceeaf031-bce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="26" id="{e2eaf031-bce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{87245d54-dce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{8c245d54-dce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{8f245d54-dce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{92245d54-dce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{97245d54-dce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="60" id="{60a01b13-38e4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="60" id="{c4a01b13-38e4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="60" id="{d1a01b13-38e4-f111-84e8-000d3a496ae5}" />
@@ -38,6 +43,8 @@
     <AppModuleComponent type="60" id="{3612fa37-bce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="60" id="{4a12fa37-bce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="60" id="{6912fa37-bce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{c9ec605e-dce4-f111-84e8-000d3a496ae5}" />
+    <AppModuleComponent type="60" id="{45ed605e-dce4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="62" schemaName="mth_MTHCRM" />
   </AppModuleComponents>
   <AppModuleRoleMaps>

@@ -6,6 +6,7 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 
 | Område | Gruppe | Tabeller |
 |---|---|---|
+| Sales | Leads | Lead, Lead Queue (se [smart.md](smart.md)) |
 | Sales | Sales | Opportunity |
 | | Customers | Account, Contact |
 | | Setup | Organizational Unit |

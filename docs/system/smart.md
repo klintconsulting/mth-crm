@@ -75,8 +75,40 @@ Input `LeadId`. Output `OpportunityId` og `Message`. Plugin `ConvertLead` (synkr
 
 **Rigtigt API hos MTH:** `SMART_SOURCE=api` + `SMART_CLIENT_ID/SECRET` (Key Vault). Ingen kodeændring. Afprøv først med `--dry-run` mod et testmiljø.
 
+## Appen
+
+**Navigation:** gruppen **Leads** med *Lead* og *Lead Queue* øverst i området Sales.
+
+| Visning | Indhold |
+|---|---|
+| **MTH Leads in My Queues** (standard for Lead) | Åbne leads i de køer, brugeren er medlem af (FetchXML: lead → `mth_lead_mth_leadqueue` → `mth_leadqueue_systemuser`, `systemuserid eq-userid`, distinct). Nyeste først |
+| MTH Open Leads | Alle åbne leads |
+| MTH Closed Leads | Konverterede og fravalgte leads med konverteret af/den og salgsmulighed |
+| **MTH My Lead Queues** (standard for Lead Queue) | Køer, brugeren er medlem af |
+| MTH Active Lead Queues | Alle aktive køer |
+
+**Lead-formularen:**
+- **General:** projekt, værdi og datoer, klassifikation, bygherre, konvertering, og tidslinje med kommentarfelt (@-vælger).
+- **Description, Roles and Tenders:** roller og udbud vises med rich text-editoren.
+- **Queues:** de køer, leadet er i.
+- **Details:** bygningsdata og SMART-koder.
+
+**Knapper** (moderne kommandoer, `appaction`, defineret under `commands` i app.json og kalder `webresources/mth_/scripts/lead.js`):
+- **Convert:** bekræftelse, derefter `mth_ConvertLead` og åbning af den nye salgsmulighed. Har en anden allerede konverteret, vises dennes besked, og formularen opdateres.
+- **Disqualify:** status Fravalgt og leadet lukkes, så det forsvinder fra alle køer.
+
+**Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser åbne leads i køen og medlemmerne (tilføj via "Add existing" på brugere).
+
+**Salgsmulighed:** ny fane **SMART Project** med lead-opslag, projektdata, *Changes from SMART* (seneste og fuld historik) og roller og udbud.
+
+**Deploy-App.ps1** kan nu (bruges her og fremover): visninger med `filterXml`/`linkXml`, undergitre med `systemView` (eksisterende Microsoft-visning), automatisk rich text-editor på memo-kolonner med format RichText, og `commands` (appaction med JavaScript).
+
+**Afprøvet 2026-11-20:** "Leads i mine køer" returnerer 16 af 24 åbne leads for en bruger, der er medlem af alle 4 demokøer. Rich text-kontrollerne og knapperne er gemt. **Knapperne og formularerne er ikke afprøvet i browseren af udvikleren.**
+
 ## Status
 - [x] Trin 1: datamodel (2026-11-20)
 - [x] Trin 2: kø-matching og notifikation (plugin) og konvertering (Custom API, første vinder) (2026-11-20)
 - [x] Trin 3: SMART-synk (C#, Azure Function-projekt) med testdata (2026-11-20). Deploy til Azure mangler (app-registrering + Function App)
-- [ ] Trin 4: app (Lead- og kø-formularer, "Leads i mine køer", Konvertér-knap)
+- [x] Trin 4: app (Lead- og kø-formularer, "Leads i mine køer", Konvertér-knap) (2026-11-20)
+- [ ] Deploy af synken til Azure (app-registrering, application user, Function App i abonnementet "MTH CRM POC")
+- [ ] Danske labels (afventer dansk sprog i miljøet, B3)

@@ -47,7 +47,9 @@ function Get-TableMeta([string]$table) {
         $e = Invoke-Dataverse GET "EntityDefinitions(LogicalName='$table')?`$select=MetadataId,ObjectTypeCode,PrimaryIdAttribute,PrimaryNameAttribute&`$expand=Attributes(`$select=LogicalName,AttributeType,AttributeTypeName,DisplayName)"
         $attrs = @{}
         foreach ($a in $e.Attributes) { $attrs[$a.LogicalName] = $a }
-        $meta[$table] = [pscustomobject]@{ MetadataId = $e.MetadataId; Otc = $e.ObjectTypeCode; IdAttr = $e.PrimaryIdAttribute; NameAttr = $e.PrimaryNameAttribute; Attrs = $attrs }
+        $rich = @((Invoke-Dataverse GET "EntityDefinitions(LogicalName='$table')/Attributes/Microsoft.Dynamics.CRM.MemoAttributeMetadata?`$select=LogicalName,FormatName").value |
+            Where-Object { $_.FormatName.Value -eq 'RichText' } | ForEach-Object { $_.LogicalName })
+        $meta[$table] = [pscustomobject]@{ MetadataId = $e.MetadataId; Otc = $e.ObjectTypeCode; IdAttr = $e.PrimaryIdAttribute; NameAttr = $e.PrimaryNameAttribute; Attrs = $attrs; RichText = $rich }
     }
     $meta[$table]
 }
@@ -69,10 +71,16 @@ foreach ($v in $def.views) {
     $m = Get-TableMeta $v.table
     $attrs = @($m.IdAttr) + @($v.columns | ForEach-Object { $_[0] }) | Select-Object -Unique
     foreach ($c in $v.columns) { [void](Get-Attr $v.table $c[0]) }
-    $fetch = "<fetch version=`"1.0`" mapping=`"logical`"><entity name=`"$($v.table)`">" +
+    # Optional: extra filter conditions (filterXml, inside the AND filter) and link-entities (linkXml), e.g. "leads in my queues"
+    $conds = @()
+    if ($v.activeOnly) { $conds += '<condition attribute="statecode" operator="eq" value="0" />' }
+    if ($v.filterXml) { $conds += $v.filterXml }
+    $distinct = if ($v.linkXml) { ' distinct="true"' } else { '' }
+    $fetch = "<fetch version=`"1.0`" mapping=`"logical`"$distinct><entity name=`"$($v.table)`">" +
         (($attrs | ForEach-Object { "<attribute name=`"$_`" />" }) -join '') +
         "<order attribute=`"$($v.order.attribute)`" descending=`"$($v.order.descending.ToString().ToLower())`" />" +
-        $(if ($v.activeOnly) { '<filter type="and"><condition attribute="statecode" operator="eq" value="0" /></filter>' } else { '' }) +
+        $(if ($conds.Count) { "<filter type=`"and`">$($conds -join '')</filter>" } else { '' }) +
+        $(if ($v.linkXml) { $v.linkXml } else { '' }) +
         '</entity></fetch>'
     $layout = "<grid name=`"resultset`" object=`"$($m.Otc)`" jump=`"$($m.NameAttr)`" select=`"1`" icon=`"1`" preview=`"1`"><row name=`"result`" id=`"$($m.IdAttr)`">" +
         (($v.columns | ForEach-Object { "<cell name=`"$($_[0])`" width=`"$($_[1])`" />" }) -join '') + '</row></grid>'
@@ -128,7 +136,9 @@ function New-SectionXml($table, $s) {
     } elseif ($s.subgrid) {
         $sg = $s.subgrid
         # viewId: use an existing (e.g. Microsoft) view directly; otherwise a view defined in app.json by name
-        $vid = if ($sg.viewId) { $sg.viewId } else { $viewIds["$($sg.table)|$($sg.view)"] }
+        $vid = if ($sg.viewId) { $sg.viewId }
+               elseif ($sg.systemView) { (Invoke-Dataverse GET "savedqueries?`$select=savedqueryid&`$filter=returnedtypecode eq '$($sg.table)' and name eq '$($sg.systemView)'").value[0].savedqueryid }
+               else { $viewIds["$($sg.table)|$($sg.view)"] }
         if (-not $vid) { throw "Subgrid view '$($sg.view)' for $($sg.table) is not defined in app.json" }
         $span = if ($sg.rows) { [int]$sg.rows } else { 8 }
         [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" rowspan=`"$span`" colspan=`"1`" auto=`"false`">$(Lbl $s.label)" +
@@ -142,8 +152,18 @@ function New-SectionXml($table, $s) {
         foreach ($f in $s.fields) {
             $a = Get-Attr $table $f
             $label = $a.DisplayName.UserLocalizedLabel.Label
-            [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"true`" locklevel=`"0`">$(Lbl $label)" +
-                "<control id=`"$f`" classid=`"$(Get-ControlClass $a)`" datafieldname=`"$f`" disabled=`"false`" /></cell></row>")
+            $rich = (Get-TableMeta $table).RichText -contains $f
+            $uid = G
+            # Rich-text (HTML) memo columns get the rich text editor control, otherwise the HTML is shown raw
+            $span = if ($rich) { ' rowspan="6"' } else { '' }
+            [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"true`" locklevel=`"0`"$span>$(Lbl $label)" +
+                "<control id=`"$f`" classid=`"$(Get-ControlClass $a)`" datafieldname=`"$f`" disabled=`"false`" uniqueid=`"$uid`" /></cell></row>")
+            if ($rich) {
+                for ($i = 1; $i -lt 6; $i++) { [void]$rows.Append('<row />') }
+                $cd = "<controlDescription forControl=`"$uid`"><customControl id=`"$($ClassId.Memo)`"><parameters><datafieldname>$f</datafieldname></parameters></customControl>"
+                foreach ($ff in 0, 1, 2) { $cd += "<customControl formFactor=`"$ff`" name=`"MscrmControls.RichTextEditor.RichTextEditorControl`"><parameters><value>$f</value></parameters></customControl>" }
+                $script:ControlDescriptions += $cd + '</controlDescription>'
+            }
         }
     }
     "<section name=`"$($s.name)`" id=`"$(G)`" IsUserDefined=`"1`" showlabel=`"true`" showbar=`"false`" locklevel=`"0`" columns=`"1`" labelwidth=`"115`" celllabelalignment=`"Left`" celllabelposition=`"Left`">" +
@@ -240,6 +260,26 @@ if ($components.Count) {
     [void](Invoke-Dataverse POST 'AddAppComponents' @{ AppId = $appId; Components = $components })
     $newOther = @($components | Where-Object { $_['@odata.type'] -ne 'Microsoft.Dynamics.CRM.entity' }).Count
     Write-Host "  + app components: $newOther new forms/views/sitemap, $($components.Count - $newOther) tables (re-applied)"
+}
+
+# ---- 5b. Commands (modern commanding, appaction) calling JavaScript web resources ----
+foreach ($c in @($def.commands)) {
+    if (-not $c) { continue }
+    $wr = (Invoke-Dataverse GET "webresourceset?`$select=webresourceid&`$filter=name eq '$($c.library)'").value
+    if (-not $wr) { throw "Web resource $($c.library) not found - run Deploy-WebResources.ps1 first" }
+    $locations = @{ Form = 0; MainGrid = 1; SubGrid = 2; AssociatedGrid = 3 }
+    $body = @{
+        uniquename = $c.uniqueName; name = $c.label; buttonlabeltext = $c.label; buttontooltiptitle = $c.label; buttontooltipdescription = $c.tooltip
+        context = 1; contextvalue = $c.table; location = $locations[$c.location]; type = 0; visibilitytype = 0
+        onclickeventtype = 2; onclickeventjavascriptfunctionname = $c.function; onclickeventjavascriptparameters = '[]'
+        sequence = [decimal]$c.sequence; fonticon = $c.icon; hidden = $false
+        'OnClickEventJavaScriptWebResourceId@odata.bind' = "/webresourceset($($wr[0].webresourceid))"
+        'AppModuleId@odata.bind' = "/appmodules($appId)"
+        'ContextEntity@odata.bind' = "/entities($((Get-TableMeta $c.table).MetadataId))"
+    }
+    $ex = (Invoke-Dataverse GET "appactions?`$select=appactionid&`$filter=uniquename eq '$($c.uniqueName)'").value
+    if ($ex) { [void](Invoke-Dataverse PATCH "appactions($($ex[0].appactionid))" $body -Solution $sol); Write-Host "  ~ command $($c.uniqueName)" }
+    else { [void](Invoke-Dataverse POST 'appactions' $body -Solution $sol); Write-Host "  + command $($c.uniqueName)" }
 }
 
 # ---- 6. Validate and publish ----

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{45ed605e-dce4-f111-84e8-000d3a496ae5}</formid>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{11726b7e-69e9-417d-a5fc-f499d3d37a68}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="queue" id="{dd786483-7c3e-44aa-acea-e2ec0a43dfa6}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Queue" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6d2f122a-2b37-47d9-8f6a-d9aacff0e7f3}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                          <label description="Name" languagecode="1030" />
+                        </labels>
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" uniqueid="{50ae2311-127b-48e3-9d6c-78ab6861a870}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{afd5d2e3-d097-4b16-95d8-25e145e7aa1f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Active" languagecode="1033" />
+                        </labels>
+                        <control id="mth_isactive" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_isactive" disabled="false" uniqueid="{2f2c90ba-7441-49e8-8393-1b07733df655}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a277761-bf98-423d-abad-890286e42d87}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Notify Members About New Leads" languagecode="1033" />
+                        </labels>
+                        <control id="mth_notifymembers" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_notifymembers" disabled="false" uniqueid="{d07311b9-d277-4b47-8ade-ee91c946579a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a287b604-67bb-4131-9183-bceb5faa3e3e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="mth_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_description" disabled="false" uniqueid="{12b8db49-bdd8-437e-aece-c0830e0299b2}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{159ebd9d-d7df-47fd-a125-886706cee499}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                          <label description="Ejer" languagecode="1030" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" uniqueid="{340dbba7-4f58-4c28-9f2d-8c98d8ab1619}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="criteria" id="{8ad2e249-9bfc-4818-8ed4-5c82a499d922}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Criteria (all filled-in criteria must match; keywords separated by ;)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1f332b8f-dd48-4637-8f62-923c1629c6a8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Regions" languagecode="1033" />
+                        </labels>
+                        <control id="mth_regions" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="mth_regions" disabled="false" uniqueid="{b93aac9e-b5ed-4786-b53f-5e8b31733939}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cf59349e-910c-43c7-89da-bbe7e947b87f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Min. Value (DKK m)" languagecode="1033" />
+                        </labels>
+                        <control id="mth_minvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_minvalue" disabled="false" uniqueid="{ce09e90a-facf-46e0-a4cc-effb65137fd8}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{de6c7e55-484f-4962-b3b4-1cd7bb56a1ea}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Max. Value (DKK m)" languagecode="1033" />
+                        </labels>
+                        <control id="mth_maxvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_maxvalue" disabled="false" uniqueid="{e83aaaaa-ab97-4202-b16d-e8c6f3c80fc7}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8b0a89bb-be74-445b-805a-f23e4e2a93aa}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Category / Development Type Contains" languagecode="1033" />
+                        </labels>
+                        <control id="mth_categorykeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_categorykeywords" disabled="false" uniqueid="{af7345d2-77f7-4fbe-8560-2f0149b32a41}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3036242b-4382-4ec6-b07f-833e1bd509fc}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Planning Stage Contains" languagecode="1033" />
+                        </labels>
+                        <control id="mth_stagekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_stagekeywords" disabled="false" uniqueid="{d5bca1a1-06af-45da-9abe-b8aa229e9712}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4ae942f3-957e-4e7f-ab90-afb9031813b7}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Contract Type Contains" languagecode="1033" />
+                        </labels>
+                        <control id="mth_contracttypekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_contracttypekeywords" disabled="false" uniqueid="{61204d6e-66fc-4e97-aa5e-c187c869946e}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{24d5061d-c11a-46cc-ba41-4d3fa624e1ed}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Project Text Contains" languagecode="1033" />
+                        </labels>
+                        <control id="mth_textkeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_textkeywords" disabled="false" uniqueid="{85015ecf-736e-4236-9727-3001044a22b0}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2e862ba-386b-4080-9797-7ba062c6c363}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Exclude If Text Contains" languagecode="1033" />
+                        </labels>
+                        <control id="mth_excludekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_excludekeywords" disabled="false" uniqueid="{b9a13d64-722f-4fa7-99f5-a1f9732f463a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4c3db19b-35e0-43e0-92c4-2618bd7a9001}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Construction Start Within (months)" languagecode="1033" />
+                        </labels>
+                        <control id="mth_startwithinmonths" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="mth_startwithinmonths" disabled="false" uniqueid="{4e094312-3450-4a39-ade0-a3c1fbdc045f}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9e911105-ceab-493a-8a85-94350250cb5b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Exclude Projects Already Started" languagecode="1033" />
+                        </labels>
+                        <control id="mth_excludestarted" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_excludestarted" disabled="false" uniqueid="{e32d2604-e856-4108-88ed-22fed73917de}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="leads" id="{7e1fc526-04d5-4c6a-8d01-f515988145f7}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="Leads and Members" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="leads" id="{6999804c-0297-4b3c-8e88-486427faa8d2}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Open leads in the queue" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{632681c0-3149-4411-9af8-04f5adf4c85e}" showlabel="false" rowspan="14" colspan="1" auto="false">
+                        <labels>
+                          <label description="Open leads in the queue" languagecode="1033" />
+                        </labels>
+                        <control id="QueueLeads" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <RecordsPerPage>10</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserView>false</IsUserView>
+                            <ViewId>{8c245d54-dce4-f111-84e8-000d3a496ae5}</ViewId>
+                            <TargetEntityType>mth_lead</TargetEntityType>
+                            <ViewIds>{8c245d54-dce4-f111-84e8-000d3a496ae5}</ViewIds>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RelationshipName>mth_lead_mth_leadqueue</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="members" id="{c9e08370-bb2c-463f-a39a-5f4ff70d24d5}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Members (notified about new leads)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{fb405ae8-2dca-4796-8954-45e3c7dc4d21}" showlabel="false" rowspan="8" colspan="1" auto="false">
+                        <labels>
+                          <label description="Members (notified about new leads)" languagecode="1033" />
+                          <label description="Brugere" languagecode="1030" />
+                        </labels>
+                        <control id="QueueMembers" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <RecordsPerPage>10</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>Grid</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserView>false</IsUserView>
+                            <ViewId>{00000000-0000-0000-00aa-000010001212}</ViewId>
+                            <TargetEntityType>systemuser</TargetEntityType>
+                            <ViewIds>{00000000-0000-0000-00aa-000010001212}</ViewIds>
+                            <EnableChartPicker>false</EnableChartPicker>
+                            <RelationshipName>mth_leadqueue_systemuser</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="MTH Lead Queue" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

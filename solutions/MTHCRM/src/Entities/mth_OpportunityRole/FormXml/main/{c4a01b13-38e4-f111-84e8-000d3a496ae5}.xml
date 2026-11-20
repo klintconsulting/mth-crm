@@ -7,48 +7,48 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{85583130-0da8-46ec-a108-2844aaff44fa}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{619f0911-10bc-456c-a297-ed2903900c81}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section name="role" id="{ef123574-26b6-4c49-8371-fe00f7576564}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="role" id="{31a2f4ad-3238-4912-b612-fcb6ffb6f836}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Role" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{3a918902-fcb2-4e7c-bb81-6d67a285bf25}" showlabel="true" locklevel="0">
+                      <cell id="{25b59001-a6d2-44b2-9057-45bae0386e3d}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Opportunity" languagecode="1033" />
                         </labels>
-                        <control id="mth_opportunityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_opportunityid" disabled="false" />
+                        <control id="mth_opportunityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_opportunityid" disabled="false" uniqueid="{7b5d7649-eb83-4636-9302-6ba764735cff}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a9485b91-f734-4be4-8ac0-f61086a3dd5a}" showlabel="true" locklevel="0">
+                      <cell id="{c5a4a12e-41e4-4a42-a0da-ffa05d65a16c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Role" languagecode="1033" />
                         </labels>
-                        <control id="mth_role" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_role" disabled="false" />
+                        <control id="mth_role" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_role" disabled="false" uniqueid="{194e6812-6fbc-47bb-ab6e-abf73068a185}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2f7d949e-6463-4f81-962f-66176f28f698}" showlabel="true" locklevel="0">
+                      <cell id="{707d87fc-849f-44ff-9954-324be9803948}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="User" languagecode="1033" />
                         </labels>
-                        <control id="mth_userid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_userid" disabled="false" />
+                        <control id="mth_userid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_userid" disabled="false" uniqueid="{534ab0fb-8333-42cd-a765-70b871bbd13c}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{27a4b317-67ca-4f79-9859-8a86b56643cf}" showlabel="true" locklevel="0">
+                      <cell id="{5d7c38a5-0d3b-444f-a88a-20785b6dc860}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
-                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" />
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" uniqueid="{e0871fad-8ce3-42b0-baba-a788c0447f73}" />
                       </cell>
                     </row>
                   </rows>

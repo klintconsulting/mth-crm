@@ -10,6 +10,13 @@
       <Titles>
         <Title LCID="1033" Title="Sales" />
       </Titles>
+      <Group Id="mth_grp_leads" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Leads" />
+        </Titles>
+        <SubArea Id="mth_sub_mth_lead" Entity="mth_lead" />
+        <SubArea Id="mth_sub_mth_leadqueue" Entity="mth_leadqueue" />
+      </Group>
       <Group Id="mth_grp_sales" IsProfile="false">
         <Titles>
           <Title LCID="1033" Title="Sales" />

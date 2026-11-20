@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{8f245d54-dce4-f111-84e8-000d3a496ae5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_leadid">
+          <cell name="mth_name" width="260" />
+          <cell name="mth_leadstatus" width="110" />
+          <cell name="mth_convertedbyid" width="150" />
+          <cell name="mth_convertedon" width="130" />
+          <cell name="mth_convertedopportunityid" width="220" />
+          <cell name="mth_projectregion" width="110" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="mth_lead">
+          <attribute name="mth_leadid" />
+          <attribute name="mth_name" />
+          <attribute name="mth_leadstatus" />
+          <attribute name="mth_convertedbyid" />
+          <attribute name="mth_convertedon" />
+          <attribute name="mth_convertedopportunityid" />
+          <attribute name="mth_projectregion" />
+          <order attribute="mth_convertedon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MTH Closed Leads" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>
