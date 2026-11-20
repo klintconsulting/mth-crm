@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\MentionParser.cs" Link="MentionParser.cs" />
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\EmailTemplateRenderer.cs" Link="EmailTemplateRenderer.cs" />
+    <Compile Include="..\..\plugins\Mth.Crm.Plugins\QueueMatcher.cs" Link="QueueMatcher.cs" />
+    <Compile Include="..\..\plugins\Mth.Crm.Plugins\ProjectFields.cs" Link="ProjectFields.cs" />
   </ItemGroup>
 
   <ItemGroup>

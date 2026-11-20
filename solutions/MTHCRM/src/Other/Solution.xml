@@ -102,7 +102,11 @@
       <RootComponent type="66" schemaName="mth_Mth.TenderWorkspace" behavior="0" />
       <RootComponent type="80" schemaName="mth_MTHCRM" behavior="0" />
       <RootComponent type="91" id="{bc0b0a4d-a1e4-f111-84e8-000d3a496ae5}" schemaName="Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" behavior="0" />
+      <RootComponent type="92" id="{6378a4b5-d2e4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{6b78a4b5-d2e4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{c00b0a4d-a1e4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{d6dc176d-d3e4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{d9dc176d-d3e4-f111-84e8-000d3a496ae5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>

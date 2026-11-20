@@ -6,37 +6,54 @@
   <RolePrivileges>
     <RolePrivilege name="prvAppendAccount" level="Global" />
     <RolePrivilege name="prvAppendContact" level="Global" />
+    <RolePrivilege name="prvAppendmth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
     <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendToAccount" level="Global" />
     <RolePrivilege name="prvAppendToContact" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
     <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendTomth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendTomth_OrganizationalUnit" level="Global" />
     <RolePrivilege name="prvAssignAccount" level="Basic" />
     <RolePrivilege name="prvAssignContact" level="Basic" />
+    <RolePrivilege name="prvAssignmth_Lead" level="Basic" />
+    <RolePrivilege name="prvAssignmth_LeadQueue" level="Basic" />
     <RolePrivilege name="prvAssignmth_Opportunity" level="Basic" />
     <RolePrivilege name="prvAssignmth_OpportunityRole" level="Basic" />
     <RolePrivilege name="prvCreateAccount" level="Global" />
     <RolePrivilege name="prvCreateContact" level="Global" />
+    <RolePrivilege name="prvCreatemth_Lead" level="Basic" />
+    <RolePrivilege name="prvCreatemth_LeadQueue" level="Basic" />
     <RolePrivilege name="prvCreatemth_Opportunity" level="Basic" />
     <RolePrivilege name="prvCreatemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvDeletemth_LeadQueue" level="Basic" />
     <RolePrivilege name="prvDeletemth_Opportunity" level="Basic" />
     <RolePrivilege name="prvDeletemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvReadAccount" level="Global" />
     <RolePrivilege name="prvReadContact" level="Global" />
+    <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
+    <RolePrivilege name="prvReadmth_Lead" level="Global" />
+    <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
     <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
     <RolePrivilege name="prvReadmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvReadmth_OrganizationalUnit" level="Global" />
+    <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
     <RolePrivilege name="prvReadSharePointData" level="Global" />
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
     <RolePrivilege name="prvShareAccount" level="Basic" />
     <RolePrivilege name="prvShareContact" level="Basic" />
+    <RolePrivilege name="prvSharemth_Lead" level="Basic" />
+    <RolePrivilege name="prvSharemth_LeadQueue" level="Basic" />
     <RolePrivilege name="prvSharemth_Opportunity" level="Basic" />
     <RolePrivilege name="prvSharemth_OpportunityRole" level="Basic" />
     <RolePrivilege name="prvWriteAccount" level="Global" />
     <RolePrivilege name="prvWriteContact" level="Global" />
+    <RolePrivilege name="prvWritemth_Lead" level="Global" />
+    <RolePrivilege name="prvWritemth_LeadQueue" level="Basic" />
     <RolePrivilege name="prvWritemth_Opportunity" level="Basic" />
     <RolePrivilege name="prvWritemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvWriteSharePointData" level="Global" />

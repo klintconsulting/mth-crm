@@ -1,0 +1,18 @@
+<customapi uniquename="mth_ConvertLead">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Converts an open lead to an opportunity owned by the caller. First one wins (optimistic concurrency); the lead is closed for everyone else.">
+    <label description="Converts an open lead to an opportunity owned by the caller. First one wins (optimistic concurrency); the lead is closed for everyone else." languagecode="1033" />
+  </description>
+  <displayname default="Convert Lead">
+    <label description="Convert Lead" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>mth_ConvertLead</name>
+  <plugintypeid>
+    <plugintypeexportkey>b18c1e73-d3e4-f111-84e8-000d3a496ae5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

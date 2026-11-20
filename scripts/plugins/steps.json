@@ -1,44 +1,170 @@
 {
-  "solution": "MTHCRM",
-  "assembly": {
-    "name": "Mth.Crm.Plugins",
-    "project": "plugins/Mth.Crm.Plugins/Mth.Crm.Plugins.csproj",
-    "dll": "plugins/Mth.Crm.Plugins/bin/Release/net462/Mth.Crm.Plugins.dll"
-  },
-  "steps": [
-    {
-      "type": "Mth.Crm.Plugins.NoteMentionNotifier",
-      "name": "Mth.Crm.Plugins.NoteMentionNotifier: Create of annotation",
-      "description": "Sends an in-app notification to users @mentioned in a new note.",
-      "message": "Create",
-      "table": "annotation",
-      "stage": 40,
-      "mode": "Asynchronous",
-      "rank": 1
-    }
-  ],
-  "customApis": [
-    {
-      "uniqueName": "mth_SendPartnerEmail",
-      "displayName": "Send Partner E-mail",
-      "description": "Sends one tender e-mail for one collaborating partner to its selected contacts from the calling user, regarding the partner. Status 10 -> 24. SendToSelf sends a test to the caller.",
-      "type": "Mth.Crm.Plugins.SendPartnerEmail",
-      "isFunction": false,
-      "request": [
-        { "name": "PartnerId", "type": "Guid", "optional": false },
-        { "name": "Subject", "type": "String", "optional": false },
-        { "name": "Body", "type": "String", "optional": false },
-        { "name": "AttachmentsJson", "type": "String", "optional": true },
-        { "name": "SendToSelf", "type": "Boolean", "optional": true }
-      ],
-      "response": [
-        { "name": "Result", "type": "String" },
-        { "name": "EmailId", "type": "String" },
-        { "name": "Message", "type": "String" }
-      ]
-    }
-  ],
-  "appSettings": [
-    { "app": "mth_MTHCRM", "setting": "AllowNotificationsEarlyAccess", "value": "true", "note": "In-app notifications (bell icon) - required by NoteMentionNotifier" }
-  ]
+    "solution":  "MTHCRM",
+    "assembly":  {
+                     "name":  "Mth.Crm.Plugins",
+                     "project":  "plugins/Mth.Crm.Plugins/Mth.Crm.Plugins.csproj",
+                     "dll":  "plugins/Mth.Crm.Plugins/bin/Release/net462/Mth.Crm.Plugins.dll"
+                 },
+    "steps":  [
+                  {
+                      "type":  "Mth.Crm.Plugins.NoteMentionNotifier",
+                      "name":  "Mth.Crm.Plugins.NoteMentionNotifier: Create of annotation",
+                      "description":  "Sends an in-app notification to users @mentioned in a new note.",
+                      "message":  "Create",
+                      "table":  "annotation",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.LeadQueueSync",
+                      "name":  "Mth.Crm.Plugins.LeadQueueSync: Create of mth_lead",
+                      "description":  "Places a new lead in the matching lead queues and notifies members.",
+                      "message":  "Create",
+                      "table":  "mth_lead",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.LeadQueueSync",
+                      "name":  "Mth.Crm.Plugins.LeadQueueSync: Update of mth_lead",
+                      "description":  "Re-evaluates lead queues when project data or status changes.",
+                      "message":  "Update",
+                      "table":  "mth_lead",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_name",
+                                                  "mth_projecttitle",
+                                                  "mth_projecttexts",
+                                                  "mth_projectregion",
+                                                  "mth_projectvalue",
+                                                  "mth_projectcategories",
+                                                  "mth_maincategory",
+                                                  "mth_maindevtype",
+                                                  "mth_planningstage",
+                                                  "mth_projectstage",
+                                                  "mth_smartcontracttype",
+                                                  "mth_projectstartdate",
+                                                  "mth_leadstatus"
+                                              ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.LeadQueueSync",
+                      "name":  "Mth.Crm.Plugins.LeadQueueSync: Create of mth_leadqueue",
+                      "description":  "Fills a new queue with matching open leads.",
+                      "message":  "Create",
+                      "table":  "mth_leadqueue",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.LeadQueueSync",
+                      "name":  "Mth.Crm.Plugins.LeadQueueSync: Update of mth_leadqueue",
+                      "description":  "Re-evaluates all open leads when the queue criteria change.",
+                      "message":  "Update",
+                      "table":  "mth_leadqueue",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_isactive",
+                                                  "mth_regions",
+                                                  "mth_minvalue",
+                                                  "mth_maxvalue",
+                                                  "mth_categorykeywords",
+                                                  "mth_stagekeywords",
+                                                  "mth_contracttypekeywords",
+                                                  "mth_textkeywords",
+                                                  "mth_excludekeywords",
+                                                  "mth_startwithinmonths",
+                                                  "mth_excludestarted"
+                                              ]
+                  }
+              ],
+    "customApis":  [
+                       {
+                           "uniqueName":  "mth_SendPartnerEmail",
+                           "displayName":  "Send Partner E-mail",
+                           "description":  "Sends one tender e-mail for one collaborating partner to its selected contacts from the calling user, regarding the partner. Status 10 -\u003e 24. SendToSelf sends a test to the caller.",
+                           "type":  "Mth.Crm.Plugins.SendPartnerEmail",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "PartnerId",
+                                               "type":  "Guid",
+                                               "optional":  false
+                                           },
+                                           {
+                                               "name":  "Subject",
+                                               "type":  "String",
+                                               "optional":  false
+                                           },
+                                           {
+                                               "name":  "Body",
+                                               "type":  "String",
+                                               "optional":  false
+                                           },
+                                           {
+                                               "name":  "AttachmentsJson",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "SendToSelf",
+                                               "type":  "Boolean",
+                                               "optional":  true
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "Result",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "EmailId",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "Message",
+                                                "type":  "String"
+                                            }
+                                        ]
+                       },
+                       {
+                           "uniqueName":  "mth_ConvertLead",
+                           "displayName":  "Convert Lead",
+                           "description":  "Converts an open lead to an opportunity owned by the caller. First one wins (optimistic concurrency); the lead is closed for everyone else.",
+                           "type":  "Mth.Crm.Plugins.ConvertLead",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "LeadId",
+                                               "type":  "Guid",
+                                               "optional":  false
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "OpportunityId",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "Message",
+                                                "type":  "String"
+                                            }
+                                        ]
+                       }
+                   ],
+    "appSettings":  [
+                        {
+                            "app":  "mth_MTHCRM",
+                            "setting":  "AllowNotificationsEarlyAccess",
+                            "value":  "true",
+                            "note":  "In-app notifications (bell icon) - required by NoteMentionNotifier"
+                        }
+                    ]
 }

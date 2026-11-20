@@ -1,40 +1,249 @@
 {
-  "solution": "MTHCRM",
-  "app": "mth_MTHCRM",
-  "note": "Users get the system role 'Basic User' (core privileges such as notes, activities, user settings) PLUS exactly one MTH role. Depth: None | Basic (own records) | Local (own business unit) | Deep (BU and child BUs) | Global (organisation).",
-  "roles": [
-    {
-      "name": "MTH Sales",
-      "description": "Salesperson: creates and maintains own opportunities; reads everything; maintains accounts and contacts.",
-      "privileges": {
-        "mth_opportunity":        { "Create": "Basic", "Read": "Global", "Write": "Basic", "Delete": "Basic", "Append": "Global", "AppendTo": "Global", "Assign": "Basic", "Share": "Basic" },
-        "mth_opportunityrole":    { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Basic", "Share": "Basic" },
-        "account":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "None", "Append": "Global", "AppendTo": "Global", "Assign": "Basic", "Share": "Basic" },
-        "contact":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "None", "Append": "Global", "AppendTo": "Global", "Assign": "Basic", "Share": "Basic" },
-        "mth_organizationalunit": { "Read": "Global", "AppendTo": "Global" }
-      }
-    },
-    {
-      "name": "MTH Tender Manager",
-      "description": "Tender manager: maintains all opportunities and case teams, can reassign and delete opportunities.",
-      "privileges": {
-        "mth_opportunity":        { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "mth_opportunityrole":    { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "account":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "None", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "contact":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "None", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "mth_organizationalunit": { "Read": "Global", "AppendTo": "Global" }
-      }
-    },
-    {
-      "name": "MTH CRM Administrator",
-      "description": "Business administrator of the CRM data: full access to all MTH tables including organizational units and deletion of accounts/contacts.",
-      "privileges": {
-        "mth_opportunity":        { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "mth_opportunityrole":    { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "account":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "contact":                { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global", "Assign": "Global", "Share": "Global" },
-        "mth_organizationalunit": { "Create": "Global", "Read": "Global", "Write": "Global", "Delete": "Global", "Append": "Global", "AppendTo": "Global" }
-      }
-    }
-  ]
+    "solution":  "MTHCRM",
+    "app":  "mth_MTHCRM",
+    "note":  "Users get the system role \u0027Basic User\u0027 (core privileges such as notes, activities, user settings) PLUS exactly one MTH role. Depth: None | Basic (own records) | Local (own business unit) | Deep (BU and child BUs) | Global (organisation).",
+    "roles":  [
+                  {
+                      "name":  "MTH Sales",
+                      "description":  "Salesperson: creates and maintains own opportunities; reads everything; maintains accounts and contacts.",
+                      "privileges":  {
+                                         "mth_opportunity":  {
+                                                                 "Create":  "Basic",
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Basic",
+                                                                 "Delete":  "Basic",
+                                                                 "Append":  "Global",
+                                                                 "AppendTo":  "Global",
+                                                                 "Assign":  "Basic",
+                                                                 "Share":  "Basic"
+                                                             },
+                                         "mth_opportunityrole":  {
+                                                                     "Create":  "Global",
+                                                                     "Read":  "Global",
+                                                                     "Write":  "Global",
+                                                                     "Delete":  "Global",
+                                                                     "Append":  "Global",
+                                                                     "AppendTo":  "Global",
+                                                                     "Assign":  "Basic",
+                                                                     "Share":  "Basic"
+                                                                 },
+                                         "account":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "None",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Basic",
+                                                         "Share":  "Basic"
+                                                     },
+                                         "contact":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "None",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Basic",
+                                                         "Share":  "Basic"
+                                                     },
+                                         "mth_organizationalunit":  {
+                                                                        "Read":  "Global",
+                                                                        "AppendTo":  "Global"
+                                                                    },
+                                         "mth_lead":  {
+                                                          "Append":  "Global",
+                                                          "Write":  "Global",
+                                                          "Assign":  "Basic",
+                                                          "Delete":  "None",
+                                                          "AppendTo":  "Global",
+                                                          "Read":  "Global",
+                                                          "Share":  "Basic",
+                                                          "Create":  "Basic"
+                                                      },
+                                         "mth_leadqueue":  {
+                                                               "Append":  "Global",
+                                                               "Write":  "Basic",
+                                                               "Assign":  "Basic",
+                                                               "Delete":  "Basic",
+                                                               "AppendTo":  "Global",
+                                                               "Read":  "Global",
+                                                               "Share":  "Basic",
+                                                               "Create":  "Basic"
+                                                           },
+                                         "mth_smartlookup":  {
+                                                                 "Read":  "Global"
+                                                             },
+                                         "mth_integrationstate":  {
+                                                                      "Read":  "Global"
+                                                                  }
+                                     }
+                  },
+                  {
+                      "name":  "MTH Tender Manager",
+                      "description":  "Tender manager: maintains all opportunities and case teams, can reassign and delete opportunities.",
+                      "privileges":  {
+                                         "mth_opportunity":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Global",
+                                                                 "Delete":  "Global",
+                                                                 "Append":  "Global",
+                                                                 "AppendTo":  "Global",
+                                                                 "Assign":  "Global",
+                                                                 "Share":  "Global"
+                                                             },
+                                         "mth_opportunityrole":  {
+                                                                     "Create":  "Global",
+                                                                     "Read":  "Global",
+                                                                     "Write":  "Global",
+                                                                     "Delete":  "Global",
+                                                                     "Append":  "Global",
+                                                                     "AppendTo":  "Global",
+                                                                     "Assign":  "Global",
+                                                                     "Share":  "Global"
+                                                                 },
+                                         "account":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "None",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Global",
+                                                         "Share":  "Global"
+                                                     },
+                                         "contact":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "None",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Global",
+                                                         "Share":  "Global"
+                                                     },
+                                         "mth_organizationalunit":  {
+                                                                        "Read":  "Global",
+                                                                        "AppendTo":  "Global"
+                                                                    },
+                                         "mth_lead":  {
+                                                          "Append":  "Global",
+                                                          "Write":  "Global",
+                                                          "Assign":  "Basic",
+                                                          "Delete":  "None",
+                                                          "AppendTo":  "Global",
+                                                          "Read":  "Global",
+                                                          "Share":  "Basic",
+                                                          "Create":  "Basic"
+                                                      },
+                                         "mth_leadqueue":  {
+                                                               "Append":  "Global",
+                                                               "Write":  "Global",
+                                                               "Assign":  "Global",
+                                                               "Delete":  "Global",
+                                                               "AppendTo":  "Global",
+                                                               "Read":  "Global",
+                                                               "Share":  "Global",
+                                                               "Create":  "Global"
+                                                           },
+                                         "mth_smartlookup":  {
+                                                                 "Read":  "Global"
+                                                             },
+                                         "mth_integrationstate":  {
+                                                                      "Read":  "Global"
+                                                                  }
+                                     }
+                  },
+                  {
+                      "name":  "MTH CRM Administrator",
+                      "description":  "Business administrator of the CRM data: full access to all MTH tables including organizational units and deletion of accounts/contacts.",
+                      "privileges":  {
+                                         "mth_opportunity":  {
+                                                                 "Create":  "Global",
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Global",
+                                                                 "Delete":  "Global",
+                                                                 "Append":  "Global",
+                                                                 "AppendTo":  "Global",
+                                                                 "Assign":  "Global",
+                                                                 "Share":  "Global"
+                                                             },
+                                         "mth_opportunityrole":  {
+                                                                     "Create":  "Global",
+                                                                     "Read":  "Global",
+                                                                     "Write":  "Global",
+                                                                     "Delete":  "Global",
+                                                                     "Append":  "Global",
+                                                                     "AppendTo":  "Global",
+                                                                     "Assign":  "Global",
+                                                                     "Share":  "Global"
+                                                                 },
+                                         "account":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "Global",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Global",
+                                                         "Share":  "Global"
+                                                     },
+                                         "contact":  {
+                                                         "Create":  "Global",
+                                                         "Read":  "Global",
+                                                         "Write":  "Global",
+                                                         "Delete":  "Global",
+                                                         "Append":  "Global",
+                                                         "AppendTo":  "Global",
+                                                         "Assign":  "Global",
+                                                         "Share":  "Global"
+                                                     },
+                                         "mth_organizationalunit":  {
+                                                                        "Create":  "Global",
+                                                                        "Read":  "Global",
+                                                                        "Write":  "Global",
+                                                                        "Delete":  "Global",
+                                                                        "Append":  "Global",
+                                                                        "AppendTo":  "Global"
+                                                                    },
+                                         "mth_lead":  {
+                                                          "Append":  "Global",
+                                                          "Write":  "Global",
+                                                          "Assign":  "Global",
+                                                          "Delete":  "Global",
+                                                          "AppendTo":  "Global",
+                                                          "Read":  "Global",
+                                                          "Share":  "Global",
+                                                          "Create":  "Global"
+                                                      },
+                                         "mth_leadqueue":  {
+                                                               "Append":  "Global",
+                                                               "Write":  "Global",
+                                                               "Assign":  "Global",
+                                                               "Delete":  "Global",
+                                                               "AppendTo":  "Global",
+                                                               "Read":  "Global",
+                                                               "Share":  "Global",
+                                                               "Create":  "Global"
+                                                           },
+                                         "mth_smartlookup":  {
+                                                                 "AppendTo":  "Global",
+                                                                 "Create":  "Global",
+                                                                 "Append":  "Global",
+                                                                 "Read":  "Global",
+                                                                 "Write":  "Global",
+                                                                 "Delete":  "Global"
+                                                             },
+                                         "mth_integrationstate":  {
+                                                                      "AppendTo":  "Global",
+                                                                      "Create":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Delete":  "Global"
+                                                                  }
+                                     }
+                  }
+              ]
 }

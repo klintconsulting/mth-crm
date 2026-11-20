@@ -5,6 +5,12 @@
   <IntroducedVersion>0.1.0.0</IntroducedVersion>
   <FileName>/PluginAssemblies/MthCrmPlugins-BC0B0A4D-A1E4-F111-84E8-000D3A496AE5/MthCrmPlugins.dll</FileName>
   <PluginTypes>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.ConvertLead, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="b18c1e73-d3e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.ConvertLead">
+      <FriendlyName>Mth.Crm.Plugins.ConvertLead</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.LeadQueueSync, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="6278a4b5-d2e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.LeadQueueSync">
+      <FriendlyName>Mth.Crm.Plugins.LeadQueueSync</FriendlyName>
+    </PluginType>
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.NoteMentionNotifier, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="bf0b0a4d-a1e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.NoteMentionNotifier">
       <FriendlyName>Mth.Crm.Plugins.NoteMentionNotifier</FriendlyName>
     </PluginType>

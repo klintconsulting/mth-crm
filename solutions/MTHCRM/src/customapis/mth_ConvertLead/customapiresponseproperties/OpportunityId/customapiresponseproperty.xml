@@ -1,0 +1,8 @@
+<customapiresponseproperty uniquename="OpportunityId">
+  <displayname default="OpportunityId">
+    <label description="OpportunityId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>mth_ConvertLead.OpportunityId</name>
+  <type>10</type>
+</customapiresponseproperty>

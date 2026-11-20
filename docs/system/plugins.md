@@ -5,6 +5,8 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 | Plugin | Besked / tabel | Fase | Tilstand | Formål |
 |---|---|---|---|---|
 | `NoteMentionNotifier` | Create / `annotation` (note) | PostOperation (40) | Asynkron | In-app notifikation til brugere, der er @omtalt i en ny note |
+| `LeadQueueSync` | Create/Update af `mth_lead` og `mth_leadqueue` | PostOperation (40) | Asynkron | Beregner lead↔kø og giver kømedlemmer besked. Se [smart.md](smart.md) |
+| `ConvertLead` | Custom API `mth_ConvertLead` | Main operation | Synkron | Konverterer Lead → Salgsmulighed, første vinder. Se [smart.md](smart.md) |
 | `SendPartnerEmail` | Custom API `mth_SendPartnerEmail` | Main operation | Synkron | Tilbudsmail til én UE's valgte kontakter, status 10 → 24. Se [esp.md](esp.md) |
 
 ## NoteMentionNotifier: @omtale i noter

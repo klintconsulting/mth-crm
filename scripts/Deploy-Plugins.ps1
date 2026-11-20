@@ -56,6 +56,8 @@ foreach ($s in $def.steps) {
         'sdkmessageid@odata.bind' = "/sdkmessages($msgId)"; 'sdkmessagefilterid@odata.bind' = "/sdkmessagefilters($filterId)"
         'eventhandler_plugintype@odata.bind' = "/plugintypes($typeId)"
     }
+    # Update steps: only fire when these columns change (comma-separated logical names)
+    if ($s.filteringAttributes) { $body.filteringattributes = (@($s.filteringAttributes) -join ',') }
     $st = (Invoke-Dataverse GET "sdkmessageprocessingsteps?`$select=sdkmessageprocessingstepid&`$filter=name eq '$($s.name)'").value
     if ($st) {
         [void](Invoke-Dataverse PATCH "sdkmessageprocessingsteps($($st[0].sdkmessageprocessingstepid))" $body -Solution $sol)
