@@ -1,0 +1,18 @@
+<customapi uniquename="mth_NneSearch">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Searches NNE (D&amp;B/Bisnode) for companies like the Salesforce LWC nneSearch. Returns JSON with details and the existing account (by TDC ID).">
+    <label description="Searches NNE (D&amp;B/Bisnode) for companies like the Salesforce LWC nneSearch. Returns JSON with details and the existing account (by TDC ID)." languagecode="1033" />
+  </description>
+  <displayname default="NNE Search">
+    <label description="NNE Search" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>mth_NneSearch</name>
+  <plugintypeid>
+    <plugintypeexportkey>7b291e3b-1de7-f111-84e7-000d3a496ae5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

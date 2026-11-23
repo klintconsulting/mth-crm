@@ -13,6 +13,7 @@
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\EmailTemplateRenderer.cs" Link="EmailTemplateRenderer.cs" />
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\QueueMatcher.cs" Link="QueueMatcher.cs" />
     <Compile Include="..\..\plugins\Mth.Crm.Plugins\ProjectFields.cs" Link="ProjectFields.cs" />
+    <Compile Include="..\..\plugins\Mth.Crm.Plugins\NneSoap.cs" Link="NneSoap.cs" />
   </ItemGroup>
 
   <ItemGroup>

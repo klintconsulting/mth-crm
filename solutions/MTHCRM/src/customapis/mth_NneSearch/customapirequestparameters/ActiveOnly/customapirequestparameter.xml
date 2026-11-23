@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="ActiveOnly">
+  <displayname default="ActiveOnly">
+    <label description="ActiveOnly" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>mth_NneSearch.ActiveOnly</name>
+  <type>0</type>
+</customapirequestparameter>

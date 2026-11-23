@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="StreetStartsWith">
+  <displayname default="StreetStartsWith">
+    <label description="StreetStartsWith" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>mth_NneSearch.StreetStartsWith</name>
+  <type>0</type>
+</customapirequestparameter>

@@ -1,4 +1,4 @@
-# Dataverse Web API helper for development (device code login).
+# Dataverse Web API helper for development (browser login with PKCE; -DeviceCode for the old device code flow).
 # Token cache is stored outside the repo in %LOCALAPPDATA%\mth-crm\.
 # Usage:
 #   Import-Module .\scripts\Dataverse.psm1 -Force
@@ -26,8 +26,40 @@ function Save-Token($resp) {
     $script:Token | ConvertTo-Json | Set-Content (Get-CacheFile $script:Url) -Encoding UTF8
 }
 
+function ConvertTo-Base64Url([byte[]]$b) { [Convert]::ToBase64String($b).TrimEnd('=').Replace('+', '-').Replace('/', '_') }
+
+# Browser login: authorization code + PKCE with a loopback redirect (http://localhost:<port>/).
+# Default because Entra security defaults block the device code flow (AADSTS530035).
+function Connect-Browser([string]$Scope, [int]$TimeoutMinutes) {
+    $l = [Net.Sockets.TcpListener]::new([Net.IPAddress]::Loopback, 0); $l.Start(); $port = $l.LocalEndpoint.Port; $l.Stop()
+    $redirect = "http://localhost:$port/"
+    $verifierBytes = New-Object byte[] 32; [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($verifierBytes)
+    $verifier = ConvertTo-Base64Url $verifierBytes
+    $challenge = ConvertTo-Base64Url ([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::ASCII.GetBytes($verifier)))
+    $state = [guid]::NewGuid().ToString('N')
+    $authUrl = "$($script:Authority)/authorize?client_id=$($script:ClientId)&response_type=code&redirect_uri=$([uri]::EscapeDataString($redirect))" +
+        "&scope=$([uri]::EscapeDataString($Scope))&code_challenge=$challenge&code_challenge_method=S256&state=$state&prompt=select_account"
+    $http = [Net.HttpListener]::new(); $http.Prefixes.Add($redirect); $http.Start()
+    try {
+        Write-Host "Opening browser for sign-in. If it does not open, browse to:`n$authUrl"
+        Start-Process $authUrl
+        $task = $http.GetContextAsync()
+        if (-not $task.Wait([TimeSpan]::FromMinutes($TimeoutMinutes))) { throw 'Browser login timed out.' }
+        $ctx = $task.Result
+        $q = [Web.HttpUtility]::ParseQueryString($ctx.Request.Url.Query)
+        $ok = $q['code'] -and $q['state'] -eq $state
+        $msg = if ($ok) { 'Signed in. You can close this tab.' } else { "Sign-in failed: $($q['error']) $($q['error_description'])" }
+        $bytes = [Text.Encoding]::UTF8.GetBytes("<html><body style='font-family:sans-serif'><h3>$([Net.WebUtility]::HtmlEncode($msg))</h3></body></html>")
+        $ctx.Response.ContentType = 'text/html; charset=utf-8'; $ctx.Response.OutputStream.Write($bytes, 0, $bytes.Length); $ctx.Response.Close()
+        if (-not $ok) { throw $msg }
+        Invoke-RestMethod -Method Post -Uri "$($script:Authority)/token" -Body @{
+            grant_type = 'authorization_code'; client_id = $script:ClientId; code = $q['code']
+            redirect_uri = $redirect; code_verifier = $verifier; scope = $Scope }
+    } finally { $http.Stop(); $http.Close() }
+}
+
 function Connect-Dataverse {
-    param([Parameter(Mandatory)][string]$Url, [int]$TimeoutMinutes = 15)
+    param([Parameter(Mandatory)][string]$Url, [int]$TimeoutMinutes = 15, [switch]$DeviceCode)
     $script:Url = $Url.TrimEnd('/')
     $scope = "$($script:Url)/user_impersonation offline_access"
     $cache = Get-CacheFile $script:Url
@@ -35,7 +67,13 @@ function Connect-Dataverse {
         $script:Token = Get-Content $cache -Raw | ConvertFrom-Json
         try { [void](Get-DataverseToken); Write-Host "Connected (cached token) to $($script:Url)"; return } catch { Write-Host 'Cached token invalid, logging in again.' }
     }
-    $dc = Invoke-RestMethod -Method Post -Uri "$($script:Authority)/devicecode" -Body @{ client_id = $script:ClientId; scope = $scope }
+    if (-not $DeviceCode) {
+        Add-Type -AssemblyName System.Web
+        Save-Token (Connect-Browser $scope $TimeoutMinutes)
+        Write-Host "Connected to $($script:Url)"
+        return
+    }
+    $dc =Invoke-RestMethod -Method Post -Uri "$($script:Authority)/devicecode" -Body @{ client_id = $script:ClientId; scope = $scope }
     Write-Host $dc.message
     $deadline = (Get-Date).AddMinutes($TimeoutMinutes)
     while ((Get-Date) -lt $deadline) {

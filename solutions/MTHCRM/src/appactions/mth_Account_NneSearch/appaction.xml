@@ -1,0 +1,38 @@
+<appaction uniquename="mth_Account_NneSearch">
+  <appmoduleid>
+    <uniquename>mth_MTHCRM</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="New from NNE">
+    <label description="New from NNE" languagecode="1033" />
+  </buttonlabeltext>
+  <buttontooltipdescription default="Find the company in NNE (Navne &amp; Numre Erhverv) and create it as an account.">
+    <label description="Find the company in NNE (Navne &amp; Numre Erhverv) and create it as an account." languagecode="1033" />
+  </buttontooltipdescription>
+  <buttontooltiptitle default="New from NNE">
+    <label description="New from NNE" languagecode="1033" />
+  </buttontooltiptitle>
+  <context>1</context>
+  <contextentity>
+    <logicalname>account</logicalname>
+  </contextentity>
+  <contextvalue>account</contextvalue>
+  <fonticon>$webresource:mth_/branding/icon.svg</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>1</location>
+  <name>New from NNE</name>
+  <onclickeventjavascriptfunctionname>Mth.Account.nneSearch</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>6064192d-1de7-f111-84e7-000d3a496ae5</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>5.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

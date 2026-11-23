@@ -28,6 +28,14 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="mth_name" operator="like" value="{0}" />
+            <condition attribute="mth_projecttitle" operator="like" value="{0}" />
+            <condition attribute="mth_projectid" operator="like" value="{0}" />
+            <condition attribute="mth_constructiontown" operator="like" value="{0}" />
+            <condition attribute="mth_municipality" operator="like" value="{0}" />
+            <condition attribute="mth_projectregion" operator="like" value="{0}" />
+            <condition attribute="mth_clientname" operator="like" value="{0}" />
+            <condition attribute="mth_maincategory" operator="like" value="{0}" />
+            <condition attribute="mth_projecttexts" operator="like" value="{0}" />
           </filter>
         </entity>
       </fetch>

@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="Cvr">
+  <displayname default="Cvr">
+    <label description="Cvr" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>mth_NneSearch.Cvr</name>
+  <type>10</type>
+</customapirequestparameter>

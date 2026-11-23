@@ -430,6 +430,14 @@ Standardkolonner, der bruges:
 | `mth_accountstatus` | Account Status | choice | 2 valg | `Status__c` |
 | `mth_interestedfor` | Customer Is Interesting For | multichoice | 9 valg | `Kunden_er_interessant_for__c` |
 | `mth_tdcid` | TDC ID | string | maks. 50 | `TDC_ID__c` |
+| `mth_pnumber` | P-Number | string | maks. 20 | `NN_P_Number__c` |
+| `mth_companyform` | Company Form | string | maks. 100 | `NNE companyForm (new)` |
+| `mth_legalentity` | Legal Entity (Headquarter) | boolean |  | `NN_Headquarter__c` |
+| `mth_companystatustext` | Company Status (NNE) | string | maks. 200 | `NNE statusText (new)` |
+| `mth_foundedyear` | Founded Year | integer | 0–3000 | `NNE foundedYear (new)` |
+| `mth_adprotection` | Advertising Protection | boolean |  | `NNE adProtection (new)` |
+| `mth_directoryname` | Directory Name (NNE) | string | maks. 200 | `NN_TDF_Name__c` |
+| `mth_nneupdatedon` | NNE Data Updated On | datetime |  | `NNE import (new)` |
 | `mth_leadsourcetext` | Lead Source | string | maks. 255 | `Lead_Source__c` |
 
 <details><summary>Valg for <code>mth_accountcategory</code> (4)</summary>

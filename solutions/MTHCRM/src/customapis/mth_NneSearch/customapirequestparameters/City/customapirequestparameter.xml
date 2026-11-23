@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="City">
+  <displayname default="City">
+    <label description="City" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>mth_NneSearch.City</name>
+  <type>10</type>
+</customapirequestparameter>

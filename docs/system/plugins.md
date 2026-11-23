@@ -8,6 +8,8 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 | `LeadQueueSync` | Create/Update af `mth_lead` og `mth_leadqueue` | PostOperation (40) | Asynkron | Beregner lead↔kø og giver kømedlemmer besked. Se [smart.md](smart.md) |
 | `ConvertLead` | Custom API `mth_ConvertLead` | Main operation | Synkron | Konverterer Lead → Salgsmulighed, første vinder. Se [smart.md](smart.md) |
 | `SendPartnerEmail` | Custom API `mth_SendPartnerEmail` | Main operation | Synkron | Tilbudsmail til én UE's valgte kontakter, status 10 → 24. Se [esp.md](esp.md) |
+| `NneSearch` | Custom API `mth_NneSearch` | Main operation | Synkron | Søger i NNE og henter detaljer parallelt (udgående HTTPS). Se [nne.md](nne.md) |
+| `NneImportAccount` | Custom API `mth_NneImportAccount` | Main operation | Synkron | Opretter en Account fra NNE med dubletkontrol på TDC-id. Se [nne.md](nne.md) |
 
 ## NoteMentionNotifier: @omtale i noter
 

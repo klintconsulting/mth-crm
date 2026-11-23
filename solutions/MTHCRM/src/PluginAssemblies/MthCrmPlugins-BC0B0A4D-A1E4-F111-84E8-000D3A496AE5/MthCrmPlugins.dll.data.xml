@@ -11,6 +11,12 @@
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.LeadQueueSync, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="6278a4b5-d2e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.LeadQueueSync">
       <FriendlyName>Mth.Crm.Plugins.LeadQueueSync</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.NneImportAccount, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="c3033347-1de7-f111-84e7-000d3a496ae5" Name="Mth.Crm.Plugins.NneImportAccount">
+      <FriendlyName>Mth.Crm.Plugins.NneImportAccount</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.NneSearch, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="7b291e3b-1de7-f111-84e7-000d3a496ae5" Name="Mth.Crm.Plugins.NneSearch">
+      <FriendlyName>Mth.Crm.Plugins.NneSearch</FriendlyName>
+    </PluginType>
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.NoteMentionNotifier, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="bf0b0a4d-a1e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.NoteMentionNotifier">
       <FriendlyName>Mth.Crm.Plugins.NoteMentionNotifier</FriendlyName>
     </PluginType>

@@ -1,0 +1,8 @@
+<customapiresponseproperty uniquename="AccountId">
+  <displayname default="AccountId">
+    <label description="AccountId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>mth_NneImportAccount.AccountId</name>
+  <type>10</type>
+</customapiresponseproperty>

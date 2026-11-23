@@ -29,6 +29,11 @@
         </Titles>
         <SubArea Id="mth_sub_account" Entity="account" />
         <SubArea Id="mth_sub_contact" Entity="contact" />
+        <SubArea Id="mth_sub_nnesearch" Url="$webresource:mth_/nne/search.html" Client="All" AvailableOffline="false" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="NNE Search" />
+          </Titles>
+        </SubArea>
       </Group>
       <Group Id="mth_grp_tender" IsProfile="false">
         <Titles>

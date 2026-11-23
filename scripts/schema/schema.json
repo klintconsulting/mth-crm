@@ -1794,6 +1794,60 @@
                                            "maxLength":  50
                                        },
                                        {
+                                           "schemaName":  "mth_PNumber",
+                                           "displayName":  "P-Number",
+                                           "type":  "string",
+                                           "source":  "NN_P_Number__c",
+                                           "maxLength":  20
+                                       },
+                                       {
+                                           "schemaName":  "mth_CompanyForm",
+                                           "displayName":  "Company Form",
+                                           "type":  "string",
+                                           "source":  "NNE companyForm (new)",
+                                           "maxLength":  100
+                                       },
+                                       {
+                                           "schemaName":  "mth_LegalEntity",
+                                           "displayName":  "Legal Entity (Headquarter)",
+                                           "type":  "boolean",
+                                           "source":  "NN_Headquarter__c"
+                                       },
+                                       {
+                                           "schemaName":  "mth_CompanyStatusText",
+                                           "displayName":  "Company Status (NNE)",
+                                           "type":  "string",
+                                           "source":  "NNE statusText (new)",
+                                           "maxLength":  200
+                                       },
+                                       {
+                                           "schemaName":  "mth_FoundedYear",
+                                           "displayName":  "Founded Year",
+                                           "type":  "integer",
+                                           "source":  "NNE foundedYear (new)",
+                                           "min":  0,
+                                           "max":  3000
+                                       },
+                                       {
+                                           "schemaName":  "mth_AdProtection",
+                                           "displayName":  "Advertising Protection",
+                                           "type":  "boolean",
+                                           "source":  "NNE adProtection (new)"
+                                       },
+                                       {
+                                           "schemaName":  "mth_DirectoryName",
+                                           "displayName":  "Directory Name (NNE)",
+                                           "type":  "string",
+                                           "source":  "NN_TDF_Name__c",
+                                           "maxLength":  200
+                                       },
+                                       {
+                                           "schemaName":  "mth_NneUpdatedOn",
+                                           "displayName":  "NNE Data Updated On",
+                                           "type":  "datetime",
+                                           "source":  "NNE import (new)"
+                                       },
+                                       {
                                            "schemaName":  "mth_LeadSourceText",
                                            "displayName":  "Lead Source",
                                            "type":  "string",

@@ -28,6 +28,8 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="mth_name" operator="like" value="{0}" />
+            <condition attribute="mth_accountid" operator="like" value="{0}" />
+            <condition attribute="mth_buildingcontractid" operator="like" value="{0}" />
           </filter>
         </entity>
       </fetch>

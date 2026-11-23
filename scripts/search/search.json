@@ -1,0 +1,25 @@
+{
+  "solution": "MTHCRM",
+  "note": "Search configuration. findColumns = the Quick Find view's find columns (what the search box in lists and Dataverse search look in). Lookup columns are searched on the related record's name. Applied by scripts/Deploy-Search.ps1.",
+  "organization": {
+    "isexternalsearchindexenabled": true,
+    "tablescopeddvsearchinapps": true
+  },
+  "tables": {
+    "mth_opportunity": {
+      "findColumns": [ "mth_name", "mth_accountid", "mth_bcprojectnumber", "mth_projectid", "mth_projecttitle", "mth_deliverycity", "mth_constructiontown", "mth_municipality", "mth_clientname", "mth_description" ]
+    },
+    "mth_lead": {
+      "findColumns": [ "mth_name", "mth_projecttitle", "mth_projectid", "mth_constructiontown", "mth_municipality", "mth_projectregion", "mth_clientname", "mth_maincategory", "mth_projecttexts" ]
+    },
+    "account": {
+      "findColumns": [ "name", "accountnumber", "emailaddress1", "telephone1", "telephone2", "address1_city" ]
+    },
+    "contact": {
+      "findColumns": [ "fullname", "firstname", "lastname", "emailaddress1", "parentcustomerid", "telephone1", "mobilephone" ]
+    },
+    "mth_collaboratingpartner": {
+      "findColumns": [ "mth_name", "mth_accountid", "mth_buildingcontractid" ]
+    }
+  }
+}

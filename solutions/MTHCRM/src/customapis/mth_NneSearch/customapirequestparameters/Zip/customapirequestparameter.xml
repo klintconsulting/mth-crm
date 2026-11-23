@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="Zip">
+  <displayname default="Zip">
+    <label description="Zip" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>1</isoptional>
+  <name>mth_NneSearch.Zip</name>
+  <type>10</type>
+</customapirequestparameter>

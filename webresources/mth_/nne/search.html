@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NNE</title>
+<!-- NNE company search and account import (replaces the Salesforce LWC nneSearch).
+     Opened as a dialog from the "New from NNE" command on the Account list, or from the sitemap (Customers > NNE Search).
+     Calls the Custom APIs mth_NneSearch and mth_NneImportAccount. See docs/system/nne.md. -->
+<style>
+  :root { --brand:#002F67; --slate:#2C365A; --line:#d6dbe3; --muted:#5b6575; --bg:#f5f7fa; --ok:#107c10; --warn:#a4262c; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI","Segoe UI Web (West European)",-apple-system,sans-serif; font-size:14px; color:#1b1f24; background:#fff; }
+  header { padding:14px 20px 4px; }
+  h1 { font-size:18px; font-weight:600; margin:0; color:var(--brand); }
+  .sub { color:var(--muted); font-size:12px; margin-top:2px; }
+  form { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px 14px; padding:12px 20px 4px; }
+  label { display:flex; flex-direction:column; font-size:12px; color:var(--muted); gap:3px; }
+  label.wide { grid-column:span 2; }
+  input[type=text], input[type=number] { font:inherit; padding:6px 8px; border:1px solid var(--line); border-radius:4px; }
+  input:focus { outline:2px solid var(--brand); outline-offset:-1px; }
+  .check { flex-direction:row; align-items:center; gap:6px; color:#1b1f24; font-size:13px; }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 20px; border-bottom:1px solid var(--line); }
+  button { font:inherit; border-radius:4px; padding:6px 14px; cursor:pointer; border:1px solid var(--line); background:#fff; }
+  button.primary { background:var(--brand); border-color:var(--brand); color:#fff; font-weight:600; }
+  button.primary:hover { background:var(--slate); }
+  button.link { border:0; background:none; color:var(--brand); padding:0; text-align:left; font-weight:600; }
+  button.link:hover { text-decoration:underline; }
+  button:disabled { opacity:.5; cursor:default; }
+  .status { color:var(--muted); font-size:13px; }
+  .error { color:var(--warn); }
+  .wrap { overflow:auto; max-height:calc(100vh - 290px); }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th { position:sticky; top:0; background:var(--bg); text-align:left; font-weight:600; padding:7px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  td { padding:6px 10px; border-bottom:1px solid #eef0f4; vertical-align:top; }
+  tr:hover td { background:#f8fafc; }
+  .pill { display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px; background:#e6ebf2; color:var(--slate); margin-left:6px; white-space:nowrap; }
+  .pill.exists { background:#dff6dd; color:var(--ok); }
+  .pill.inactive { background:#fde7e9; color:var(--warn); }
+  .act { min-width:92px; }
+  dialog { border:0; border-radius:8px; padding:0; width:min(560px,92vw); box-shadow:0 12px 40px rgba(0,0,0,.25); }
+  dialog::backdrop { background:rgba(0,0,0,.3); }
+  .dh { background:var(--brand); color:#fff; padding:14px 18px; font-weight:600; font-size:16px; }
+  dl { display:grid; grid-template-columns:150px 1fr; gap:6px 12px; padding:14px 18px; margin:0; font-size:13px; }
+  dt { color:var(--muted); } dd { margin:0; word-break:break-word; }
+  .df { display:flex; justify-content:flex-end; gap:8px; padding:12px 18px; border-top:1px solid var(--line); }
+  @media (max-width:640px) { label.wide { grid-column:span 1; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 data-t="title"></h1>
+  <div class="sub" data-t="subtitle"></div>
+</header>
+<form id="f" autocomplete="off">
+  <label class="wide"><span data-t="name"></span><input type="text" name="Name" autofocus></label>
+  <label class="check"><input type="checkbox" name="NameStartsWith"><span data-t="nameStartsWith"></span></label>
+  <label><span data-t="cvr"></span><input type="text" name="Cvr" inputmode="numeric"></label>
+  <label><span data-t="tdcId"></span><input type="text" name="TdcId" inputmode="numeric"></label>
+  <label class="wide"><span data-t="street"></span><input type="text" name="Street"></label>
+  <label><span data-t="houseNo"></span><input type="text" name="HouseNo"></label>
+  <label class="check"><input type="checkbox" name="StreetStartsWith"><span data-t="streetStartsWith"></span></label>
+  <label><span data-t="zip"></span><input type="text" name="Zip" inputmode="numeric"></label>
+  <label><span data-t="city"></span><input type="text" name="City"></label>
+  <label><span data-t="phone"></span><input type="text" name="Phone"></label>
+  <label><span data-t="maxHits"></span><input type="number" name="MaxHits" value="50" min="1" max="500"></label>
+  <label class="check"><input type="checkbox" name="ActiveOnly" checked><span data-t="activeOnly"></span></label>
+  <label class="check"><input type="checkbox" name="LegalEntitiesOnly"><span data-t="legalOnly"></span></label>
+</form>
+<div class="bar">
+  <button class="primary" id="go" type="submit" form="f" data-t="search"></button>
+  <button id="clear" type="button" data-t="clear"></button>
+  <span class="status" id="status" role="status" aria-live="polite"></span>
+</div>
+<div class="wrap" id="results" hidden>
+  <table>
+    <thead><tr><th></th><th data-t="colName"></th><th data-t="colAddress"></th><th data-t="zip"></th><th data-t="city"></th><th data-t="phone"></th><th data-t="cvr"></th><th data-t="colStatus"></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+<dialog id="details">
+  <div class="dh" id="dName"></div>
+  <dl id="dList"></dl>
+  <div class="df"><button id="dImport" class="primary"></button><button id="dClose" data-t="close"></button></div>
+</dialog>
+<script src="search.js"></script>
+</body>
+</html>

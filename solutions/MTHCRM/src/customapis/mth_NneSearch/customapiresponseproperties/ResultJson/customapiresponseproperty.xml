@@ -1,0 +1,8 @@
+<customapiresponseproperty uniquename="ResultJson">
+  <displayname default="ResultJson">
+    <label description="ResultJson" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>mth_NneSearch.ResultJson</name>
+  <type>10</type>
+</customapiresponseproperty>

@@ -1,4 +1,4 @@
-{
+﻿{
     "solution":  "MTHCRM",
     "assembly":  {
                      "name":  "Mth.Crm.Plugins",
@@ -151,6 +151,114 @@
                                             {
                                                 "name":  "OpportunityId",
                                                 "type":  "String"
+                                            },
+                                            {
+                                                "name":  "Message",
+                                                "type":  "String"
+                                            }
+                                        ]
+                       },
+                       {
+                           "uniqueName":  "mth_NneSearch",
+                           "displayName":  "NNE Search",
+                           "description":  "Searches NNE (D\u0026B/Bisnode) for companies like the Salesforce LWC nneSearch. Returns JSON with details and the existing account (by TDC ID).",
+                           "type":  "Mth.Crm.Plugins.NneSearch",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "Name",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "Cvr",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "TdcId",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "Street",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "HouseNo",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "Zip",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "City",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "Phone",
+                                               "type":  "String",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "NameStartsWith",
+                                               "type":  "Boolean",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "StreetStartsWith",
+                                               "type":  "Boolean",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "LegalEntitiesOnly",
+                                               "type":  "Boolean",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "ActiveOnly",
+                                               "type":  "Boolean",
+                                               "optional":  true
+                                           },
+                                           {
+                                               "name":  "MaxHits",
+                                               "type":  "Integer",
+                                               "optional":  true
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "ResultJson",
+                                                "type":  "String"
+                                            }
+                                        ]
+                       },
+                       {
+                           "uniqueName":  "mth_NneImportAccount",
+                           "displayName":  "NNE Import Account",
+                           "description":  "Creates an account from NNE by TDC ID (data fetched server-side), owned by the caller. Returns the existing account if the TDC ID already exists.",
+                           "type":  "Mth.Crm.Plugins.NneImportAccount",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "TdcId",
+                                               "type":  "String",
+                                               "optional":  false
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "AccountId",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "Created",
+                                                "type":  "Boolean"
                                             },
                                             {
                                                 "name":  "Message",

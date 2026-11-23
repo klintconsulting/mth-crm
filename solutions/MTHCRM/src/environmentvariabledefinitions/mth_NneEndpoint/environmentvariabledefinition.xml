@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="mth_NneEndpoint">
+  <defaultvalue>https://nne-api.bisnode.com/nne-ws/3.1/NNE</defaultvalue>
+  <description default="NNE SOAP 3.1 endpoint (D&amp;B/Bisnode). The old address service.nnerhverv.dk stopped 2026-11-30.">
+    <label description="NNE SOAP 3.1 endpoint (D&amp;B/Bisnode). The old address service.nnerhverv.dk stopped 2026-11-30." languagecode="1033" />
+  </description>
+  <displayname default="NNE Endpoint">
+    <label description="NNE Endpoint" languagecode="1033" />
+  </displayname>
+  <introducedversion>0.1.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

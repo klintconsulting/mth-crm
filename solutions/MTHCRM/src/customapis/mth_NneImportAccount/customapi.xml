@@ -1,0 +1,18 @@
+<customapi uniquename="mth_NneImportAccount">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Creates an account from NNE by TDC ID (data fetched server-side), owned by the caller. Returns the existing account if the TDC ID already exists.">
+    <label description="Creates an account from NNE by TDC ID (data fetched server-side), owned by the caller. Returns the existing account if the TDC ID already exists." languagecode="1033" />
+  </description>
+  <displayname default="NNE Import Account">
+    <label description="NNE Import Account" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>mth_NneImportAccount</name>
+  <plugintypeid>
+    <plugintypeexportkey>c3033347-1de7-f111-84e7-000d3a496ae5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

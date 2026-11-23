@@ -2,7 +2,9 @@
 
 | Script | Formål | Hvornår |
 |---|---|---|
-| `scripts/Dataverse.psm1` | Login til Dataverse Web API med device code, token-cache og `Invoke-Dataverse` | Bruges af de andre scripts eller interaktivt |
+| `scripts/Dataverse.psm1` | Login til Dataverse Web API i browseren (PKCE, `-DeviceCode` for device code), token-cache og `Invoke-Dataverse` | Bruges af de andre scripts eller interaktivt |
+| `scripts/Deploy-Nne.ps1` | NNE: miljøvariablerne `mth_NneEndpoint` og `mth_NneAccessKey` i solutionen, og nøglens værdi uden for solutionen (fra `-AccessKey` eller `%LOCALAPPDATA%\mth-crm\nne-accesskey.txt`) | Efter Deploy-Schema, før Deploy-Plugins, og i hvert miljø efter import. Se nne.md |
+| `scripts/Deploy-Search.ps1` + `scripts/search/search.json` | Dataverse search: organisationsindstillinger, tabeller i indekset og Quick Find-visningernes søgekolonner | Efter Deploy-App, og i hvert miljø efter import. Se search.md |
 | `scripts/Deploy-Schema.ps1` | Opretter tabeller, kolonner og opslag fra `schema/schema.json` i solutionen `MTHCRM` | Efter hver ændring af schema.json og ved opbygning af et nyt miljø |
 | `scripts/New-SchemaDoc.ps1` | Genererer `docs/system/datamodel.md` fra schema.json | Efter hver ændring af schema.json |
 | `scripts/schema/schema.json` | Skemadefinitionen (kilde til sandhed) | Rettes i hånden |

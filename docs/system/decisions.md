@@ -76,3 +76,15 @@ Brugerens krav: samme lead kan ramme flere køer, brugerne definerer selv kriter
 ## B19 – SMART-synk i Azure med managed identity og Flex Consumption (2026-11-20)
 Function App'en logger på Dataverse med sin egen managed identity, som er registreret som application user. Den bruger ikke en app-registrering med klienthemmelighed, så der er ingen hemmelighed at gemme, udskifte eller lække. Storage og Application Insights tilgås også med identiteten. Hostingplanen er Flex Consumption: Microsofts anbefalede serverløse plan for nye Function Apps, hvor Linux Consumption er på vej ud. Infrastrukturen er en ARM-skabelon, der deployes med REST, fordi Azure CLI ikke er tilladt på alle maskiner.
 **Konsekvens:** Security role "MTH Integration" til integrationer. Tidsplanen angives i UTC. Kun SMART-API'ets egne nøgler skal i Key Vault hos MTH. Se [smart.md](smart.md#drift-i-azure).
+
+## B20 – NNE som Custom API med nøglen i en miljøvariabel uden for solutionen (2026-11-23)
+Brugerens krav: oprettelse af Accounts fra NNE skal virke som LWC'en `nneSearch` i Salesforce, og POC'en må bruge MTH's eksisterende NNE-nøgle. NNE kaldes server-side fra et plugin (Custom API), så nøglen aldrig når browseren, og brugerens rettigheder gælder for oprettelsen. Brugerfladen er en HTML-web resource uden framework i stedet for en PCF-kontrol, fordi den åbnes som dialog fra en knap og navigationen og ikke hører til et felt. Nøglen er en miljøvariabel, hvis værdi oprettes uden solution-header og derfor aldrig eksporteres eller committes.
+**Konsekvens:** Værdien sættes pr. miljø med `scripts/Deploy-Nne.ps1`. I produktion anbefales en Key Vault-reference (Secret-miljøvariabel). Se [nne.md](nne.md).
+
+## B21 – Dataverse search i listerne i stedet for quick find (2026-11-23)
+Brugerens problem: "Filter by keyword" fandt ikke "Havneudvidelse, Aalborg" ved søgning på "Aalborg", fordi quick find kun matcher fra starten af feltet. Dataverse search matcher ord hvor som helst, tåler stavefejl og er inkluderet i Dataverse uden ekstra licens. Søgekolonnerne udvides med by, kommune, bygherre og projekttekster.
+**Konsekvens:** Organisationsindstillingerne sættes med `scripts/Deploy-Search.ps1` i hvert miljø. Indekset opdateres i baggrunden med op til ca. en times forsinkelse. Standardtabellernes (Account, Kontakt) Quick Find-visninger er nu med i solutionen og overskriver målmiljøets ved import. Se [search.md](search.md).
+
+## B22 – Browser-login i stedet for device code (2026-11-23)
+Entra *security defaults* begyndte at afvise device code-login (AADSTS530035) i konsulent-tenanten, og samme politik kan gælde hos MTH. `Dataverse.psm1` logger nu på i browseren med authorization code og PKCE via en loopback-redirect. Device code findes stadig bag `-DeviceCode`. `pac auth create` bruges uden `--deviceCode`.
+**Konsekvens:** Scripts skal køres på en maskine med browser. `Deploy-SmartSyncAzure.ps1` bruger stadig device code mod Azure og skal ændres på samme måde, før det kan køres igen i en tenant med security defaults. Pipelines (GitHub Actions) bruger app-registrering og er ikke berørt.

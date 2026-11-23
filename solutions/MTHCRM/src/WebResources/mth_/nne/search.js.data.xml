@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{5c64192d-1de7-f111-84e7-000d3a496ae5}</WebResourceId>
+  <Name>mth_/nne/search.js</Name>
+  <DisplayName>mth_/nne/search.js</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/mth_nnesearchjs5C64192D-1DE7-F111-84E7-000D3A496AE5</FileName>
+</WebResource>

@@ -1,0 +1,13 @@
+<environmentvariabledefinition schemaname="mth_NneAccessKey">
+  <description default="MTH access key for NNE. The value is set per environment by scripts/Deploy-Nne.ps1 and is not part of the solution.">
+    <label description="MTH access key for NNE. The value is set per environment by scripts/Deploy-Nne.ps1 and is not part of the solution." languagecode="1033" />
+  </description>
+  <displayname default="NNE Access Key">
+    <label description="NNE Access Key" languagecode="1033" />
+  </displayname>
+  <introducedversion>0.1.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

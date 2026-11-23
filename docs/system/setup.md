@@ -17,7 +17,7 @@ Trinene i rækkefølge. De er testet første gang i november 2026 mod et Power A
 ## 2. Log ind med pac
 
 ```powershell
-pac auth create --name dev --deviceCode
+pac auth create --name dev                       # åbner browseren (device code blokeres af security defaults)
 pac admin list                                   # find miljøets URL
 pac org select --environment https://<org>.crm4.dynamics.com/
 pac org who
@@ -41,7 +41,7 @@ pac solution import --path solutions/MTHCRM/bin/Debug/MTHCRM.zip --publish-chang
 .\scripts\Deploy-Schema.ps1 -Url https://<org>.crm4.dynamics.com           # udfør
 ```
 
-Første gang beder scriptet om et login med device code. Det bruger Microsofts offentlige klient-id til Dataverse-eksempler (`51f81489-12ee-4a9e-aaae-a2591f45987d`). Token caches i `%LOCALAPPDATA%\mth-crm\` og **ikke** i repoet.
+Første gang åbner scriptet browseren for login (authorization code med PKCE og redirect til `http://localhost:<tilfældig port>/`). `Connect-Dataverse -DeviceCode` bruger i stedet device code, men den blokeres af Entra *security defaults* (AADSTS530035), se beslutning B22. Login'et bruger Microsofts offentlige klient-id til Dataverse-eksempler (`51f81489-12ee-4a9e-aaae-a2591f45987d`). Token caches i `%LOCALAPPDATA%\mth-crm\` og **ikke** i repoet.
 
 ## 5. Synk solutionen tilbage til repoet
 
@@ -119,3 +119,20 @@ Kræver .NET 9 SDK og en konto, der er Owner på abonnementet, fordi skabelonen 
 ```
 
 MTH-farver, logo og app-ikon. Tema-poster følger ikke med i solutionen, så trinnet skal køres i hvert miljø, også efter import i test og produktion. Se [branding.md](branding.md).
+
+## 13. NNE-virksomhedsopslag (efter trin 4, før trin 9)
+
+```powershell
+.\scripts\Deploy-Nne.ps1 -Url https://<org>.crm4.dynamics.com -AccessKey <MTH's NNE-nøgle>
+```
+
+Opretter miljøvariablerne og sætter nøglens værdi uden for solutionen. Uden `-AccessKey` læses nøglen fra `%LOCALAPPDATA%\mth-crm\nne-accesskey.txt`. Nøglen må aldrig ligge i repoet. Kør derefter trin 9 (Custom API'erne) og trin 6 (knap og formular). Værdien skal sættes i hvert miljø, også efter import. Se [nne.md](nne.md).
+
+## 14. Søgning (efter trin 6)
+
+```powershell
+.\scripts\Deploy-Search.ps1 -Url https://<org>.crm4.dynamics.com
+pac solution sync --solution-folder solutions/MTHCRM
+```
+
+Slår Dataverse search til i listerne og sætter søgekolonnerne. Organisationsindstillingerne følger ikke med i solutionen, så trinnet skal køres i hvert miljø. Se [search.md](search.md).

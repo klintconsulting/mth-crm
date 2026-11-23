@@ -214,7 +214,10 @@ foreach ($f in $def.forms) {
 # ---- 3. Sitemap ----
 $areas = foreach ($ar in $def.sitemap) {
     $groups = foreach ($g in $ar.groups) {
-        $subs = foreach ($t in $g.tables) { "<SubArea Id=`"mth_sub_$t`" Entity=`"$t`" />" }
+        $subs = @(foreach ($t in $g.tables) { "<SubArea Id=`"mth_sub_$t`" Entity=`"$t`" />" })
+        # Links to web resources: { "id": "...", "title": "...", "webresource": "mth_/x/page.html" }
+        $subs += @(foreach ($l in @($g.links)) { if ($l) {
+            "<SubArea Id=`"$($l.id)`" Url=`"`$webresource:$($l.webresource)`" Client=`"All`" AvailableOffline=`"false`" PassParams=`"false`"><Titles><Title LCID=`"$lang`" Title=`"$(X $l.title)`" /></Titles></SubArea>" } })
         "<Group Id=`"$($g.id)`" IsProfile=`"false`"><Titles><Title LCID=`"$lang`" Title=`"$(X $g.title)`" /></Titles>$($subs -join '')</Group>"
     }
     "<Area Id=`"$($ar.id)`" ShowGroups=`"true`"><Titles><Title LCID=`"$lang`" Title=`"$(X $ar.title)`" /></Titles>$($groups -join '')</Area>"
