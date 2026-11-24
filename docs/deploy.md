@@ -44,5 +44,6 @@ Invoke-Dataverse PATCH "mailboxes(<mailboxid>)" @{ testemailconfigurationschedul
 - **Azure Functions og Key Vault:** deployes separat. SMART-synken deployes med `scripts/Deploy-SmartSyncAzure.ps1` mod MTH's abonnement, kørt af MTH's IT eller fra GitHub Actions. Den opretter selv application useren i Dataverse, men kræver Owner på ressourcegruppen. SMART-nøglerne skal i Key Vault. Se `docs/system/smart.md`.
 - **NNE-adgangsnøglen:** miljøvariablen `mth_NneAccessKey` er i solutionen, men dens værdi er ikke. Kør `scripts/Deploy-Nne.ps1 -AccessKey <nøgle>` eller sæt værdien i make.powerapps.com efter import. I produktion anbefales en *Secret*-miljøvariabel med reference til Key Vault. Se `docs/system/nne.md`.
 - **Dataverse search-indstillingerne** (organisationsniveau): kør `scripts/Deploy-Search.ps1` efter import. Visningerne og indeks-flaget på tabellerne følger med.
+- **Auditering** (organisationsniveau): kør `scripts/Deploy-Audit.ps1` efter import. Tabellernes audit-flag følger med.
 - **Tildeling af brugere og roller.**
 - **Tema-posten "MTH" (farver og logo):** kør `scripts/Deploy-Branding.ps1` efter import. App-indstillingen, ikonet og web resources følger med i solutionen.
