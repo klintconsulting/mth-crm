@@ -49,8 +49,13 @@
             headers: { "Accept": "application/json", "Content-Type": "application/json; charset=utf-8", "OData-MaxVersion": "4.0", "OData-Version": "4.0" },
             body: JSON.stringify(body)
         }).then(function (res) {
-            return res.json().then(function (j) {
-                if (!res.ok) throw new Error((j && j.error && j.error.message) || res.statusText);
+            return res.text().then(function (txt) {
+                var j = null;
+                try { j = txt ? JSON.parse(txt) : null; } catch (e) { j = null; }
+                if (res.status === 401 || res.status === 403 && !j)
+                    throw new Error(DA ? "Din session er udløbet. Genindlæs siden (F5) og prøv igen." : "Your session has expired. Reload the page (F5) and try again.");
+                if (!res.ok) throw new Error((j && j.error && j.error.message) || ("HTTP " + res.status + " " + res.statusText));
+                if (!j) throw new Error(DA ? "Tomt svar fra serveren. Genindlæs siden og prøv igen." : "Empty response from the server. Reload the page and try again.");
                 return j;
             });
         });
