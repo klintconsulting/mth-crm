@@ -37,6 +37,7 @@
   <EntityRelationship Name="mth_lead_mth_opportunity_Lead" />
   <EntityRelationship Name="mth_leadqueue_systemuser" />
   <EntityRelationship Name="mth_opportunity_mth_buildingcontract" />
+  <EntityRelationship Name="mth_opportunity_mth_collabpartner" />
   <EntityRelationship Name="mth_opportunity_mth_lead_Converted" />
   <EntityRelationship Name="mth_opportunity_mth_opportunity_External" />
   <EntityRelationship Name="mth_opportunity_mth_opportunityrole" />

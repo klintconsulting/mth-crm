@@ -1,4 +1,4 @@
-﻿{
+{
     "solution":  "MTHCRM",
     "assembly":  {
                      "name":  "Mth.Crm.Plugins",
@@ -82,6 +82,29 @@
                                                   "mth_excludekeywords",
                                                   "mth_startwithinmonths",
                                                   "mth_excludestarted"
+                                              ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.CollabPartnerOpportunity",
+                      "name":  "Mth.Crm.Plugins.CollabPartnerOpportunity: Create of mth_collaboratingpartner",
+                      "description":  "Sets Opportunity from the building contract.",
+                      "message":  "Create",
+                      "table":  "mth_collaboratingpartner",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.CollabPartnerOpportunity",
+                      "name":  "Mth.Crm.Plugins.CollabPartnerOpportunity: Update of mth_collaboratingpartner",
+                      "description":  "Updates Opportunity when the building contract changes.",
+                      "message":  "Update",
+                      "table":  "mth_collaboratingpartner",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_buildingcontractid"
                                               ]
                   }
               ],

@@ -21,7 +21,7 @@ mth_opportunity 1 ──< mth_buildingcontract >── 1 mth_trade >──< acco
 | `mth_trade` (Trade/Fag) | Globalt værdisæt `Building_Contracts` | 213 fag med navn og kode. Indlæses fra `scripts/data/trades.json` med `Import-Trades.ps1` (stamdata, også i produktion). Nøgle: `mth_code` |
 | N:N `mth_account_mth_trade` | `Account.Building_Contracts__c` (multivalg) | Hvilke fag en Account kan levere. Bruges til at finde UE'er |
 | `mth_buildingcontract` (Entreprise) | `Building_Contract__c` | Salgsmulighed (parental), fag, alternativt navn, tilbudsfrist. `mth_name` = alternativt navn eller fagets navn |
-| `mth_collaboratingpartner` (UE på entreprise) | `Collaborating_Partner__c` | Entreprise (parental), Account, status 10–99, type, kommentar, tilbudsevaluering med kommentar, kontraktbeløb, sidste mail sendt. Har aktiviteter (mails) |
+| `mth_collaboratingpartner` (UE på entreprise) | `Collaborating_Partner__c` | Entreprise (parental), Account, status 10–99, type, kommentar, tilbudsevaluering med kommentar, kontraktbeløb, sidste mail sendt. Har aktiviteter (mails). **Opportunity** (`mth_opportunityid`) er afledt: plugin'et `CollabPartnerOpportunity` sætter den til entreprisens Salgsmulighed ved oprettelse og når entreprisen skiftes (2026-11-24, brugerens ønske), så UE'en viser, filtrerer og linker direkte til sagen |
 | Nøgle `mth_BuildingContractAccount` | `Building_Contract_Partner_ID__c` | Samme Account kan kun være tilknyttet samme entreprise én gang |
 | N:N `mth_collabpartner_contact` | `Selected_Contacts__c` (tekst med id'er) | Valgte kontakter hos UE'en, der modtager mails |
 | `mth_espemailtemplate` | (fandtes ikke) | Mailskabeloner med pladsholdere |

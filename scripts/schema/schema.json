@@ -2888,6 +2888,15 @@
                         "required":  true
                     },
                     {
+                        "schemaName":  "mth_opportunity_mth_collabpartner",
+                        "referencing":  "mth_collaboratingpartner",
+                        "referenced":  "mth_opportunity",
+                        "lookupSchemaName":  "mth_OpportunityId",
+                        "displayName":  "Opportunity",
+                        "source":  "Derived: the building contract's opportunity, set by plugin CollabPartnerOpportunity",
+                        "cascade":  "RemoveLink"
+                    },
+                    {
                         "schemaName":  "mth_account_mth_opportunity_Account",
                         "referencing":  "mth_opportunity",
                         "referenced":  "account",

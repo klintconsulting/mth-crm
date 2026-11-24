@@ -81,7 +81,7 @@
     },
     {
       "table": "mth_collaboratingpartner", "name": "MTH Active Collaborating Partners", "default": true,
-      "columns": [ ["mth_name", 220], ["mth_buildingcontractid", 200], ["mth_status", 190], ["mth_tenderevaluation", 100], ["mth_lastemailsent", 110], ["mth_comments", 220] ],
+      "columns": [ ["mth_name", 220], ["mth_opportunityid", 200], ["mth_buildingcontractid", 200], ["mth_status", 190], ["mth_tenderevaluation", 100], ["mth_lastemailsent", 110], ["mth_comments", 220] ],
       "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
     },
     {
@@ -298,7 +298,7 @@
         { "name": "general", "label": "General",
           "columns": [
             [
-              { "name": "partner", "label": "Partner", "fields": [ "mth_accountid", "mth_buildingcontractid", "mth_partnertype", "mth_status", "mth_lastemailsent", "mth_comments" ] },
+              { "name": "partner", "label": "Partner", "fields": [ "mth_accountid", "mth_opportunityid", "mth_buildingcontractid", "mth_partnertype", "mth_status", "mth_lastemailsent", "mth_comments" ] },
               { "name": "evaluation", "label": "Tender Evaluation", "fields": [ "mth_tenderevaluation", "mth_tenderevaluationcomment", "mth_contractamount" ] }
             ],
             [ { "name": "contacts", "label": "Selected Contacts",

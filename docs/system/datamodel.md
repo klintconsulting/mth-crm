@@ -33,6 +33,7 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_opportunity_mth_buildingcontract` | `mth_buildingcontract.mth_opportunityid` | `mth_opportunity` | Parental | Ja | Building_Contract__c.Opportunity__c (master-detail) |
 | `mth_buildingcontract_mth_collabpartner` | `mth_collaboratingpartner.mth_buildingcontractid` | `mth_buildingcontract` | Parental | Ja | Collaborating_Partner__c.Subcontract__c |
 | `mth_account_mth_collabpartner` | `mth_collaboratingpartner.mth_accountid` | `account` | Restrict | Ja | Collaborating_Partner__c.Account__c (master-detail) |
+| `mth_opportunity_mth_collabpartner` | `mth_collaboratingpartner.mth_opportunityid` | `mth_opportunity` | RemoveLink |  | Derived: the building contract's opportunity, set by plugin CollabPartnerOpportunity |
 | `mth_account_mth_opportunity_Account` | `mth_opportunity.mth_accountid` | `account` | Restrict |  | AccountId |
 | `mth_orgunit_mth_opportunity_OrderDept` | `mth_opportunity.mth_orderdepartmentid` | `mth_organizationalunit` | Restrict |  | Order_Department__c |
 | `mth_orgunit_mth_opportunity_TenderDept` | `mth_opportunity.mth_tenderdepartmentid` | `mth_organizationalunit` | Restrict |  | Tender_Department__c |

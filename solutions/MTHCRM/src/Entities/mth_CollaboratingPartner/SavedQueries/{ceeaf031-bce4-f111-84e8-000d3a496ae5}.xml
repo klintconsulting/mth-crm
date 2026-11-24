@@ -11,6 +11,7 @@
       <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
         <row name="result" id="mth_collaboratingpartnerid">
           <cell name="mth_name" width="220" />
+          <cell name="mth_opportunityid" width="200" />
           <cell name="mth_buildingcontractid" width="200" />
           <cell name="mth_status" width="190" />
           <cell name="mth_tenderevaluation" width="100" />
@@ -25,6 +26,7 @@
         <entity name="mth_collaboratingpartner">
           <attribute name="mth_collaboratingpartnerid" />
           <attribute name="mth_name" />
+          <attribute name="mth_opportunityid" />
           <attribute name="mth_buildingcontractid" />
           <attribute name="mth_status" />
           <attribute name="mth_tenderevaluation" />

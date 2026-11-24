@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Mth.Crm.Plugins.CollabPartnerOpportunity: Update of mth_collaboratingpartner" SdkMessageProcessingStepId="{ce13a5e7-20e8-f111-84e7-000d3a496ae5}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Mth.Crm.Plugins.CollabPartnerOpportunity, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3</PluginTypeName>
+  <PluginTypeId>ca13a5e7-20e8-f111-84e7-000d3a496ae5</PluginTypeId>
+  <PrimaryEntity>mth_collaboratingpartner</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Updates Opportunity when the building contract changes.</Description>
+  <FilteringAttributes>mth_buildingcontractid</FilteringAttributes>
+  <ImpersonatingUserIdName></ImpersonatingUserIdName>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>
