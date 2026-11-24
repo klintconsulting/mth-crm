@@ -432,6 +432,7 @@
                     <row>
                       <cell id="{dc993647-88b9-4471-a091-4dd84e7676b7}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
+                          <label description="Lead Queues" languagecode="1030" />
                           <label description="Lead queues this lead is in" languagecode="1033" />
                         </labels>
                         <control id="LeadQueues" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">

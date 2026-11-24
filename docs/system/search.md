@@ -30,6 +30,8 @@ Scriptet sætter organisationsindstillingerne, tilføjer tabellerne til indekset
 
 **Kendt faldgrube:** En PATCH af en Quick Find-visning (`savedqueries`, `querytype` 4) med kun `fetchxml` fejler med `0x80040216 "An unexpected error occurred"`. Den lykkes, når `returnedtypecode`, `querytype` og `layoutxml` sendes med. Det gør scriptet.
 
+**Global søgning fejlede (fundet og rettet 2026-11-24):** Søgefeltet i den blå bjælke gav "There was an error". Browserens netværksfane viste `POST /api/search/v1.0/query` → 400 `SearchableEntityNotFound: No entities were found to be searchable`. Appen sender kun sit id (`x-ms-app-id`), og serveren søger i de tabeller, der både er i appen og i indekset. Appen indeholdt ingen af vores tabeller (se [app.md](app.md#kendte-begrænsninger-i-scriptet)). Rettet ved at skrive tabellerne i AppModule.xml og importere solutionen. Søgning via API uden app-id virkede hele tiden, og det skjulte fejlen. Test derfor altid med headeren `x-ms-app-id`.
+
 Organisationsindstillingerne følger ikke med i solutionen. Kør scriptet i hvert miljø efter import. Visningerne og indeks-flaget følger med.
 
 ## Test

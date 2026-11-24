@@ -266,6 +266,7 @@
                     <row>
                       <cell id="{45468d30-4ba4-434b-84ca-1e74ba197b4a}" showlabel="false" locklevel="0">
                         <labels>
+                          <label description="Firmanavn" languagecode="1030" />
                           <label description="Comment" languagecode="1033" />
                         </labels>
                         <control id="name_composer" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="name" disabled="false" uniqueid="{b0e3e91d-9922-4933-8b97-ca599d256023}" />
@@ -402,6 +403,7 @@
                     <row>
                       <cell id="{bd8ed36a-4a53-476c-876b-ada865b1067e}" showlabel="false" rowspan="12" colspan="1" auto="false">
                         <labels>
+                          <label description="Trades" languagecode="1030" />
                           <label description="Trades the account can deliver (used to find subcontractors)" languagecode="1033" />
                         </labels>
                         <control id="Trades" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">

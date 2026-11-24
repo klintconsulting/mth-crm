@@ -264,17 +264,24 @@ $appUnique = (Invoke-Dataverse GET "appmodules/Microsoft.Dynamics.CRM.RetrieveUn
 $comp = Invoke-Dataverse GET "appmodulecomponents?`$select=objectid&`$filter=_appmoduleidunique_value eq $appUnique"
 foreach ($c in $comp.value) { $have[[string]$c.objectid] = $true }
 $tables = @($def.sitemap.groups.tables) + @($def.forms.table) + @($def.views.table) + @('systemuser') + @($def.extraTables) | Where-Object { $_ } | Select-Object -Unique
+# TABLES ARE NOT ADDED HERE. Via the Web API, AddAppComponents with an entity reference stores the table "entity"
+# itself (objectid = MetadataId of 'entity') instead of the referenced table. The app then contains no real tables,
+# and global Dataverse search fails with SearchableEntityNotFound (found 2026-11-24). Table components are kept in
+# solutions/MTHCRM/src/AppModules/mth_MTHCRM/AppModule.xml (<AppModuleComponent type="1" schemaName="..." />)
+# and applied by importing the solution. Check that the list matches:
+$xmlPath = Join-Path $PSScriptRoot '..\solutions\MTHCRM\src\AppModules\mth_MTHCRM\AppModule.xml'
+if (Test-Path $xmlPath) {
+    $inXml = @(([xml](Get-Content $xmlPath -Raw)).SelectNodes("//AppModuleComponent[@type='1']") | ForEach-Object schemaName)
+    $missing = @($tables | Where-Object { $inXml -notcontains $_ })
+    if ($missing.Count) { Write-Warning "Tables missing in AppModule.xml (add them and import the solution, or global search will not find them): $($missing -join ', ')" }
+}
 $components = @()
-foreach ($t in $tables) { $mid = (Get-TableMeta $t).MetadataId; if (-not $have[$mid]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.entity'; entityid = $mid } } }
 foreach ($id in $formIds) { if (-not $have[$id]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.systemform'; formid = $id } } }
 foreach ($id in $viewIds.Values) { if (-not $have[$id]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.savedquery'; savedqueryid = $id } } }
 if (-not $have[$siteMapId]) { $components += @{ '@odata.type' = 'Microsoft.Dynamics.CRM.sitemap'; sitemapid = $siteMapId } }
-# Note: for table components appmodulecomponent.objectid is not the table's MetadataId, so tables cannot be
-# detected as existing and are always re-sent. AddAppComponents is idempotent, so this creates no duplicates.
 if ($components.Count) {
     [void](Invoke-Dataverse POST 'AddAppComponents' @{ AppId = $appId; Components = $components })
-    $newOther = @($components | Where-Object { $_['@odata.type'] -ne 'Microsoft.Dynamics.CRM.entity' }).Count
-    Write-Host "  + app components: $newOther new forms/views/sitemap, $($components.Count - $newOther) tables (re-applied)"
+    Write-Host "  + app components: $($components.Count) new forms/views/sitemap"
 }
 
 # ---- 5b. Commands (modern commanding, appaction) calling JavaScript web resources ----

@@ -219,6 +219,7 @@
                     <row>
                       <cell id="{991353d0-d860-447b-bf04-4a6cfde0e0d2}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
+                          <label description="Brugere" languagecode="1030" />
                           <label description="Members (notified about new leads)" languagecode="1033" />
                         </labels>
                         <control id="QueueMembers" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">

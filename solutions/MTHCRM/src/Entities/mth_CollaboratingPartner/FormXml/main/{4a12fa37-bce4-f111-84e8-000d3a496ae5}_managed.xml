@@ -112,6 +112,7 @@
                     <row>
                       <cell id="{d3e01e8d-f0e6-441d-94e6-e0f62987c9d6}" showlabel="false" rowspan="6" colspan="1" auto="false">
                         <labels>
+                          <label description="Kontaktpersoner" languagecode="1030" />
                           <label description="Selected Contacts" languagecode="1033" />
                         </labels>
                         <control id="SelectedContacts" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
