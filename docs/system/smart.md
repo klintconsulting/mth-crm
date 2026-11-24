@@ -44,7 +44,7 @@ Kun **åbne** leads placeres i køer. Et konverteret eller fravalgt lead beholde
 
 Input `LeadId`. Output `OpportunityId` og `Message`. Plugin `ConvertLead` (synkront):
 1. **Gør krav på leadet først**: opdaterer status til Konverteret med en kontrol af rækkeversionen (`ConcurrencyBehavior.IfRowVersionMatches`). Konverterer to brugere samtidig, får den anden fejlen "En anden har netop konverteret leadet", og alt rulles tilbage for ham. Er leadet allerede lukket: "Leadet er allerede konverteret af X den dd-MM-yyyy HH:mm".
-2. **Bygherre som Account**: findes på CVR (`mth_vatno`), derefter på præcist navn, ellers oprettes den med navn, CVR og adresse.
+2. **Bygherre som Account**: findes på CVR (`mth_vatno`), derefter på præcist navn. Ellers slås CVR op i NNE, og hovedselskabet (den juridiske enhed, helst aktiv) oprettes med alle NNE-data, eller genbruges, hvis en Account med samme TDC-id findes. Er NNE ikke sat op, kender NNE ikke CVR-nummeret, eller fejler kaldet (15 s timeout), oprettes Accounten med SMART's navn, CVR og adresse. NNE kan aldrig få en konvertering til at fejle. Beskeden fra Custom API'en nævner det, når bygherren er oprettet fra NNE. Se [nne.md](nne.md).
 3. **Salgsmulighed** ejet af brugeren: alle 45 projektkolonner kopieres 1:1 (`ProjectFields.Names`, og en test sikrer, at listen svarer til schema.json). Navn, status 01, type External, beskrivelse = projektbeskrivelse, ordrestart/-slut = byggestart/-slut, lukkedato = byggestart − 2 mdr. (ellers i dag + 3 mdr.), estimeret beløb = værdi × 1 mio., opslag til Lead.
 4. **Leadet lukkes** (inaktivt) og kobles til Salgsmuligheden. Konverteret af/den sættes.
 

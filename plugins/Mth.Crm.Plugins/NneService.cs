@@ -18,10 +18,12 @@ namespace Mth.Crm.Plugins
     {
         private readonly string _endpoint, _accessKey;
         private readonly ITracingService _trace;
+        private readonly int _timeoutMs;
 
-        public NneService(IOrganizationService system, ITracingService trace)
+        public NneService(IOrganizationService system, ITracingService trace, int timeoutMs = 30000)
         {
             _trace = trace;
+            _timeoutMs = timeoutMs;
             _endpoint = EnvironmentVariable(system, "mth_NneEndpoint") ?? NneSoap.DefaultEndpoint;
             _accessKey = EnvironmentVariable(system, "mth_NneAccessKey");
             if (string.IsNullOrWhiteSpace(_accessKey))
@@ -39,7 +41,8 @@ namespace Mth.Crm.Plugins
             req.Method = "POST";
             req.ContentType = "text/xml; charset=UTF-8";
             req.Headers.Add("SOAPAction", "\"\"");
-            req.Timeout = 30000;
+            req.Timeout = _timeoutMs;
+            req.ReadWriteTimeout = _timeoutMs;
             var bytes = Encoding.UTF8.GetBytes(envelope);
             using (var s = req.GetRequestStream()) s.Write(bytes, 0, bytes.Length);
             try
@@ -57,6 +60,49 @@ namespace Mth.Crm.Plugins
                 throw new InvalidPluginExecutionException("Kaldet til NNE fejlede: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// The legal entity (main company, not a production unit) for a CVR number, with full details, or null.
+        /// Prefers an active entity; falls back to an inactive one so the account still gets the official data.
+        /// </summary>
+        public NneCompany FindLegalEntityByCvr(string cvr)
+        {
+            cvr = new string((cvr ?? "").Where(char.IsDigit).ToArray());
+            if (cvr.Length != 8) return null;
+            int total;
+            var rows = Search(new NneQuery { Cvr = cvr, LegalEntitiesOnly = true, ActiveOnly = true, MaxHits = 10 }, out total);
+            if (rows.Count == 0) rows = Search(new NneQuery { Cvr = cvr, LegalEntitiesOnly = true, ActiveOnly = false, MaxHits = 10 }, out total);
+            var hit = rows.FirstOrDefault(r => r.CvrNo == cvr);
+            return hit == null ? null : FetchCompany(hit.TdcId) ?? hit;
+        }
+
+        /// <summary>New account from NNE company data (shared by mth_NneImportAccount and mth_ConvertLead).</summary>
+        public static Entity ToAccount(NneCompany c)
+        {
+            var a = new Entity("account");
+            a["name"] = T(c.OfficialName, 160);
+            a["address1_line1"] = T(c.Street, 250);
+            a["address1_postalcode"] = T(c.ZipCode, 20);
+            a["address1_city"] = T(c.District, 80);
+            a["address1_country"] = "Danmark";
+            a["telephone1"] = T(c.Phone, 50);
+            a["emailaddress1"] = T(c.Email, 100);
+            a["websiteurl"] = T(c.HomePage, 200);
+            if (c.NumberOfEmployees.HasValue) a["numberofemployees"] = c.NumberOfEmployees.Value;
+            a["mth_tdcid"] = T(c.TdcId, 50);
+            a["mth_vatno"] = T(c.CvrNo, 20);
+            a["mth_pnumber"] = T(c.PNo, 20);
+            a["mth_companyform"] = T(c.CompanyForm, 100);
+            if (c.LegalEntity.HasValue) a["mth_legalentity"] = c.LegalEntity.Value;
+            a["mth_companystatustext"] = T(c.StatusText, 200);
+            if (c.FoundedYear.HasValue && c.FoundedYear.Value > 0) a["mth_foundedyear"] = c.FoundedYear.Value;
+            a["mth_adprotection"] = c.AdProtection;
+            a["mth_directoryname"] = T(c.TdfName, 200);
+            a["mth_nneupdatedon"] = DateTime.UtcNow;
+            return a;
+        }
+
+        private static string T(string s, int max) => string.IsNullOrEmpty(s) ? null : (s.Length <= max ? s : s.Substring(0, max));
 
         /// <summary>Current value of an environment variable (value record, else default value). Null if not set.</summary>
         public static string EnvironmentVariable(IOrganizationService service, string schemaName)

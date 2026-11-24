@@ -55,7 +55,8 @@ namespace Mth.Crm.Plugins
             }
 
             // 2. Account for the client (Bygherre).
-            var accountId = FindOrCreateAccount(service, lead);
+            string accountNote;
+            var accountId = FindOrCreateAccount(service, system, trace, lead, out accountNote);
 
             // 3. Opportunity with the project columns.
             var opp = new Entity("mth_opportunity");
@@ -84,7 +85,7 @@ namespace Mth.Crm.Plugins
             system.Update(close);
 
             context.OutputParameters["OpportunityId"] = oppId.ToString();
-            context.OutputParameters["Message"] = "Leadet er konverteret til en salgsmulighed.";
+            context.OutputParameters["Message"] = "Leadet er konverteret til en salgsmulighed." + (accountNote != null ? " " + accountNote : "");
         }
 
         private static string AlreadyTaken(Entity lead)
@@ -96,8 +97,15 @@ namespace Mth.Crm.Plugins
                 on.HasValue ? " den " + on.Value.ToLocalTime().ToString("dd-MM-yyyy HH:mm") : "");
         }
 
-        private static Guid? FindOrCreateAccount(IOrganizationService service, Entity lead)
+        /// <summary>
+        /// Client (Bygherre) account: existing by VAT number, then exact name. Otherwise the legal entity (main company)
+        /// for the VAT number is fetched from NNE and created with full company data. If NNE is not set up, does not
+        /// know the VAT number or fails, the account is created from SMART's client data. NNE never blocks a conversion.
+        /// </summary>
+        private static Guid? FindOrCreateAccount(IOrganizationService service, IOrganizationService system, ITracingService trace,
+            Entity lead, out string note)
         {
+            note = null;
             var name = lead.GetAttributeValue<string>("mth_clientname");
             var vat = lead.GetAttributeValue<string>("mth_clientvatno");
             if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(vat)) return null;
@@ -112,6 +120,30 @@ namespace Mth.Crm.Plugins
                 var byName = Find(service, "name", name.Trim());
                 if (byName.HasValue) return byName;
             }
+
+            if (!string.IsNullOrWhiteSpace(vat))
+            {
+                try
+                {
+                    var c = new NneService(system, trace, 15000).FindLegalEntityByCvr(vat);
+                    if (c != null)
+                    {
+                        Guid existing;
+                        if (!string.IsNullOrEmpty(c.TdcId) && NneService.AccountsByTdcId(system, new[] { c.TdcId }).TryGetValue(c.TdcId, out existing))
+                            return existing;
+                        var id = service.Create(NneService.ToAccount(c));
+                        note = "Bygherren " + c.OfficialName + " er oprettet med data fra NNE.";
+                        trace.Trace("Client account {0} created from NNE (CVR {1}, TDC {2})", id, vat, c.TdcId);
+                        return id;
+                    }
+                    trace.Trace("CVR {0} not found in NNE; using SMART client data", vat);
+                }
+                catch (Exception ex)
+                {
+                    trace.Trace("NNE lookup for CVR {0} failed, using SMART client data: {1}", vat, ex.Message);
+                }
+            }
+
             var a = new Entity("account");
             a["name"] = Truncate(string.IsNullOrWhiteSpace(name) ? "Bygherre " + vat : name.Trim(), 160);
             if (!string.IsNullOrWhiteSpace(vat)) a["mth_vatno"] = Truncate(vat.Trim(), 20);

@@ -4,6 +4,8 @@ NNE (Navne & Numre Erhverv, i dag drevet af D&B/Bisnode) er MTH's opslag i det d
 
 Den gamle NNMDATA-pakke i Salesforce er udgået og overføres ikke.
 
+**Ved konvertering af Leads** (2026-11-24, brugerens ønske): SMART leverer bygherrens CVR-nummer. Findes bygherren ikke som Account, henter `mth_ConvertLead` hovedselskabet fra NNE (`NneService.FindLegalEntityByCvr`) og opretter Accounten med samme kortlægning som søgningen (`NneService.ToAccount`). Se [smart.md](smart.md). Testet 2026-11-24: CVR 35773010 gav "Himmerland Boligforening" med adresse, telefon og TDC-id på 2,8 s. SMART-testdataenes CVR-numre er opdigtede og findes ikke i NNE, så de bruger SMART's egne data. Fallback-stien (CVR ukendt i NNE) er ikke testet end-to-end, fordi testbygherren fandtes i forvejen.
+
 ## Brug
 
 - **Accounts → Ny fra NNE / New from NNE** (knap i listen) eller **Kunder → NNE Search** i navigationen åbner søgningen som en stor dialog.
