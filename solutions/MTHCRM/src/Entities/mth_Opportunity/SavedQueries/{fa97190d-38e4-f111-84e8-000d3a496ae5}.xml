@@ -13,6 +13,7 @@
           <cell name="mth_name" width="250" />
           <cell name="mth_accountid" width="180" />
           <cell name="mth_status" width="180" />
+          <cell name="mth_statusnumber" width="80" />
           <cell name="mth_amount" width="120" />
           <cell name="mth_closedate" width="110" />
           <cell name="mth_orderdepartmentid" width="150" />
@@ -28,6 +29,7 @@
           <attribute name="mth_name" />
           <attribute name="mth_accountid" />
           <attribute name="mth_status" />
+          <attribute name="mth_statusnumber" />
           <attribute name="mth_amount" />
           <attribute name="mth_closedate" />
           <attribute name="mth_orderdepartmentid" />

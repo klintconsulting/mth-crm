@@ -9,6 +9,7 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 | `ConvertLead` | Custom API `mth_ConvertLead` | Main operation | Synkron | Konverterer Lead → Salgsmulighed, første vinder. Se [smart.md](smart.md) |
 | `SendPartnerEmail` | Custom API `mth_SendPartnerEmail` | Main operation | Synkron | Tilbudsmail til én UE's valgte kontakter, status 10 → 24. Se [esp.md](esp.md) |
 | `CollabPartnerOpportunity` | Create/Update (`mth_buildingcontractid`) af `mth_collaboratingpartner` | PreOperation (20) | Synkron | Sætter UE'ens Opportunity til entreprisens Salgsmulighed. Se [esp.md](esp.md) |
+| `OpportunityStatusNumber` | Create/Update (`mth_status`) af `mth_opportunity` | PreOperation (20) | Synkron | Sætter **Status Number** (`mth_statusnumber`) = tallet før første mellemrum i Status ("54 Tender - submitted" → 54) til filtrering og sortering, som `Status_Number__c` i Salesforce. Beregnes som valgværdi − 273280000 (alle 21 valg kontrolleret 2026-11-24). En ny statusværdi skal derfor følge reglen 273280000 + kode |
 | `NneSearch` | Custom API `mth_NneSearch` | Main operation | Synkron | Søger i NNE og henter detaljer parallelt (udgående HTTPS). Se [nne.md](nne.md) |
 | `NneImportAccount` | Custom API `mth_NneImportAccount` | Main operation | Synkron | Opretter en Account fra NNE med dubletkontrol på TDC-id. Se [nne.md](nne.md) |
 

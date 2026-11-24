@@ -46,7 +46,7 @@
       "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
     },    {
       "table": "mth_opportunity", "name": "MTH Active Opportunities", "default": true,
-      "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
+      "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_statusnumber", 80], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
       "order": { "attribute": "mth_closedate", "descending": false }, "activeOnly": true
     },
     {
@@ -157,7 +157,7 @@
           "name": "general", "label": "General",
           "columns": [
             [
-              { "name": "opportunity", "label": "Opportunity", "fields": [ "mth_name", "mth_accountid", "mth_status", "mth_opportunitytype", "ownerid", "mth_closedate", "mth_probability", "mth_projectsiteurl" ] },
+              { "name": "opportunity", "label": "Opportunity", "fields": [ "mth_name", "mth_accountid", "mth_status", "mth_statusnumber", "mth_opportunitytype", "ownerid", "mth_closedate", "mth_probability", "mth_projectsiteurl" ] },
               { "name": "description", "label": "Description", "fields": [ "mth_description", "mth_scope", "mth_nextstep", "mth_nextstephistory" ] }
             ],
             [

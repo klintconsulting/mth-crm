@@ -71,6 +71,7 @@ Primær navnekolonne: `mth_name` (tekst, maks. 300). Kilde: Name
 | `mth_estimatedamount` | Estimated Amount | currency |  | `Estimated_Amount__c` |
 | `mth_tenderamount` | Tender Amount | currency |  | `Tender_Amount__c` |
 | `mth_calculatedcontractamount` | Calculated Contract Amount | currency |  | `set_Calculated_Contract_Amount_c__c` |
+| `mth_statusnumber` | Status Number | integer | 0–99 | `Status_Number__c (formula). Set by plugin OpportunityStatusNumber: the number before the first space in Status (= option value - 273280000)` |
 | `mth_probability` | Probability (%) | integer | 0–100 | `Probability` |
 | `mth_closedate` | Close Date | date |  | `CloseDate` |
 | `mth_opportunitytype` | Opportunity Type | choice | 2 valg | `Type` |

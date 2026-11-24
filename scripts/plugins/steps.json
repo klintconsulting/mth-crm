@@ -106,6 +106,29 @@
                       "filteringAttributes":  [
                                                   "mth_buildingcontractid"
                                               ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.OpportunityStatusNumber",
+                      "name":  "Mth.Crm.Plugins.OpportunityStatusNumber: Create of mth_opportunity",
+                      "description":  "Sets Status Number from Status.",
+                      "message":  "Create",
+                      "table":  "mth_opportunity",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.OpportunityStatusNumber",
+                      "name":  "Mth.Crm.Plugins.OpportunityStatusNumber: Update of mth_opportunity",
+                      "description":  "Updates Status Number when Status changes.",
+                      "message":  "Update",
+                      "table":  "mth_opportunity",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_status"
+                                              ]
                   }
               ],
     "customApis":  [

@@ -230,6 +230,14 @@
                                            "source":  "set_Calculated_Contract_Amount_c__c"
                                        },
                                        {
+                                           "schemaName":  "mth_StatusNumber",
+                                           "displayName":  "Status Number",
+                                           "type":  "integer",
+                                           "source":  "Status_Number__c (formula). Set by plugin OpportunityStatusNumber: the number before the first space in Status (= option value - 273280000)",
+                                           "min":  0,
+                                           "max":  99
+                                       },
+                                       {
                                            "schemaName":  "mth_Probability",
                                            "displayName":  "Probability (%)",
                                            "type":  "integer",
