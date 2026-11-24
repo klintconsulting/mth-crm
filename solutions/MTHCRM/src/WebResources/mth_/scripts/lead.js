@@ -28,24 +28,27 @@ Mth.Lead = (function () {
         }).then(function (r) {
             if (!r.confirmed) { return; }
             Xrm.Utility.showProgressIndicator(t("Konverterer…", "Converting…"));
-            var url = Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/mth_ConvertLead";
-            fetch(url, {
-                method: "POST", credentials: "same-origin",
-                headers: { "Accept": "application/json", "Content-Type": "application/json; charset=utf-8", "OData-MaxVersion": "4.0", "OData-Version": "4.0" },
-                body: JSON.stringify({ LeadId: leadId() })
-            }).then(function (res) {
-                return res.json().then(function (body) { return { ok: res.ok, body: body }; });
-            }).then(function (r2) {
+            // Xrm.WebApi handles the session/token itself (a raw fetch got an empty 401 body when the session had expired).
+            var request = {
+                LeadId: { guid: leadId() },
+                getMetadata: function () {
+                    return { boundParameter: null, operationType: 0, operationName: "mth_ConvertLead",
+                        parameterTypes: { LeadId: { typeName: "Edm.Guid", structuralProperty: 1 } } };
+                }
+            };
+            Xrm.WebApi.online.execute(request).then(function (res) {
+                return res.text().then(function (txt) { return txt ? JSON.parse(txt) : {}; });
+            }).then(function (body) {
                 Xrm.Utility.closeProgressIndicator();
-                if (!r2.ok) {
-                    alert((r2.body && r2.body.error && r2.body.error.message) || t("Konverteringen fejlede.", "Conversion failed."))
-                        .then(function () { page().data.refresh(false); });
+                if (!body.OpportunityId) {
+                    alert(t("Konverteringen gav intet svar. Opdatér siden og prøv igen.", "The conversion returned no result. Refresh the page and try again."));
                     return;
                 }
-                Xrm.Navigation.openForm({ entityName: "mth_opportunity", entityId: r2.body.OpportunityId });
-            }).catch(function (e) {
+                Xrm.Navigation.openForm({ entityName: "mth_opportunity", entityId: body.OpportunityId });
+            }, function (e) {
                 Xrm.Utility.closeProgressIndicator();
-                alert(t("Konverteringen fejlede: ", "Conversion failed: ") + e.message);
+                alert((e && e.message) || t("Konverteringen fejlede.", "Conversion failed."))
+                    .then(function () { page().data.refresh(false); });
             });
         });
     }

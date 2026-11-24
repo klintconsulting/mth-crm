@@ -172,10 +172,22 @@ function New-SectionXml($table, $s) {
 $formIds = @()
 foreach ($f in $def.forms) {
     $script:ControlDescriptions = @()
+    # "System Information" (as in Salesforce): owner, created and modified by/on, added to the last column of the
+    # last visible tab of every form. Fields already on the form and ownerid on organisation-owned tables are skipped.
+    $onForm = @($f.tabs | ForEach-Object { $_.columns } | ForEach-Object { @($_) } | ForEach-Object { $_.fields })
+    $sysFields = foreach ($sf in 'ownerid', 'createdby', 'createdon', 'modifiedby', 'modifiedon') {
+        if ($onForm -contains $sf) { continue }
+        try { [void](Get-Attr $f.table $sf); $sf } catch { }
+    }
+    $sysTab = @($f.tabs | Where-Object { -not $_.hidden })[-1]
+    $sysSection = [pscustomobject]@{ name = 'systeminfo'; label = 'System Information'; fields = @($sysFields) }
     $tabs = foreach ($t in $f.tabs) {
         $width = [math]::Floor(100 / @($t.columns).Count)
-        $cols = foreach ($col in $t.columns) {
-            "<column width=`"$width%`"><sections>" + ((@($col) | ForEach-Object { New-SectionXml $f.table $_ }) -join '') + '</sections></column>'
+        $colList = @($t.columns)
+        $cols = for ($ci = 0; $ci -lt $colList.Count; $ci++) {
+            $sections = @($colList[$ci])
+            if ($t -eq $sysTab -and $ci -eq $colList.Count - 1 -and @($sysFields).Count) { $sections += $sysSection }
+            "<column width=`"$width%`"><sections>" + (($sections | ForEach-Object { New-SectionXml $f.table $_ }) -join '') + '</sections></column>'
         }
         $vis = if ($t.hidden) { ' visible="false"' } else { '' }   # hidden tabs are shown by form script
         "<tab name=`"$($t.name)`" id=`"$(G)`" IsUserDefined=`"1`" locklevel=`"0`" showlabel=`"true`" expanded=`"true`"$vis>$(Lbl $t.label)<columns>$($cols -join '')</columns></tab>"

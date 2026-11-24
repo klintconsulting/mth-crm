@@ -25,6 +25,8 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 
 **Tidslinje** (noter, opslag og aktiviteter som opgaver, mails og møder) ligger i tredje kolonne på fanen General med **kommentarfeltet med @-vælger** (PCF `MentionComposer`, se [pcf.md](pcf.md)) lige over. I `app.json` er det en sektion med `"composer": true` og `"timeline": true`. En vilkårlig PCF-kontrol over flere rækker placeres med `"pcf": { "control": "mth_Mth.X", "rows": 30 }`.
 
+**System Information** (som i Salesforce): `Deploy-App.ps1` tilføjer automatisk en sektion nederst i sidste kolonne på den sidste synlige fane i alle formularer, med Owner, Created By, Created On, Modified By og Modified On. Den defineres ikke i `app.json`. Felter, der allerede står på formularen, springes over, og det samme gør Owner på tabeller ejet af organisationen. Felterne er skrivebeskyttede systemfelter. Den fulde ændringshistorik (hvem ændrede hvilket felt hvornår) kræver auditering, som ikke er slået til i POC'en.
+
 Appen bruger kun disse formularer. Standardformularerne på Account og Contact røres ikke og er ikke med i solutionen.
 
 ## Visninger
