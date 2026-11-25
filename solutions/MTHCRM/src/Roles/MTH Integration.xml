@@ -29,6 +29,7 @@
     <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
     <RolePrivilege name="prvReadSharePointData" level="Global" />
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvReadTheme" level="Global" />
     <RolePrivilege name="prvSendAppNotification" level="Global" />
     <RolePrivilege name="prvWritemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvWritemth_Lead" level="Global" />

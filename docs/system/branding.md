@@ -38,4 +38,6 @@ Genindlæs appen med Ctrl+F5 for at se ændringen.
 
 ## Begrænsninger
 
+- **Rettighed til temaet:** Når MTH-temaet er standardtema, læser appen det ved opstart. Brugere uden `prvReadTheme` får fejlen "Der opstod fejl" ved login (fundet 2026-11-25 med demobrugeren Lars Nielsen; administratorer mærker det ikke). Alle MTH-roller har derfor `theme: Read Global` i `scripts/security/roles.json`.
+
 Model-driven apps kan kun farve headeren og navigationen. Knapper, formularer og lister bruger Microsofts Fluent-design og kan ikke farves uden at bryde supporten.

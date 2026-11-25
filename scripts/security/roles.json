@@ -1,4 +1,4 @@
-﻿{
+{
     "solution":  "MTHCRM",
     "app":  "mth_MTHCRM",
     "note":  "Users get the system role \u0027Basic User\u0027 (core privileges such as notes, activities, user settings) PLUS exactly one MTH role. Depth: None | Basic (own records) | Local (own business unit) | Deep (BU and child BUs) | Global (organisation).",
@@ -81,9 +81,48 @@
                                                                  "Create":  "Global",
                                                                  "Read":  "Global"
                                                              },
+                                         "theme":  {
+                                                       "Read":  "Global"
+                                                   },
                                          "_global":  {
                                                          "SendAppNotification":  "Global"
-                                                     }
+                                                     },
+                                         "mth_buildingcontract":  {
+                                                                      "Create":  "Basic",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Basic",
+                                                                      "Delete":  "Basic",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global",
+                                                                      "Assign":  "Basic",
+                                                                      "Share":  "Basic"
+                                                                  },
+                                         "mth_espemailtemplate":  {
+                                                                      "Create":  "None",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "None",
+                                                                      "Delete":  "None",
+                                                                      "Append":  "None",
+                                                                      "AppendTo":  "None"
+                                                                  },
+                                         "mth_trade":  {
+                                                           "Create":  "None",
+                                                           "Read":  "Global",
+                                                           "Write":  "None",
+                                                           "Delete":  "None",
+                                                           "Append":  "Global",
+                                                           "AppendTo":  "Global"
+                                                       },
+                                         "mth_collaboratingpartner":  {
+                                                                          "Create":  "Basic",
+                                                                          "Read":  "Global",
+                                                                          "Write":  "Basic",
+                                                                          "Delete":  "Basic",
+                                                                          "Append":  "Global",
+                                                                          "AppendTo":  "Global",
+                                                                          "Assign":  "Basic",
+                                                                          "Share":  "Basic"
+                                                                      }
                                      }
                   },
                   {
@@ -164,9 +203,48 @@
                                                                  "Create":  "Global",
                                                                  "Read":  "Global"
                                                              },
+                                         "theme":  {
+                                                       "Read":  "Global"
+                                                   },
                                          "_global":  {
                                                          "SendAppNotification":  "Global"
-                                                     }
+                                                     },
+                                         "mth_buildingcontract":  {
+                                                                      "Create":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Delete":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global",
+                                                                      "Assign":  "Global",
+                                                                      "Share":  "Global"
+                                                                  },
+                                         "mth_espemailtemplate":  {
+                                                                      "Create":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Delete":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global"
+                                                                  },
+                                         "mth_trade":  {
+                                                           "Create":  "None",
+                                                           "Read":  "Global",
+                                                           "Write":  "None",
+                                                           "Delete":  "None",
+                                                           "Append":  "Global",
+                                                           "AppendTo":  "Global"
+                                                       },
+                                         "mth_collaboratingpartner":  {
+                                                                          "Create":  "Global",
+                                                                          "Read":  "Global",
+                                                                          "Write":  "Global",
+                                                                          "Delete":  "Global",
+                                                                          "Append":  "Global",
+                                                                          "AppendTo":  "Global",
+                                                                          "Assign":  "Global",
+                                                                          "Share":  "Global"
+                                                                      }
                                      }
                   },
                   {
@@ -261,9 +339,48 @@
                                                                  "Create":  "Global",
                                                                  "Read":  "Global"
                                                              },
+                                         "theme":  {
+                                                       "Read":  "Global"
+                                                   },
                                          "_global":  {
                                                          "SendAppNotification":  "Global"
-                                                     }
+                                                     },
+                                         "mth_buildingcontract":  {
+                                                                      "Create":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Delete":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global",
+                                                                      "Assign":  "Global",
+                                                                      "Share":  "Global"
+                                                                  },
+                                         "mth_espemailtemplate":  {
+                                                                      "Create":  "Global",
+                                                                      "Read":  "Global",
+                                                                      "Write":  "Global",
+                                                                      "Delete":  "Global",
+                                                                      "Append":  "Global",
+                                                                      "AppendTo":  "Global"
+                                                                  },
+                                         "mth_trade":  {
+                                                           "Create":  "Global",
+                                                           "Read":  "Global",
+                                                           "Write":  "Global",
+                                                           "Delete":  "Global",
+                                                           "Append":  "Global",
+                                                           "AppendTo":  "Global"
+                                                       },
+                                         "mth_collaboratingpartner":  {
+                                                                          "Create":  "Global",
+                                                                          "Read":  "Global",
+                                                                          "Write":  "Global",
+                                                                          "Delete":  "Global",
+                                                                          "Append":  "Global",
+                                                                          "AppendTo":  "Global",
+                                                                          "Assign":  "Global",
+                                                                          "Share":  "Global"
+                                                                      }
                                      }
                   },
                   {
@@ -310,6 +427,9 @@
                                                                  "Create":  "Global",
                                                                  "Read":  "Global"
                                                              },
+                                         "theme":  {
+                                                       "Read":  "Global"
+                                                   },
                                          "_global":  {
                                                          "SendAppNotification":  "Global"
                                                      }

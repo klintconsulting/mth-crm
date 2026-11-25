@@ -86,6 +86,18 @@ Fanen **Tender (ESP)** på Salgsmuligheden. Virtuel PCF-kontrol i React 16.14 og
 
 **Afprøvet 2026-11-20:** build, lint og 12 tests. Alle Web API-forespørgsler og skrivestier, som kontrollen bruger, er kørt mod udviklermiljøet. **Brugerfladen er ikke afprøvet i browseren af udvikleren.**
 
+## Rettigheder
+
+Tilføjet 2026-11-24, efter at det viste sig, at ingen MTH-rolle havde rettigheder til ESP-tabellerne. Indtil da virkede ESP kun for systemadministratorer, og det var kun afprøvet som administrator.
+
+| Rolle | Entrepriser og UE'er | Fag | Mailskabeloner |
+|---|---|---|---|
+| MTH Sales | Læser alle; opretter, retter og sletter egne | Læser | Læser |
+| MTH Tender Manager | Alt på alle | Læser | Alt |
+| MTH CRM Administrator | Alt på alle | Alt | Alt |
+
+**Test altid som en almindelig bruger** (fx demobrugeren Lars Nielsen med MTH Sales), ikke kun som administrator. Hurtig kontrol uden login: Web API-kald med headeren `CallerObjectId: <brugerens Entra-objekt-id>` (`MSCRMCallerID` virker ikke for en administrator uden "Act on behalf"-rettighed); en manglende rettighed giver fejlen "missing prv… privilege".
+
 ## Kendte begrænsninger
 - Editoren bruger `document.execCommand` (forældet, men understøttet i alle browsere) og er bevidst simpel.
 - Vedhæftninger sendes base64 med hvert kald (én UE pr. kald). Store filer til mange UE'er er langsomme.
