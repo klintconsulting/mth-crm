@@ -28,6 +28,8 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 
 **Forudsætning:** in-app notifications skal være slået til i appen (app-indstillingen `AllowNotificationsEarlyAccess = true`, sættes af `Deploy-Plugins.ps1`).
 
+**Rettigheder hos modtageren** (alle MTH-roller i `scripts/security/roles.json`, rettet 2026-11-25): `appnotification` Read/Write/Delete på egne (Basic), så klokken kan vise, markere og lukke dem, og `appusersetting` Create/Read/Write (Global, tabellen er organisationsejet), hvor notifikationsindstillingerne gemmes. Uden `appusersetting` viser klokken "Kunne ikke få meddelelser", og indstillingerne står som "undefined" og kan ikke gemmes. Det mærkes ikke af en systemadministrator, så **test med en almindelig bruger**.
+
 **Teknisk:** Plugin'et kører asynkront med systemkontekst, så det kan læse brugere og oprette `appnotification` for andre end forfatteren. Notifikationen har `icontype = 100000004` (Mention) og `toasttype = 200000000` (Timed), og `data` indeholder en "Åbn"-handling med URL'en `?pagetype=entityrecord&etn=<tabel>&id=<id>`.
 
 **Ikke understøttet endnu:** omtale ved *redigering* af en eksisterende note (kun ved oprettelse), omtale af teams, og mail i stedet for eller ud over in-app notifikationen.

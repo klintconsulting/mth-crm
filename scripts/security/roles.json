@@ -124,7 +124,18 @@
                                                                           "AppendTo":  "Global",
                                                                           "Assign":  "Basic",
                                                                           "Share":  "Basic"
-                                                                      }
+                                                                      },
+                                         "appusersetting":  {
+                                                                "Create":  "Global",
+                                                                "Read":  "Global",
+                                                                "Write":  "Global"
+                                                            },
+                                         "searchattributesettings":  {
+                                                                         "Read":  "Global"
+                                                                     },
+                                         "searchrelationshipsettings":  {
+                                                                            "Read":  "Global"
+                                                                        }
                                      }
                   },
                   {
@@ -248,7 +259,18 @@
                                                                           "AppendTo":  "Global",
                                                                           "Assign":  "Global",
                                                                           "Share":  "Global"
-                                                                      }
+                                                                      },
+                                         "appusersetting":  {
+                                                                "Create":  "Global",
+                                                                "Read":  "Global",
+                                                                "Write":  "Global"
+                                                            },
+                                         "searchattributesettings":  {
+                                                                         "Read":  "Global"
+                                                                     },
+                                         "searchrelationshipsettings":  {
+                                                                            "Read":  "Global"
+                                                                        }
                                      }
                   },
                   {
@@ -386,7 +408,18 @@
                                                                           "AppendTo":  "Global",
                                                                           "Assign":  "Global",
                                                                           "Share":  "Global"
-                                                                      }
+                                                                      },
+                                         "appusersetting":  {
+                                                                "Create":  "Global",
+                                                                "Read":  "Global",
+                                                                "Write":  "Global"
+                                                            },
+                                         "searchattributesettings":  {
+                                                                         "Read":  "Global"
+                                                                     },
+                                         "searchrelationshipsettings":  {
+                                                                            "Read":  "Global"
+                                                                        }
                                      }
                   },
                   {
@@ -440,7 +473,18 @@
                                                    },
                                          "_global":  {
                                                          "SendAppNotification":  "Global"
-                                                     }
+                                                     },
+                                         "appusersetting":  {
+                                                                "Create":  "Global",
+                                                                "Read":  "Global",
+                                                                "Write":  "Global"
+                                                            },
+                                         "searchattributesettings":  {
+                                                                         "Read":  "Global"
+                                                                     },
+                                         "searchrelationshipsettings":  {
+                                                                            "Read":  "Global"
+                                                                        }
                                      }
                   }
               ]
