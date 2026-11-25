@@ -79,7 +79,9 @@
                                                                   },
                                          "appnotification":  {
                                                                  "Create":  "Global",
-                                                                 "Read":  "Global"
+                                                                 "Read":  "Basic",
+                                                                 "Write":  "Basic",
+                                                                 "Delete":  "Basic"
                                                              },
                                          "theme":  {
                                                        "Read":  "Global"
@@ -201,7 +203,9 @@
                                                                   },
                                          "appnotification":  {
                                                                  "Create":  "Global",
-                                                                 "Read":  "Global"
+                                                                 "Read":  "Basic",
+                                                                 "Write":  "Basic",
+                                                                 "Delete":  "Basic"
                                                              },
                                          "theme":  {
                                                        "Read":  "Global"
@@ -337,7 +341,9 @@
                                                                   },
                                          "appnotification":  {
                                                                  "Create":  "Global",
-                                                                 "Read":  "Global"
+                                                                 "Read":  "Basic",
+                                                                 "Write":  "Basic",
+                                                                 "Delete":  "Basic"
                                                              },
                                          "theme":  {
                                                        "Read":  "Global"
@@ -425,7 +431,9 @@
                                                      },
                                          "appnotification":  {
                                                                  "Create":  "Global",
-                                                                 "Read":  "Global"
+                                                                 "Read":  "Basic",
+                                                                 "Write":  "Basic",
+                                                                 "Delete":  "Basic"
                                                              },
                                          "theme":  {
                                                        "Read":  "Global"
