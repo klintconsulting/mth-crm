@@ -42,6 +42,12 @@ pac solution sync --solution-folder solutions/MTHCRM
 
 ## Fejlsøgning
 
+**Intet sker, og der er hverken sporing eller systemjob:** Tjek om trinet er slået fra (`sdkmessageprocessingsteps`, `statecode` = 1). En solution-import efterlod 2026-11-24 alle asynkrone trin slået fra (de eksporterede trin har ingen tilstand), så @-notifikationer og lead-køer stod stille i et døgn. `Deploy-Plugins.ps1` slår nu altid trinene til igen. **Kør derfor Deploy-Plugins efter hver solution-import**, og test med en almindelig bruger. Hurtig kontrol:
+
+```powershell
+Invoke-Dataverse GET "sdkmessageprocessingsteps?`$select=name,statecode&`$filter=contains(name,'Mth.Crm.Plugins')"
+```
+
 Slå plugin-sporing til (kun i udvikling og test, sæt tilbage til "Exception" bagefter):
 
 ```powershell

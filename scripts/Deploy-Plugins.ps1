@@ -61,7 +61,13 @@ foreach ($s in $def.steps) {
     $st = (Invoke-Dataverse GET "sdkmessageprocessingsteps?`$select=sdkmessageprocessingstepid&`$filter=name eq '$($s.name)'").value
     if ($st) {
         [void](Invoke-Dataverse PATCH "sdkmessageprocessingsteps($($st[0].sdkmessageprocessingstepid))" $body -Solution $sol)
-        Write-Host "  ~ step $($s.name)"
+        # A solution import can leave steps disabled (the exported step XML carries no state; seen 2026-11-24 for
+        # all asynchronous steps), and the PATCH above does not change state. Always (re-)enable.
+        $state = (Invoke-Dataverse GET "sdkmessageprocessingsteps($($st[0].sdkmessageprocessingstepid))?`$select=statecode").statecode
+        if ($state -ne 0) {
+            [void](Invoke-Dataverse PATCH "sdkmessageprocessingsteps($($st[0].sdkmessageprocessingstepid))" @{ statecode = 0; statuscode = 1 })
+            Write-Host "  ~ step $($s.name) (was disabled, enabled)"
+        } else { Write-Host "  ~ step $($s.name)" }
     } else {
         [void](Invoke-Dataverse POST 'sdkmessageprocessingsteps' $body -Solution $sol)
         Write-Host "  + step $($s.name)"
