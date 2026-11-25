@@ -2,14 +2,14 @@
   <appmoduleid>
     <uniquename>mth_MTHCRM</uniquename>
   </appmoduleid>
-  <buttonlabeltext default="Reject in My Queues">
-    <label description="Reject in My Queues" languagecode="1033" />
+  <buttonlabeltext default="Remove from All My Queues">
+    <label description="Remove from All My Queues" languagecode="1033" />
   </buttonlabeltext>
-  <buttontooltipdescription default="Reject the lead in your own queues. It stays in the other queues, so another department can still take it.">
-    <label description="Reject the lead in your own queues. It stays in the other queues, so another department can still take it." languagecode="1033" />
+  <buttontooltipdescription default="Reject the lead in all of your own queues. It stays in the other queues, so another department can still take it.">
+    <label description="Reject the lead in all of your own queues. It stays in the other queues, so another department can still take it." languagecode="1033" />
   </buttontooltipdescription>
-  <buttontooltiptitle default="Reject in My Queues">
-    <label description="Reject in My Queues" languagecode="1033" />
+  <buttontooltiptitle default="Remove from All My Queues">
+    <label description="Remove from All My Queues" languagecode="1033" />
   </buttontooltiptitle>
   <context>1</context>
   <contextentity>

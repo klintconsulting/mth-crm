@@ -1,0 +1,8 @@
+<customapiresponseproperty uniquename="RemainingQueues">
+  <displayname default="RemainingQueues">
+    <label description="RemainingQueues" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <name>mth_RejectLeadAssignment.RemainingQueues</name>
+  <type>7</type>
+</customapiresponseproperty>

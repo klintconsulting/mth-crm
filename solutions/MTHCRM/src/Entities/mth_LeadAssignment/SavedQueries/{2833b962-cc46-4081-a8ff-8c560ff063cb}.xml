@@ -6,32 +6,30 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{87cd71bf-7517-4521-8aed-bac32318b72c}</savedqueryid>
+    <savedqueryid>{2833b962-cc46-4081-a8ff-8c560ff063cb}</savedqueryid>
     <layoutxml>
-      <grid name="mth_leadrejections" jump="mth_name" select="1" icon="1" preview="0">
-        <row name="mth_leadrejection" id="mth_leadrejectionid">
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_leadassignmentid">
           <cell name="mth_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>64</querytype>
+    <querytype>1</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="mth_leadrejection">
-          <attribute name="mth_leadrejectionid" />
+        <entity name="mth_leadassignment">
+          <attribute name="mth_leadassignmentid" />
           <attribute name="mth_name" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
+          <order attribute="mth_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Lead Rejection Visning for opslag" languagecode="1030" />
-      <LocalizedName description="Lead Rejection Lookup View" languagecode="1033" />
+      <LocalizedName description="Visning til Avanceret søgning efter Lead Assignment" languagecode="1030" />
+      <LocalizedName description="Lead Assignment Advanced Find View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

@@ -6,27 +6,29 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{6fe04541-ece8-f111-84e7-000d3a496ae5}</savedqueryid>
+    <savedqueryid>{5b865afd-eee8-f111-84e7-000d3a496ae5}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
-        <row name="result" id="mth_leadrejectionid">
+        <row name="result" id="mth_leadassignmentid">
           <cell name="mth_name" width="240" />
-          <cell name="ownerid" width="160" />
-          <cell name="createdon" width="130" />
-          <cell name="mth_reason" width="300" />
+          <cell name="mth_status" width="130" />
+          <cell name="mth_statuschangedbyid" width="160" />
+          <cell name="mth_statuschangedon" width="140" />
+          <cell name="mth_reason" width="260" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="mth_leadrejection">
-          <attribute name="mth_leadrejectionid" />
+        <entity name="mth_leadassignment">
+          <attribute name="mth_leadassignmentid" />
           <attribute name="mth_name" />
-          <attribute name="ownerid" />
-          <attribute name="createdon" />
+          <attribute name="mth_status" />
+          <attribute name="mth_statuschangedbyid" />
+          <attribute name="mth_statuschangedon" />
           <attribute name="mth_reason" />
-          <order attribute="createdon" descending="true" />
+          <order attribute="mth_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -35,7 +37,7 @@
     </fetchxml>
     <IntroducedVersion>0.1.0.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="MTH Lead Rejections" languagecode="1033" />
+      <LocalizedName description="MTH Lead Assignments" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="Defined in scripts/app/app.json" languagecode="1033" />

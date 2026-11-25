@@ -41,7 +41,10 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="mth_leadstatus" operator="eq" value="273280000" />
           </filter>
-          <link-entity name="mth_lead_mth_leadqueue" from="mth_leadid" to="mth_leadid" intersect="true" link-type="inner">
+          <link-entity name="mth_leadassignment" from="mth_leadid" to="mth_leadid" link-type="inner">
+            <filter>
+              <condition attribute="mth_status" operator="eq" value="273280000" />
+            </filter>
             <link-entity name="mth_leadqueue_systemuser" from="mth_leadqueueid" to="mth_leadqueueid" intersect="true" link-type="inner">
               <filter>
                 <condition attribute="systemuserid" operator="eq-userid" />

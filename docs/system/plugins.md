@@ -5,7 +5,8 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 | Plugin | Besked / tabel | Fase | Tilstand | Formål |
 |---|---|---|---|---|
 | `NoteMentionNotifier` | Create / `annotation` (note) | PostOperation (40) | Asynkron | In-app notifikation til brugere, der er @omtalt i en ny note |
-| `LeadQueueSync` | Create/Update af `mth_lead` og `mth_leadqueue` | PostOperation (40) | Asynkron | Beregner lead↔kø og giver kømedlemmer besked. Se [smart.md](smart.md) |
+| `LeadQueueSync` | Create/Update af `mth_lead` og `mth_leadqueue` | PostOperation (40) | Asynkron | Vedligeholder lead-tildelinger (`mth_leadassignment`): opretter status New for køer, leadet matcher, og fjerner New-tildelinger, der ikke længere matcher. Rører aldrig Rejected/Converted/Lost. Giver kømedlemmer besked. Se [smart.md](smart.md) |
+| `RejectLead` | Custom API `mth_RejectLeadAssignment` (én kø) og `mth_RejectLead` (alle brugerens køer) | Main operation | Synkron | Sætter tildelingen til Rejected, kun for køens medlemmer. Lukker leadet som Fravalgt, når ingen kø har det. Se [smart.md](smart.md) |
 | `ConvertLead` | Custom API `mth_ConvertLead` | Main operation | Synkron | Konverterer Lead → Salgsmulighed, første vinder. Se [smart.md](smart.md) |
 | `SendPartnerEmail` | Custom API `mth_SendPartnerEmail` | Main operation | Synkron | Tilbudsmail til én UE's valgte kontakter, status 10 → 24. Se [esp.md](esp.md) |
 | `CollabPartnerOpportunity` | Create/Update (`mth_buildingcontractid`) af `mth_collaboratingpartner` | PreOperation (20) | Synkron | Sætter UE'ens Opportunity til entreprisens Salgsmulighed. Se [esp.md](esp.md) |

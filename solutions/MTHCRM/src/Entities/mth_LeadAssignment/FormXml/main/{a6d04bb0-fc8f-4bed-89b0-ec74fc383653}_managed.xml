@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <systemform>
-    <formid>{05207599-36e1-4913-8841-58c0243d48c4}</formid>
+    <formid>{a6d04bb0-fc8f-4bed-89b0-ec74fc383653}</formid>
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab verticallayout="true" id="{FF67C923-0FBB-4BA3-9B13-9A46F01F16C5}" IsUserDefined="1">
+        <tab verticallayout="true" id="{0C2350E8-2F5D-4CBC-BAC9-092F03AD5377}" IsUserDefined="1">
           <labels>
             <label description="Generelt" languagecode="1030" />
             <label description="General" languagecode="1033" />
@@ -15,28 +15,21 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6A8711D1-FCEA-4098-AB1C-40C9C10300FC}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{DCA04874-1518-42C1-907D-F2A252E0E9B9}">
                   <labels>
                     <label description="Generelt" languagecode="1030" />
                     <label description="General" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{27CB2E57-2FFD-4D13-9C6E-D457177835BE}">
+                      <cell id="{A1358DAD-18BE-4ADD-BD03-A9C6861C06F8}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_Name" />
                       </cell>
                     </row>
-                    <row>
-                      <cell id="{CE490C75-69B4-4747-AC32-A207C6420A06}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                      </cell>
-                    </row>
+                    <row></row>
                   </rows>
                 </section>
               </sections>

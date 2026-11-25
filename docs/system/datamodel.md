@@ -21,7 +21,7 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_leadqueue` | Lead Queue | Custom | UserOwned | (new) - replaces Salesforce lead queues, assignment rules and per-department list views |
 | `mth_smartlookup` | SMART Lookup | Custom | OrganizationOwned | SMART_Lookup__c |
 | `mth_integrationstate` | Integration State | Custom | OrganizationOwned | SMART_Sync_State__c |
-| `mth_leadrejection` | Lead Rejection | Custom | UserOwned | (new) Lead_Assignment__c status "Tabt - afvist" in the parallel-queue design |
+| `mth_leadassignment` | Lead Assignment | Custom | OrganizationOwned | (new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11) |
 
 ## Relationer (opslag)
 
@@ -41,8 +41,9 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_opportunity_mth_opportunity_External` | `mth_opportunity.mth_externalopportunityid` | `mth_opportunity` | RemoveLink |  | External_Opportunity__c |
 | `mth_opportunity_mth_opportunityrole` | `mth_opportunityrole.mth_opportunityid` | `mth_opportunity` | Parental | Ja | (new) |
 | `mth_systemuser_mth_opportunityrole_User` | `mth_opportunityrole.mth_userid` | `systemuser` | Restrict | Ja | MTH_Employee__c.User__c (employees are Entra ID users) |
-| `mth_lead_mth_leadrejection` | `mth_leadrejection.mth_leadid` | `mth_lead` | Parental | Ja | (new) |
-| `mth_leadqueue_mth_leadrejection` | `mth_leadrejection.mth_leadqueueid` | `mth_leadqueue` | RemoveLink | Ja | (new) |
+| `mth_lead_mth_leadassignment` | `mth_leadassignment.mth_leadid` | `mth_lead` | Parental | Ja | Lead_Assignment__c.Lead__c |
+| `mth_leadqueue_mth_leadassignment` | `mth_leadassignment.mth_leadqueueid` | `mth_leadqueue` | RemoveLink | Ja | Lead_Assignment__c.Department_Queue__c |
+| `mth_systemuser_mth_leadassignment_ChangedBy` | `mth_leadassignment.mth_statuschangedbyid` | `systemuser` | RemoveLink |  | (new) |
 
 ## Organizational Unit (`mth_organizationalunit`)
 
@@ -756,12 +757,25 @@ Primær navnekolonne: `mth_name` (tekst, maks. 100). Kilde: Name ("Projects")
 | `mth_lastresult` | Last Result | memo | maks. 20000 | `(new) summary of the last run` |
 | `mth_lastfinishedon` | Last Finished On | datetime |  | `(new)` |
 
-## Lead Rejection (`mth_leadrejection`)
+## Lead Assignment (`mth_leadassignment`)
 
-A lead rejected in one lead queue. The lead stays in the other queues; LeadQueueSync does not put it back in this queue.
+One row per lead and lead queue the lead matches, with the queue's own status. Replaces the N:N mth_lead_mth_leadqueue. Maintained by LeadQueueSync; status set by RejectLead and ConvertLead.
 
-Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new) name of the rejecting queue
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new) name of the queue
 
 | Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
 |---|---|---|---|---|
+| `mth_status` | Status | choice | 4 valg | `Lead_Assignment__c.Status__c` |
 | `mth_reason` | Reason | memo | maks. 2000 | `(new)` |
+| `mth_statuschangedon` | Status Changed On | datetime |  | `(new)` |
+
+<details><summary>Valg for <code>mth_status</code> (4)</summary>
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | New | New |
+| 273280001 | Rejected | Rejected |
+| 273280002 | Converted | Converted |
+| 273280003 | Lost | Lost |
+
+</details>

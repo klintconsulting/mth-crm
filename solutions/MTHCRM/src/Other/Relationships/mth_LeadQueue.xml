@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <EntityRelationship Name="mth_leadqueue_mth_leadrejection">
+  <EntityRelationship Name="mth_leadqueue_mth_leadassignment">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
     <IntroducedVersion>0.1.0.0</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
-    <ReferencingEntityName>mth_LeadRejection</ReferencingEntityName>
+    <ReferencingEntityName>mth_LeadAssignment</ReferencingEntityName>
     <ReferencedEntityName>mth_LeadQueue</ReferencedEntityName>
     <CascadeAssign>NoCascade</CascadeAssign>
     <CascadeDelete>RemoveLink</CascadeDelete>
@@ -18,7 +18,7 @@
     <ReferencingAttributeName>mth_LeadQueueId</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Source: Salesforce (new)" languagecode="1033" />
+        <Description description="Source: Salesforce Lead_Assignment__c.Department_Queue__c" languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>
@@ -30,7 +30,7 @@
         <RelationshipRoleType>1</RelationshipRoleType>
       </EntityRelationshipRole>
       <EntityRelationshipRole>
-        <NavigationPropertyName>mth_leadqueue_mth_leadrejection</NavigationPropertyName>
+        <NavigationPropertyName>mth_leadqueue_mth_leadassignment</NavigationPropertyName>
         <RelationshipRoleType>0</RelationshipRoleType>
       </EntityRelationshipRole>
     </EntityRelationshipRoles>

@@ -7,13 +7,14 @@ using Microsoft.Xrm.Sdk.Query;
 namespace Mth.Crm.Plugins
 {
     /// <summary>
-    /// Custom API mth_RejectLead (action): the caller rejects an open lead in THEIR OWN lead queues only
-    /// (the queues the lead is in where the caller is a member). The lead stays in all other queues, so another
-    /// department can still convert it ("parallel queues"). For each rejecting queue a mth_leadrejection row is
-    /// written (owned by the caller) and the queue link is removed; LeadQueueSync never puts the lead back in a queue
-    /// that rejected it. When no queue is left, the lead is closed as Disqualified.
+    /// Rejects a lead in lead queues ("parallel queues": the lead stays in every other queue, so another department
+    /// can still convert it). Sets the lead assignment's status to Rejected; LeadQueueSync never changes a rejected
+    /// assignment, so the queue does not get the lead back. When the lead has no assignment with status New left,
+    /// it is closed as Disqualified. Only members of a queue can reject in that queue.
     ///
-    /// Inputs : LeadId (Guid), Reason (String, optional)
+    /// Two Custom APIs use this plugin:
+    ///  - mth_RejectLeadAssignment: AssignmentId (Guid), Reason (String, optional) — one specific queue.
+    ///  - mth_RejectLead:           LeadId (Guid), Reason (String, optional) — all of the caller's own queues.
     /// Outputs: Message (String), RemainingQueues (Integer)
     /// </summary>
     public class RejectLead : IPlugin
@@ -26,37 +27,46 @@ namespace Mth.Crm.Plugins
             var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
             var trace = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
             var system = ((IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory))).CreateOrganizationService(null);
-
-            var leadId = context.InputParameters.Contains("LeadId") ? (Guid)context.InputParameters["LeadId"] : Guid.Empty;
-            if (leadId == Guid.Empty) throw new InvalidPluginExecutionException("LeadId mangler.");
-            var reason = context.InputParameters.Contains("Reason") ? context.InputParameters["Reason"] as string : null;
             var caller = context.InitiatingUserId;
+            var reason = context.InputParameters.Contains("Reason") ? context.InputParameters["Reason"] as string : null;
+            var mine = new HashSet<Guid>(CallerQueues(system, caller));
 
-            var lead = system.Retrieve("mth_lead", leadId, new ColumnSet("mth_name", "mth_leadstatus"));
+            Guid leadId;
+            List<Entity> reject;
+            if (context.InputParameters.Contains("AssignmentId"))
+            {
+                var a = system.Retrieve(LeadQueueSync.AssignmentTable, (Guid)context.InputParameters["AssignmentId"], new ColumnSet("mth_name", "mth_leadid", "mth_leadqueueid", "mth_status"));
+                leadId = a.GetAttributeValue<EntityReference>("mth_leadid").Id;
+                if (!LeadQueueSync.IsNew(a)) throw new InvalidPluginExecutionException("Leadet er allerede " + Status(a) + " i køen " + a.GetAttributeValue<string>("mth_name") + ".");
+                if (a.GetAttributeValue<EntityReference>("mth_leadqueueid") == null || !mine.Contains(LeadQueueSync.QueueId(a)))
+                    throw new InvalidPluginExecutionException("Du er ikke medlem af køen " + a.GetAttributeValue<string>("mth_name") + ". Kun køens medlemmer kan afvise leadet i den.");
+                reject = new List<Entity> { a };
+            }
+            else
+            {
+                leadId = context.InputParameters.Contains("LeadId") ? (Guid)context.InputParameters["LeadId"] : Guid.Empty;
+                if (leadId == Guid.Empty) throw new InvalidPluginExecutionException("LeadId mangler.");
+                reject = LeadQueueSync.Assignments(system, "mth_leadid", leadId).Where(a => LeadQueueSync.IsNew(a) && mine.Contains(LeadQueueSync.QueueId(a))).ToList();
+                if (reject.Count == 0)
+                    throw new InvalidPluginExecutionException("Leadet ligger ikke i nogen af dine køer. Kun medlemmer af en kø kan afvise leadet i den kø.");
+            }
+
+            var lead = system.Retrieve("mth_lead", leadId, new ColumnSet("mth_leadstatus"));
             var status = lead.GetAttributeValue<OptionSetValue>("mth_leadstatus");
             if (status != null && status.Value != LeadOpen) throw new InvalidPluginExecutionException("Leadet er ikke længere åbent.");
 
-            var leadQueues = LeadQueues(system, leadId);
-            var mine = new HashSet<Guid>(CallerQueues(system, caller));
-            var reject = leadQueues.Where(q => mine.Contains(q.Id)).ToList();
-            if (reject.Count == 0)
-                throw new InvalidPluginExecutionException("Leadet ligger ikke i nogen af dine køer. Kun medlemmer af en kø kan afvise leadet i den kø.");
-
-            foreach (var q in reject)
+            foreach (var a in reject)
             {
-                var r = new Entity("mth_leadrejection");
-                r["mth_name"] = q.GetAttributeValue<string>("mth_name");
-                r["mth_leadid"] = new EntityReference("mth_lead", leadId);
-                r["mth_leadqueueid"] = q.ToEntityReference();
-                if (!string.IsNullOrWhiteSpace(reason)) r["mth_reason"] = reason.Length > 2000 ? reason.Substring(0, 2000) : reason;
-                r["ownerid"] = new EntityReference("systemuser", caller);
-                system.Create(r);
+                var u = new Entity(LeadQueueSync.AssignmentTable, a.Id);
+                u["mth_status"] = new OptionSetValue(LeadQueueSync.StatusRejected);
+                u["mth_statuschangedon"] = DateTime.UtcNow;
+                u["mth_statuschangedbyid"] = new EntityReference("systemuser", caller);
+                if (!string.IsNullOrWhiteSpace(reason)) u["mth_reason"] = reason.Length > 2000 ? reason.Substring(0, 2000) : reason;
+                system.Update(u);
             }
-            system.Disassociate("mth_lead", leadId, new Relationship(LeadQueueSync.Relationship),
-                new EntityReferenceCollection(reject.Select(q => q.ToEntityReference()).ToList()));
 
-            var remaining = leadQueues.Count - reject.Count;
-            var names = string.Join(", ", reject.Select(q => q.GetAttributeValue<string>("mth_name")));
+            var remaining = LeadQueueSync.Assignments(system, "mth_leadid", leadId).Count(a => LeadQueueSync.IsNew(a) && !reject.Any(r => r.Id == a.Id));
+            var names = string.Join(", ", reject.Select(a => a.GetAttributeValue<string>("mth_name"))).TrimEnd('.');   // queue names can end in "mio."
             string message;
             if (remaining == 0)
             {
@@ -67,19 +77,22 @@ namespace Mth.Crm.Plugins
                 system.Update(close);
                 message = "Leadet er afvist i " + names + ". Ingen andre køer har det, så det er lukket som afvist.";
             }
-            else message = "Leadet er afvist i " + names + ". Det ligger stadig i " + remaining + " anden/andre kø(er).";
+            else message = "Leadet er afvist i " + names + ". Det ligger stadig i " + remaining + (remaining == 1 ? " anden kø." : " andre køer.");
             trace.Trace("Lead {0} rejected by {1} in {2} queue(s), {3} remaining", leadId, caller, reject.Count, remaining);
 
             context.OutputParameters["Message"] = message;
             context.OutputParameters["RemainingQueues"] = remaining;
         }
 
-        private static List<Entity> LeadQueues(IOrganizationService service, Guid leadId)
+        private static string Status(Entity a)
         {
-            var q = new QueryExpression("mth_leadqueue") { ColumnSet = new ColumnSet("mth_name") };
-            var link = q.AddLink(LeadQueueSync.Relationship, "mth_leadqueueid", "mth_leadqueueid");
-            link.LinkCriteria.AddCondition("mth_leadid", ConditionOperator.Equal, leadId);
-            return service.RetrieveMultiple(q).Entities.ToList();
+            switch (a.GetAttributeValue<OptionSetValue>("mth_status")?.Value)
+            {
+                case LeadQueueSync.StatusRejected: return "afvist";
+                case LeadQueueSync.StatusConverted: return "konverteret";
+                case LeadQueueSync.StatusLost: return "tabt til en anden kø";
+                default: return "behandlet";
+            }
         }
 
         private static IEnumerable<Guid> CallerQueues(IOrganizationService service, Guid userId)

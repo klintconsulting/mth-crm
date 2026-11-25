@@ -1,0 +1,18 @@
+<customapi uniquename="mth_RejectLeadAssignment">
+  <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
+  <bindingtype>0</bindingtype>
+  <description default="Rejects a lead in one specific queue (the lead assignment). Only members of that queue. The lead stays in the other queues.">
+    <label description="Rejects a lead in one specific queue (the lead assignment). Only members of that queue. The lead stays in the other queues." languagecode="1033" />
+  </description>
+  <displayname default="Reject Lead Assignment">
+    <label description="Reject Lead Assignment" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isfunction>0</isfunction>
+  <isprivate>0</isprivate>
+  <name>mth_RejectLeadAssignment</name>
+  <plugintypeid>
+    <plugintypeexportkey>5d92ba1a-ece8-f111-84e7-000d3a496ae5</plugintypeexportkey>
+  </plugintypeid>
+  <workflowsdkstepenabled>0</workflowsdkstepenabled>
+</customapi>

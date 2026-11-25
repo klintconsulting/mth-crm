@@ -1,11 +1,11 @@
 <customapi uniquename="mth_RejectLead">
   <allowedcustomprocessingsteptype>0</allowedcustomprocessingsteptype>
   <bindingtype>0</bindingtype>
-  <description default="Rejects an open lead in the caller's own lead queues only; it stays in the other queues. Closed as Disqualified when no queue is left.">
-    <label description="Rejects an open lead in the caller's own lead queues only; it stays in the other queues. Closed as Disqualified when no queue is left." languagecode="1033" />
+  <description default="Rejects an open lead in all of the caller's own lead queues (sets their lead assignments to Rejected); it stays in the other queues.">
+    <label description="Rejects an open lead in all of the caller's own lead queues (sets their lead assignments to Rejected); it stays in the other queues." languagecode="1033" />
   </description>
-  <displayname default="Reject Lead">
-    <label description="Reject Lead" languagecode="1033" />
+  <displayname default="Reject Lead in My Queues">
+    <label description="Reject Lead in My Queues" languagecode="1033" />
   </displayname>
   <iscustomizable>1</iscustomizable>
   <isfunction>0</isfunction>

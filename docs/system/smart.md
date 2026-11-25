@@ -17,7 +17,7 @@ Genskaber Salesforce' SMART-integration (`SMART_ProjectSync`): byggeprojekter fr
 | `mth_opportunity` (+48 kolonner) | `fnl_*` på Opportunity | Samme 45 projektfelter + Lead History (rich text, nyeste først), Latest Lead Changes, Lead Data Updated On, opslag til Lead |
 | `mth_leadqueue` (Lead Queue) | Køer, assignment rules, afdelingsvisninger | Kriterier (alle udfyldte skal være opfyldt): regioner (Hovedstaden, Sjælland, Syddanmark, Midtjylland, Nordjylland), min./maks. værdi (mio. kr.), nøgleord for kategori/byggetype, byggestadie, kontrakttype, projekttekst, udelukkelsesord, byggestart inden for N måneder, udelad påbegyndte. Nøgleord adskilles med `;`, og ét match er nok. Aktiv og "Giv medlemmer besked" |
 | N:N `mth_leadqueue_systemuser` | | Køens medlemmer |
-| N:N `mth_lead_mth_leadqueue` | | Beregnet: hvilke køer et lead rammer |
+| `mth_leadassignment` (Lead Assignment) | `Lead_Assignment__c` fra forslaget om parallelle køer (2026-09-11) | Én række pr. lead og kø, som leadet rammer, med køens egen status: **New** (ligger i køen), **Rejected** (køen har afvist det), **Converted** (konverteret af et medlem af køen), **Lost** (konverteret af en anden kø). Årsag, status ændret af/den. Unik nøgle lead + kø. Erstattede 2026-11-25 den beregnede N:N `mth_lead_mth_leadqueue`, som ikke kunne bære en status (B23) |
 | `mth_smartlookup` | `SMART_Lookup__c` | Cache af SMART-ordbøger (id → navn/kode). Nøgle `mth_key` = `lookup:id` |
 | `mth_integrationstate` | `SMART_Sync_State__c` | Watermark (`mth_lastrunat`), opslagsversion og resultat af sidste kørsel. Nøgle `mth_name` |
 
@@ -111,7 +111,7 @@ Deployes med `scripts/Deploy-SmartSyncAzure.ps1` (kun Azure REST API, kræver hv
 
 | Visning | Indhold |
 |---|---|
-| **MTH Leads in My Queues** (standard for Lead) | Åbne leads i de køer, brugeren er medlem af (FetchXML: lead → `mth_lead_mth_leadqueue` → `mth_leadqueue_systemuser`, `systemuserid eq-userid`, distinct). Nyeste først |
+| **MTH Leads in My Queues** (standard for Lead) | Åbne leads med en tildeling med status New i en kø, brugeren er medlem af (FetchXML: lead → `mth_leadassignment` (status New) → `mth_leadqueue_systemuser`, `systemuserid eq-userid`). Et lead, brugeren har afvist i sin kø, forsvinder herfra, men ikke fra andres. Nyeste først |
 | MTH Open Leads | Alle åbne leads |
 | MTH Closed Leads | Konverterede og fravalgte leads med konverteret af/den og salgsmulighed |
 | **MTH My Lead Queues** (standard for Lead Queue) | Køer, brugeren er medlem af |
@@ -120,15 +120,17 @@ Deployes med `scripts/Deploy-SmartSyncAzure.ps1` (kun Azure REST API, kræver hv
 **Lead-formularen:**
 - **General:** projekt, værdi og datoer, klassifikation, bygherre, konvertering, og tidslinje med kommentarfelt (@-vælger).
 - **Description, Roles and Tenders:** roller og udbud vises med rich text-editoren.
-- **Queues:** de køer, leadet er i, og de køer, der har afvist det (hvem og hvornår).
+- **Queues:** leadets tildelinger: hver kø med status, hvem der ændrede den og hvornår, og evt. årsag. Vælg en kø og klik **Reject** for at afvise leadet i netop den kø.
 - **Details:** bygningsdata og SMART-koder.
 
 **Knapper** (moderne kommandoer, `appaction`, defineret under `commands` i app.json og kalder `webresources/mth_/scripts/lead.js`):
 - **Convert:** bekræftelse, derefter `mth_ConvertLead` og åbning af den nye salgsmulighed. Har en anden allerede konverteret, vises dennes besked, og formularen opdateres.
-- **Reject in My Queues:** afviser leadet **kun i de køer, brugeren selv er medlem af** (Custom API `mth_RejectLead`). Leadet bliver i de andre køer, så en anden afdeling stadig kan tage det. Hver afvisning gemmes i `mth_leadrejection` (kø, ejer = den der afviste, tidspunkt, evt. årsag), og `LeadQueueSync` lægger aldrig leadet tilbage i en kø, der har afvist det. Har alle leadets køer afvist det, lukkes det som Fravalgt. Er brugeren ikke medlem af nogen af leadets køer, får de en besked og intet sker. Fortryd: slet afvisningen (Tender Manager og Administrator) og gem leadet, så det fordeles igen. Princippet er fra Salesforce-forslaget om parallelle køer (2026-09-11): én tildeling pr. kø med status "Tabt – afvist" / "Tabt – konverteret af anden afdeling".
+- **Reject** (på undergitteret med tildelinger, både på leadets fane Queues og på køens fane Leads and Members): afviser leadet **i den valgte kø** (Custom API `mth_RejectLeadAssignment`). Tildelingen får status Rejected, og leadet bliver i de andre køer, så en anden afdeling stadig kan tage det. Kun køens medlemmer kan afvise i køen.
+- **Remove from All My Queues** (på leadet): afviser leadet i alle de køer, brugeren selv er medlem af (Custom API `mth_RejectLead`).
+- Fælles for begge: `LeadQueueSync` ændrer aldrig en tildeling, der ikke har status New, så en kø, der har afvist leadet, får det ikke igen, heller ikke når SMART opdaterer det. Har alle leadets køer afvist det, lukkes leadet som Fravalgt. Fortryd: Tender Manager eller Administrator sætter tildelingens status tilbage til New. Princippet er fra Salesforce-forslaget om parallelle køer (2026-09-11).
 - **Disqualify:** status Fravalgt og leadet lukkes for alle, så det forsvinder fra alle køer. Til fx et irrelevant projekt.
 
-**Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser åbne leads i køen og medlemmerne (tilføj via "Add existing" på brugere).
+**Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser køens tildelinger (lead og status i denne kø, med knappen Reject) og medlemmerne (tilføj via "Add existing" på brugere).
 
 **Salgsmulighed:** ny fane **SMART Project** med lead-opslag, projektdata, *Changes from SMART* (seneste og fuld historik) og roller og udbud.
 

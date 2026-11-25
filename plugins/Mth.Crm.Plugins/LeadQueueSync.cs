@@ -2,21 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 
 namespace Mth.Crm.Plugins
 {
     /// <summary>
-    /// Keeps the computed N:N mth_lead_mth_leadqueue up to date.
-    /// - Create/Update of mth_lead (async): evaluates the lead against all active queues; members of queues the
-    ///   lead newly enters get an in-app notification (if the queue has "Notify members" on).
+    /// Keeps the lead assignments (mth_leadassignment: one row per lead and queue, with the queue's own status) up to date.
+    /// - Create/Update of mth_lead (async): evaluates the lead against all active queues. A matching queue without an
+    ///   assignment gets one with status New, and its members are notified (if the queue has "Notify members" on).
     /// - Create/Update of mth_leadqueue (async): re-evaluates all open leads against that queue (no notifications).
-    /// Only open leads are placed in queues; a converted/disqualified lead keeps its memberships as history but is
-    /// filtered out of the queue views by lead status.
+    /// Only assignments with status New are added or removed. Rejected, Converted and Lost are decisions and are never
+    /// touched, so a queue that rejected a lead never gets it back. Closed leads are left as they are.
     /// </summary>
     public class LeadQueueSync : IPlugin
     {
-        public const string Relationship = "mth_lead_mth_leadqueue";
+        public const string AssignmentTable = "mth_leadassignment";
+        public const int StatusNew = 273280000, StatusRejected = 273280001, StatusConverted = 273280002, StatusLost = 273280003;
         private const int LeadStatusOpen = 273280000;
         private const int IconInfo = 100000000;
         private const int ToastTimed = 200000000;
@@ -43,42 +45,79 @@ namespace Mth.Crm.Plugins
         private static void SyncLead(IOrganizationService service, ITracingService trace, Guid leadId, DateTime today, bool isNew)
         {
             var lead = service.Retrieve("mth_lead", leadId, new ColumnSet(ProjectFields.QueueMatchColumns));
-            if (!IsOpen(lead)) { trace.Trace("Lead not open - queues unchanged"); return; }
+            if (!IsOpen(lead)) { trace.Trace("Lead not open - assignments unchanged"); return; }
             var facts = ToFacts(lead);
-            var queues = ActiveQueues(service);
-            var current = new HashSet<Guid>(Memberships(service, "mth_leadid", leadId).Select(m => m.Value));
-            var rejectedBy = Rejections(service, "mth_leadid", leadId);   // queues that rejected this lead: never put it back
-            var matching = queues.Where(q => !rejectedBy.Contains(q.Id) && QueueMatcher.Matches(facts, ToCriteria(q), today)).ToList();
+            var matching = ActiveQueues(service).Where(q => QueueMatcher.Matches(facts, ToCriteria(q), today)).ToList();
+            var existing = Assignments(service, "mth_leadid", leadId).GroupBy(QueueId).ToDictionary(g => g.Key, g => g.First());
 
-            var add = matching.Where(q => !current.Contains(q.Id)).ToList();
-            var remove = current.Where(qid => !matching.Any(q => q.Id == qid)).ToList();
-            if (add.Count > 0) SafeLink(service, true, "mth_lead", leadId, add.Select(q => q.ToEntityReference()).ToList());
-            if (remove.Count > 0) SafeLink(service, false, "mth_lead", leadId, remove.Select(q => new EntityReference("mth_leadqueue", q)).ToList());
-            trace.Trace("Lead {0}: +{1} -{2} queue(s)", leadId, add.Count, remove.Count);
+            var added = new List<Entity>();
+            foreach (var q in matching.Where(q => !existing.ContainsKey(q.Id)))
+            {
+                // The lead job and a queue job can run at the same time; the alternate key (lead + queue) rejects the
+                // second insert, which is fine: the assignment exists.
+                try { service.Create(NewAssignment(leadId, q.Id, q.GetAttributeValue<string>("mth_name"))); added.Add(q); }
+                catch (System.ServiceModel.FaultException<OrganizationServiceFault> ex) when (IsDuplicate(ex)) { }
+            }
+            var removed = existing.Values.Where(a => IsNew(a) && !matching.Any(q => q.Id == QueueId(a))).ToList();
+            foreach (var a in removed) service.Delete(AssignmentTable, a.Id);
+            trace.Trace("Lead {0}: +{1} -{2} assignment(s)", leadId, added.Count, removed.Count);
 
-            foreach (var q in add.Where(q => q.GetAttributeValue<bool>("mth_notifymembers")))
+            foreach (var q in added.Where(q => q.GetAttributeValue<bool>("mth_notifymembers")))
                 NotifyMembers(service, q, lead, isNew);
         }
 
         private static void SyncQueue(IOrganizationService service, ITracingService trace, Guid queueId, DateTime today)
         {
             var queue = service.Retrieve("mth_leadqueue", queueId, new ColumnSet(QueueColumns));
-            var active = queue.GetAttributeValue<bool>("mth_isactive");
+            var active = queue.GetAttributeValue<bool>("mth_isactive") && queue.GetAttributeValue<OptionSetValue>("statecode")?.Value != 1;
             var criteria = ToCriteria(queue);
-            var current = new HashSet<Guid>(Memberships(service, "mth_leadqueueid", queueId).Select(m => m.Key));
-            var rejected = Rejections(service, "mth_leadqueueid", queueId);   // leads this queue has rejected
+            var name = queue.GetAttributeValue<string>("mth_name");
+            var existing = Assignments(service, "mth_leadqueueid", queueId).GroupBy(a => a.GetAttributeValue<EntityReference>("mth_leadid").Id).ToDictionary(g => g.Key, g => g.First());
 
-            var add = new List<EntityReference>(); var remove = new List<EntityReference>();
+            var requests = new List<OrganizationRequest>();
+            int added = 0, removed = 0;
             foreach (var lead in OpenLeads(service))
             {
-                var match = active && !rejected.Contains(lead.Id) && QueueMatcher.Matches(ToFacts(lead), criteria, today);
-                if (match && !current.Contains(lead.Id)) add.Add(lead.ToEntityReference());
-                if (!match && current.Contains(lead.Id)) remove.Add(lead.ToEntityReference());
+                var match = active && QueueMatcher.Matches(ToFacts(lead), criteria, today);
+                Entity a;
+                var has = existing.TryGetValue(lead.Id, out a);
+                if (match && !has) { requests.Add(new CreateRequest { Target = NewAssignment(lead.Id, queueId, name) }); added++; }
+                if (!match && has && IsNew(a)) { requests.Add(new DeleteRequest { Target = a.ToEntityReference() }); removed++; }
             }
-            foreach (var chunk in Chunks(add, 200)) SafeLink(service, true, "mth_leadqueue", queueId, chunk);
-            foreach (var chunk in Chunks(remove, 200)) SafeLink(service, false, "mth_leadqueue", queueId, chunk);
-            trace.Trace("Queue {0}: +{1} -{2} lead(s)", queueId, add.Count, remove.Count);
+            foreach (var chunk in Chunks(requests, 200))
+            {
+                var batch = new ExecuteMultipleRequest { Settings = new ExecuteMultipleSettings { ContinueOnError = true, ReturnResponses = false }, Requests = new OrganizationRequestCollection() };
+                batch.Requests.AddRange(chunk);
+                service.Execute(batch);
+            }
+            trace.Trace("Queue {0}: +{1} -{2} assignment(s)", queueId, added, removed);
         }
+
+        public static Entity NewAssignment(Guid leadId, Guid queueId, string queueName)
+        {
+            var a = new Entity(AssignmentTable);
+            a["mth_name"] = queueName;
+            a["mth_leadid"] = new EntityReference("mth_lead", leadId);
+            a["mth_leadqueueid"] = new EntityReference("mth_leadqueue", queueId);
+            a["mth_status"] = new OptionSetValue(StatusNew);
+            a["mth_statuschangedon"] = DateTime.UtcNow;
+            return a;
+        }
+
+        /// <summary>Assignments filtered by one side ("mth_leadid" or "mth_leadqueueid"), all statuses.</summary>
+        public static List<Entity> Assignments(IOrganizationService service, string column, Guid id)
+        {
+            var q = new QueryExpression(AssignmentTable) { ColumnSet = new ColumnSet("mth_name", "mth_leadid", "mth_leadqueueid", "mth_status"), PageInfo = new PagingInfo { Count = 5000, PageNumber = 1 } };
+            q.Criteria.AddCondition(column, ConditionOperator.Equal, id);
+            q.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
+            return service.RetrieveMultiple(q).Entities.Where(a => a.GetAttributeValue<EntityReference>("mth_leadqueueid") != null).ToList();
+        }
+
+        public static Guid QueueId(Entity a) => a.GetAttributeValue<EntityReference>("mth_leadqueueid").Id;
+
+        private static bool IsDuplicate(System.ServiceModel.FaultException<OrganizationServiceFault> ex) =>
+            ex.Detail?.ErrorCode == -2147088238 /* duplicate key */ || ex.Message.IndexOf("duplicate", StringComparison.OrdinalIgnoreCase) >= 0;
+        public static bool IsNew(Entity a) => a.GetAttributeValue<OptionSetValue>("mth_status")?.Value == StatusNew;
 
         private static void NotifyMembers(IOrganizationService service, Entity queue, Entity lead, bool isNew)
         {
@@ -136,56 +175,7 @@ namespace Mth.Crm.Plugins
             }
         }
 
-        /// <summary>
-        /// mth_leadrejection rows filtered by one side ("mth_leadid" or "mth_leadqueueid"); returns the OTHER side's ids
-        /// (the queues that rejected a lead, or the leads a queue rejected). Written by RejectLead.
-        /// </summary>
-        private static HashSet<Guid> Rejections(IOrganizationService service, string column, Guid id)
-        {
-            var other = column == "mth_leadid" ? "mth_leadqueueid" : "mth_leadid";
-            var q = new QueryExpression("mth_leadrejection") { ColumnSet = new ColumnSet(other) };
-            q.Criteria.AddCondition(column, ConditionOperator.Equal, id);
-            q.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
-            return new HashSet<Guid>(service.RetrieveMultiple(q).Entities
-                .Select(e => e.GetAttributeValue<EntityReference>(other)).Where(r => r != null).Select(r => r.Id));
-        }
-
-        /// <summary>Pairs (leadId, queueId) from the intersect table filtered by one side.</summary>
-        private static List<KeyValuePair<Guid, Guid>> Memberships(IOrganizationService service, string column, Guid id)
-        {
-            var q = new QueryExpression(Relationship) { ColumnSet = new ColumnSet("mth_leadid", "mth_leadqueueid") };
-            q.Criteria.AddCondition(column, ConditionOperator.Equal, id);
-            return service.RetrieveMultiple(q).Entities
-                .Select(e => new KeyValuePair<Guid, Guid>(e.GetAttributeValue<Guid>("mth_leadid"), e.GetAttributeValue<Guid>("mth_leadqueueid"))).ToList();
-        }
-
-        /// <summary>
-        /// Associate/disassociate that tolerates races: the lead job and the queue job can run at the same time and
-        /// link the same pair. On a duplicate (or already-removed) link the batch is retried one by one, ignoring those.
-        /// </summary>
-        private static void SafeLink(IOrganizationService service, bool associate, string entity, Guid id, List<EntityReference> targets)
-        {
-            var rel = new Relationship(Relationship);
-            try
-            {
-                if (associate) service.Associate(entity, id, rel, new EntityReferenceCollection(targets));
-                else service.Disassociate(entity, id, rel, new EntityReferenceCollection(targets));
-            }
-            catch (System.ServiceModel.FaultException<OrganizationServiceFault>) when (targets.Count > 1)
-            {
-                foreach (var t in targets) SafeLink(service, associate, entity, id, new List<EntityReference> { t });
-            }
-            catch (System.ServiceModel.FaultException<OrganizationServiceFault> ex) when (IsDuplicateOrMissing(ex))
-            {
-                // already linked / already unlinked by the concurrent job - nothing to do
-            }
-        }
-
-        private static bool IsDuplicateOrMissing(System.ServiceModel.FaultException<OrganizationServiceFault> ex) =>
-            ex.Message.IndexOf("duplicate", StringComparison.OrdinalIgnoreCase) >= 0 || ex.Detail?.ErrorCode == -2147220937 /* already exists */
-            || ex.Message.IndexOf("does not exist", StringComparison.OrdinalIgnoreCase) >= 0;
-
-        private static IEnumerable<List<EntityReference>> Chunks(List<EntityReference> list, int size)
+        private static IEnumerable<List<T>> Chunks<T>(List<T> list, int size)
         {
             for (var i = 0; i < list.Count; i += size) yield return list.Skip(i).Take(size).ToList();
         }

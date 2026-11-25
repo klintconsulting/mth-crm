@@ -1,41 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <systemform>
-    <formid>{5fc738f5-e9a1-4b3b-992b-2e9588263d7c}</formid>
+    <formid>{a6d04bb0-fc8f-4bed-89b0-ec74fc383653}</formid>
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab verticallayout="true" id="{EA80C574-9851-4372-B064-318377B8729A}" IsUserDefined="1">
+        <tab verticallayout="true" id="{0C2350E8-2F5D-4CBC-BAC9-092F03AD5377}" IsUserDefined="1">
           <labels>
-            <label description="" languagecode="1033" />
+            <label description="Generelt" languagecode="1030" />
+            <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{C6D115B3-8C75-4025-ACBE-77BCAF4427BB}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{DCA04874-1518-42C1-907D-F2A252E0E9B9}">
                   <labels>
-                    <label description="GENERELT" languagecode="1030" />
-                    <label description="GENERAL" languagecode="1033" />
+                    <label description="Generelt" languagecode="1030" />
+                    <label description="General" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{B7211297-37A8-4472-97F9-64DEEBDA7DB3}">
+                      <cell id="{A1358DAD-18BE-4ADD-BD03-A9C6861C06F8}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                         <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_Name" />
                       </cell>
                     </row>
-                    <row>
-                      <cell id="{56B8B2D6-D94A-4753-8ADA-C1824271367A}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                      </cell>
-                    </row>
+                    <row></row>
                   </rows>
                 </section>
               </sections>
@@ -50,5 +44,9 @@
       <LocalizedName description="Oplysninger" languagecode="1030" />
       <LocalizedName description="Information" languagecode="1033" />
     </LocalizedNames>
+    <Descriptions>
+      <Description description="En formular til dette objekt." languagecode="1030" />
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
   </systemform>
 </forms>

@@ -11,8 +11,8 @@
     <RolePrivilege name="prvAppendmth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvAppendmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendmth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendmth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvAppendmth_LeadRejection" level="Global" />
     <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendmth_OrganizationalUnit" level="Global" />
@@ -25,8 +25,8 @@
     <RolePrivilege name="prvAppendTomth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvAppendTomth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendTomth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvAppendTomth_LeadRejection" level="Global" />
     <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendTomth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendTomth_OrganizationalUnit" level="Global" />
@@ -49,8 +49,8 @@
     <RolePrivilege name="prvCreatemth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvCreatemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvCreatemth_Lead" level="Global" />
+    <RolePrivilege name="prvCreatemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvCreatemth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvCreatemth_LeadRejection" level="Basic" />
     <RolePrivilege name="prvCreatemth_Opportunity" level="Global" />
     <RolePrivilege name="prvCreatemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreatemth_OrganizationalUnit" level="Global" />
@@ -65,8 +65,8 @@
     <RolePrivilege name="prvDeletemth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvDeletemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvDeletemth_Lead" level="Global" />
+    <RolePrivilege name="prvDeletemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvDeletemth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvDeletemth_LeadRejection" level="Global" />
     <RolePrivilege name="prvDeletemth_Opportunity" level="Global" />
     <RolePrivilege name="prvDeletemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvDeletemth_OrganizationalUnit" level="Global" />
@@ -81,8 +81,8 @@
     <RolePrivilege name="prvReadmth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
+    <RolePrivilege name="prvReadmth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvReadmth_LeadRejection" level="Global" />
     <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
     <RolePrivilege name="prvReadmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvReadmth_OrganizationalUnit" level="Global" />
@@ -111,8 +111,8 @@
     <RolePrivilege name="prvWritemth_EspEmailTemplate" level="Global" />
     <RolePrivilege name="prvWritemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvWritemth_Lead" level="Global" />
+    <RolePrivilege name="prvWritemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvWritemth_LeadQueue" level="Global" />
-    <RolePrivilege name="prvWritemth_LeadRejection" level="Basic" />
     <RolePrivilege name="prvWritemth_Opportunity" level="Global" />
     <RolePrivilege name="prvWritemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvWritemth_OrganizationalUnit" level="Global" />

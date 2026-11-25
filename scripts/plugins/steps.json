@@ -314,13 +314,42 @@
                        },
                        {
                            "uniqueName":  "mth_RejectLead",
-                           "displayName":  "Reject Lead",
-                           "description":  "Rejects an open lead in the caller\u0027s own lead queues only; it stays in the other queues. Closed as Disqualified when no queue is left.",
+                           "displayName":  "Reject Lead in My Queues",
+                           "description":  "Rejects an open lead in all of the caller\u0027s own lead queues (sets their lead assignments to Rejected); it stays in the other queues.",
                            "type":  "Mth.Crm.Plugins.RejectLead",
                            "isFunction":  false,
                            "request":  [
                                            {
                                                "name":  "LeadId",
+                                               "type":  "Guid",
+                                               "optional":  false
+                                           },
+                                           {
+                                               "name":  "Reason",
+                                               "type":  "String",
+                                               "optional":  true
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "Message",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "RemainingQueues",
+                                                "type":  "Integer"
+                                            }
+                                        ]
+                       },
+                       {
+                           "uniqueName":  "mth_RejectLeadAssignment",
+                           "displayName":  "Reject Lead Assignment",
+                           "description":  "Rejects a lead in one specific queue (the lead assignment). Only members of that queue. The lead stays in the other queues.",
+                           "type":  "Mth.Crm.Plugins.RejectLead",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "AssignmentId",
                                                "type":  "Guid",
                                                "optional":  false
                                            },

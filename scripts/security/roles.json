@@ -136,14 +136,14 @@
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
                                                                         },
-                                         "mth_leadrejection":  {
-                                                                   "Create":  "Basic",
-                                                                   "Read":  "Global",
-                                                                   "Write":  "Basic",
-                                                                   "Delete":  "None",
-                                                                   "Append":  "Global",
-                                                                   "AppendTo":  "Global"
-                                                               }
+                                         "mth_leadassignment":  {
+                                                                    "Create":  "None",
+                                                                    "Read":  "Global",
+                                                                    "Write":  "None",
+                                                                    "Delete":  "None",
+                                                                    "Append":  "Global",
+                                                                    "AppendTo":  "Global"
+                                                                }
                                      }
                   },
                   {
@@ -279,14 +279,14 @@
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
                                                                         },
-                                         "mth_leadrejection":  {
-                                                                   "Create":  "Basic",
-                                                                   "Read":  "Global",
-                                                                   "Write":  "Basic",
-                                                                   "Delete":  "Global",
-                                                                   "Append":  "Global",
-                                                                   "AppendTo":  "Global"
-                                                               }
+                                         "mth_leadassignment":  {
+                                                                    "Create":  "Global",
+                                                                    "Read":  "Global",
+                                                                    "Write":  "Global",
+                                                                    "Delete":  "Global",
+                                                                    "Append":  "Global",
+                                                                    "AppendTo":  "Global"
+                                                                }
                                      }
                   },
                   {
@@ -436,14 +436,14 @@
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
                                                                         },
-                                         "mth_leadrejection":  {
-                                                                   "Create":  "Basic",
-                                                                   "Read":  "Global",
-                                                                   "Write":  "Basic",
-                                                                   "Delete":  "Global",
-                                                                   "Append":  "Global",
-                                                                   "AppendTo":  "Global"
-                                                               }
+                                         "mth_leadassignment":  {
+                                                                    "Create":  "Global",
+                                                                    "Read":  "Global",
+                                                                    "Write":  "Global",
+                                                                    "Delete":  "Global",
+                                                                    "Append":  "Global",
+                                                                    "AppendTo":  "Global"
+                                                                }
                                      }
                   },
                   {
@@ -508,7 +508,15 @@
                                                                      },
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
-                                                                        }
+                                                                        },
+                                         "mth_leadassignment":  {
+                                                                    "Create":  "None",
+                                                                    "Read":  "Global",
+                                                                    "Write":  "None",
+                                                                    "Delete":  "None",
+                                                                    "Append":  "Global",
+                                                                    "AppendTo":  "Global"
+                                                                }
                                      }
                   }
               ]

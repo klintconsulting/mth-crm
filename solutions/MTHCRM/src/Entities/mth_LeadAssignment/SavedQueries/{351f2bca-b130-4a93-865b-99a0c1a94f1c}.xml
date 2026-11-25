@@ -5,34 +5,34 @@
     <CanBeDeleted>0</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>1</isdefault>
-    <savedqueryid>{8591a630-8e16-4699-b0e1-f9628f057e2b}</savedqueryid>
+    <isdefault>0</isdefault>
+    <savedqueryid>{351f2bca-b130-4a93-865b-99a0c1a94f1c}</savedqueryid>
     <layoutxml>
-      <grid name="mth_leadrejections" jump="mth_name" select="1" icon="1" preview="1">
-        <row name="mth_leadrejection" id="mth_leadrejectionid">
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_leadassignmentid">
           <cell name="mth_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>2</querytype>
+    <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="mth_leadrejection">
-          <attribute name="mth_leadrejectionid" />
+        <entity name="mth_leadassignment">
+          <attribute name="mth_leadassignmentid" />
           <attribute name="mth_name" />
           <attribute name="createdon" />
           <order attribute="mth_name" descending="false" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="statecode" operator="eq" value="1" />
           </filter>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Tilknyttet visning til Lead Rejection" languagecode="1030" />
-      <LocalizedName description="Lead Rejection Associated View" languagecode="1033" />
+      <LocalizedName description="Inaktive Lead Assignments" languagecode="1030" />
+      <LocalizedName description="Inactive Lead Assignments" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

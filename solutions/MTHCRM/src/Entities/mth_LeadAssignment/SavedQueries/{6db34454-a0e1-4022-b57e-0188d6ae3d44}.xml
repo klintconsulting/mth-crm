@@ -6,27 +6,26 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{9eb1b75f-7c8a-4bd3-9978-43e04638794c}</savedqueryid>
+    <savedqueryid>{6db34454-a0e1-4022-b57e-0188d6ae3d44}</savedqueryid>
     <querytype>8192</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical" output-format="xml-platform">
-        <entity name="mth_leadrejection">
-          <attribute name="mth_leadrejectionid" />
+        <entity name="mth_leadassignment">
+          <attribute name="mth_leadassignmentid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="ownerid" operator="eq-userid" />
           </filter>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Min Lead Rejections" languagecode="1030" />
-      <LocalizedName description="My Lead Rejections" languagecode="1033" />
+      <LocalizedName description="Min Lead Assignments" languagecode="1030" />
+      <LocalizedName description="My Lead Assignments" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
-      <Description description="Aktive Lead Rejections ejet af mig" languagecode="1030" />
-      <Description description="Active Lead Rejections owned by me" languagecode="1033" />
+      <Description description="Alle aktive Lead Assignments" languagecode="1030" />
+      <Description description="All active Lead Assignments" languagecode="1033" />
     </Descriptions>
   </savedquery>
 </savedqueries>

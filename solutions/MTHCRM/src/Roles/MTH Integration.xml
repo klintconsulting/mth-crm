@@ -6,12 +6,14 @@
   <RolePrivileges>
     <RolePrivilege name="prvAppendmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendmth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendmth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
     <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendmth_SmartLookup" level="Global" />
     <RolePrivilege name="prvAppendToAccount" level="Global" />
     <RolePrivilege name="prvAppendTomth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
+    <RolePrivilege name="prvAppendTomth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
     <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendTomth_SmartLookup" level="Global" />
@@ -27,6 +29,7 @@
     <RolePrivilege name="prvReadAppUserSetting" level="Global" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
+    <RolePrivilege name="prvReadmth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
     <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
     <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />

@@ -2827,26 +2827,64 @@
                                    ]
                    },
                    {
-                       "schemaName":  "mth_LeadRejection",
-                       "displayName":  "Lead Rejection",
-                       "pluralName":  "Lead Rejections",
+                       "schemaName":  "mth_LeadAssignment",
+                       "displayName":  "Lead Assignment",
+                       "pluralName":  "Lead Assignments",
                        "standard":  false,
-                       "ownership":  "UserOwned",
-                       "source":  "(new) Lead_Assignment__c status \"Tabt - afvist\" in the parallel-queue design",
-                       "description":  "A lead rejected in one lead queue. The lead stays in the other queues; LeadQueueSync does not put it back in this queue.",
+                       "ownership":  "OrganizationOwned",
+                       "source":  "(new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11)",
+                       "description":  "One row per lead and lead queue the lead matches, with the queue\u0027s own status. Replaces the N:N mth_lead_mth_leadqueue. Maintained by LeadQueueSync; status set by RejectLead and ConvertLead.",
                        "primary":  {
                                        "schemaName":  "mth_Name",
                                        "displayName":  "Queue",
                                        "maxLength":  200,
-                                       "source":  "(new) name of the rejecting queue"
+                                       "source":  "(new) name of the queue"
                                    },
                        "columns":  [
+                                       {
+                                           "schemaName":  "mth_Status",
+                                           "displayName":  "Status",
+                                           "type":  "choice",
+                                           "source":  "Lead_Assignment__c.Status__c",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "New",
+                                                               "labelDa":  "Ny",
+                                                               "sourceValue":  "New"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "Rejected",
+                                                               "labelDa":  "Afvist",
+                                                               "sourceValue":  "Rejected"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Converted",
+                                                               "labelDa":  "Konverteret",
+                                                               "sourceValue":  "Converted"
+                                                           },
+                                                           {
+                                                               "value":  273280003,
+                                                               "label":  "Lost",
+                                                               "labelDa":  "Tabt til anden kø",
+                                                               "sourceValue":  "Lost"
+                                                           }
+                                                       ]
+                                       },
                                        {
                                            "schemaName":  "mth_Reason",
                                            "displayName":  "Reason",
                                            "type":  "memo",
                                            "source":  "(new)",
                                            "maxLength":  2000
+                                       },
+                                       {
+                                           "schemaName":  "mth_StatusChangedOn",
+                                           "displayName":  "Status Changed On",
+                                           "type":  "datetime",
+                                           "source":  "(new)"
                                        }
                                    ]
                    }
@@ -2985,24 +3023,33 @@
                         "required":  true
                     },
                     {
-                        "schemaName":  "mth_lead_mth_leadrejection",
-                        "referencing":  "mth_leadrejection",
+                        "schemaName":  "mth_lead_mth_leadassignment",
+                        "referencing":  "mth_leadassignment",
                         "referenced":  "mth_lead",
                         "lookupSchemaName":  "mth_LeadId",
                         "displayName":  "Lead",
-                        "source":  "(new)",
+                        "source":  "Lead_Assignment__c.Lead__c",
                         "cascade":  "Parental",
                         "required":  true
                     },
                     {
-                        "schemaName":  "mth_leadqueue_mth_leadrejection",
-                        "referencing":  "mth_leadrejection",
+                        "schemaName":  "mth_leadqueue_mth_leadassignment",
+                        "referencing":  "mth_leadassignment",
                         "referenced":  "mth_leadqueue",
                         "lookupSchemaName":  "mth_LeadQueueId",
                         "displayName":  "Lead Queue",
-                        "source":  "(new)",
+                        "source":  "Lead_Assignment__c.Department_Queue__c",
                         "cascade":  "RemoveLink",
                         "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_systemuser_mth_leadassignment_ChangedBy",
+                        "referencing":  "mth_leadassignment",
+                        "referenced":  "systemuser",
+                        "lookupSchemaName":  "mth_StatusChangedById",
+                        "displayName":  "Status Changed By",
+                        "source":  "(new)",
+                        "cascade":  "RemoveLink"
                     }
                 ],
     "manyToMany":  [
@@ -3021,14 +3068,6 @@
                            "entity1Label":  "Lead Queues",
                            "entity2Label":  "Members",
                            "source":  "(new) queue members"
-                       },
-                       {
-                           "schemaName":  "mth_lead_mth_leadqueue",
-                           "entity1":  "mth_lead",
-                           "entity2":  "mth_leadqueue",
-                           "entity1Label":  "Leads",
-                           "entity2Label":  "Lead Queues",
-                           "source":  "(new) computed: leads matching the queue criteria"
                        },
                        {
                            "schemaName":  "mth_collabpartner_contact",
@@ -3079,6 +3118,15 @@
                      "displayName":  "Trade Code",
                      "columns":  [
                                      "mth_code"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_leadassignment",
+                     "schemaName":  "mth_LeadQueuePair",
+                     "displayName":  "Lead + Queue",
+                     "columns":  [
+                                     "mth_leadid",
+                                     "mth_leadqueueid"
                                  ]
                  }
              ]

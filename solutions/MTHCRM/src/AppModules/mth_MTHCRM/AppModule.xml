@@ -22,7 +22,8 @@
     <AppModuleComponent type="1" schemaName="mth_organizationalunit" />
     <AppModuleComponent type="1" schemaName="mth_trade" />
     <AppModuleComponent type="1" schemaName="systemuser" />
-    <AppModuleComponent type="26" id="{6fe04541-ece8-f111-84e7-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{5b865afd-eee8-f111-84e7-000d3a496ae5}" />
+    <AppModuleComponent type="26" id="{60865afd-eee8-f111-84e7-000d3a496ae5}" />
     <AppModuleComponent type="26" id="{fa97190d-38e4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="26" id="{52a01b13-38e4-f111-84e8-000d3a496ae5}" />
     <AppModuleComponent type="26" id="{55a01b13-38e4-f111-84e8-000d3a496ae5}" />

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
@@ -83,6 +84,22 @@ namespace Mth.Crm.Plugins
             close["statecode"] = new OptionSetValue(1);
             close["statuscode"] = new OptionSetValue(2);
             system.Update(close);
+
+            // 5. Lead assignments: the converter's own queues get Converted, every other open assignment Lost
+            //    ("converted by another queue"). Rejected assignments keep their status.
+            var myQueues = new HashSet<Guid>(system.RetrieveMultiple(new QueryExpression("mth_leadqueue_systemuser")
+            {
+                ColumnSet = new ColumnSet("mth_leadqueueid"),
+                Criteria = { Conditions = { new ConditionExpression("systemuserid", ConditionOperator.Equal, context.InitiatingUserId) } }
+            }).Entities.Select(e => e.GetAttributeValue<Guid>("mth_leadqueueid")));
+            foreach (var a in LeadQueueSync.Assignments(system, "mth_leadid", leadId).Where(LeadQueueSync.IsNew))
+            {
+                var u = new Entity(LeadQueueSync.AssignmentTable, a.Id);
+                u["mth_status"] = new OptionSetValue(myQueues.Contains(LeadQueueSync.QueueId(a)) ? LeadQueueSync.StatusConverted : LeadQueueSync.StatusLost);
+                u["mth_statuschangedon"] = DateTime.UtcNow;
+                u["mth_statuschangedbyid"] = new EntityReference("systemuser", context.InitiatingUserId);
+                system.Update(u);
+            }
 
             context.OutputParameters["OpportunityId"] = oppId.ToString();
             context.OutputParameters["Message"] = "Leadet er konverteret til en salgsmulighed." + (accountNote != null ? " " + accountNote : "");

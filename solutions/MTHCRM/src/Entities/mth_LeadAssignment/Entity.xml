@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name LocalizedName="Lead Rejection" OriginalName="Lead Rejection">mth_LeadRejection</Name>
+  <Name LocalizedName="Lead Assignment" OriginalName="Lead Assignment">mth_LeadAssignment</Name>
   <EntityInfo>
-    <entity Name="mth_LeadRejection">
+    <entity Name="mth_LeadAssignment">
       <LocalizedNames>
-        <LocalizedName description="Lead Rejection" languagecode="1033" />
-        <LocalizedName description="Lead Rejection" languagecode="1030" />
+        <LocalizedName description="Lead Assignment" languagecode="1033" />
+        <LocalizedName description="Lead Assignment" languagecode="1030" />
       </LocalizedNames>
       <LocalizedCollectionNames>
-        <LocalizedCollectionName description="Lead Rejections" languagecode="1033" />
-        <LocalizedCollectionName description="Lead Rejections" languagecode="1030" />
+        <LocalizedCollectionName description="Lead Assignments" languagecode="1033" />
+        <LocalizedCollectionName description="Lead Assignments" languagecode="1030" />
       </LocalizedCollectionNames>
       <Descriptions>
-        <Description description="A lead rejected in one lead queue. The lead stays in the other queues; LeadQueueSync does not put it back in this queue. Source: Salesforce (new) Lead_Assignment__c status &quot;Tabt - afvist&quot; in the parallel-queue design." languagecode="1033" />
-        <Description description="A lead rejected in one lead queue. The lead stays in the other queues; LeadQueueSync does not put it back in this queue. Source: Salesforce (new) Lead_Assignment__c status &quot;Tabt - afvist&quot; in the parallel-queue design." languagecode="1030" />
+        <Description description="One row per lead and lead queue the lead matches, with the queue's own status. Replaces the N:N mth_lead_mth_leadqueue. Maintained by LeadQueueSync; status set by RejectLead and ConvertLead. Source: Salesforce (new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11)." languagecode="1033" />
+        <Description description="One row per lead and lead queue the lead matches, with the queue's own status. Replaces the N:N mth_lead_mth_leadqueue. Maintained by LeadQueueSync; status set by RejectLead and ConvertLead. Source: Salesforce (new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11)." languagecode="1030" />
       </Descriptions>
       <attributes>
         <attribute PhysicalName="CreatedBy">
@@ -306,6 +306,45 @@
             <Description description="Entydigt id for den stedfortræderbruger, der ændrede posten." languagecode="1030" />
           </Descriptions>
         </attribute>
+        <attribute PhysicalName="mth_LeadAssignmentId">
+          <Type>primarykey</Type>
+          <Name>mth_leadassignmentid</Name>
+          <LogicalName>mth_leadassignmentid</LogicalName>
+          <RequiredLevel>systemrequired</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|RequiredForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>0</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>1</IsFilterable>
+          <IsRetrievable>1</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <displaynames>
+            <displayname description="Lead Assignment" languagecode="1033" />
+            <displayname description="Lead Assignment" languagecode="1030" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Unique identifier for entity instances" languagecode="1033" />
+            <Description description="Entydigt id for objektforekomster" languagecode="1030" />
+          </Descriptions>
+        </attribute>
         <attribute PhysicalName="mth_LeadId">
           <Type>lookup</Type>
           <Name>mth_leadid</Name>
@@ -341,7 +380,7 @@
             <displayname description="Lead" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Source: Salesforce (new)" languagecode="1033" />
+            <Description description="Source: Salesforce Lead_Assignment__c.Lead__c" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="mth_LeadQueueId">
@@ -379,46 +418,7 @@
             <displayname description="Lead Queue" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Source: Salesforce (new)" languagecode="1033" />
-          </Descriptions>
-        </attribute>
-        <attribute PhysicalName="mth_LeadRejectionId">
-          <Type>primarykey</Type>
-          <Name>mth_leadrejectionid</Name>
-          <LogicalName>mth_leadrejectionid</LogicalName>
-          <RequiredLevel>systemrequired</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|RequiredForGrid</DisplayMask>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>0</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>1</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <CanModifySearchSettings>1</CanModifySearchSettings>
-          <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>1</IsFilterable>
-          <IsRetrievable>1</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <displaynames>
-            <displayname description="Lead Rejection" languagecode="1033" />
-            <displayname description="Lead Rejection" languagecode="1030" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Unique identifier for entity instances" languagecode="1033" />
-            <Description description="Entydigt id for objektforekomster" languagecode="1030" />
+            <Description description="Source: Salesforce Lead_Assignment__c.Department_Queue__c" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="mth_Name">
@@ -459,8 +459,8 @@
             <displayname description="Queue" languagecode="1030" />
           </displaynames>
           <Descriptions>
-            <Description description="Source: Salesforce (new) name of the rejecting queue" languagecode="1033" />
-            <Description description="Source: Salesforce (new) name of the rejecting queue" languagecode="1030" />
+            <Description description="Source: Salesforce (new) name of the queue" languagecode="1033" />
+            <Description description="Source: Salesforce (new) name of the queue" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="mth_Reason">
@@ -500,6 +500,191 @@
           </displaynames>
           <Descriptions>
             <Description description="Source: Salesforce (new)" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="mth_Status">
+          <Type>picklist</Type>
+          <Name>mth_status</Name>
+          <LogicalName>mth_status</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>0.1.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <optionset Name="mth_leadassignment_mth_status">
+            <OptionSetType>picklist</OptionSetType>
+            <IntroducedVersion>0.1.0.0</IntroducedVersion>
+            <IsCustomizable>1</IsCustomizable>
+            <displaynames>
+              <displayname description="Status" languagecode="1033" />
+            </displaynames>
+            <Descriptions>
+              <Description description="Source: Salesforce Lead_Assignment__c.Status__c" languagecode="1033" />
+            </Descriptions>
+            <options>
+              <option value="273280000" ExternalValue="" IsHidden="0">
+                <labels>
+                  <label description="New" languagecode="1033" />
+                </labels>
+              </option>
+              <option value="273280001" ExternalValue="" IsHidden="0">
+                <labels>
+                  <label description="Rejected" languagecode="1033" />
+                </labels>
+              </option>
+              <option value="273280002" ExternalValue="" IsHidden="0">
+                <labels>
+                  <label description="Converted" languagecode="1033" />
+                </labels>
+              </option>
+              <option value="273280003" ExternalValue="" IsHidden="0">
+                <labels>
+                  <label description="Lost" languagecode="1033" />
+                </labels>
+              </option>
+            </options>
+          </optionset>
+          <displaynames>
+            <displayname description="Status" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Source: Salesforce Lead_Assignment__c.Status__c" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="mth_StatusChangedById">
+          <Type>lookup</Type>
+          <Name>mth_statuschangedbyid</Name>
+          <LogicalName>mth_statuschangedbyid</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>0</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>0.1.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupStyle>single</LookupStyle>
+          <LookupTypes />
+          <displaynames>
+            <displayname description="Status Changed By" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Source: Salesforce (new)" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="mth_StatusChangedOn">
+          <Type>datetime</Type>
+          <Name>mth_statuschangedon</Name>
+          <LogicalName>mth_statuschangedon</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>inactive</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>0.1.0.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <Format>datetime</Format>
+          <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
+          <Behavior>1</Behavior>
+          <displaynames>
+            <displayname description="Status Changed On" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Source: Salesforce (new)" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="OrganizationId">
+          <Type>lookup</Type>
+          <Name>organizationid</Name>
+          <LogicalName>organizationid</LogicalName>
+          <RequiredLevel>none</RequiredLevel>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>0</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>0</ValidForCreateApi>
+          <IsCustomField>0</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.0</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <LookupTypes />
+          <displaynames>
+            <displayname description="Organization Id" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="Unique identifier for the organization" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="OverriddenCreatedOn">
@@ -544,173 +729,6 @@
             <Description description="Dato og klokkeslæt for overførsel af posten." languagecode="1030" />
           </Descriptions>
         </attribute>
-        <attribute PhysicalName="OwnerId">
-          <Type>owner</Type>
-          <Name>ownerid</Name>
-          <LogicalName>ownerid</LogicalName>
-          <RequiredLevel>systemrequired</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>1</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>1</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>1</IsAuditEnabled>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <CanModifySearchSettings>1</CanModifySearchSettings>
-          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>1</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>single</LookupStyle>
-          <LookupTypes>
-            <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
-            <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
-          </LookupTypes>
-          <displaynames>
-            <displayname description="Owner" languagecode="1033" />
-            <displayname description="Ejer" languagecode="1030" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Owner Id" languagecode="1033" />
-            <Description description="Ejer-id" languagecode="1030" />
-          </Descriptions>
-        </attribute>
-        <attribute PhysicalName="OwningBusinessUnit">
-          <Type>lookup</Type>
-          <Name>owningbusinessunit</Name>
-          <LogicalName>owningbusinessunit</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
-          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>0</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>0</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>1</IsAuditEnabled>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <CanModifySearchSettings>1</CanModifySearchSettings>
-          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>1</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>single</LookupStyle>
-          <LookupTypes />
-          <displaynames>
-            <displayname description="Owning Business Unit" languagecode="1033" />
-            <displayname description="Ejende afdeling" languagecode="1030" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-            <Description description="Entydigt id for den afdeling, der ejer posten" languagecode="1030" />
-          </Descriptions>
-        </attribute>
-        <attribute PhysicalName="OwningTeam">
-          <Type>lookup</Type>
-          <Name>owningteam</Name>
-          <LogicalName>owningteam</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>0</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>0</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsLogical>1</IsLogical>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <CanModifySearchSettings>1</CanModifySearchSettings>
-          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>single</LookupStyle>
-          <LookupTypes />
-          <displaynames>
-            <displayname description="Owning Team" languagecode="1033" />
-            <displayname description="Ejende team" languagecode="1030" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-            <Description description="Entydigt id for det team, der ejer posten." languagecode="1030" />
-          </Descriptions>
-        </attribute>
-        <attribute PhysicalName="OwningUser">
-          <Type>lookup</Type>
-          <Name>owninguser</Name>
-          <LogicalName>owninguser</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
-          <ImeMode>auto</ImeMode>
-          <ValidForUpdateApi>0</ValidForUpdateApi>
-          <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>0</ValidForCreateApi>
-          <IsCustomField>0</IsCustomField>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsLogical>1</IsLogical>
-          <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <CanModifySearchSettings>1</CanModifySearchSettings>
-          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <SourceType>0</SourceType>
-          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-          <IsSortableEnabled>0</IsSortableEnabled>
-          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-          <IsDataSourceSecret>0</IsDataSourceSecret>
-          <AutoNumberFormat></AutoNumberFormat>
-          <IsSearchable>0</IsSearchable>
-          <IsFilterable>0</IsFilterable>
-          <IsRetrievable>0</IsRetrievable>
-          <IsLocalizable>0</IsLocalizable>
-          <LookupStyle>single</LookupStyle>
-          <LookupTypes />
-          <displaynames>
-            <displayname description="Owning User" languagecode="1033" />
-            <displayname description="Ejende bruger" languagecode="1030" />
-          </displaynames>
-          <Descriptions>
-            <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-            <Description description="Entydigt id for den bruger, der ejer posten." languagecode="1030" />
-          </Descriptions>
-        </attribute>
         <attribute PhysicalName="statecode">
           <Type>state</Type>
           <Name>statecode</Name>
@@ -741,7 +759,7 @@
           <IsFilterable>1</IsFilterable>
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
-          <optionset Name="mth_leadrejection_statecode">
+          <optionset Name="mth_leadassignment_statecode">
             <OptionSetType>state</OptionSetType>
             <IntroducedVersion>1.0</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
@@ -749,8 +767,8 @@
               <displayname description="Status" languagecode="1033" />
             </displaynames>
             <Descriptions>
-              <Description description="Status of the Lead Rejection" languagecode="1033" />
-              <Description description="Status for Lead Rejection" languagecode="1030" />
+              <Description description="Status of the Lead Assignment" languagecode="1033" />
+              <Description description="Status for Lead Assignment" languagecode="1030" />
             </Descriptions>
             <states>
               <state value="0" defaultstatus="1" invariantname="Active" IsHidden="0">
@@ -771,8 +789,8 @@
             <displayname description="Status" languagecode="1033" />
           </displaynames>
           <Descriptions>
-            <Description description="Status of the Lead Rejection" languagecode="1033" />
-            <Description description="Status for Lead Rejection" languagecode="1030" />
+            <Description description="Status of the Lead Assignment" languagecode="1033" />
+            <Description description="Status for Lead Assignment" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="statuscode">
@@ -805,7 +823,7 @@
           <IsFilterable>0</IsFilterable>
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
-          <optionset Name="mth_leadrejection_statuscode">
+          <optionset Name="mth_leadassignment_statuscode">
             <OptionSetType>status</OptionSetType>
             <IntroducedVersion>1.0</IntroducedVersion>
             <IsCustomizable>1</IsCustomizable>
@@ -814,8 +832,8 @@
               <displayname description="Statusårsag" languagecode="1030" />
             </displaynames>
             <Descriptions>
-              <Description description="Reason for the status of the Lead Rejection" languagecode="1033" />
-              <Description description="Årsag til statussen for Lead Rejection" languagecode="1030" />
+              <Description description="Reason for the status of the Lead Assignment" languagecode="1033" />
+              <Description description="Årsag til statussen for Lead Assignment" languagecode="1030" />
             </Descriptions>
             <statuses>
               <status value="1" state="0" IsHidden="0">
@@ -837,8 +855,8 @@
             <displayname description="Statusårsag" languagecode="1030" />
           </displaynames>
           <Descriptions>
-            <Description description="Reason for the status of the Lead Rejection" languagecode="1033" />
-            <Description description="Årsag til statussen for Lead Rejection" languagecode="1030" />
+            <Description description="Reason for the status of the Lead Assignment" languagecode="1033" />
+            <Description description="Årsag til statussen for Lead Assignment" languagecode="1030" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="TimeZoneRuleVersionNumber">
@@ -924,7 +942,22 @@
           </Descriptions>
         </attribute>
       </attributes>
-      <EntitySetName>mth_leadrejections</EntitySetName>
+      <EntityKeys>
+        <EntityKey>
+          <Name>mth_LeadQueuePair</Name>
+          <LogicalName>mth_leadqueuepair</LogicalName>
+          <IntroducedVersion>0.1.0.0</IntroducedVersion>
+          <IsCustomizable>0</IsCustomizable>
+          <EntityKeyAttributes>
+            <AttributeName>mth_leadid</AttributeName>
+            <AttributeName>mth_leadqueueid</AttributeName>
+          </EntityKeyAttributes>
+          <displaynames>
+            <displayname description="Lead + Queue" languagecode="1033" />
+          </displaynames>
+        </EntityKey>
+      </EntityKeys>
+      <EntitySetName>mth_leadassignments</EntitySetName>
       <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
       <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>
       <IsRequiredOffline>0</IsRequiredOffline>
@@ -940,7 +973,7 @@
       <IsSLAEnabled>0</IsSLAEnabled>
       <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
       <IsBPFEntity>0</IsBPFEntity>
-      <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
+      <OwnershipTypeMask>OrgOwned</OwnershipTypeMask>
       <IsAuditEnabled>0</IsAuditEnabled>
       <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
       <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>

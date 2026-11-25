@@ -1,0 +1,9 @@
+<customapirequestparameter uniquename="AssignmentId">
+  <displayname default="AssignmentId">
+    <label description="AssignmentId" languagecode="1033" />
+  </displayname>
+  <iscustomizable>1</iscustomizable>
+  <isoptional>0</isoptional>
+  <name>mth_RejectLeadAssignment.AssignmentId</name>
+  <type>12</type>
+</customapirequestparameter>
