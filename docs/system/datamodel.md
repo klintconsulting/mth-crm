@@ -721,7 +721,7 @@ Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new)
 | Værdi | Label | Salesforce-værdi |
 |---|---|---|
 | 273280000 | Hovedstaden | Hovedstaden |
-| 273280001 | SjÃ¦lland | SjÃ¦lland |
+| 273280001 | Sjælland | Sjælland |
 | 273280002 | Syddanmark | Syddanmark |
 | 273280003 | Midtjylland | Midtjylland |
 | 273280004 | Nordjylland | Nordjylland |

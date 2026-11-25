@@ -2029,7 +2029,7 @@
                                                            {
                                                                "value":  273280020,
                                                                "label":  "20 Wants to submit tender",
-                                                               "labelDa":  "20 Ã˜nsker at give tilbud",
+                                                               "labelDa":  "20 Ønsker at give tilbud",
                                                                "sourceValue":  "20"
                                                            },
                                                            {
@@ -2053,7 +2053,7 @@
                                                            {
                                                                "value":  273280060,
                                                                "label":  "60 Contract signed",
-                                                               "labelDa":  "60 Kontrakt indgÃ¥et",
+                                                               "labelDa":  "60 Kontrakt indgået",
                                                                "sourceValue":  "60"
                                                            },
                                                            {
@@ -2071,7 +2071,7 @@
                                                            {
                                                                "value":  273280092,
                                                                "label":  "92 Declines to submit tender",
-                                                               "labelDa":  "92 Ã˜nsker ikke at give tilbud",
+                                                               "labelDa":  "92 Ønsker ikke at give tilbud",
                                                                "sourceValue":  "92"
                                                            },
                                                            {
@@ -2083,7 +2083,7 @@
                                                            {
                                                                "value":  273280097,
                                                                "label":  "97 Tender not compliant",
-                                                               "labelDa":  "97 Tilbud ikke konditionsmÃ¦ssigt",
+                                                               "labelDa":  "97 Tilbud ikke konditionsmæssigt",
                                                                "sourceValue":  "97"
                                                            },
                                                            {
@@ -2104,19 +2104,19 @@
                                                            {
                                                                "value":  273280000,
                                                                "label":  "Subcontractor",
-                                                               "labelDa":  "UnderentreprenÃ¸r",
+                                                               "labelDa":  "Underentreprenør",
                                                                "sourceValue":  "Subcontractor"
                                                            },
                                                            {
                                                                "value":  273280001,
                                                                "label":  "Supplier",
-                                                               "labelDa":  "LeverandÃ¸r",
+                                                               "labelDa":  "Leverandør",
                                                                "sourceValue":  "Supplier"
                                                            },
                                                            {
                                                                "value":  273280002,
                                                                "label":  "Advisor",
-                                                               "labelDa":  "RÃ¥dgiver",
+                                                               "labelDa":  "Rådgiver",
                                                                "sourceValue":  "Advisor"
                                                            }
                                                        ]
@@ -2137,7 +2137,7 @@
                                                            {
                                                                "value":  273280000,
                                                                "label":  "Green",
-                                                               "labelDa":  "GrÃ¸n",
+                                                               "labelDa":  "Grøn",
                                                                "sourceValue":  "10"
                                                            },
                                                            {
@@ -2149,7 +2149,7 @@
                                                            {
                                                                "value":  273280002,
                                                                "label":  "Red",
-                                                               "labelDa":  "RÃ¸d",
+                                                               "labelDa":  "Rød",
                                                                "sourceValue":  "0"
                                                            },
                                                            {
@@ -2567,7 +2567,7 @@
                                                            {
                                                                "value":  273280000,
                                                                "label":  "Open",
-                                                               "labelDa":  "Ã…ben",
+                                                               "labelDa":  "Åben",
                                                                "sourceValue":  "Open"
                                                            },
                                                            {
@@ -2639,8 +2639,8 @@
                                                            },
                                                            {
                                                                "value":  273280001,
-                                                               "label":  "SjÃ¦lland",
-                                                               "sourceValue":  "SjÃ¦lland"
+                                                               "label":  "Sjælland",
+                                                               "sourceValue":  "Sjælland"
                                                            },
                                                            {
                                                                "value":  273280002,
