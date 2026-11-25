@@ -6,8 +6,10 @@
 }
 .mth-mc-input:focus { outline: none; border-color: #0f6cbd; box-shadow: 0 0 0 1px #0f6cbd; }
 .mth-mc-input:disabled { background: #f3f2f1; color: #a19f9d; }
+/* In normal flow (not absolute): the form section clips anything that overflows the control, so an overlay list
+   was cut off behind the timeline (seen 2026-11-25). Open, the list pushes the content below it down. */
 .mth-mc-list {
-    position: absolute; z-index: 10; left: 0; right: 0; top: 100%; margin: 2px 0 0; padding: 4px 0; list-style: none;
+    position: static; margin: 2px 0 0; padding: 4px 0; list-style: none;
     background: #fff; border: 1px solid #c8c6c4; border-radius: 4px; box-shadow: 0 6px 14px rgba(0, 0, 0, .13); max-height: 280px; overflow-y: auto;
 }
 .mth-mc-item { display: flex; align-items: center; gap: 8px; padding: 6px 10px; cursor: pointer; }
