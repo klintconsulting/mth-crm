@@ -44,6 +44,11 @@
       "table": "mth_leadqueue", "name": "MTH Active Lead Queues", "default": false,
       "columns": [ ["mth_name", 260], ["mth_regions", 200], ["mth_minvalue", 90], ["mth_categorykeywords", 180], ["mth_isactive", 70], ["ownerid", 140] ],
       "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_leadrejection", "name": "MTH Lead Rejections", "default": true,
+      "columns": [ ["mth_name", 240], ["ownerid", 160], ["createdon", 130], ["mth_reason", 300] ],
+      "order": { "attribute": "createdon", "descending": true }, "activeOnly": true
     },    {
       "table": "mth_opportunity", "name": "MTH Active Opportunities", "default": true,
       "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_statusnumber", 80], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
@@ -121,7 +126,9 @@
         {
           "name": "queues", "label": "Queues",
           "columns": [ [ { "name": "leadqueues", "label": "Lead queues this lead is in",
-                           "subgrid": { "id": "LeadQueues", "table": "mth_leadqueue", "relationship": "mth_lead_mth_leadqueue", "view": "MTH Active Lead Queues", "rows": 8 } } ] ]
+                           "subgrid": { "id": "LeadQueues", "table": "mth_leadqueue", "relationship": "mth_lead_mth_leadqueue", "view": "MTH Active Lead Queues", "rows": 8 } },
+                         { "name": "rejections", "label": "Rejected in these queues",
+                           "subgrid": { "id": "LeadRejections", "table": "mth_leadrejection", "relationship": "mth_lead_mth_leadrejection", "view": "MTH Lead Rejections", "rows": 5 } } ] ]
         },
         {
           "name": "details", "label": "Details",
@@ -315,7 +322,8 @@
   ],
   "commands": [
     { "uniqueName": "mth_Lead_Convert", "label": "Convert", "tooltip": "Convert to an opportunity. The first one to convert gets the lead.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.convert", "sequence": 10 },
-    { "uniqueName": "mth_Lead_Disqualify", "label": "Disqualify", "tooltip": "Close the lead; it disappears from all queues.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.disqualify", "sequence": 20 },
+    { "uniqueName": "mth_Lead_Reject", "label": "Reject in My Queues", "tooltip": "Reject the lead in your own queues. It stays in the other queues, so another department can still take it.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.reject", "sequence": 15 },
+    { "uniqueName": "mth_Lead_Disqualify", "label": "Disqualify", "tooltip": "Close the lead for everyone (e.g. an irrelevant project); it disappears from all queues.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.disqualify", "sequence": 20 },
     { "uniqueName": "mth_Account_NneSearch", "label": "New from NNE", "tooltip": "Find the company in NNE (Navne & Numre Erhverv) and create it as an account.", "table": "account", "location": "MainGrid", "library": "mth_/scripts/account.js", "function": "Mth.Account.nneSearch", "sequence": 5, "icon": "$webresource:mth_/branding/icon.svg" }
   ]
 }

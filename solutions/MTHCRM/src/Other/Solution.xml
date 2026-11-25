@@ -88,6 +88,7 @@
       <RootComponent type="1" schemaName="mth_integrationstate" behavior="0" />
       <RootComponent type="1" schemaName="mth_lead" behavior="0" />
       <RootComponent type="1" schemaName="mth_leadqueue" behavior="0" />
+      <RootComponent type="1" schemaName="mth_leadrejection" behavior="0" />
       <RootComponent type="1" schemaName="mth_opportunity" behavior="0" />
       <RootComponent type="1" schemaName="mth_opportunityrole" behavior="0" />
       <RootComponent type="1" schemaName="mth_organizationalunit" behavior="0" />

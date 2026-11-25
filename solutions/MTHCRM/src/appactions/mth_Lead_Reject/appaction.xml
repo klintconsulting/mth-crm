@@ -1,0 +1,37 @@
+<appaction uniquename="mth_Lead_Reject">
+  <appmoduleid>
+    <uniquename>mth_MTHCRM</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Reject in My Queues">
+    <label description="Reject in My Queues" languagecode="1033" />
+  </buttonlabeltext>
+  <buttontooltipdescription default="Reject the lead in your own queues. It stays in the other queues, so another department can still take it.">
+    <label description="Reject the lead in your own queues. It stays in the other queues, so another department can still take it." languagecode="1033" />
+  </buttontooltipdescription>
+  <buttontooltiptitle default="Reject in My Queues">
+    <label description="Reject in My Queues" languagecode="1033" />
+  </buttontooltiptitle>
+  <context>1</context>
+  <contextentity>
+    <logicalname>mth_lead</logicalname>
+  </contextentity>
+  <contextvalue>mth_lead</contextvalue>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Reject in My Queues</name>
+  <onclickeventjavascriptfunctionname>Mth.Lead.reject</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>6d53624e-dce4-f111-84e8-000d3a496ae5</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>15.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

@@ -311,6 +311,35 @@
                                                 "type":  "String"
                                             }
                                         ]
+                       },
+                       {
+                           "uniqueName":  "mth_RejectLead",
+                           "displayName":  "Reject Lead",
+                           "description":  "Rejects an open lead in the caller\u0027s own lead queues only; it stays in the other queues. Closed as Disqualified when no queue is left.",
+                           "type":  "Mth.Crm.Plugins.RejectLead",
+                           "isFunction":  false,
+                           "request":  [
+                                           {
+                                               "name":  "LeadId",
+                                               "type":  "Guid",
+                                               "optional":  false
+                                           },
+                                           {
+                                               "name":  "Reason",
+                                               "type":  "String",
+                                               "optional":  true
+                                           }
+                                       ],
+                           "response":  [
+                                            {
+                                                "name":  "Message",
+                                                "type":  "String"
+                                            },
+                                            {
+                                                "name":  "RemainingQueues",
+                                                "type":  "Integer"
+                                            }
+                                        ]
                        }
                    ],
     "appSettings":  [

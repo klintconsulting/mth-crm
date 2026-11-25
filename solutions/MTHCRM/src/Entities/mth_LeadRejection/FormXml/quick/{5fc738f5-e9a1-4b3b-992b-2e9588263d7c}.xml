@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{5fc738f5-e9a1-4b3b-992b-2e9588263d7c}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{EA80C574-9851-4372-B064-318377B8729A}" IsUserDefined="1">
+          <labels>
+            <label description="" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{C6D115B3-8C75-4025-ACBE-77BCAF4427BB}">
+                  <labels>
+                    <label description="GENERELT" languagecode="1030" />
+                    <label description="GENERAL" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{B7211297-37A8-4472-97F9-64DEEBDA7DB3}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_Name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{56B8B2D6-D94A-4753-8ADA-C1824271367A}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                          <label description="Ejer" languagecode="1030" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Oplysninger" languagecode="1030" />
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

@@ -26,6 +26,9 @@
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.OpportunityStatusNumber, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="eef0f6c0-21e8-f111-84e7-000d3a496ae5" Name="Mth.Crm.Plugins.OpportunityStatusNumber">
       <FriendlyName>Mth.Crm.Plugins.OpportunityStatusNumber</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.RejectLead, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="5d92ba1a-ece8-f111-84e7-000d3a496ae5" Name="Mth.Crm.Plugins.RejectLead">
+      <FriendlyName>Mth.Crm.Plugins.RejectLead</FriendlyName>
+    </PluginType>
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.SendPartnerEmail, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="b559b44f-bde4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.SendPartnerEmail">
       <FriendlyName>Mth.Crm.Plugins.SendPartnerEmail</FriendlyName>
     </PluginType>

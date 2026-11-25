@@ -2825,6 +2825,30 @@
                                            "source":  "(new)"
                                        }
                                    ]
+                   },
+                   {
+                       "schemaName":  "mth_LeadRejection",
+                       "displayName":  "Lead Rejection",
+                       "pluralName":  "Lead Rejections",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "source":  "(new) Lead_Assignment__c status \"Tabt - afvist\" in the parallel-queue design",
+                       "description":  "A lead rejected in one lead queue. The lead stays in the other queues; LeadQueueSync does not put it back in this queue.",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Queue",
+                                       "maxLength":  200,
+                                       "source":  "(new) name of the rejecting queue"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Reason",
+                                           "displayName":  "Reason",
+                                           "type":  "memo",
+                                           "source":  "(new)",
+                                           "maxLength":  2000
+                                       }
+                                   ]
                    }
                ],
     "lookups":  [
@@ -2901,7 +2925,7 @@
                         "referenced":  "mth_opportunity",
                         "lookupSchemaName":  "mth_OpportunityId",
                         "displayName":  "Opportunity",
-                        "source":  "Derived: the building contract's opportunity, set by plugin CollabPartnerOpportunity",
+                        "source":  "Derived: the building contract\u0027s opportunity, set by plugin CollabPartnerOpportunity",
                         "cascade":  "RemoveLink"
                     },
                     {
@@ -2958,6 +2982,26 @@
                         "displayName":  "User",
                         "source":  "MTH_Employee__c.User__c (employees are Entra ID users)",
                         "cascade":  "Restrict",
+                        "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_lead_mth_leadrejection",
+                        "referencing":  "mth_leadrejection",
+                        "referenced":  "mth_lead",
+                        "lookupSchemaName":  "mth_LeadId",
+                        "displayName":  "Lead",
+                        "source":  "(new)",
+                        "cascade":  "Parental",
+                        "required":  true
+                    },
+                    {
+                        "schemaName":  "mth_leadqueue_mth_leadrejection",
+                        "referencing":  "mth_leadrejection",
+                        "referenced":  "mth_leadqueue",
+                        "lookupSchemaName":  "mth_LeadQueueId",
+                        "displayName":  "Lead Queue",
+                        "source":  "(new)",
+                        "cascade":  "RemoveLink",
                         "required":  true
                     }
                 ],

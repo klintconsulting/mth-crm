@@ -88,3 +88,7 @@ Brugerens problem: "Filter by keyword" fandt ikke "Havneudvidelse, Aalborg" ved 
 ## B22 – Browser-login i stedet for device code (2026-11-23)
 Entra *security defaults* begyndte at afvise device code-login (AADSTS530035) i konsulent-tenanten, og samme politik kan gælde hos MTH. `Dataverse.psm1` logger nu på i browseren med authorization code og PKCE via en loopback-redirect. Device code findes stadig bag `-DeviceCode`. `pac auth create` bruges uden `--deviceCode`.
 **Konsekvens:** Scripts skal køres på en maskine med browser. `Deploy-SmartSyncAzure.ps1` bruger stadig device code mod Azure og skal ændres på samme måde, før det kan køres igen i en tenant med security defaults. Pipelines (GitHub Actions) bruger app-registrering og er ikke berørt.
+
+## B23 – Afvisning pr. kø: et lead afvist i én kø bliver i de andre (2026-11-25)
+Brugerens krav: når en afdeling afviser et lead, skal det stadig være i de andre køer, så det kommer andre afdelinger til gode. Det er kernen i det parallelle kø-design (forslaget fra 2026-09-11 i Salesforce: én tildeling pr. kø med egen status). Den N:N-relation lead↔kø kan ikke bære en status, og `LeadQueueSync` beregner den igen ved hver ændring, så afvisningen gemmes i en egen tabel, `mth_leadrejection`, som synken respekterer.
+**Konsekvens:** Knappen "Reject in My Queues" afviser kun i brugerens egne køer. "Disqualify" lukker stadig leadet for alle. Et lead, som alle dets køer har afvist, lukkes som Fravalgt. Se [smart.md](smart.md).

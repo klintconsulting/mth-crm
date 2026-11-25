@@ -1,6 +1,7 @@
 /*
  * Command scripts for the Lead form (mth_lead). Called by modern commands (appaction) defined in scripts/app/app.json.
  *  - Mth.Lead.convert():    calls Custom API mth_ConvertLead. The first user to convert gets the lead; others get a message.
+ *  - Mth.Lead.reject():     calls Custom API mth_RejectLead: rejected only in the caller's own queues, stays in the others.
  *  - Mth.Lead.disqualify(): marks the lead "Disqualified" and closes it (it disappears from all queues).
  * ES5 only (runs in the model-driven app without transpiling). Texts in Danish and English (user language).
  */
@@ -53,6 +54,36 @@ Mth.Lead = (function () {
         });
     }
 
+    // Reject in the caller's own queues only (Custom API mth_RejectLead); the lead stays in the other queues.
+    function reject() {
+        if (status() !== OPEN) { alert(t("Leadet er ikke åbent.", "The lead is not open.")); return; }
+        Xrm.Navigation.openConfirmDialog({
+            title: t("Afvis i mine køer", "Reject in my queues"),
+            text: t("Afvis leadet i de køer, du selv er medlem af? Det bliver i de andre køer, så en anden afdeling stadig kan tage det.",
+                    "Reject the lead in the queues you are a member of? It stays in the other queues, so another department can still take it.")
+        }).then(function (r) {
+            if (!r.confirmed) { return; }
+            Xrm.Utility.showProgressIndicator(t("Afviser…", "Rejecting…"));
+            var request = {
+                LeadId: { guid: leadId() },
+                getMetadata: function () {
+                    return { boundParameter: null, operationType: 0, operationName: "mth_RejectLead",
+                        parameterTypes: { LeadId: { typeName: "Edm.Guid", structuralProperty: 1 } } };
+                }
+            };
+            Xrm.WebApi.online.execute(request).then(function (res) {
+                return res.text().then(function (txt) { return txt ? JSON.parse(txt) : {}; });
+            }).then(function (body) {
+                Xrm.Utility.closeProgressIndicator();
+                alert(body.Message || t("Leadet er afvist i dine køer.", "The lead is rejected in your queues."))
+                    .then(function () { page().data.refresh(false); });
+            }, function (e) {
+                Xrm.Utility.closeProgressIndicator();
+                alert((e && e.message) || t("Afvisningen fejlede.", "The rejection failed."));
+            });
+        });
+    }
+
     function disqualify() {
         if (status() !== OPEN) { alert(t("Leadet er ikke åbent.", "The lead is not open.")); return; }
         Xrm.Navigation.openConfirmDialog({
@@ -66,6 +97,6 @@ Mth.Lead = (function () {
         });
     }
 
-    return { convert: convert, disqualify: disqualify };
+    return { convert: convert, reject: reject, disqualify: disqualify };
 })();
 window.Mth = Mth;

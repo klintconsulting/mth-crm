@@ -135,7 +135,15 @@
                                                                      },
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
-                                                                        }
+                                                                        },
+                                         "mth_leadrejection":  {
+                                                                   "Create":  "Basic",
+                                                                   "Read":  "Global",
+                                                                   "Write":  "Basic",
+                                                                   "Delete":  "None",
+                                                                   "Append":  "Global",
+                                                                   "AppendTo":  "Global"
+                                                               }
                                      }
                   },
                   {
@@ -270,7 +278,15 @@
                                                                      },
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
-                                                                        }
+                                                                        },
+                                         "mth_leadrejection":  {
+                                                                   "Create":  "Basic",
+                                                                   "Read":  "Global",
+                                                                   "Write":  "Basic",
+                                                                   "Delete":  "Global",
+                                                                   "Append":  "Global",
+                                                                   "AppendTo":  "Global"
+                                                               }
                                      }
                   },
                   {
@@ -419,7 +435,15 @@
                                                                      },
                                          "searchrelationshipsettings":  {
                                                                             "Read":  "Global"
-                                                                        }
+                                                                        },
+                                         "mth_leadrejection":  {
+                                                                   "Create":  "Basic",
+                                                                   "Read":  "Global",
+                                                                   "Write":  "Basic",
+                                                                   "Delete":  "Global",
+                                                                   "Append":  "Global",
+                                                                   "AppendTo":  "Global"
+                                                               }
                                      }
                   },
                   {

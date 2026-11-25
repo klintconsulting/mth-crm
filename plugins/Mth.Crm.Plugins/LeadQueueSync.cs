@@ -47,7 +47,8 @@ namespace Mth.Crm.Plugins
             var facts = ToFacts(lead);
             var queues = ActiveQueues(service);
             var current = new HashSet<Guid>(Memberships(service, "mth_leadid", leadId).Select(m => m.Value));
-            var matching = queues.Where(q => QueueMatcher.Matches(facts, ToCriteria(q), today)).ToList();
+            var rejectedBy = Rejections(service, "mth_leadid", leadId);   // queues that rejected this lead: never put it back
+            var matching = queues.Where(q => !rejectedBy.Contains(q.Id) && QueueMatcher.Matches(facts, ToCriteria(q), today)).ToList();
 
             var add = matching.Where(q => !current.Contains(q.Id)).ToList();
             var remove = current.Where(qid => !matching.Any(q => q.Id == qid)).ToList();
@@ -65,11 +66,12 @@ namespace Mth.Crm.Plugins
             var active = queue.GetAttributeValue<bool>("mth_isactive");
             var criteria = ToCriteria(queue);
             var current = new HashSet<Guid>(Memberships(service, "mth_leadqueueid", queueId).Select(m => m.Key));
+            var rejected = Rejections(service, "mth_leadqueueid", queueId);   // leads this queue has rejected
 
             var add = new List<EntityReference>(); var remove = new List<EntityReference>();
             foreach (var lead in OpenLeads(service))
             {
-                var match = active && QueueMatcher.Matches(ToFacts(lead), criteria, today);
+                var match = active && !rejected.Contains(lead.Id) && QueueMatcher.Matches(ToFacts(lead), criteria, today);
                 if (match && !current.Contains(lead.Id)) add.Add(lead.ToEntityReference());
                 if (!match && current.Contains(lead.Id)) remove.Add(lead.ToEntityReference());
             }
@@ -132,6 +134,20 @@ namespace Mth.Crm.Plugins
                 q.PageInfo.PageNumber++;
                 q.PageInfo.PagingCookie = page.PagingCookie;
             }
+        }
+
+        /// <summary>
+        /// mth_leadrejection rows filtered by one side ("mth_leadid" or "mth_leadqueueid"); returns the OTHER side's ids
+        /// (the queues that rejected a lead, or the leads a queue rejected). Written by RejectLead.
+        /// </summary>
+        private static HashSet<Guid> Rejections(IOrganizationService service, string column, Guid id)
+        {
+            var other = column == "mth_leadid" ? "mth_leadqueueid" : "mth_leadid";
+            var q = new QueryExpression("mth_leadrejection") { ColumnSet = new ColumnSet(other) };
+            q.Criteria.AddCondition(column, ConditionOperator.Equal, id);
+            q.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0);
+            return new HashSet<Guid>(service.RetrieveMultiple(q).Entities
+                .Select(e => e.GetAttributeValue<EntityReference>(other)).Where(r => r != null).Select(r => r.Id));
         }
 
         /// <summary>Pairs (leadId, queueId) from the intersect table filtered by one side.</summary>

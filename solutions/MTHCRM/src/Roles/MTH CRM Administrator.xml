@@ -12,6 +12,7 @@
     <RolePrivilege name="prvAppendmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendmth_Lead" level="Global" />
     <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvAppendmth_LeadRejection" level="Global" />
     <RolePrivilege name="prvAppendmth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendmth_OrganizationalUnit" level="Global" />
@@ -25,6 +26,7 @@
     <RolePrivilege name="prvAppendTomth_IntegrationState" level="Global" />
     <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
     <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvAppendTomth_LeadRejection" level="Global" />
     <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendTomth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvAppendTomth_OrganizationalUnit" level="Global" />
@@ -40,6 +42,7 @@
     <RolePrivilege name="prvAssignmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreateAccount" level="Global" />
     <RolePrivilege name="prvCreateappnotification" level="Global" />
+    <RolePrivilege name="prvCreateAppUserSetting" level="Global" />
     <RolePrivilege name="prvCreateContact" level="Global" />
     <RolePrivilege name="prvCreatemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvCreatemth_CollaboratingPartner" level="Global" />
@@ -47,6 +50,7 @@
     <RolePrivilege name="prvCreatemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvCreatemth_Lead" level="Global" />
     <RolePrivilege name="prvCreatemth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvCreatemth_LeadRejection" level="Basic" />
     <RolePrivilege name="prvCreatemth_Opportunity" level="Global" />
     <RolePrivilege name="prvCreatemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreatemth_OrganizationalUnit" level="Global" />
@@ -54,6 +58,7 @@
     <RolePrivilege name="prvCreatemth_Trade" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
     <RolePrivilege name="prvDeleteAccount" level="Global" />
+    <RolePrivilege name="prvDeleteappnotification" level="Basic" />
     <RolePrivilege name="prvDeleteContact" level="Global" />
     <RolePrivilege name="prvDeletemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvDeletemth_CollaboratingPartner" level="Global" />
@@ -61,13 +66,15 @@
     <RolePrivilege name="prvDeletemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvDeletemth_Lead" level="Global" />
     <RolePrivilege name="prvDeletemth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvDeletemth_LeadRejection" level="Global" />
     <RolePrivilege name="prvDeletemth_Opportunity" level="Global" />
     <RolePrivilege name="prvDeletemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvDeletemth_OrganizationalUnit" level="Global" />
     <RolePrivilege name="prvDeletemth_SmartLookup" level="Global" />
     <RolePrivilege name="prvDeletemth_Trade" level="Global" />
     <RolePrivilege name="prvReadAccount" level="Global" />
-    <RolePrivilege name="prvReadappnotification" level="Global" />
+    <RolePrivilege name="prvReadappnotification" level="Basic" />
+    <RolePrivilege name="prvReadAppUserSetting" level="Global" />
     <RolePrivilege name="prvReadContact" level="Global" />
     <RolePrivilege name="prvReadmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvReadmth_CollaboratingPartner" level="Global" />
@@ -75,11 +82,14 @@
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
     <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvReadmth_LeadRejection" level="Global" />
     <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
     <RolePrivilege name="prvReadmth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvReadmth_OrganizationalUnit" level="Global" />
     <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
     <RolePrivilege name="prvReadmth_Trade" level="Global" />
+    <RolePrivilege name="prvReadsearchattributesettings" level="Global" />
+    <RolePrivilege name="prvReadsearchrelationshipsettings" level="Global" />
     <RolePrivilege name="prvReadSharePointData" level="Global" />
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
     <RolePrivilege name="prvReadTheme" level="Global" />
@@ -93,6 +103,8 @@
     <RolePrivilege name="prvSharemth_Opportunity" level="Global" />
     <RolePrivilege name="prvSharemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvWriteAccount" level="Global" />
+    <RolePrivilege name="prvWriteappnotification" level="Basic" />
+    <RolePrivilege name="prvWriteAppUserSetting" level="Global" />
     <RolePrivilege name="prvWriteContact" level="Global" />
     <RolePrivilege name="prvWritemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvWritemth_CollaboratingPartner" level="Global" />
@@ -100,6 +112,7 @@
     <RolePrivilege name="prvWritemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvWritemth_Lead" level="Global" />
     <RolePrivilege name="prvWritemth_LeadQueue" level="Global" />
+    <RolePrivilege name="prvWritemth_LeadRejection" level="Basic" />
     <RolePrivilege name="prvWritemth_Opportunity" level="Global" />
     <RolePrivilege name="prvWritemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvWritemth_OrganizationalUnit" level="Global" />

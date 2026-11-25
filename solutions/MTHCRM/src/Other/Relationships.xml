@@ -4,6 +4,7 @@
   <EntityRelationship Name="business_unit_mth_collaboratingpartner" />
   <EntityRelationship Name="business_unit_mth_lead" />
   <EntityRelationship Name="business_unit_mth_leadqueue" />
+  <EntityRelationship Name="business_unit_mth_leadrejection" />
   <EntityRelationship Name="business_unit_mth_opportunity" />
   <EntityRelationship Name="business_unit_mth_opportunityrole" />
   <EntityRelationship Name="lk_mth_buildingcontract_createdby" />
@@ -18,6 +19,8 @@
   <EntityRelationship Name="lk_mth_lead_modifiedby" />
   <EntityRelationship Name="lk_mth_leadqueue_createdby" />
   <EntityRelationship Name="lk_mth_leadqueue_modifiedby" />
+  <EntityRelationship Name="lk_mth_leadrejection_createdby" />
+  <EntityRelationship Name="lk_mth_leadrejection_modifiedby" />
   <EntityRelationship Name="lk_mth_opportunity_createdby" />
   <EntityRelationship Name="lk_mth_opportunity_modifiedby" />
   <EntityRelationship Name="lk_mth_opportunityrole_createdby" />
@@ -34,7 +37,9 @@
   <EntityRelationship Name="mth_buildingcontract_mth_collabpartner" />
   <EntityRelationship Name="mth_collabpartner_contact" />
   <EntityRelationship Name="mth_lead_mth_leadqueue" />
+  <EntityRelationship Name="mth_lead_mth_leadrejection" />
   <EntityRelationship Name="mth_lead_mth_opportunity_Lead" />
+  <EntityRelationship Name="mth_leadqueue_mth_leadrejection" />
   <EntityRelationship Name="mth_leadqueue_systemuser" />
   <EntityRelationship Name="mth_opportunity_mth_buildingcontract" />
   <EntityRelationship Name="mth_opportunity_mth_collabpartner" />
@@ -55,12 +60,14 @@
   <EntityRelationship Name="owner_mth_collaboratingpartner" />
   <EntityRelationship Name="owner_mth_lead" />
   <EntityRelationship Name="owner_mth_leadqueue" />
+  <EntityRelationship Name="owner_mth_leadrejection" />
   <EntityRelationship Name="owner_mth_opportunity" />
   <EntityRelationship Name="owner_mth_opportunityrole" />
   <EntityRelationship Name="team_mth_buildingcontract" />
   <EntityRelationship Name="team_mth_collaboratingpartner" />
   <EntityRelationship Name="team_mth_lead" />
   <EntityRelationship Name="team_mth_leadqueue" />
+  <EntityRelationship Name="team_mth_leadrejection" />
   <EntityRelationship Name="team_mth_opportunity" />
   <EntityRelationship Name="team_mth_opportunityrole" />
   <EntityRelationship Name="TransactionCurrency_mth_CollaboratingPartner" />
@@ -69,6 +76,7 @@
   <EntityRelationship Name="user_mth_collaboratingpartner" />
   <EntityRelationship Name="user_mth_lead" />
   <EntityRelationship Name="user_mth_leadqueue" />
+  <EntityRelationship Name="user_mth_leadrejection" />
   <EntityRelationship Name="user_mth_opportunity" />
   <EntityRelationship Name="user_mth_opportunityrole" />
 </EntityRelationships>

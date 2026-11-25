@@ -120,12 +120,13 @@ Deployes med `scripts/Deploy-SmartSyncAzure.ps1` (kun Azure REST API, kræver hv
 **Lead-formularen:**
 - **General:** projekt, værdi og datoer, klassifikation, bygherre, konvertering, og tidslinje med kommentarfelt (@-vælger).
 - **Description, Roles and Tenders:** roller og udbud vises med rich text-editoren.
-- **Queues:** de køer, leadet er i.
+- **Queues:** de køer, leadet er i, og de køer, der har afvist det (hvem og hvornår).
 - **Details:** bygningsdata og SMART-koder.
 
 **Knapper** (moderne kommandoer, `appaction`, defineret under `commands` i app.json og kalder `webresources/mth_/scripts/lead.js`):
 - **Convert:** bekræftelse, derefter `mth_ConvertLead` og åbning af den nye salgsmulighed. Har en anden allerede konverteret, vises dennes besked, og formularen opdateres.
-- **Disqualify:** status Fravalgt og leadet lukkes, så det forsvinder fra alle køer.
+- **Reject in My Queues:** afviser leadet **kun i de køer, brugeren selv er medlem af** (Custom API `mth_RejectLead`). Leadet bliver i de andre køer, så en anden afdeling stadig kan tage det. Hver afvisning gemmes i `mth_leadrejection` (kø, ejer = den der afviste, tidspunkt, evt. årsag), og `LeadQueueSync` lægger aldrig leadet tilbage i en kø, der har afvist det. Har alle leadets køer afvist det, lukkes det som Fravalgt. Er brugeren ikke medlem af nogen af leadets køer, får de en besked og intet sker. Fortryd: slet afvisningen (Tender Manager og Administrator) og gem leadet, så det fordeles igen. Princippet er fra Salesforce-forslaget om parallelle køer (2026-09-11): én tildeling pr. kø med status "Tabt – afvist" / "Tabt – konverteret af anden afdeling".
+- **Disqualify:** status Fravalgt og leadet lukkes for alle, så det forsvinder fra alle køer. Til fx et irrelevant projekt.
 
 **Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser åbne leads i køen og medlemmerne (tilføj via "Add existing" på brugere).
 

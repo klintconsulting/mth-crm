@@ -5,8 +5,8 @@
   <buttonlabeltext default="Disqualify">
     <label description="Disqualify" languagecode="1033" />
   </buttonlabeltext>
-  <buttontooltipdescription default="Close the lead; it disappears from all queues.">
-    <label description="Close the lead; it disappears from all queues." languagecode="1033" />
+  <buttontooltipdescription default="Close the lead for everyone (e.g. an irrelevant project); it disappears from all queues.">
+    <label description="Close the lead for everyone (e.g. an irrelevant project); it disappears from all queues." languagecode="1033" />
   </buttontooltipdescription>
   <buttontooltiptitle default="Disqualify">
     <label description="Disqualify" languagecode="1033" />

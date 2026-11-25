@@ -16,21 +16,28 @@
     <RolePrivilege name="prvAppendTomth_Opportunity" level="Global" />
     <RolePrivilege name="prvAppendTomth_SmartLookup" level="Global" />
     <RolePrivilege name="prvCreateappnotification" level="Global" />
+    <RolePrivilege name="prvCreateAppUserSetting" level="Global" />
     <RolePrivilege name="prvCreatemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvCreatemth_Lead" level="Global" />
     <RolePrivilege name="prvCreatemth_SmartLookup" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvDeleteappnotification" level="Basic" />
     <RolePrivilege name="prvReadAccount" level="Global" />
-    <RolePrivilege name="prvReadappnotification" level="Global" />
+    <RolePrivilege name="prvReadappnotification" level="Basic" />
+    <RolePrivilege name="prvReadAppUserSetting" level="Global" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
     <RolePrivilege name="prvReadmth_LeadQueue" level="Global" />
     <RolePrivilege name="prvReadmth_Opportunity" level="Global" />
     <RolePrivilege name="prvReadmth_SmartLookup" level="Global" />
+    <RolePrivilege name="prvReadsearchattributesettings" level="Global" />
+    <RolePrivilege name="prvReadsearchrelationshipsettings" level="Global" />
     <RolePrivilege name="prvReadSharePointData" level="Global" />
     <RolePrivilege name="prvReadSharePointDocument" level="Global" />
     <RolePrivilege name="prvReadTheme" level="Global" />
     <RolePrivilege name="prvSendAppNotification" level="Global" />
+    <RolePrivilege name="prvWriteappnotification" level="Basic" />
+    <RolePrivilege name="prvWriteAppUserSetting" level="Global" />
     <RolePrivilege name="prvWritemth_IntegrationState" level="Global" />
     <RolePrivilege name="prvWritemth_Lead" level="Global" />
     <RolePrivilege name="prvWritemth_Opportunity" level="Global" />
