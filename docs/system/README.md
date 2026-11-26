@@ -4,6 +4,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 
 | Dokument | Indhold |
 |---|---|
+| [status.md](status.md) | **Start her, når arbejdet genoptages:** hvad virker, kendte fejl, demodata og næste skridt |
 | [setup.md](setup.md) | Genskab et miljø fra bunden: værktøjer, login, solution og skema, i rækkefølge |
 | [app.md](app.md) | Appen: navigation, formularer, visninger, og hvordan de ændres |
 | [datamodel.md](datamodel.md) | Alle tabeller, kolonner, valgsæt og relationer. **Genereres** fra `scripts/schema/schema.json` |

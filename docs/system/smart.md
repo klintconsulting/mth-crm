@@ -120,17 +120,19 @@ Deployes med `scripts/Deploy-SmartSyncAzure.ps1` (kun Azure REST API, kræver hv
 **Lead-formularen:**
 - **General:** projekt, værdi og datoer, klassifikation, bygherre, konvertering, og tidslinje med kommentarfelt (@-vælger).
 - **Description, Roles and Tenders:** roller og udbud vises med rich text-editoren.
-- **Queues:** leadets tildelinger: hver kø med status, hvem der ændrede den og hvornår, og evt. årsag. Vælg en kø og klik **Reject** for at afvise leadet i netop den kø.
+- **Queues:** leadets tildelinger: hver kø med status, hvem der ændrede den og hvornår, og evt. årsag. Dobbeltklik på en kø og klik **Reject** for at afvise leadet i netop den kø.
 - **Details:** bygningsdata og SMART-koder.
 
 **Knapper** (moderne kommandoer, `appaction`, defineret under `commands` i app.json og kalder `webresources/mth_/scripts/lead.js`):
 - **Convert:** bekræftelse, derefter `mth_ConvertLead` og åbning af den nye salgsmulighed. Har en anden allerede konverteret, vises dennes besked, og formularen opdateres.
-- **Reject** (på undergitteret med tildelinger, både på leadets fane Queues og på køens fane Leads and Members): afviser leadet **i den valgte kø** (Custom API `mth_RejectLeadAssignment`). Tildelingen får status Rejected, og leadet bliver i de andre køer, så en anden afdeling stadig kan tage det. Kun køens medlemmer kan afvise i køen.
+- **Reject** (på tildelingen): afviser leadet **i den valgte kø** (Custom API `mth_RejectLeadAssignment`). Tildelingen får status Rejected, og leadet bliver i de andre køer, så en anden afdeling stadig kan tage det. Kun køens medlemmer kan afvise i køen.
+  - **Sådan bruges den:** dobbeltklik på tildelingens række (ikke på Lead-linket) i undergitteret på leadets fane Queues eller køens fane Leads and Members. Tildelingen åbner, og **Reject** står øverst (kommandoen `mth_LeadAssignment_RejectForm`, location Form). Afprøvet af brugeren 2026-11-26.
+  - **Kendt fejl:** kommandoen `mth_LeadAssignment_Reject` på selve undergitteret (location SubGrid) vises kun, når ingen række er markeret, og forsvinder, så snart en række vælges. Den er heller ikke i overløbsmenuen. Kommandoen er oprettet via Web API'et (`appaction`) og har intet usædvanligt (visibilitytype 0). Årsagen er ikke fundet. Formular-knappen er workaround. Næste skridt: afprøv en synlighedsformel (Power Fx `Visible`) eller opret kommandoen i kommandodesigneren i make.powerapps.com og sammenlign `appaction`-posten med vores.
 - **Remove from All My Queues** (på leadet): afviser leadet i alle de køer, brugeren selv er medlem af (Custom API `mth_RejectLead`).
 - Fælles for begge: `LeadQueueSync` ændrer aldrig en tildeling, der ikke har status New, så en kø, der har afvist leadet, får det ikke igen, heller ikke når SMART opdaterer det. Har alle leadets køer afvist det, lukkes leadet som Fravalgt. Fortryd: Tender Manager eller Administrator sætter tildelingens status tilbage til New. Princippet er fra Salesforce-forslaget om parallelle køer (2026-09-11).
 - **Disqualify:** status Fravalgt og leadet lukkes for alle, så det forsvinder fra alle køer. Til fx et irrelevant projekt.
 
-**Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser køens tildelinger (lead og status i denne kø, med knappen Reject) og medlemmerne (tilføj via "Add existing" på brugere).
+**Kø-formularen:** navn, aktiv, giv medlemmer besked, beskrivelse og ejer. **Kriterier** med en forklaring i sektionsoverskriften. Fanen **Leads and Members** viser køens tildelinger (lead og status i denne kø; dobbeltklik på en række for knappen Reject) og medlemmerne (tilføj via "Add existing" på brugere).
 
 **Salgsmulighed:** ny fane **SMART Project** med lead-opslag, projektdata, *Changes from SMART* (seneste og fuld historik) og roller og udbud.
 
