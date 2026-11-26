@@ -377,6 +377,12 @@
                             "setting":  "AllowNotificationsEarlyAccess",
                             "value":  "true",
                             "note":  "In-app notifications (bell icon) - required by NoteMentionNotifier"
+                        },
+                        {
+                            "app":  "mth_MTHCRM",
+                            "setting":  "m365copilotmodelappenabled",
+                            "value":  "2",
+                            "note":  "Microsoft Copilot in the app (app designer: Settings > Features). Also needs a Microsoft 365 Copilot license per user and tenant/environment settings, see docs/system/app.md"
                         }
                     ]
 }

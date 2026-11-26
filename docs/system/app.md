@@ -49,6 +49,23 @@ Alle visninger viser kun aktive poster (`statecode = 0`).
 
 Ændringer lavet direkte i formular-designeren i make.powerapps.com bliver **overskrevet** næste gang scriptet køres. Ret derfor altid i `app.json`, eller stop med at bruge scriptet for den pågældende formular.
 
+## Microsoft Copilot i appen (sat op, men ikke aktiv)
+
+Microsoft Copilot (chat, der svarer på spørgsmål om data i appen via Dataverse search) er **slået til i appen**, men vises ikke endnu, fordi licensen mangler. Status 2026-11-26:
+
+| Krav | Status i udviklermiljøet |
+|---|---|
+| App-indstillingen `m365copilotmodelappenabled` = 2 (app-designer: Settings → Features → "Microsoft Copilot in model-driven apps") | **Sat og publiceret.** Sættes også af `Deploy-Plugins.ps1` ud fra `appSettings` i `scripts/plugins/steps.json` |
+| Microsoft 365 Copilot-licens pr. bruger (oven i Power Apps Premium) | **Mangler.** Brugeren har kun Microsoft 365 Business Basic og Power Apps Developer. "Microsoft 365 Copilot (add-on)" har en prøveversion i Microsoft 365 admin center → Fakturering → Køb tjenester → AI-løsninger. Brugeren venter med den |
+| Power Apps Premium-licens | Mangler (kun Developer-adgang). Uvist, om Developer er nok |
+| Tenant: Microsoft 365 admin center → Copilot → Settings → "Dataverse data available in Microsoft Copilot" | Ikke kontrolleret |
+| Miljø: Power Platform admin center → Copilot → Settings → Power Apps → Microsoft Copilot = On | Ikke kontrolleret |
+| Dataverse search slået til | OK (se [search.md](search.md)) |
+
+**Faldgrube:** Indstillingen i app-designeren gemmes som en **kladde** (ikke-publiceret `appsetting`) og virker først, når appen publiceres. Kladden ses ikke med en almindelig GET, kun med `appsettings/Microsoft.Dynamics.CRM.RetrieveUnpublishedMultiple()`, og en POST af samme indstilling fejler med en dubletfejl.
+
+Copilot kan kun læse data (ingen oprettelse eller rettelse uden en egen agent) og virker ikke i Power Apps-mobilappen. Den gamle "Copilot chat" (`appcopilotenabled`) kræver ikke en Microsoft 365 Copilot-licens, men er ved at blive udfaset og er ikke afprøvet. For MTH betyder det: Copilot koster en Microsoft 365 Copilot-licens pr. bruger oven i Power Apps, medmindre de allerede har den. Kilde: [Microsoft Learn](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/add-microsoft-365-copilot).
+
 ## Kendte begrænsninger i scriptet
 
 - Selve app-posten (navn og beskrivelse) opdateres ikke, hvis appen findes. En PATCH på en upubliceret app opfører sig som en oprettelse. Ret navnet i make.powerapps.com.
