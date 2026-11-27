@@ -17,6 +17,8 @@ Viser, hvor belastet hver person er uge for uge, ud fra sagsteamsrollerne på Sa
 
 **På Salgsmuligheden: fanen Case Team** (lige efter General, flyttet hertil fra General 2026-11-27):
 - Øverst sagsteamet som liste (rolle, person, start, slut, belastning %; én række pr. periode).
+- Øverst i diagrammet rækken **Sagen**: bjælker for **tilbudsperioden** (Tender Start Date, ellers Invitation to Tender Date → Tender Date, ellers Initial Tender Date) og **ordreperioden** (Order Start → Order End Date), og markører med stiplede lodrette linjer gennem hele diagrammet for PQ-frist, udbud, første tilbud (orange) og **tilbudsfrist** (rød). Datoerne læses fra formularen, så diagrammet følger med, også før man gemmer. Perioden dækker altid tilbudsperioden.
+- I dialogen for en ressource sætter **Brug sagens: Tilbudsperiode / Ordreperiode** start og slut til sagens datoer.
 - Under den **Gantt-diagrammet for sagen**: kun personerne på sagen. Belastningsrækken er personens **samlede** belastning på alle sager, så man kan se, om de er overbooket. Bjælker for sagen er fuldt farvet, personens andre sager er blege. Perioden sættes automatisk ud fra sagens roller.
 - Samme redigering som i Ressourceoverblikket (træk, klik, del, fjern). **+ Ressource** tilføjer til denne sag. Ændringer i diagrammet opdaterer listen, og ændringer i listen opdaterer diagrammet.
 - Nye sager skal gemmes først.

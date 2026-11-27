@@ -75,6 +75,17 @@
   .dlg .split { display:flex; gap:6px; align-items:flex-end; margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
   button.danger { color:var(--overt); border-color:#f1c0c4; }
   .gbar.other { opacity:.35; }
+  .row.project { background:#f8fafc; }
+  .row.project .name { background:#f8fafc; font-weight:600; color:var(--brand); }
+  .gbar.phase { cursor:default; color:#1b1f24; font-weight:600; }
+  .gbar.ptender { background:#d7e6f7; border-color:#9cbde6; }
+  .gbar.pexec { background:#d8efe0; border-color:#9fd1b0; }
+  .ms { position:absolute; top:7px; width:12px; height:12px; margin-left:-6px; transform:rotate(45deg); background:#c05621; border:1px solid #fff; z-index:2; cursor:default; }
+  .ms.deadline { background:#a4262c; }
+  .mline { position:absolute; top:0; bottom:0; border-left:2px dashed rgba(164,38,44,.45); pointer-events:none; z-index:1; }
+  .mline.soft { border-left-color:rgba(192,86,33,.35); }
+  .dlg .quick { display:flex; gap:6px; margin-top:8px; }
+  .dlg .quick span { font-size:12px; color:var(--muted); align-self:center; }
   body.case header { display:none; }
   body.case .bar { padding:6px 8px; }
   body.case .legend { padding:4px 8px; }
@@ -122,6 +133,7 @@
       <label><span data-t="end"></span><input type="date" id="dEnd"></label>
       <label><span data-t="alloc"></span><input type="number" id="dAlloc" min="0" max="100" step="5"></label>
     </div>
+    <div class="quick" id="dQuick"><span data-t="useCase"></span><button id="dTenderPeriod" data-t="phTender"></button><button id="dOrderPeriod" data-t="phOrder"></button></div>
     <div class="split" id="dSplitBox">
       <label><span data-t="splitAt"></span><input type="date" id="dSplitDate"></label>
       <label><span data-t="splitAlloc"></span><input type="number" id="dSplitAlloc" min="0" max="100" step="5" style="width:90px"></label>

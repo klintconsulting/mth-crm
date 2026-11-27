@@ -50,6 +50,18 @@
     if ((params.data || "").indexOf("mode=case") >= 0 || params.typename === "mth_opportunity") { CASE = (params.id || "").replace(/[{}]/g, "").toLowerCase() || "new"; }
     T.saveFirst = ["Gem sagen først for at planlægge sagsteamet.", "Save the case first to plan the case team."];
     T.casePeople = ["{0} personer på sagen, {1} perioder på sagen", "{0} people on the case, {1} periods on the case"];
+    T.theCase = ["Sagen", "The case"]; T.phTender = ["Tilbudsperiode", "Tender period"]; T.phOrder = ["Ordreperiode", "Order period"];
+    T.useCase = ["Brug sagens:", "Use the case's:"]; T.noCaseDates = ["Sagen har ikke de datoer.", "The case does not have those dates."];
+    // Case dates shown in the chart: [column, Danish label, English label, kind] (kind: deadline = red line, soft = orange line)
+    var CASE_DATES = [
+        ["mth_prequalificationdate", "PQ-frist", "Pre-qualification", "soft"],
+        ["mth_invitationtotenderdate", "Udbud", "Invitation to tender", "soft"],
+        ["mth_tenderstartdate", "Tilbudsstart", "Tender start", null],
+        ["mth_initialtenderdate", "Første tilbud", "Initial tender", "soft"],
+        ["mth_tenderdate", "Tilbudsfrist", "Tender date", "deadline"],
+        ["mth_orderstartdate", "Ordrestart", "Order start", null],
+        ["mth_orderenddate", "Ordreslut", "Order end", null]
+    ];
     function t(k) { var v = T[k]; return v ? v[DA ? 0 : 1] : k; }
     function fmt(s) { var a = arguments; return s.replace(/\{(\d)\}/g, function (m, i) { return a[+i + 1]; }); }
     function $(id) { return document.getElementById(id); }
@@ -176,6 +188,28 @@
         });
         html.push("</div></div>");
 
+        // Case mode: a row with the case's tender and order periods and milestones, and dashed lines through all people
+        var lines = [];
+        if (CASE && state.caseDates) {
+            var cd = state.caseDates, lane = [];
+            var x = function (d) { return days(start, d) * wk / 7; };
+            var seg = function (a, b, cls, label) {
+                if (!a || !b || b < start || a >= end) { return; }
+                var s = a < start ? start : a, e = addDays(b, 1) > end ? end : addDays(b, 1);
+                lane.push('<div class="gbar phase ' + cls + '" style="left:' + x(s) + "px;width:" + Math.max(x(e) - x(s), 6) + 'px" title="' +
+                    esc(label + " (" + short(a) + " – " + short(b) + ")") + '">' + esc(label) + "</div>");
+            };
+            seg(cd.mth_tenderstartdate || cd.mth_invitationtotenderdate, cd.mth_tenderdate || cd.mth_initialtenderdate, "ptender", t("phTender"));
+            seg(cd.mth_orderstartdate, cd.mth_orderenddate, "pexec", t("phOrder"));
+            CASE_DATES.forEach(function (f) {
+                var d = cd[f[0]]; if (!d || !f[3] || d < start || d >= end) { return; }
+                var label = (DA ? f[1] : f[2]) + ": " + short(d), px = x(d) + wk / 14;
+                lane.push('<div class="ms ' + f[3] + '" style="left:' + px + 'px" title="' + esc(label) + '"></div>');
+                lines.push('<div class="mline ' + f[3] + '" style="left:calc(var(--left) + ' + px + 'px)"></div>');
+            });
+            html.push('<div class="row project"><div class="name">' + esc(t("theCase")) + '</div><div class="lane" style="width:' + (n * wk) + 'px">' + lane.join("") + "</div></div>");
+        }
+
         var roleCount = 0, absCount = 0;
         people.forEach(function (u) {
             var ur = roles.filter(function (r) { return r.user === u.id; }), ua = state.absences.filter(function (a) { return a.user === u.id; });
@@ -203,7 +237,7 @@
                     (x.away ? ' data-abs="' + x.id + '">' : ' data-role="' + x.id + '"><i class="grip l"></i><i class="grip r"></i>') + esc(label) + "</div></div></div>");
             });
         });
-        $("grid").innerHTML = people.length ? html.join("") : '<div class="empty">' + esc(t("none")) + "</div>";
+        $("grid").innerHTML = people.length || CASE ? html.join("") + lines.join("") : '<div class="empty">' + esc(t("none")) + "</div>";
         $("status").textContent = CASE
             ? fmt(t("casePeople"), people.length, roles.filter(function (r) { return r.oppId === CASE; }).length)
             : fmt(t("persons"), people.length, roleCount, absCount) + (state.noDates ? " · " + fmt(t("noDates"), state.noDates) : "");
@@ -347,15 +381,50 @@
     }
     if (CASE === "new") { $("status").textContent = t("saveFirst"); return; }
 
-    // Case mode: period from this case's roles (one week before the first start, at least until the last end)
+    // Case dates: the form's current values (also unsaved changes), else the saved record
+    function readCaseDates() {
+        var d = {}, page = null;
+        try { page = Xrm.Page; } catch (e) { /* not on a form */ }
+        CASE_DATES.forEach(function (f) {
+            var v = null;
+            try { var a = page && page.getAttribute(f[0]); if (a) { var x = a.getValue(); if (x) { v = new Date(x.getFullYear(), x.getMonth(), x.getDate()); } } else { v = undefined; } } catch (e) { v = undefined; }
+            if (v === undefined && state.caseRecord) { v = parseDate(state.caseRecord[f[0]]); }
+            d[f[0]] = v || null;
+        });
+        state.caseDates = d;
+    }
+    function watchCaseDates() {
+        CASE_DATES.forEach(function (f) {
+            try { var a = Xrm.Page.getAttribute(f[0]); if (a) { a.addOnChange(function () { readCaseDates(); render(); }); } } catch (e) { /* ignore */ }
+        });
+    }
+    $("dTenderPeriod").addEventListener("click", function () {
+        var cd = state.caseDates || {}, s = cd.mth_tenderstartdate || cd.mth_invitationtotenderdate, e = cd.mth_tenderdate || cd.mth_initialtenderdate;
+        if (!s || !e) { $("dMsg").textContent = t("noCaseDates"); return; }
+        $("dStart").value = iso(s); $("dEnd").value = iso(e);
+    });
+    $("dOrderPeriod").addEventListener("click", function () {
+        var cd = state.caseDates || {};
+        if (!cd.mth_orderstartdate || !cd.mth_orderenddate) { $("dMsg").textContent = t("noCaseDates"); return; }
+        $("dStart").value = iso(cd.mth_orderstartdate); $("dEnd").value = iso(cd.mth_orderenddate);
+    });
+    $("dQuick").style.display = CASE ? "" : "none";
+
+    // Case mode: period from this case's roles and dates (one week before the first, at least until the last)
     function casePeriod() {
         return Promise.all([
             all("mth_opportunityrole", "?$select=mth_startdate,mth_enddate&$filter=statecode eq 0 and _mth_opportunityid_value eq " + CASE),
-            Xrm.WebApi.retrieveRecord("mth_opportunity", CASE, "?$select=mth_name")
+            Xrm.WebApi.retrieveRecord("mth_opportunity", CASE, "?$select=mth_name," + CASE_DATES.map(function (f) { return f[0]; }).join(","))
         ]).then(function (r) {
             state.caseName = r[1].mth_name;
+            state.caseRecord = r[1];
+            readCaseDates();
             var s = null, e = null;
             r[0].forEach(function (x) { var a = parseDate(x.mth_startdate), b = parseDate(x.mth_enddate); if (a && (!s || a < s)) { s = a; } if (b && (!e || b > e)) { e = b; } });
+            // The tender period and its milestones are always in view; the order period only if there are no roles yet
+            var cd = state.caseDates;
+            [cd.mth_prequalificationdate, cd.mth_invitationtotenderdate, cd.mth_tenderstartdate, cd.mth_tenderdate].concat(s ? [] : [cd.mth_orderstartdate, cd.mth_orderenddate])
+                .forEach(function (d) { if (d) { if (!s || d < s) { s = d; } if (!e || d > e) { e = d; } } });
             if (!s) { s = new Date(); e = addDays(s, 90); }
             var from = addDays(monday(s), -7), span = Math.ceil(days(from, e || s) / 7) + 2, w = 52;
             [8, 13, 26, 52].some(function (o) { if (o >= span) { w = o; return true; } return false; });
@@ -367,6 +436,7 @@
         if (!CASE) { return refresh(); }
         // Edits in the Case Team subgrid on the form update the chart (the subgrid's onload fires after each change)
         var g = caseGrid(); if (g && g.addOnLoad) { g.addOnLoad(function () { refresh(); }); }
+        watchCaseDates();
         return casePeriod().then(refresh);
     }).then(null, fail);
 })();
