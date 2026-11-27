@@ -45,8 +45,9 @@ POC'en kører i udviklermiljøet `https://org558bead0.crm4.dynamics.com` (app-id
 2. Ret Reject på undergitteret (se ovenfor).
 3. Tilføj `mth_leadassignment` til AppModule.xml, importér solutionen og kør derefter `Deploy-Plugins.ps1`.
 4. **Microsoft Copilot:** slået til i appen, men mangler Microsoft 365 Copilot-licens (brugeren venter med prøveversionen). Se [app.md](app.md#microsoft-copilot-i-appen-sat-op-men-ikke-aktiv).
-5. Mulige forbedringer, der er nævnt men ikke besluttet: danske labels (oversættelser), Status Number også for UE'er, auditering på flere tabeller, Afvisningsflowet i manuskriptet.
-6. Senere: integration til og migrering fra Business Central, validering svarende til Salesforce `Check_Contract_Amount`, samlet systemdokumentation i Word (læs alle dokumenter på ny først).
+5. **Efter POC'en:** feed over fulgte poster og daglig mail med resumé (som Chatter digest). Design klar i [follow.md](follow.md#senere-feed-og-daglig-mail-design-ikke-bygget).
+6. Mulige forbedringer, der er nævnt men ikke besluttet: danske labels (oversættelser), Status Number også for UE'er, auditering på flere tabeller, Afvisningsflowet i manuskriptet.
+7. Senere: integration til og migrering fra Business Central, validering svarende til Salesforce `Check_Contract_Amount`, samlet systemdokumentation i Word (læs alle dokumenter på ny først).
 
 ## Regler, der altid gælder
 

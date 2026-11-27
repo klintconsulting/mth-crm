@@ -65,10 +65,34 @@ Som Lars Nielsen (almindelig bruger, MTH Sales, via `CallerObjectId`):
 
 Testdata er ryddet op bagefter. **Knapperne, skiftet mellem dem og formularlinjen er ikke klikket igennem i browseren af udvikleren.**
 
+## Senere: feed og daglig mail (design, ikke bygget)
+
+Aftalt med brugeren 2026-11-27: gemmes til senere, **ikke en del af POC'en**. Svarer til Chatter-feedet og Chatter email digest i Salesforce. I Salesforce prod har 92 af 101 aktive brugere daglig digest, 3 ugentlig og 6 ingen (`User.DigestFrequency`, hentet 2026-11-27). Daglig er Salesforces standard, så tallet viser ikke nødvendigvis et bevidst valg.
+
+**Hvorfor ikke bare notifikationerne:** `appnotification` slettes, når brugeren lukker dem, og når de udløber (`ttlinseconds`). De kan ikke bruges som historik.
+
+**1. Tabel `mth_feeditem` (Feed Item), organisationsejet, én række pr. hændelse (ikke pr. modtager)**
+- Kolonner: `mth_name` (overskrift, f.eks. "Søren Klint ændrede Almene boliger Frederikshavn"), `mth_kind` (valg: Change / Note), `mth_changes` (memo: én linje pr. felt, "Status: 01 → 20"), `mth_excerpt` (notens uddrag), `mth_recordtable`, `mth_recordid`, opslag `mth_opportunityid` / `mth_leadid` / `mth_accountid`, `mth_changedbyid` (systemuser), `createdon` som tidspunkt.
+- `FollowNotifier` skriver rækken, før den sender notifikationer. Teksterne bygges allerede i plugin'et. Rækken skrives også, når posten ingen følgere har, så en ny følger kan se historikken.
+- Rettigheder: Read Global for alle MTH-roller, ingen Create/Write (kun plugin'et skriver med systemkontekst).
+- Oprydning: en natlig sletning af rækker ældre end f.eks. 12 måneder (bulk delete-job), så tabellen ikke vokser frit.
+
+**2. Siden "My Feed"**
+- Trin 1: visningen "MTH My Feed" på `mth_feeditem` med `link-entity` til `mth_follow` (samme `mth_recordid`, `ownerid eq-userid`), nyeste først, og et punkt i navigationen. Kan filtreres og eksporteres til Excel.
+- Trin 2 (valgfrit): en tidslinje-side som HTML-web resource (som NNE-søgningen) med kort grupperet pr. dag, filter på Salgsmulighed / Lead / Account og klik til posten. Henter via `Xrm.WebApi` med samme FetchXML som visningen.
+
+**3. Daglig mail med resumé**
+- Brugerens valg: kolonnen `mth_feeddigest` (valg: Daily / Weekly / None, standard Daily som i Salesforce) på `systemuser`, sat i brugerens egen formular eller på en lille indstillingsside.
+- Et tidsstyret job hver morgen kl. 6 (ugentlig: mandag) finder for hver bruger med Daily/Weekly hændelserne siden sidste kørsel på de poster, brugeren følger, udelader brugerens egne ændringer og sender **én mail pr. bruger** (ingen mail uden hændelser). Mailen grupperer pr. post med links (`main.aspx?appid=…&pagetype=entityrecord&etn=…&id=…`).
+- Afsendelse som Dataverse-mail (`email` + `SendEmail`) fra en fælles postkasse via server-side sync, så den også gemmes i systemet.
+- Kører som en Azure Function (timer trigger) ved siden af SMART-integrationen, i tråd med beslutningen om logik i kode. Alternativ: planlagt Power Automate-flow, som MTH selv kan rette. Vælges ved implementeringen.
+- Sidste kørselstidspunkt gemmes i `mth_integrationstate` (som SMART-sync), så et mislykket døgn tages med næste gang.
+
+**Rækkefølge:** 1 → 2 trin 1 → 3 → 2 trin 2. Feed-tabellen er grundlaget for både siden og mailen.
+
 ## Ikke understøttet endnu
 
 - Automatisk følg, f.eks. når man opretter eller bliver ejer af en post (Salesforce kan auto-følge egne poster).
 - Følg af Kontakt og andre tabeller.
-- Samlet feed, som Chatter, der viser alle ændringer på fulgte poster ét sted. Notifikationerne under klokken og tidslinjen på posten dækker det delvist.
-- Mail i stedet for eller ud over notifikationen.
+- Samlet feed og daglig mail: designet ovenfor, ikke bygget.
 - Migrering af de eksisterende følg (`EntitySubscription`) fra Salesforce.
