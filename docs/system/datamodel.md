@@ -795,3 +795,4 @@ Primær navnekolonne: `mth_name` (tekst, maks. 400). Kilde: (new) name of the fo
 | `mth_recordtable` | Record Table | string | maks. 100 | `EntitySubscription.Parent type` |
 | `mth_recordid` | Record Id | string | maks. 100 | `EntitySubscription.ParentId (guid, lower case, no braces)` |
 | `mth_key` | Key | string | maks. 200 | `(new) <record id>|<user id>, unique so a user follows a record once` |
+| `mth_following` | Following | boolean |  | `(new) always Yes; list views show it for the current user through an outer join, so followed records are marked` |

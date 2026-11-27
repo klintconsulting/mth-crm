@@ -19,6 +19,7 @@
           <cell name="mth_projectstartdate" width="100" />
           <cell name="mth_clientname" width="180" />
           <cell name="createdon" width="110" />
+          <cell name="follow.mth_following" width="90" />
         </row>
       </grid>
     </layoutxml>
@@ -50,6 +51,13 @@
                 <condition attribute="systemuserid" operator="eq-userid" />
               </filter>
             </link-entity>
+          </link-entity>
+          <link-entity name="mth_follow" from="mth_leadid" to="mth_leadid" link-type="outer" alias="follow">
+            <attribute name="mth_following" />
+            <filter>
+              <condition attribute="ownerid" operator="eq-userid" />
+              <condition attribute="statecode" operator="eq" value="0" />
+            </filter>
           </link-entity>
         </entity>
       </fetch>

@@ -18,12 +18,13 @@
           <cell name="mth_closedate" width="110" />
           <cell name="mth_orderdepartmentid" width="150" />
           <cell name="ownerid" width="140" />
+          <cell name="follow.mth_following" width="90" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="mth_opportunity">
           <attribute name="mth_opportunityid" />
           <attribute name="mth_name" />
@@ -38,6 +39,13 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <link-entity name="mth_follow" from="mth_opportunityid" to="mth_opportunityid" link-type="outer" alias="follow">
+            <attribute name="mth_following" />
+            <filter>
+              <condition attribute="ownerid" operator="eq-userid" />
+              <condition attribute="statecode" operator="eq" value="0" />
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

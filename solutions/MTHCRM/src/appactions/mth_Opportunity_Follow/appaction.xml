@@ -16,6 +16,7 @@
     <logicalname>mth_opportunity</logicalname>
   </contextentity>
   <contextvalue>mth_opportunity</contextvalue>
+  <fonticon>$webresource:mth_/icons/follow.svg</fonticon>
   <hidden>0</hidden>
   <iscustomizable>1</iscustomizable>
   <isdisabled>0</isdisabled>

@@ -16,6 +16,7 @@
     <logicalname>account</logicalname>
   </contextentity>
   <contextvalue>account</contextvalue>
+  <fonticon>$webresource:mth_/icons/follow.svg</fonticon>
   <hidden>0</hidden>
   <iscustomizable>1</iscustomizable>
   <isdisabled>0</isdisabled>

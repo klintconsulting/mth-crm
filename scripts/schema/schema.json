@@ -2923,6 +2923,12 @@
                                            "type":  "string",
                                            "maxLength":  200,
                                            "source":  "(new) \u003crecord id\u003e|\u003cuser id\u003e, unique so a user follows a record once"
+                                    },
+                                    {
+                                        "schemaName":  "mth_Following",
+                                        "displayName":  "Following",
+                                        "type":  "boolean",
+                                        "source":  "(new) always Yes; list views show it for the current user through an outer join, so followed records are marked"
                                        }
                                    ]
                    }

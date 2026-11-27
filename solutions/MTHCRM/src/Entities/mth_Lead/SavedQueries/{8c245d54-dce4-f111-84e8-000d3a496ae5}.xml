@@ -19,12 +19,13 @@
           <cell name="mth_projectstartdate" width="100" />
           <cell name="mth_clientname" width="180" />
           <cell name="createdon" width="110" />
+          <cell name="follow.mth_following" width="90" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" mapping="logical" distinct="true">
         <entity name="mth_lead">
           <attribute name="mth_leadid" />
           <attribute name="mth_name" />
@@ -41,6 +42,13 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="mth_leadstatus" operator="eq" value="273280000" />
           </filter>
+          <link-entity name="mth_follow" from="mth_leadid" to="mth_leadid" link-type="outer" alias="follow">
+            <attribute name="mth_following" />
+            <filter>
+              <condition attribute="ownerid" operator="eq-userid" />
+              <condition attribute="statecode" operator="eq" value="0" />
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

@@ -35,11 +35,17 @@ Mth.Follow = (function () {
             "?$select=mth_followid&$filter=mth_key eq '" + rec.key + "'").then(function (r) { return r.entities[0] || null; });
     }
 
+    var KIND = {
+        mth_opportunity: ["denne Salgsmulighed", "this opportunity"],
+        mth_lead: ["dette Lead", "this lead"],
+        account: ["denne Account", "this account"]
+    };
     function showState(rec, following) {
         try {
             if (following) {
-                rec.page.ui.setFormNotification(t("Du følger denne post og får besked under klokken, når den ændres.",
-                    "You follow this record and are notified (bell icon) when it changes."), "INFO", NOTE_ID);
+                var k = KIND[rec.table] || ["denne post", "this record"];
+                rec.page.ui.setFormNotification(t("★ Du følger " + k[0] + ". Du får besked under klokken, når vigtige felter ændres, eller der skrives en note. Klik Follow / Unfollow for at stoppe.",
+                    "★ You follow " + k[1] + ". You are notified (bell icon) when key fields change or a note is added. Click Follow / Unfollow to stop."), "INFO", NOTE_ID);
             } else { rec.page.ui.clearFormNotification(NOTE_ID); }
         } catch (e) { /* not a form */ }
     }
@@ -57,7 +63,7 @@ Mth.Follow = (function () {
                     alert(t("Du følger ikke længere \"" + rec.name + "\".", "You no longer follow \"" + rec.name + "\"."));
                 });
             }
-            var data = { mth_name: rec.name.substring(0, 400), mth_recordtable: rec.table, mth_recordid: rec.id, mth_key: rec.key };
+            var data = { mth_name: rec.name.substring(0, 400), mth_recordtable: rec.table, mth_recordid: rec.id, mth_key: rec.key, mth_following: true };
             data[LOOKUP[rec.table] + "@odata.bind"] = "/" + SET[rec.table] + "(" + rec.id + ")";
             return Xrm.WebApi.createRecord("mth_follow", data).then(function () {
                 Xrm.Utility.closeProgressIndicator();

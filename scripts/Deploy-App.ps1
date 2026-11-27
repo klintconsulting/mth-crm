@@ -69,8 +69,9 @@ function Get-ControlClass($a) {
 $viewIds = @{}
 foreach ($v in $def.views) {
     $m = Get-TableMeta $v.table
-    $attrs = @($m.IdAttr) + @($v.columns | ForEach-Object { $_[0] }) | Select-Object -Unique
-    foreach ($c in $v.columns) { [void](Get-Attr $v.table $c[0]) }
+    # Columns named "<alias>.<column>" come from a link-entity in linkXml (which must select the attribute itself)
+    $attrs = @($m.IdAttr) + @($v.columns | Where-Object { $_[0] -notlike '*.*' } | ForEach-Object { $_[0] }) | Select-Object -Unique
+    foreach ($c in $v.columns) { if ($c[0] -notlike '*.*') { [void](Get-Attr $v.table $c[0]) } }
     # Optional: extra filter conditions (filterXml, inside the AND filter) and link-entities (linkXml), e.g. "leads in my queues"
     $conds = @()
     if ($v.activeOnly) { $conds += '<condition attribute="statecode" operator="eq" value="0" />' }
