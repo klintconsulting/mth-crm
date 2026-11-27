@@ -202,13 +202,19 @@
               { "name": "description", "label": "Description", "fields": [ "mth_description", "mth_scope", "mth_nextstep", "mth_nextstephistory" ] }
             ],
             [
-              { "name": "amounts", "label": "Amounts", "fields": [ "mth_amount", "mth_estimatedamount", "mth_tenderamount", "mth_calculatedcontractamount", "mth_revenuesplit" ] },
-              { "name": "caseteam", "label": "Case Team", "subgrid": { "id": "CaseTeam", "table": "mth_opportunityrole", "relationship": "mth_opportunity_mth_opportunityrole", "view": "MTH Opportunity Roles" } }
+              { "name": "amounts", "label": "Amounts", "fields": [ "mth_amount", "mth_estimatedamount", "mth_tenderamount", "mth_calculatedcontractamount", "mth_revenuesplit" ] }
             ],
             [
               { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
+        },
+        {
+          "name": "caseteamtab", "label": "Case Team",
+          "columns": [ [
+            { "name": "caseteam", "label": "Case Team (role, person, period and allocation %; one row per period)", "subgrid": { "id": "CaseTeam", "table": "mth_opportunityrole", "relationship": "mth_opportunity_mth_opportunityrole", "view": "MTH Opportunity Roles", "rows": 8 } },
+            { "name": "caseplan", "label": "Case team over time (drag bars to change dates; the load row shows each person's total load across all cases)", "webresource": { "name": "mth_/resources/overview.html", "rows": 22, "data": "mode=case" } }
+          ] ]
         },
         {
           "name": "esp", "label": "Tender (ESP)",

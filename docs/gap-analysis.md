@@ -30,6 +30,27 @@ Levende liste over forskelle mellem MTH's Salesforce og POC'en i Dataverse: hvad
 | G15 | Valideringsregler | Aktive i prod (2026-11-27): **32 på Opportunity** (bl.a. statusafhængige påkrævede felter `VR25`, `VR28_2`, `VR29`, `VR30`; beløb, datoer, leveringsadresse, kategorier, intern/ekstern), 3 på Account (postnr., by, adresse), `Check_Contract_Amount`, UE-regler (partner ≠ Salgsmulighedens Account, Salgsmulighed skal matche), 1 på User og regler på flere andre objekter | Ingen (kun Status Number som hjælpefelt til statusintervaller) | Mangler | Forslag: én regeltabel ("ved status X skal felterne Y være udfyldt") håndhævet af ét plugin (server) + formularscript, der markerer felterne påkrævede, så administratoren kan rette reglerne uden udvikler. Enkle regler kan laves som forretningsregler (scope Entity, "Show Error Message" for hård håndhævelse). **Påkrævede roller ved status** (sagsteamet er en relation, `mth_opportunityrole`, ikke faste felter): kan ikke laves med forretningsregler; plugin ved ændring af Status (PreOperation) og ved sletning/ændring af sagsteamsrækker, med kravene i samme regeltabel. **Krav (brugeren 2026-11-27): administrator og integrationsbruger skal kunne rette og omgå valideringen.** Pluginet springer kontrollen over, når brugeren (direkte eller via team) har en af rollerne i en miljøvariabel (standard: MTH CRM Administrator, MTH Integration), og formularscriptet markerer ikke felterne påkrævede for dem. Ikke Microsofts "bypass custom plugins", som slår alle plugins fra (notifikationer, lead-køer, følg). Forretningsregler kan ikke undtage roller, så det taler også for plugin-løsningen. Hver regels formel skal gennemgås | Salesforce Tooling API `ValidationRule` |
 | G14 | Sprog | Dansk brugerflade | Engelske labels, dansk via oversættelser, som ikke er lagt ind | Delvist | Slå dansk til i miljøet og importér oversættelser | [decisions.md](system/decisions.md) B3 |
 
+## Nye muligheder (findes ikke i Salesforce)
+
+Funktioner, som den nye platform og datamodel gør mulige, og som MTH ikke har i dag.
+
+| # | Område | Beskrivelse | Status | Løsning / plan | Kilde |
+|---|---|---|---|---|---|
+| N1 | Ressourceplanlægning | Sagsteamsroller med start, slut og belastning % (flere perioder pr. person), fravær og nedsat tid, tilbudsafdelinger. Ressourceoverblik med Gantt og ugentlig belastning pr. person, og fanen Case Team på Salgsmuligheden med sagens Gantt. Redigering direkte i diagrammet | Bygget i POC (2026-11-27) | — | [resources.md](system/resources.md), B25 |
+| N2 | Tilbudssimulering: hvilke projekter kan vi nå at byde på? | Brugeren vælger kandidatprojekter (Leads og Salgsmuligheder før tilbud) og ser, om der er ledige folk til at udarbejde tilbuddene, før der siges ja. Ønsket af brugeren 2026-11-27, gerne via Copilot | Design klar (vurderet muligt) | Se nedenfor | — |
+
+### N2 Tilbudssimulering (design)
+
+**Vurdering:** Kan lade sig gøre. Selve simuleringen skal dog være **regler i kode**, ikke Copilot alene. Microsoft Copilot i model-drevne apps kan læse og opsummere data, men ikke regne sikkert på belastning over tid. Copilot kan bruges som en **naturligt sprog-indgang** oven på en beregning, som giver de samme svar hver gang.
+
+1. **Bemandingsskabeloner** (ny tabel): pr. sagstype eller størrelse, hvilke tilbudsroller der skal til, med hvilken % og hvor mange uger før tilbudsfristen. F.eks. "Byggeri over 100 mio.: Tilbudschef 30 % i 6 uger, Kalkulatør 80 % i 4 uger, Koordinator 40 % i 4 uger".
+2. **Foreløbige roller**: kandidatprojekter får foreløbige sagsteamsroller ud fra skabelonen (en ny status "Foreløbig" på rollen, så de ikke blandes med de besluttede). Foreløbige roller kan være uden navngiven person ("en kalkulatør fra afdeling X").
+3. **Simulering i Ressourceoverblikket**: en knap "Simulér" slår de foreløbige roller til eller fra. Belastningen vises med og uden kandidaterne, og overbooking pr. uge og afdeling fremhæves.
+4. **Rangering** (Custom API `mth_SimulateTenders`): for hver kandidat beregnes, om skabelonens roller kan dækkes af personer i tilbudsafdelingen med ledig kapacitet i tilbudsvinduet. Resultatet er en liste "kan bemandes / kan bemandes med overbooking / kan ikke bemandes" sammen med f.eks. projektværdi og sandsynlighed, så ledelsen kan prioritere. Kan foreslå navngivne personer.
+5. **Copilot (valgfrit)**: en Copilot Studio-agent i appen, der kalder `mth_SimulateTenders` og svarer på spørgsmål som "Hvilke af de nye hospitalsprojekter kan Øst nå at byde på i marts?" eller "Hvad sker der med kalkulatørerne, hvis vi byder på Ny bro Roskilde?". Kræver Copilot-licens eller Copilot Studio-kapacitet (se G13).
+
+**Afhængigheder:** N1 (bygget), timer/arbejdstid pr. person og helligdage giver mere præcise tal. Rækkefølge: 1 → 2 → 3 → 4 → 5. Trin 1–3 giver værdi uden Copilot.
+
 ## Ikke gennemgået endnu
 
 En komplet GAP-analyse skal også gennemgå (tal fra opgørelsen 2026-11-09):

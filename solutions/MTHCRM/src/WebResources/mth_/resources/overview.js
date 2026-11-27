@@ -39,6 +39,17 @@
     var ROLES = [[273280000, "Tender Manager"], [273280002, "Tender Responsible"], [273280003, "Tender Coordinator"], [273280004, "Tender Calculator"],
         [273280005, "Pre-Qualification Responsible"], [273280006, "Bid Manager"], [273280001, "Project Manager"], [273280007, "Design Manager"],
         [273280008, "Guarantee Responsible"], [273280009, "Primary Responsible"]];
+    // Case mode: embedded on the opportunity form (tab Case Team, web resource with PassParameters and data "mode=case").
+    // Shows only the people on this case; their load row is still their total load across all cases, and their bars on
+    // other cases are faded. "+ Resource" adds to this case. Edits refresh the form's Case Team subgrid and vice versa.
+    var params = {};
+    window.location.search.substr(1).split("&").forEach(function (p) {
+        var kv = p.split("="); if (kv[0]) { params[decodeURIComponent(kv[0]).toLowerCase()] = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")); }
+    });
+    var CASE = null;
+    if ((params.data || "").indexOf("mode=case") >= 0 || params.typename === "mth_opportunity") { CASE = (params.id || "").replace(/[{}]/g, "").toLowerCase() || "new"; }
+    T.saveFirst = ["Gem sagen først for at planlægge sagsteamet.", "Save the case first to plan the case team."];
+    T.casePeople = ["{0} personer på sagen, {1} perioder på sagen", "{0} people on the case, {1} periods on the case"];
     function t(k) { var v = T[k]; return v ? v[DA ? 0 : 1] : k; }
     function fmt(s) { var a = arguments; return s.replace(/\{(\d)\}/g, function (m, i) { return a[+i + 1]; }); }
     function $(id) { return document.getElementById(id); }
@@ -107,7 +118,10 @@
                 "&$filter=statecode eq 0 and mth_startdate le " + e + " and mth_enddate ge " + s),
             all("mth_opportunityrole", "?$select=mth_opportunityroleid&$filter=statecode eq 0 and (mth_startdate eq null or mth_enddate eq null)")
         ]).then(function (r) {
-            state.roles = r[0].filter(function (x) { var o = x.mth_OpportunityId; return o && (o.mth_statusnumber == null || o.mth_statusnumber < 85); })
+            state.roles = r[0].filter(function (x) {
+                var o = x.mth_OpportunityId;
+                return o && (x._mth_opportunityid_value === CASE || o.mth_statusnumber == null || o.mth_statusnumber < 85);
+            })
                 .map(function (x) {
                     return { id: x.mth_opportunityroleid, user: x._mth_userid_value, role: x.mth_role, roleName: x["mth_role" + FV],
                         start: parseDate(x.mth_startdate), end: parseDate(x.mth_enddate), alloc: x.mth_allocation == null ? 100 : x.mth_allocation,
@@ -145,8 +159,9 @@
         var wk = 46, today = new Date(), weeks = [];
         for (var i = 0; i < n; i++) { weeks.push(addDays(start, i * 7)); }
 
-        var roles = state.roles.filter(function (r) { return roleGroup === "" || (roleGroup === "tender") === r.tender; });
+        var roles = state.roles.filter(function (r) { return CASE || roleGroup === "" || (roleGroup === "tender") === r.tender; });
         var people = state.users.filter(function (u) {
+            if (CASE) { return roles.some(function (r) { return r.user === u.id && r.oppId === CASE; }) && (!q || u.name.toLowerCase().indexOf(q) >= 0); }
             if (dept && !u.depts.some(function (d) { return d.id === dept; })) { return false; }
             if (q && u.name.toLowerCase().indexOf(q) < 0) { return false; }
             if (onlyBusy && !roles.some(function (r) { return r.user === u.id; }) && !state.absences.some(function (a) { return a.user === u.id; })) { return false; }
@@ -165,7 +180,7 @@
         people.forEach(function (u) {
             var ur = roles.filter(function (r) { return r.user === u.id; }), ua = state.absences.filter(function (a) { return a.user === u.id; });
             roleCount += ur.length; absCount += ua.length;
-            var open = expandAll || state.open[u.id];
+            var open = expandAll || (state.open[u.id] === undefined ? !!CASE : state.open[u.id]);
             html.push('<div class="row person" data-user="' + u.id + '"><div class="name" title="' + esc(u.name) + '"><span class="tw">' + (open ? "▾" : "▸") + "</span>" +
                 esc(u.name) + u.depts.map(function (d) { return ' <span class="tag">' + esc(d.name) + "</span>"; }).join("") +
                 '<button class="add" data-adduser="' + u.id + '" title="' + esc(t("addTitle")) + '">+</button></div><div class="cells">');
@@ -175,18 +190,23 @@
             });
             html.push("</div></div>");
             if (!open) { return; }
-            ur.concat(ua.map(function (a) { a.away = true; return a; })).sort(function (a, b) { return a.start - b.start; }).forEach(function (x) {
+            ur.concat(ua.map(function (a) { a.away = true; return a; })).sort(function (a, b) {
+                if (CASE && (a.oppId === CASE) !== (b.oppId === CASE)) { return a.oppId === CASE ? -1 : 1; } // this case first
+                return a.start - b.start;
+            }).forEach(function (x) {
                 var s = x.start < start ? start : x.start, e = addDays(x.end, 1) > end ? end : addDays(x.end, 1);
                 var left = days(start, s) * wk / 7, width = Math.max(days(s, e) * wk / 7, 6);
                 var label = x.away ? x.name : x.oppName + " – " + x.roleName + " " + x.alloc + "%";
                 var title = label + " (" + short(x.start) + " – " + short(x.end) + ")";
                 html.push('<div class="row detail"><div class="name" title="' + esc(title) + '">' + esc(x.away ? x.type : x.roleName) + '</div><div class="lane" style="width:' + (n * wk) + 'px">' +
-                    '<div class="gbar ' + (x.away ? "away" : (x.tender ? "tender" : "exec") + " role") + '" style="left:' + left + "px;width:" + width + 'px" title="' + esc(title) + '"' +
+                    '<div class="gbar ' + (x.away ? "away" : (x.tender ? "tender" : "exec") + " role" + (CASE && x.oppId !== CASE ? " other" : "")) + '" style="left:' + left + "px;width:" + width + 'px" title="' + esc(title) + '"' +
                     (x.away ? ' data-abs="' + x.id + '">' : ' data-role="' + x.id + '"><i class="grip l"></i><i class="grip r"></i>') + esc(label) + "</div></div></div>");
             });
         });
         $("grid").innerHTML = people.length ? html.join("") : '<div class="empty">' + esc(t("none")) + "</div>";
-        $("status").textContent = fmt(t("persons"), people.length, roleCount, absCount) + (state.noDates ? " · " + fmt(t("noDates"), state.noDates) : "");
+        $("status").textContent = CASE
+            ? fmt(t("casePeople"), people.length, roles.filter(function (r) { return r.oppId === CASE; }).length)
+            : fmt(t("persons"), people.length, roleCount, absCount) + (state.noDates ? " · " + fmt(t("noDates"), state.noDates) : "");
     }
 
     function refresh() {
@@ -194,6 +214,9 @@
         $("status").textContent = t("loading");
         return loadPeriod(start, end).then(render, fail);
     }
+    // After an edit: also refresh the Case Team subgrid on the opportunity form (case mode)
+    function caseGrid() { try { return Xrm.Page.getControl("CaseTeam"); } catch (e) { return null; } }
+    function changed() { var g = CASE && caseGrid(); if (g) { try { g.refresh(); } catch (e) { /* ignore */ } } return refresh(); }
     function fail(e) { $("status").innerHTML = '<span class="error">' + esc(t("failed") + ((e && e.message) || e)) + "</span>"; }
 
     // ---- editing: dialog (add, change, split, remove) ----
@@ -205,10 +228,10 @@
     function fillUsers() { $("dUser").innerHTML = '<option value=""></option>' + state.users.map(function (u) { return '<option value="' + u.id + '">' + esc(u.name) + "</option>"; }).join(""); }
 
     function openDialog(role, userId) {
-        dlg.role = role; dlg.oppId = role ? role.oppId : null; dlg.oppName = role ? role.oppName : "";
+        dlg.role = role; dlg.oppId = role ? role.oppId : CASE; dlg.oppName = role ? role.oppName : (CASE ? state.caseName : "");
         $("dTitle").textContent = t(role ? "editTitle" : "addTitle");
         $("dSub").textContent = t(role ? "editSub" : "addSub");
-        $("dOpp").textContent = dlg.oppName; $("dPick").style.display = role ? "none" : "";
+        $("dOpp").textContent = dlg.oppName; $("dPick").style.display = role || CASE ? "none" : "";
         $("dUser").value = role ? role.user : (userId || ""); $("dRole").value = role ? String(role.role) : String(ROLES[3][0]);
         $("dStart").value = role ? iso(role.start) : ""; $("dEnd").value = role ? iso(role.end) : "";
         $("dAlloc").value = role ? role.alloc : 100;
@@ -236,14 +259,14 @@
         var v = values(); busy(true);
         var p = dlg.role ? Xrm.WebApi.updateRecord("mth_opportunityrole", dlg.role.id, v)
             : Xrm.WebApi.createRecord("mth_opportunityrole", (v["mth_OpportunityId@odata.bind"] = "/mth_opportunities(" + dlg.oppId + ")", v));
-        p.then(function () { busy(false); closeDialog(); return refresh(); }, err);
+        p.then(function () { busy(false); closeDialog(); return changed(); }, err);
     });
     $("dDelete").addEventListener("click", function () {
         var r = dlg.role;
         Xrm.Navigation.openConfirmDialog({ text: fmt(t("confirmDelete"), userName(r.user), r.roleName, r.oppName) }).then(function (c) {
             if (!c.confirmed) { return; }
             busy(true);
-            Xrm.WebApi.deleteRecord("mth_opportunityrole", r.id).then(function () { busy(false); closeDialog(); return refresh(); }, err);
+            Xrm.WebApi.deleteRecord("mth_opportunityrole", r.id).then(function () { busy(false); closeDialog(); return changed(); }, err);
         });
     });
     // Split: this row ends the day before the split date; a new row for the same person and role starts on it with "New %"
@@ -255,7 +278,7 @@
         Xrm.WebApi.updateRecord("mth_opportunityrole", r.id, { mth_enddate: iso(addDays(at, -1)) }).then(function () {
             return Xrm.WebApi.createRecord("mth_opportunityrole", { mth_role: r.role, mth_startdate: iso(at), mth_enddate: iso(r.end), mth_allocation: newAlloc,
                 "mth_UserId@odata.bind": "/systemusers(" + r.user + ")", "mth_OpportunityId@odata.bind": "/mth_opportunities(" + r.oppId + ")" });
-        }).then(function () { busy(false); closeDialog(); return refresh(); }, err);
+        }).then(function () { busy(false); closeDialog(); return changed(); }, err);
     });
     $("dOpen").addEventListener("click", function () { var r = dlg.role; closeDialog(); Xrm.Navigation.openForm({ entityName: "mth_opportunity", entityId: r.oppId }); });
     $("dCancel").addEventListener("click", closeDialog);
@@ -289,7 +312,7 @@
         if (g.mode !== "start") { e = addDays(e, g.d); }
         if (e < s) { if (g.mode === "start") { s = e; } else { e = s; } }
         $("status").textContent = t("saving");
-        Xrm.WebApi.updateRecord("mth_opportunityrole", g.role.id, { mth_startdate: iso(s), mth_enddate: iso(e) }).then(refresh, function (x) { fail(x); refresh(); });
+        Xrm.WebApi.updateRecord("mth_opportunityrole", g.role.id, { mth_startdate: iso(s), mth_enddate: iso(e) }).then(changed, function (x) { fail(x); refresh(); });
     });
 
     // ---- events ----
@@ -317,5 +340,33 @@
         '</option><option value="exec">' + esc(t("execRoles")) + "</option>";
     $("from").value = iso(addDays(monday(new Date()), -14));
     $("status").textContent = t("loading");
-    loadStatic().then(function () { fillUsers(); return refresh(); }, fail);
+    if (CASE) {
+        document.body.className = "case";
+        ["dept", "roles", "onlyBusy"].forEach(function (id) { $(id).parentNode.style.display = "none"; });
+        $("roles").value = "";
+    }
+    if (CASE === "new") { $("status").textContent = t("saveFirst"); return; }
+
+    // Case mode: period from this case's roles (one week before the first start, at least until the last end)
+    function casePeriod() {
+        return Promise.all([
+            all("mth_opportunityrole", "?$select=mth_startdate,mth_enddate&$filter=statecode eq 0 and _mth_opportunityid_value eq " + CASE),
+            Xrm.WebApi.retrieveRecord("mth_opportunity", CASE, "?$select=mth_name")
+        ]).then(function (r) {
+            state.caseName = r[1].mth_name;
+            var s = null, e = null;
+            r[0].forEach(function (x) { var a = parseDate(x.mth_startdate), b = parseDate(x.mth_enddate); if (a && (!s || a < s)) { s = a; } if (b && (!e || b > e)) { e = b; } });
+            if (!s) { s = new Date(); e = addDays(s, 90); }
+            var from = addDays(monday(s), -7), span = Math.ceil(days(from, e || s) / 7) + 2, w = 52;
+            [8, 13, 26, 52].some(function (o) { if (o >= span) { w = o; return true; } return false; });
+            $("from").value = iso(from); $("weeks").value = String(w);
+        });
+    }
+    loadStatic().then(function () {
+        fillUsers();
+        if (!CASE) { return refresh(); }
+        // Edits in the Case Team subgrid on the form update the chart (the subgrid's onload fires after each change)
+        var g = caseGrid(); if (g && g.addOnLoad) { g.addOnLoad(function () { refresh(); }); }
+        return casePeriod().then(refresh);
+    }).then(null, fail);
 })();

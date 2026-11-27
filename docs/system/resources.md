@@ -15,7 +15,13 @@ Viser, hvor belastet hver person er uge for uge, ud fra sagsteamsrollerne på Sa
   - **+ Fravær** opretter ferie, orlov eller nedsat tid. Klik på en fraværsbjælke for at åbne og rette den.
 - **Sales → Resources → Availability** er listen over alt fravær.
 
-**På Salgsmuligheden:** Case Team viser rolle, person, start, slut og belastning %. Formularen for en sagsteamsrække har sektionen *Resource planning*.
+**På Salgsmuligheden: fanen Case Team** (lige efter General, flyttet hertil fra General 2026-11-27):
+- Øverst sagsteamet som liste (rolle, person, start, slut, belastning %; én række pr. periode).
+- Under den **Gantt-diagrammet for sagen**: kun personerne på sagen. Belastningsrækken er personens **samlede** belastning på alle sager, så man kan se, om de er overbooket. Bjælker for sagen er fuldt farvet, personens andre sager er blege. Perioden sættes automatisk ud fra sagens roller.
+- Samme redigering som i Ressourceoverblikket (træk, klik, del, fjern). **+ Ressource** tilføjer til denne sag. Ændringer i diagrammet opdaterer listen, og ændringer i listen opdaterer diagrammet.
+- Nye sager skal gemmes først.
+
+Formularen for en sagsteamsrække har sektionen *Resource planning*.
 
 **Tilbudsafdelinger:** Setup → Organizational Units → en enhed med *Is Tender Department* → fanen **Tender Staff** → tilføj brugere. En person kan være i flere afdelinger.
 
@@ -43,6 +49,7 @@ Datoerne følger **ikke** sagen automatisk, når sagens datoer ændres bagefter.
 | N:N `mth_orgunit_systemuser_TenderDept` (Tender Departments ↔ Tender Staff) | `scripts/schema/schema.json` |
 | Plugin `ResourceDefaults` (PreOperation, synkron): Create/Update af `mth_opportunityrole` og `mth_availability` | `plugins/Mth.Crm.Plugins/ResourceDefaults.cs`, `scripts/plugins/steps.json` |
 | Siden: HTML + JavaScript uden byggetrin, data via `Xrm.WebApi` med brugerens egne rettigheder. Gantt og belastning er tegnet selv (intet eksternt bibliotek) | `webresources/mth_/resources/overview.html` og `overview.js` |
+| Sagstilstand: samme side som web resource på fanen Case Team (`"webresource": { "name": …, "data": "mode=case" }` i app.json). PassParameters giver `?id=…&typename=mth_opportunity`. Siden finder formularens undergitter `CaseTeam` via `parent.Xrm.Page`, opdaterer det efter ændringer og lytter på dets `addOnLoad` | `overview.js` (`CASE`), `Deploy-App.ps1` (sektionstypen `webresource`) |
 | Navigation, formularer og visninger (MTH Availability, MTH Opportunity Roles med datoer) | `scripts/app/app.json` |
 | Rettigheder: `mth_availability` Sales: opret/ret/slet egne, se alle. Tender Manager og Administrator: alle. Sagsteamsroller kan rettes af alle MTH-roller (Global, som før) | `scripts/security/roles.json` |
 | Demodata (kun udviklermiljø): fordeler rollerne på demobrugerne, procent pr. rolle, ét delt eksempel, afdelingsmedlemskab og fravær | `scripts/New-ResourceTestData.ps1` |

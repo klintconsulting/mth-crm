@@ -149,6 +149,16 @@ function New-SectionXml($table, $s) {
             "<ViewId>{$vid}</ViewId><TargetEntityType>$($sg.table)</TargetEntityType><ViewIds>{$vid}</ViewIds><EnableChartPicker>false</EnableChartPicker>" +
             "<RelationshipName>$($sg.relationship)</RelationshipName></parameters></control></cell></row>")
         for ($i = 1; $i -lt $span; $i++) { [void]$rows.Append('<row />') }
+    } elseif ($s.webresource) {
+        # HTML web resource on the form: { "name": "mth_/x/page.html", "rows": 20, "data": "mode=case" }.
+        # PassParameters adds the record id and table (?id=...&typename=...) to the URL; "data" arrives as ?data=...
+        $wr = $s.webresource
+        $span = if ($wr.rows) { [int]$wr.rows } else { 15 }
+        $data = if ($wr.data) { "<Data>$([Security.SecurityElement]::Escape($wr.data))</Data>" } else { '' }
+        [void]$rows.Append("<row><cell id=`"$(G)`" showlabel=`"false`" rowspan=`"$span`" colspan=`"1`" auto=`"false`">$(Lbl $s.label)" +
+            "<control id=`"WebResource_$($s.name)`" classid=`"{9FDF5F91-88B1-47f4-AD53-C11EFC01A01D}`"><parameters><Url>$($wr.name)</Url>" +
+            "<PassParameters>true</PassParameters><Security>false</Security><Scrolling>auto</Scrolling><Border>false</Border>$data</parameters></control></cell></row>")
+        for ($i = 1; $i -lt $span; $i++) { [void]$rows.Append('<row />') }
     } else {
         foreach ($f in $s.fields) {
             $a = Get-Attr $table $f
