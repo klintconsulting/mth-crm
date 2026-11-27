@@ -171,6 +171,7 @@
                     <row>
                       <cell id="{d988f718-bf5b-4123-99fe-73a7edee66a5}" showlabel="false" rowspan="14" colspan="1" auto="false">
                         <labels>
+                          <label description="Lead Assignments" languagecode="1030" />
                           <label description="Leads in the queue and their status here" languagecode="1033" />
                         </labels>
                         <control id="QueueAssignments" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
@@ -219,6 +220,7 @@
                     <row>
                       <cell id="{5afdbb4e-7b17-4a97-b14f-9c18fbc76b18}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
+                          <label description="Brugere" languagecode="1030" />
                           <label description="Members (notified about new leads)" languagecode="1033" />
                         </labels>
                         <control id="QueueMembers" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">

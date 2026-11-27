@@ -1,5 +1,8 @@
 /*
  * "Follow" command on the Opportunity, Lead and Account forms (modern command, appaction, defined in scripts/app/app.json).
+ *  - Classic ribbon buttons "Follow" and "Unfollow" (solutions/MTHCRM/src/Entities/<table>/RibbonDiff.xml, written by
+ *    scripts/New-FollowRibbon.ps1): Mth.Follow.follow / unfollow, shown by the enable rules Mth.Follow.canFollow / canUnfollow,
+ *    so only the button that fits the user's state is visible. Both call toggle().
  *  - Mth.Follow.toggle(): follows the record if the user does not follow it yet, otherwise stops following it.
  *    A follow is a row in mth_follow owned by the user (key mth_key = "<record id>|<user id>").
  *    Followers get an in-app notification when a tracked column changes or a note is added (plugin FollowNotifier).
@@ -50,8 +53,33 @@ Mth.Follow = (function () {
         } catch (e) { /* not a form */ }
     }
 
-    function toggle() {
-        var rec = current();
+    // Ribbon enable rules (classic buttons "Follow" and "Unfollow" in RibbonDiff.xml): only the button that fits is shown.
+    // The answer is cached per record and user, so the rules do not query on every ribbon refresh.
+    var cache = {};
+    function following(rec) {
+        if (!cache[rec.key]) { cache[rec.key] = find(rec).then(function (e) { return !!e; }, function () { delete cache[rec.key]; return false; }); }
+        return cache[rec.key];
+    }
+    function canFollow(primaryControl) {
+        var rec = current(primaryControl);
+        if (!rec.id || !LOOKUP[rec.table]) { return false; }
+        return following(rec).then(function (f) { return !f; });
+    }
+    function canUnfollow(primaryControl) {
+        var rec = current(primaryControl);
+        if (!rec.id || !LOOKUP[rec.table]) { return false; }
+        return following(rec);
+    }
+    function follow(primaryControl) { toggle(primaryControl); }
+    function unfollow(primaryControl) { toggle(primaryControl); }
+    function changed(rec, isFollowing) {
+        cache[rec.key] = Promise.resolve(isFollowing);
+        showState(rec, isFollowing);
+        try { rec.page.ui.refreshRibbon(); } catch (e) { /* not a form */ }
+    }
+
+    function toggle(primaryControl) {
+        var rec = current(primaryControl);
         if (!rec.id) { alert(t("Gem posten, før du følger den.", "Save the record before following it.")); return; }
         if (!LOOKUP[rec.table]) { alert(t("Denne tabel kan ikke følges.", "This table cannot be followed.")); return; }
         Xrm.Utility.showProgressIndicator("");
@@ -59,7 +87,7 @@ Mth.Follow = (function () {
             if (existing) {
                 return Xrm.WebApi.deleteRecord("mth_follow", existing.mth_followid).then(function () {
                     Xrm.Utility.closeProgressIndicator();
-                    showState(rec, false);
+                    changed(rec, false);
                     alert(t("Du følger ikke længere \"" + rec.name + "\".", "You no longer follow \"" + rec.name + "\"."));
                 });
             }
@@ -67,7 +95,7 @@ Mth.Follow = (function () {
             data[LOOKUP[rec.table] + "@odata.bind"] = "/" + SET[rec.table] + "(" + rec.id + ")";
             return Xrm.WebApi.createRecord("mth_follow", data).then(function () {
                 Xrm.Utility.closeProgressIndicator();
-                showState(rec, true);
+                changed(rec, true);
                 alert(t("Du følger nu \"" + rec.name + "\". Du får besked under klokken, når vigtige felter ændres, eller der skrives en note.",
                         "You now follow \"" + rec.name + "\". You are notified (bell icon) when key fields change or a note is added."));
             });
@@ -80,9 +108,9 @@ Mth.Follow = (function () {
     function onLoad(executionContext) {
         var rec = current(executionContext.getFormContext());
         if (!rec.id || !LOOKUP[rec.table]) { return; }
-        find(rec).then(function (existing) { showState(rec, !!existing); }, function () { /* ignore */ });
+        following(rec).then(function (f) { showState(rec, f); }, function () { /* ignore */ });
     }
 
-    return { toggle: toggle, onLoad: onLoad };
+    return { toggle: toggle, follow: follow, unfollow: unfollow, canFollow: canFollow, canUnfollow: canUnfollow, onLoad: onLoad };
 })();
 window.Mth = Mth;

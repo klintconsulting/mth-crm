@@ -1,3 +1,4 @@
+| `scripts/New-FollowRibbon.ps1` | Skriver de klassiske knapper Follow og Unfollow i RibbonDiff.xml for Salgsmulighed, Lead og Account i den udpakkede solution | Efter `pac solution sync`, før build og import af solutionen. Se [follow.md](follow.md) |
 # Scripts
 
 | Script | Formål | Hvornår |

@@ -432,6 +432,7 @@
                     <row>
                       <cell id="{a0b74fbb-8cea-444a-ab19-85cee8d633c5}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
+                          <label description="Lead Assignments" languagecode="1030" />
                           <label description="Lead queues and their status (select one and click Reject to reject in that queue only)" languagecode="1033" />
                         </labels>
                         <control id="LeadAssignments" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">

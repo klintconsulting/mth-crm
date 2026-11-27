@@ -1,14 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CustomActions />
+  <CustomActions>
+    <CustomAction Id="mth.mth_opportunity.Follow.CustomAction" Location="Mscrm.Form.mth_opportunity.MainTab.Save.Controls._children" Sequence="25">
+      <CommandUIDefinition>
+        <Button Id="mth.mth_opportunity.Follow.Button" Command="mth.mth_opportunity.Follow.Command" Sequence="25" LabelText="Follow" Alt="Follow" ToolTipTitle="Follow" ToolTipDescription="Follow to get a notification (bell icon) when key fields change or a note is added." TemplateAlias="o1" Image16by16="$webresource:mth_/icons/follow.svg" Image32by32="$webresource:mth_/icons/follow.svg" ModernImage="$webresource:mth_/icons/follow.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="mth.mth_opportunity.Unfollow.CustomAction" Location="Mscrm.Form.mth_opportunity.MainTab.Save.Controls._children" Sequence="26">
+      <CommandUIDefinition>
+        <Button Id="mth.mth_opportunity.Unfollow.Button" Command="mth.mth_opportunity.Unfollow.Command" Sequence="26" LabelText="Unfollow" Alt="Unfollow" ToolTipTitle="Unfollow" ToolTipDescription="Stop following. You will no longer be notified about changes and notes." TemplateAlias="o1" Image16by16="$webresource:mth_/icons/follow.svg" Image32by32="$webresource:mth_/icons/follow.svg" ModernImage="$webresource:mth_/icons/follow.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
   <Templates>
     <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
   </Templates>
-  <CommandDefinitions />
+  <CommandDefinitions>
+    <CommandDefinition Id="mth.mth_opportunity.Follow.Command">
+      <EnableRules>
+        <EnableRule Id="mth.mth_opportunity.CanFollow" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="Mth.Follow.follow" Library="$webresource:mth_/scripts/follow.js">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="mth.mth_opportunity.Unfollow.Command">
+      <EnableRules>
+        <EnableRule Id="mth.mth_opportunity.CanUnfollow" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="Mth.Follow.unfollow" Library="$webresource:mth_/scripts/follow.js">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
   <RuleDefinitions>
     <TabDisplayRules />
     <DisplayRules />
-    <EnableRules />
+    <EnableRules>
+      <EnableRule Id="mth.mth_opportunity.CanFollow">
+        <CustomRule FunctionName="Mth.Follow.canFollow" Library="$webresource:mth_/scripts/follow.js" Default="false">
+          <CrmParameter Value="PrimaryControl" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="mth.mth_opportunity.CanUnfollow">
+        <CustomRule FunctionName="Mth.Follow.canUnfollow" Library="$webresource:mth_/scripts/follow.js" Default="false">
+          <CrmParameter Value="PrimaryControl" />
+        </CustomRule>
+      </EnableRule>
+    </EnableRules>
   </RuleDefinitions>
   <LocLabels />
 </RibbonDiffXml>

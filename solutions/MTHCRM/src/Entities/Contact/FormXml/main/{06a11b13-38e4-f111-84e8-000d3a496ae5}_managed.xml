@@ -155,6 +155,7 @@
                     <row>
                       <cell id="{7b422c88-f312-44fc-aa44-1baf275398f9}" showlabel="false" locklevel="0">
                         <labels>
+                          <label description="Fulde navn" languagecode="1030" />
                           <label description="Comment" languagecode="1033" />
                         </labels>
                         <control id="fullname_composer" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="fullname" disabled="false" uniqueid="{cbe232ac-c3d9-49c1-a078-c1e91849dab5}" />
