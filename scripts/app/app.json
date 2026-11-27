@@ -11,9 +11,9 @@
       "groups": [
         { "id": "mth_grp_leads", "title": "Leads", "tables": [ "mth_lead", "mth_leadqueue" ] },
         { "id": "mth_grp_sales", "title": "Sales", "tables": [ "mth_opportunity" ] },
+        { "id": "mth_grp_resources", "title": "Resources", "tables": [ "mth_availability" ], "links": [ { "id": "mth_sub_resourceoverview", "title": "Resource Overview", "webresource": "mth_/resources/overview.html" } ] },
         { "id": "mth_grp_customers", "title": "Customers", "tables": [ "account", "contact" ], "links": [ { "id": "mth_sub_nnesearch", "title": "NNE Search", "webresource": "mth_/nne/search.html" } ] },
         { "id": "mth_grp_tender", "title": "Tender (ESP)", "tables": [ "mth_buildingcontract", "mth_collaboratingpartner" ] },
-        { "id": "mth_grp_resources", "title": "Resources", "tables": [ "mth_availability" ], "links": [ { "id": "mth_sub_resourceoverview", "title": "Resource Overview", "webresource": "mth_/resources/overview.html" } ] },
         { "id": "mth_grp_setup", "title": "Setup", "tables": [ "mth_organizationalunit", "mth_trade", "mth_espemailtemplate" ] }
       ]
     }
