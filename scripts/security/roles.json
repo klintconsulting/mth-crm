@@ -144,7 +144,7 @@
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
                                                                 },
-                                         "mth_follow":  { "Create":  "Basic", "Read":  "Basic", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
                                      }
                   },
                   {
@@ -288,7 +288,7 @@
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
                                                                 },
-                                         "mth_follow":  { "Create":  "Basic", "Read":  "Basic", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
                                      }
                   },
                   {

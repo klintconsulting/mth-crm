@@ -7,56 +7,56 @@
     <FormActivationState>1</FormActivationState>
     <form>
       <tabs>
-        <tab name="general" id="{d7e9febf-a9fe-4618-b174-646043f66508}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="general" id="{8b588203-0605-4626-a8a4-bb29ac201930}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="queue" id="{75e23b11-5b86-4383-8c25-3ce9162b4839}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="queue" id="{f2c0bb36-e7e2-4eef-94e6-ac7903147e45}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Queue" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{7b0e36c8-d66f-4aba-8a18-e1e9f456078b}" showlabel="true" locklevel="0">
+                      <cell id="{42c9399a-9722-4be7-a205-c8e37bbbbb29}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" uniqueid="{eeb83689-54de-4908-8342-a17b543f504f}" />
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" uniqueid="{ec789e05-5d06-430f-96ba-eca6c961e9b6}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{7e9d608b-dc20-450c-962e-1055902408d8}" showlabel="true" locklevel="0">
+                      <cell id="{ce89badd-be7f-43ed-84cd-98bd9979d19d}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_isactive" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_isactive" disabled="false" uniqueid="{cf3ce0c6-8aaf-4d6f-85a9-ba3e641dfa3f}" />
+                        <control id="mth_isactive" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_isactive" disabled="false" uniqueid="{76422060-5fd0-44e9-a1c6-61f1f60c44da}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3fbde291-fcc3-4d81-8a6e-e938972ccf70}" showlabel="true" locklevel="0">
+                      <cell id="{ea9e4b07-c729-4d03-9afa-a22c8892312a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_notifymembers" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_notifymembers" disabled="false" uniqueid="{c248a7fb-3ada-406d-90f9-e7924964107b}" />
+                        <control id="mth_notifymembers" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_notifymembers" disabled="false" uniqueid="{0debe9ae-32e7-43c1-a640-afda7af6ffed}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{7f6606c1-ada1-4b28-ab07-e80a4df00f38}" showlabel="true" locklevel="0">
+                      <cell id="{85c26d4b-99db-4376-9c0d-cf7ca5fe3c31}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_description" disabled="false" uniqueid="{eb185723-6378-4ffb-90c0-238f1ee4ddd8}" />
+                        <control id="mth_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_description" disabled="false" uniqueid="{de477891-2458-42f6-b296-d422d1329b3f}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{313ae755-25f3-468e-94c6-d79d50cc64b6}" showlabel="true" locklevel="0">
+                      <cell id="{5d45c24a-d78f-4da5-97ba-ebc1ce948630}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" uniqueid="{f6f6a852-175f-45bb-8773-607da91bac7c}" />
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" uniqueid="{0d0d8f47-6c1b-4527-9524-c70b1fa67d77}" />
                       </cell>
                     </row>
                   </rows>
@@ -65,89 +65,89 @@
             </column>
             <column width="50%">
               <sections>
-                <section name="criteria" id="{f1ad0d3f-5527-4149-9d0a-2fc5fc7168ef}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="criteria" id="{25ddfd80-b192-426b-aaab-95a5a82fc78d}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Criteria (all filled-in criteria must match; keywords separated by ;)" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{c21fe2d6-878a-444d-a812-d58de18b9432}" showlabel="true" locklevel="0">
+                      <cell id="{23ea53b2-1dd0-4d8f-85dd-38eed19a915a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_regions" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="mth_regions" disabled="false" uniqueid="{5b248383-74c9-4d9b-affd-57e58cb2708c}" />
+                        <control id="mth_regions" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="mth_regions" disabled="false" uniqueid="{2c166425-2d2c-4ac1-8749-814cde8d8834}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2bbad52a-c676-4bdb-8e73-932b6881c167}" showlabel="true" locklevel="0">
+                      <cell id="{f49ec8b3-065a-40b2-8234-585e67d646bd}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_minvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_minvalue" disabled="false" uniqueid="{0464c7d1-83c7-4bcf-a98c-15f4973ae039}" />
+                        <control id="mth_minvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_minvalue" disabled="false" uniqueid="{939f73aa-acbb-4a68-b209-b5d0617ced66}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{db794171-8196-435f-86e7-b6de86c6f144}" showlabel="true" locklevel="0">
+                      <cell id="{f2ccdb5e-e92f-40b8-9654-41c5673304ac}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_maxvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_maxvalue" disabled="false" uniqueid="{52705c3f-1460-43d2-a6d1-8a2f6cae5fa1}" />
+                        <control id="mth_maxvalue" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="mth_maxvalue" disabled="false" uniqueid="{bd8dce6f-88e2-4a6b-8ef2-1703e1d87498}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{6a3c054f-5c7a-40c5-9bb9-ff3659dbd17d}" showlabel="true" locklevel="0">
+                      <cell id="{0755b970-ff01-41a9-b021-94eaba0b4ad9}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_categorykeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_categorykeywords" disabled="false" uniqueid="{ec847a4f-4f89-4464-913a-fc1570709a2e}" />
+                        <control id="mth_categorykeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_categorykeywords" disabled="false" uniqueid="{34c13877-bf6f-439a-a2fd-3946300bf84d}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{581ec7c3-6943-4c1a-ab85-f5b06cfc6905}" showlabel="true" locklevel="0">
+                      <cell id="{603e6feb-c271-4349-aa13-ad584e838c81}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_stagekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_stagekeywords" disabled="false" uniqueid="{dde8541b-14ba-470d-b6a9-3a3bb72782e9}" />
+                        <control id="mth_stagekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_stagekeywords" disabled="false" uniqueid="{d9c0cb3c-aec7-4fde-a93d-e2e8cccadfe4}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a80a77e9-2585-4234-bffa-702ca4155709}" showlabel="true" locklevel="0">
+                      <cell id="{1c82b8c8-e3de-4b8e-9884-beeccaa7ce4c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_contracttypekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_contracttypekeywords" disabled="false" uniqueid="{9d04f769-10d3-4052-9be0-afa2c5b5486d}" />
+                        <control id="mth_contracttypekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_contracttypekeywords" disabled="false" uniqueid="{5a7bbf94-0fd2-4927-b399-578f26425162}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{34067cc2-7c90-4390-bb3a-9bd11fcbb10f}" showlabel="true" locklevel="0">
+                      <cell id="{41e377ad-ff74-4ccb-ac88-3259269f7b61}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_textkeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_textkeywords" disabled="false" uniqueid="{3a3af43c-e1ec-475a-91f2-c579e49d7e92}" />
+                        <control id="mth_textkeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_textkeywords" disabled="false" uniqueid="{6ee55937-3d61-4c7c-a3d4-e03f197c5640}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{01192d3e-bb92-4c11-a938-5339d0de2ddf}" showlabel="true" locklevel="0">
+                      <cell id="{3c2ab23b-d840-4903-9afe-b05d84a0712f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_excludekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_excludekeywords" disabled="false" uniqueid="{25f384a9-1e49-4d1c-9642-4685d241db7d}" />
+                        <control id="mth_excludekeywords" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_excludekeywords" disabled="false" uniqueid="{920ff5bb-b28d-4ab8-bb8d-ec1abb043437}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{4fd8b53e-32d3-40b2-a963-fb01872f37f2}" showlabel="true" locklevel="0">
+                      <cell id="{0896e97c-67f9-41a7-97dc-1dd5eefed2d9}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_startwithinmonths" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="mth_startwithinmonths" disabled="false" uniqueid="{b3a27d25-53cd-42d8-810c-a9a1646ffd86}" />
+                        <control id="mth_startwithinmonths" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="mth_startwithinmonths" disabled="false" uniqueid="{b062397e-cd9d-43cd-aca2-cb857dd9d158}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{85b4f36f-06fd-4345-afe4-8482cbcc22d3}" showlabel="true" locklevel="0">
+                      <cell id="{4a4c970b-41f5-474e-be6d-4640169294dc}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="mth_excludestarted" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_excludestarted" disabled="false" uniqueid="{716fb01e-8d59-4adf-a009-c7c3f0279523}" />
+                        <control id="mth_excludestarted" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="mth_excludestarted" disabled="false" uniqueid="{e3e5af36-0a91-4004-a281-a8020d93a17c}" />
                       </cell>
                     </row>
                   </rows>
@@ -156,20 +156,20 @@
             </column>
           </columns>
         </tab>
-        <tab name="leads" id="{62e8d977-6c93-4288-9782-495ef73d80e7}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+        <tab name="leads" id="{b26718fe-7d6c-4295-9f8d-3c21a5f29fe5}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
           <labels>
             <label description="Leads and Members" languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
               <sections>
-                <section name="leads" id="{8b69a76d-1e3a-4d45-8cce-e13ee0d8b8a6}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="leads" id="{ed747be5-0852-47e5-a5da-945e89e23bde}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Leads in the queue and their status here" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{602d2d70-f73f-4c0d-a93c-ada1cbaa7813}" showlabel="false" rowspan="14" colspan="1" auto="false">
+                      <cell id="{33891064-ead3-4b6e-801d-65b23046ba38}" showlabel="false" rowspan="14" colspan="1" auto="false">
                         <labels>
                           <label description="Leads in the queue and their status here" languagecode="1033" />
                         </labels>
@@ -211,13 +211,13 @@
             </column>
             <column width="50%">
               <sections>
-                <section name="members" id="{17d9279f-a63f-4449-8428-3c806ca069b8}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="members" id="{ba6eabfe-c7f3-44a5-8471-9329d5969eaa}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Members (notified about new leads)" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{c2219d85-031d-493b-a9cf-68ffb70440dd}" showlabel="false" rowspan="8" colspan="1" auto="false">
+                      <cell id="{a9608c2d-8536-4d3b-bfd4-bb4871bf63af}" showlabel="false" rowspan="8" colspan="1" auto="false">
                         <labels>
                           <label description="Members (notified about new leads)" languagecode="1033" />
                         </labels>
@@ -249,41 +249,41 @@
                     <row />
                   </rows>
                 </section>
-                <section name="systeminfo" id="{37cd4093-3142-40cd-be2a-728afeeab3b1}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="systeminfo" id="{73a454c4-99f0-44f4-addf-4e961776bac9}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="System Information" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{573c7da9-c741-41e0-bc32-d2c33c8e868c}" showlabel="true" locklevel="0">
+                      <cell id="{90fc3193-a2bf-48f1-ad6a-fbaf6400968a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" uniqueid="{0422cdaa-554b-4840-adb8-6ace22dcfb53}" />
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" uniqueid="{a07099f5-4782-4975-a62f-cbaf459e4f1c}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{cca3883e-c1fa-4e8c-8329-20b5e1718c1a}" showlabel="true" locklevel="0">
+                      <cell id="{f913cb6d-9dad-46e5-b40d-d4de12413b2b}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" uniqueid="{154f64df-506f-449f-b351-f54319aa4cef}" />
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" uniqueid="{2f20347c-1ffd-4056-b6e6-af77f3766c18}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{7d028818-d384-41dc-98c5-f7a401ec5d4d}" showlabel="true" locklevel="0">
+                      <cell id="{91579dbd-79cc-412b-a283-b73a202215d9}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" uniqueid="{5dc81743-9a1e-49dd-8a20-4489e4710f6b}" />
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" uniqueid="{7945e771-bebf-47be-9d02-b32ace5a9262}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{270cd585-8781-4bcb-9c32-1034ea56e3e0}" showlabel="true" locklevel="0">
+                      <cell id="{69ed6b49-5447-4bf5-a457-70ef693d1822}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" uniqueid="{733cae10-2e21-47f3-9b87-84f2c11018e6}" />
+                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" uniqueid="{33d9d4c9-2873-43dc-8f1b-f3caa6564dfe}" />
                       </cell>
                     </row>
                   </rows>

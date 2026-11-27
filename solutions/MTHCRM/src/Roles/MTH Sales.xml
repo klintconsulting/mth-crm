@@ -61,7 +61,7 @@
     <RolePrivilege name="prvReadmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvReadmth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvReadmth_EspEmailTemplate" level="Global" />
-    <RolePrivilege name="prvReadmth_Follow" level="Basic" />
+    <RolePrivilege name="prvReadmth_Follow" level="Global" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
     <RolePrivilege name="prvReadmth_LeadAssignment" level="Global" />

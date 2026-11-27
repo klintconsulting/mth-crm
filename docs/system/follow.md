@@ -12,6 +12,8 @@ Svarer til "Follow" i Salesforce (Chatter `EntitySubscription` + feed tracking).
   - "*Bruger* ændrede *post*" med en linje pr. ændret felt: `Status: 01 Potential project → 20 PQ - upcoming`, `Estimated Amount: 314.000.000 kr. → 123.456.789 kr.`
   - "*Bruger* tilføjede en note på *post*" med notens emne og et uddrag.
 - Man får aldrig besked om sine egne ændringer. Er man @omtalt i noten, får man kun omtalebeskeden (se [plugins.md](plugins.md)).
+- Fanen **Followers** (lige efter General) viser, hvem der følger posten, og siden hvornår (visningen MTH Followers). Alle kan se følgerne, som i Salesforce. Listen findes også under Related → Follows, som Dataverse laver automatisk ud fra relationen.
+- Knappen står i **kommandolinjen øverst** over formularen, ikke under Related. Er vinduet smalt, ligger den under **⋯**, fordi kommandolinjen kun viser det antal knapper, der er plads til.
 - Visningerne **MTH Opportunities I Follow**, **MTH Leads I Follow** og **MTH Accounts I Follow** i listernes visningsvælger viser de poster, brugeren selv følger.
 
 ## Felter, der giver besked
@@ -36,7 +38,7 @@ Ikke med fra Salesforce: Close Reasons og Close Comments (findes ikke i datamode
 | Knap og formularscript | `webresources/mth_/scripts/follow.js`, `commands` og `scripts` i `scripts/app/app.json` | `Mth.Follow.toggle()` opretter eller sletter rækken med brugerens egne rettigheder. `Mth.Follow.onLoad` viser formularnotifikationen |
 | Plugin `FollowNotifier` | `plugins/Mth.Crm.Plugins/FollowNotifier.cs`, `scripts/plugins/steps.json` | Asynkron. Update af de tre tabeller med filtering attributes og entity images `pre` og `post`. Create af `annotation`. Kører med systemkontekst og opretter `appnotification` til hver følger |
 | Visninger | `views` i `scripts/app/app.json` | `link-entity` til `mth_follow` med `ownerid eq-userid` og `statecode = 0` |
-| Rettigheder | `scripts/security/roles.json` | MTH Sales og MTH Tender Manager: `mth_follow` alt på **Basic** (egne rækker). CRM Administrator: Global. MTH Integration: ingen |
+| Rettigheder | `scripts/security/roles.json` | MTH Sales og MTH Tender Manager: `mth_follow` Read **Global** (alle kan se, hvem der følger en post) og resten på **Basic** (kun egne rækker kan oprettes og slettes). CRM Administrator: Global. MTH Integration: ingen |
 
 **Sletning:** Slettes en Salgsmulighed, slettes dens følg-rækker med (kaskade). Dataverse tillader kun én relation med kaskadesletning pr. tabel, så for Lead og Account fjernes kun linket (RemoveLink). Følg-rækken bliver liggende uden post. Den gør ingen skade, fordi visningerne går via opslaget, og en slettet post ikke ændres. `Deploy-Schema.ps1` har fået kaskadetypen `DeleteOnly` (slet med, men behold egen ejer). `Parental` ville flytte følg-rækkerne til postens nye ejer ved en ejerskifte.
 

@@ -100,6 +100,11 @@
       "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
     },
     {
+      "table": "mth_follow", "name": "MTH Followers", "default": true,
+      "columns": [ ["ownerid", 220], ["createdon", 140] ],
+      "order": { "attribute": "createdon", "descending": false }, "activeOnly": true
+    },
+    {
       "table": "mth_opportunity", "name": "MTH Opportunities I Follow", "default": false,
       "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_statusnumber", 80], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
       "order": { "attribute": "mth_closedate", "descending": false }, "activeOnly": false,
@@ -146,6 +151,11 @@
             [ { "name": "texts", "label": "Description", "fields": [ "mth_projecttexts" ] } ],
             [ { "name": "roles", "label": "Roles", "fields": [ "mth_roleshtml" ] }, { "name": "tenders", "label": "Tenders", "fields": [ "mth_tendershtml" ] } ]
           ]
+        },
+        {
+          "name": "followers", "label": "Followers",
+          "columns": [ [ { "name": "followers", "label": "Users following this lead (notified when key fields change or a note is added; use Follow / Unfollow at the top)",
+                           "subgrid": { "id": "Followers", "table": "mth_follow", "relationship": "mth_lead_mth_follow", "view": "MTH Followers", "rows": 8 } } ] ]
         },
         {
           "name": "queues", "label": "Queues",
@@ -198,6 +208,11 @@
               { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
+        },
+        {
+          "name": "followers", "label": "Followers",
+          "columns": [ [ { "name": "followers", "label": "Users following this opportunity (notified when key fields change or a note is added; use Follow / Unfollow at the top)",
+                           "subgrid": { "id": "Followers", "table": "mth_follow", "relationship": "mth_opportunity_mth_follow", "view": "MTH Followers", "rows": 8 } } ] ]
         },
         {
           "name": "esp", "label": "Tender (ESP)",
@@ -265,6 +280,11 @@
               { "name": "timeline", "label": "Timeline", "composer": true, "composerControl": "mth_Mth.MentionComposer", "timeline": true }
             ]
           ]
+        },
+        {
+          "name": "followers", "label": "Followers",
+          "columns": [ [ { "name": "followers", "label": "Users following this account (notified when key fields change or a note is added; use Follow / Unfollow at the top)",
+                           "subgrid": { "id": "Followers", "table": "mth_follow", "relationship": "mth_account_mth_follow", "view": "MTH Followers", "rows": 8 } } ] ]
         },
         {
           "name": "related", "label": "Contacts and Opportunities",
