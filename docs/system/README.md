@@ -19,6 +19,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | [branding.md](branding.md) | MTH-farver, logo og app-ikon fra Salesforce-temaet |
 | [decisions.md](decisions.md) | Arkitektur- og designbeslutninger med begrundelse og dato |
 | [scripts.md](scripts.md) | Hvad hvert script i `scripts/` gør, og hvornår det bruges |
+| [../gap-analysis.md](../gap-analysis.md) | GAP-analyse: forskelle mellem Salesforce og løsningen (mangler, delvist, fravalgt) |
 | [../deploy.md](../deploy.md) | Deploy til test og produktion via GitHub Actions |
 
 ## Kilde til sandhed

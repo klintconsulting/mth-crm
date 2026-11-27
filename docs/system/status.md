@@ -25,6 +25,8 @@ POC'en kører i udviklermiljøet `https://org558bead0.crm4.dynamics.com` (app-id
 | MTH-branding | [branding.md](branding.md) |
 | Følg (Follow) på Salgsmulighed, Lead og Account med besked ved ændringer og noter (afprøvet via API som Lars, ikke klikket i browseren) | [follow.md](follow.md), beslutning B24 |
 
+**Forskelle mod Salesforce** samles i [GAP-analysen](../gap-analysis.md). Skriv nye mangler ind dér.
+
 ## Kendte fejl og begrænsninger
 
 - **Reject på undergitteret** forsvinder, når en række markeres. Workaround: åbn tildelingen og brug Reject der. Se [smart.md](smart.md).
