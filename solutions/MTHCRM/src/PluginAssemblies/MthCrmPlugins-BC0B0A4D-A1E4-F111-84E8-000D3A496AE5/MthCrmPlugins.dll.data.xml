@@ -11,6 +11,9 @@
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.ConvertLead, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="b18c1e73-d3e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.ConvertLead">
       <FriendlyName>Mth.Crm.Plugins.ConvertLead</FriendlyName>
     </PluginType>
+    <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.FollowNotifier, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="d934f0d1-33ea-f111-84e7-000d3a496ae5" Name="Mth.Crm.Plugins.FollowNotifier">
+      <FriendlyName>Mth.Crm.Plugins.FollowNotifier</FriendlyName>
+    </PluginType>
     <PluginType AssemblyQualifiedName="Mth.Crm.Plugins.LeadQueueSync, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3" PluginTypeId="6278a4b5-d2e4-f111-84e8-000d3a496ae5" Name="Mth.Crm.Plugins.LeadQueueSync">
       <FriendlyName>Mth.Crm.Plugins.LeadQueueSync</FriendlyName>
     </PluginType>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{971f410c-34ea-f111-84e7-000d3a496ae5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_leadid">
+          <cell name="mth_name" width="260" />
+          <cell name="mth_leadstatus" width="110" />
+          <cell name="mth_projectregion" width="110" />
+          <cell name="mth_projectvalue" width="90" />
+          <cell name="mth_planningstage" width="130" />
+          <cell name="mth_projectstartdate" width="100" />
+          <cell name="mth_clientname" width="180" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="mth_lead">
+          <attribute name="mth_leadid" />
+          <attribute name="mth_name" />
+          <attribute name="mth_leadstatus" />
+          <attribute name="mth_projectregion" />
+          <attribute name="mth_projectvalue" />
+          <attribute name="mth_planningstage" />
+          <attribute name="mth_projectstartdate" />
+          <attribute name="mth_clientname" />
+          <order attribute="mth_name" descending="false" />
+          <link-entity name="mth_follow" from="mth_leadid" to="mth_leadid" link-type="inner">
+            <filter>
+              <condition attribute="ownerid" operator="eq-userid" />
+              <condition attribute="statecode" operator="eq" value="0" />
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MTH Leads I Follow" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

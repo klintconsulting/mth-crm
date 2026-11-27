@@ -13,6 +13,7 @@ Dokumentationen beskriver løsningen, så den kan genskabes fra bunden uden den 
 | [sharepoint.md](sharepoint.md) | Projektsite som link på Salgsmuligheden, og hvorfor indlejring af Shared Documents blev fravalgt |
 | [pcf.md](pcf.md) | PCF-kontroller (kommentarfelt med @-vælger): brug, teknik, byg og deploy |
 | [plugins.md](plugins.md) | C#-plugins: hvad de gør, regler, test, deploy og fejlsøgning |
+| [follow.md](follow.md) | Følg Salgsmuligheder, Leads og Accounts og få besked ved ændringer og noter |
 | [nne.md](nne.md) | NNE: find virksomheder i Navne & Numre Erhverv og opret dem som Account |
 | [search.md](search.md) | Søgning: Dataverse search i listerne og søgekolonner pr. tabel |
 | [branding.md](branding.md) | MTH-farver, logo og app-ikon fra Salesforce-temaet |

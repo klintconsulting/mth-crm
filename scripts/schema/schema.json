@@ -2887,6 +2887,44 @@
                                            "source":  "(new)"
                                        }
                                    ]
+                   },
+                   {
+                       "schemaName":  "mth_Follow",
+                       "displayName":  "Follow",
+                       "pluralName":  "Follows",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "source":  "(new) EntitySubscription (Salesforce \"Follow\")",
+                       "description":  "One row per user and record the user follows. Owner = the follower. Followers get an in-app notification when a tracked field changes or a note is added (plugin FollowNotifier). Created and deleted by the Follow command (webresources/mth_/scripts/follow.js).",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Record",
+                                       "maxLength":  400,
+                                       "source":  "(new) name of the followed record"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_RecordTable",
+                                           "displayName":  "Record Table",
+                                           "type":  "string",
+                                           "maxLength":  100,
+                                           "source":  "EntitySubscription.Parent type"
+                                       },
+                                       {
+                                           "schemaName":  "mth_RecordId",
+                                           "displayName":  "Record Id",
+                                           "type":  "string",
+                                           "maxLength":  100,
+                                           "source":  "EntitySubscription.ParentId (guid, lower case, no braces)"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Key",
+                                           "displayName":  "Key",
+                                           "type":  "string",
+                                           "maxLength":  200,
+                                           "source":  "(new) \u003crecord id\u003e|\u003cuser id\u003e, unique so a user follows a record once"
+                                       }
+                                   ]
                    }
                ],
     "lookups":  [
@@ -3050,6 +3088,33 @@
                         "displayName":  "Status Changed By",
                         "source":  "(new)",
                         "cascade":  "RemoveLink"
+                    },
+                    {
+                        "schemaName":  "mth_opportunity_mth_follow",
+                        "referencing":  "mth_follow",
+                        "referenced":  "mth_opportunity",
+                        "lookupSchemaName":  "mth_OpportunityId",
+                        "displayName":  "Opportunity",
+                        "source":  "EntitySubscription.ParentId",
+                        "cascade":  "DeleteOnly"
+                    },
+                    {
+                        "schemaName":  "mth_lead_mth_follow",
+                        "referencing":  "mth_follow",
+                        "referenced":  "mth_lead",
+                        "lookupSchemaName":  "mth_LeadId",
+                        "displayName":  "Lead",
+                        "source":  "EntitySubscription.ParentId",
+                        "cascade":  "RemoveLink"
+                    },
+                    {
+                        "schemaName":  "mth_account_mth_follow",
+                        "referencing":  "mth_follow",
+                        "referenced":  "account",
+                        "lookupSchemaName":  "mth_AccountId",
+                        "displayName":  "Account",
+                        "source":  "EntitySubscription.ParentId",
+                        "cascade":  "RemoveLink"
                     }
                 ],
     "manyToMany":  [
@@ -3127,6 +3192,14 @@
                      "columns":  [
                                      "mth_leadid",
                                      "mth_leadqueueid"
+                                 ]
+                 },
+                 {
+                     "table":  "mth_follow",
+                     "schemaName":  "mth_FollowKey",
+                     "displayName":  "Record + User",
+                     "columns":  [
+                                     "mth_key"
                                  ]
                  }
              ]

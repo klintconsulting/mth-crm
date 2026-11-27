@@ -90,6 +90,8 @@ function Get-Cascade([string]$kind) {
         'Parental'   { @{ Assign = 'Cascade'; Delete = 'Cascade'; Merge = 'Cascade'; Reparent = 'Cascade'; Share = 'Cascade'; Unshare = 'Cascade'; RollupView = 'NoCascade' } }
         'Restrict'   { @{ Assign = 'NoCascade'; Delete = 'Restrict'; Merge = 'NoCascade'; Reparent = 'NoCascade'; Share = 'NoCascade'; Unshare = 'NoCascade'; RollupView = 'NoCascade' } }
         'RemoveLink' { @{ Assign = 'NoCascade'; Delete = 'RemoveLink'; Merge = 'NoCascade'; Reparent = 'NoCascade'; Share = 'NoCascade'; Unshare = 'NoCascade'; RollupView = 'NoCascade' } }
+        # Child rows are deleted with the parent but keep their own owner (e.g. mth_follow, owned by the follower)
+        'DeleteOnly' { @{ Assign = 'NoCascade'; Delete = 'Cascade'; Merge = 'NoCascade'; Reparent = 'NoCascade'; Share = 'NoCascade'; Unshare = 'NoCascade'; RollupView = 'NoCascade' } }
         default { throw "Unknown cascade '$kind'" }
     }
 }

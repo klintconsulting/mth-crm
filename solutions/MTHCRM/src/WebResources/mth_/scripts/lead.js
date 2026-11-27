@@ -90,6 +90,10 @@ Mth.Lead = (function () {
     // rejects the lead in the selected queue(s) only (Custom API mth_RejectLeadAssignment, one call per row).
     function selectedAssignments() {
         var ids = [];
+        // On the lead assignment's own form: that record
+        try {
+            if (page().data.entity.getEntityName() === "mth_leadassignment") { return [page().data.entity.getId().replace(/[{}]/g, "")]; }
+        } catch (e) { /* not a form */ }
         ["LeadAssignments", "QueueAssignments"].forEach(function (name) {
             var c = page() && page().getControl ? page().getControl(name) : null;
             if (!c || !c.getGrid) { return; }

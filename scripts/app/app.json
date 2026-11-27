@@ -98,11 +98,30 @@
       "table": "mth_espemailtemplate", "name": "MTH Active ESP E-mail Templates", "default": true,
       "columns": [ ["mth_name", 220], ["mth_subject", 300], ["mth_isdefault", 80] ],
       "order": { "attribute": "mth_name", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_opportunity", "name": "MTH Opportunities I Follow", "default": false,
+      "columns": [ ["mth_name", 250], ["mth_accountid", 180], ["mth_status", 180], ["mth_statusnumber", 80], ["mth_amount", 120], ["mth_closedate", 110], ["mth_orderdepartmentid", 150], ["ownerid", 140] ],
+      "order": { "attribute": "mth_closedate", "descending": false }, "activeOnly": false,
+      "linkXml": "<link-entity name=\"mth_follow\" from=\"mth_opportunityid\" to=\"mth_opportunityid\" link-type=\"inner\"><filter><condition attribute=\"ownerid\" operator=\"eq-userid\" /><condition attribute=\"statecode\" operator=\"eq\" value=\"0\" /></filter></link-entity>"
+    },
+    {
+      "table": "mth_lead", "name": "MTH Leads I Follow", "default": false,
+      "columns": [ ["mth_name", 260], ["mth_leadstatus", 110], ["mth_projectregion", 110], ["mth_projectvalue", 90], ["mth_planningstage", 130], ["mth_projectstartdate", 100], ["mth_clientname", 180] ],
+      "order": { "attribute": "mth_name", "descending": false }, "activeOnly": false,
+      "linkXml": "<link-entity name=\"mth_follow\" from=\"mth_leadid\" to=\"mth_leadid\" link-type=\"inner\"><filter><condition attribute=\"ownerid\" operator=\"eq-userid\" /><condition attribute=\"statecode\" operator=\"eq\" value=\"0\" /></filter></link-entity>"
+    },
+    {
+      "table": "account", "name": "MTH Accounts I Follow", "default": false,
+      "columns": [ ["name", 250], ["mth_vatno", 100], ["mth_segment", 140], ["mth_accountstatus", 100], ["address1_city", 120], ["ownerid", 140] ],
+      "order": { "attribute": "name", "descending": false }, "activeOnly": false,
+      "linkXml": "<link-entity name=\"mth_follow\" from=\"mth_accountid\" to=\"accountid\" link-type=\"inner\"><filter><condition attribute=\"ownerid\" operator=\"eq-userid\" /><condition attribute=\"statecode\" operator=\"eq\" value=\"0\" /></filter></link-entity>"
     }
   ],
   "forms": [
     {
       "table": "mth_lead", "name": "MTH Lead",
+      "scripts": { "library": "mth_/scripts/follow.js", "onLoad": "Mth.Follow.onLoad" },
       "tabs": [
         {
           "name": "general", "label": "General",
@@ -162,6 +181,7 @@
       ]
     },    {
       "table": "mth_opportunity", "name": "MTH Opportunity",
+      "scripts": { "library": "mth_/scripts/follow.js", "onLoad": "Mth.Follow.onLoad" },
       "tabs": [
         {
           "name": "general", "label": "General",
@@ -228,6 +248,7 @@
     },
     {
       "table": "account", "name": "MTH Account",
+      "scripts": { "library": "mth_/scripts/follow.js", "onLoad": "Mth.Follow.onLoad" },
       "tabs": [
         {
           "name": "general", "label": "General",
@@ -329,6 +350,9 @@
     { "uniqueName": "mth_LeadAssignment_Reject", "label": "Reject", "tooltip": "Reject the lead in the selected queue only. It stays in the other queues.", "table": "mth_leadassignment", "location": "SubGrid", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.rejectAssignment", "sequence": 5 },
     { "uniqueName": "mth_LeadAssignment_RejectForm", "label": "Reject", "tooltip": "Reject the lead in this queue only. It stays in the other queues.", "table": "mth_leadassignment", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.rejectAssignment", "sequence": 5 },
     { "uniqueName": "mth_Lead_Disqualify", "label": "Disqualify", "tooltip": "Close the lead for everyone (e.g. an irrelevant project); it disappears from all queues.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/lead.js", "function": "Mth.Lead.disqualify", "sequence": 20 },
-    { "uniqueName": "mth_Account_NneSearch", "label": "New from NNE", "tooltip": "Find the company in NNE (Navne & Numre Erhverv) and create it as an account.", "table": "account", "location": "MainGrid", "library": "mth_/scripts/account.js", "function": "Mth.Account.nneSearch", "sequence": 5, "icon": "$webresource:mth_/branding/icon.svg" }
+    { "uniqueName": "mth_Account_NneSearch", "label": "New from NNE", "tooltip": "Find the company in NNE (Navne & Numre Erhverv) and create it as an account.", "table": "account", "location": "MainGrid", "library": "mth_/scripts/account.js", "function": "Mth.Account.nneSearch", "sequence": 5, "icon": "$webresource:mth_/branding/icon.svg" },
+    { "uniqueName": "mth_Opportunity_Follow", "label": "Follow / Unfollow", "tooltip": "Follow to get a notification (bell icon) when key fields change or a note is added. Click again to stop following.", "table": "mth_opportunity", "location": "Form", "library": "mth_/scripts/follow.js", "function": "Mth.Follow.toggle", "sequence": 90 },
+    { "uniqueName": "mth_Lead_Follow", "label": "Follow / Unfollow", "tooltip": "Follow to get a notification (bell icon) when key fields change or a note is added. Click again to stop following.", "table": "mth_lead", "location": "Form", "library": "mth_/scripts/follow.js", "function": "Mth.Follow.toggle", "sequence": 90 },
+    { "uniqueName": "mth_Account_Follow", "label": "Follow / Unfollow", "tooltip": "Follow to get a notification (bell icon) when key fields change or a note is added. Click again to stop following.", "table": "account", "location": "Form", "library": "mth_/scripts/follow.js", "function": "Mth.Follow.toggle", "sequence": 90 }
   ]
 }

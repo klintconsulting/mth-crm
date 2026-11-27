@@ -9,6 +9,7 @@
     <RolePrivilege name="prvAppendmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvAppendmth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvAppendmth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvAppendmth_Follow" level="Basic" />
     <RolePrivilege name="prvAppendmth_Lead" level="Global" />
     <RolePrivilege name="prvAppendmth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendmth_LeadQueue" level="Global" />
@@ -20,6 +21,7 @@
     <RolePrivilege name="prvAppendTomth_BuildingContract" level="Global" />
     <RolePrivilege name="prvAppendTomth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvAppendTomth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Follow" level="Basic" />
     <RolePrivilege name="prvAppendTomth_Lead" level="Global" />
     <RolePrivilege name="prvAppendTomth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvAppendTomth_LeadQueue" level="Global" />
@@ -42,6 +44,7 @@
     <RolePrivilege name="prvCreatemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvCreatemth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvCreatemth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvCreatemth_Follow" level="Basic" />
     <RolePrivilege name="prvCreatemth_Lead" level="Basic" />
     <RolePrivilege name="prvCreatemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvCreatemth_LeadQueue" level="Global" />
@@ -52,6 +55,7 @@
     <RolePrivilege name="prvDeletemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvDeletemth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvDeletemth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvDeletemth_Follow" level="Basic" />
     <RolePrivilege name="prvDeletemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvDeletemth_LeadQueue" level="Global" />
     <RolePrivilege name="prvDeletemth_Opportunity" level="Global" />
@@ -63,6 +67,7 @@
     <RolePrivilege name="prvReadmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvReadmth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvReadmth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvReadmth_Follow" level="Basic" />
     <RolePrivilege name="prvReadmth_IntegrationState" level="Global" />
     <RolePrivilege name="prvReadmth_Lead" level="Global" />
     <RolePrivilege name="prvReadmth_LeadAssignment" level="Global" />
@@ -93,6 +98,7 @@
     <RolePrivilege name="prvWritemth_BuildingContract" level="Global" />
     <RolePrivilege name="prvWritemth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvWritemth_EspEmailTemplate" level="Global" />
+    <RolePrivilege name="prvWritemth_Follow" level="Basic" />
     <RolePrivilege name="prvWritemth_Lead" level="Global" />
     <RolePrivilege name="prvWritemth_LeadAssignment" level="Global" />
     <RolePrivilege name="prvWritemth_LeadQueue" level="Global" />

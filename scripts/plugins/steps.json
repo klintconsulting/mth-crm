@@ -129,6 +129,190 @@
                       "filteringAttributes":  [
                                                   "mth_status"
                                               ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.FollowNotifier",
+                      "name":  "Mth.Crm.Plugins.FollowNotifier: Create of annotation",
+                      "description":  "Notifies followers of the regarding record about a new note.",
+                      "message":  "Create",
+                      "table":  "annotation",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  2
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.FollowNotifier",
+                      "name":  "Mth.Crm.Plugins.FollowNotifier: Update of mth_opportunity",
+                      "description":  "Notifies followers when a tracked column changes (Salesforce feed tracking).",
+                      "message":  "Update",
+                      "table":  "mth_opportunity",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  5,
+                      "filteringAttributes":  [
+                                                  "mth_name",
+                                                  "mth_status",
+                                                  "mth_closedate",
+                                                  "mth_estimatedamount",
+                                                  "mth_tenderamount",
+                                                  "mth_calculatedcontractamount",
+                                                  "mth_accountid",
+                                                  "ownerid",
+                                                  "mth_orderdepartmentid",
+                                                  "mth_prequalificationdate",
+                                                  "mth_externalopportunityid"
+                                              ],
+                      "images":  [
+                                     {
+                                         "name":  "pre",
+                                         "type":  "PreImage",
+                                         "attributes":  [
+                                                            "mth_name",
+                                                            "mth_status",
+                                                            "mth_closedate",
+                                                            "mth_estimatedamount",
+                                                            "mth_tenderamount",
+                                                            "mth_calculatedcontractamount",
+                                                            "mth_accountid",
+                                                            "ownerid",
+                                                            "mth_orderdepartmentid",
+                                                            "mth_prequalificationdate",
+                                                            "mth_externalopportunityid"
+                                                        ]
+                                     },
+                                     {
+                                         "name":  "post",
+                                         "type":  "PostImage",
+                                         "attributes":  [
+                                                            "mth_name",
+                                                            "mth_status",
+                                                            "mth_closedate",
+                                                            "mth_estimatedamount",
+                                                            "mth_tenderamount",
+                                                            "mth_calculatedcontractamount",
+                                                            "mth_accountid",
+                                                            "ownerid",
+                                                            "mth_orderdepartmentid",
+                                                            "mth_prequalificationdate",
+                                                            "mth_externalopportunityid"
+                                                        ]
+                                     }
+                                 ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.FollowNotifier",
+                      "name":  "Mth.Crm.Plugins.FollowNotifier: Update of mth_lead",
+                      "description":  "Notifies followers when a tracked column changes (Salesforce feed tracking).",
+                      "message":  "Update",
+                      "table":  "mth_lead",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  5,
+                      "filteringAttributes":  [
+                                                  "mth_name",
+                                                  "ownerid",
+                                                  "mth_leadstatus",
+                                                  "mth_projecttitle",
+                                                  "mth_projectvalue",
+                                                  "mth_planningstage",
+                                                  "mth_projectstartdate",
+                                                  "mth_smartcontracttype",
+                                                  "mth_constructionsite",
+                                                  "mth_municipality",
+                                                  "mth_projectregion",
+                                                  "mth_grossfloorarea",
+                                                  "mth_storeys",
+                                                  "mth_storeysbelowground"
+                                              ],
+                      "images":  [
+                                     {
+                                         "name":  "pre",
+                                         "type":  "PreImage",
+                                         "attributes":  [
+                                                            "mth_name",
+                                                            "ownerid",
+                                                            "mth_leadstatus",
+                                                            "mth_projecttitle",
+                                                            "mth_projectvalue",
+                                                            "mth_planningstage",
+                                                            "mth_projectstartdate",
+                                                            "mth_smartcontracttype",
+                                                            "mth_constructionsite",
+                                                            "mth_municipality",
+                                                            "mth_projectregion",
+                                                            "mth_grossfloorarea",
+                                                            "mth_storeys",
+                                                            "mth_storeysbelowground"
+                                                        ]
+                                     },
+                                     {
+                                         "name":  "post",
+                                         "type":  "PostImage",
+                                         "attributes":  [
+                                                            "mth_name",
+                                                            "ownerid",
+                                                            "mth_leadstatus",
+                                                            "mth_projecttitle",
+                                                            "mth_projectvalue",
+                                                            "mth_planningstage",
+                                                            "mth_projectstartdate",
+                                                            "mth_smartcontracttype",
+                                                            "mth_constructionsite",
+                                                            "mth_municipality",
+                                                            "mth_projectregion",
+                                                            "mth_grossfloorarea",
+                                                            "mth_storeys",
+                                                            "mth_storeysbelowground"
+                                                        ]
+                                     }
+                                 ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.FollowNotifier",
+                      "name":  "Mth.Crm.Plugins.FollowNotifier: Update of account",
+                      "description":  "Notifies followers when a tracked column changes (Salesforce feed tracking).",
+                      "message":  "Update",
+                      "table":  "account",
+                      "stage":  40,
+                      "mode":  "Asynchronous",
+                      "rank":  5,
+                      "filteringAttributes":  [
+                                                  "name",
+                                                  "ownerid",
+                                                  "parentaccountid",
+                                                  "mth_accountcategory",
+                                                  "mth_segment",
+                                                  "mth_subsegment",
+                                                  "mth_accountstatus"
+                                              ],
+                      "images":  [
+                                     {
+                                         "name":  "pre",
+                                         "type":  "PreImage",
+                                         "attributes":  [
+                                                            "name",
+                                                            "ownerid",
+                                                            "parentaccountid",
+                                                            "mth_accountcategory",
+                                                            "mth_segment",
+                                                            "mth_subsegment",
+                                                            "mth_accountstatus"
+                                                        ]
+                                     },
+                                     {
+                                         "name":  "post",
+                                         "type":  "PostImage",
+                                         "attributes":  [
+                                                            "name",
+                                                            "ownerid",
+                                                            "parentaccountid",
+                                                            "mth_accountcategory",
+                                                            "mth_segment",
+                                                            "mth_subsegment",
+                                                            "mth_accountstatus"
+                                                        ]
+                                     }
+                                 ]
                   }
               ],
     "customApis":  [
@@ -382,7 +566,7 @@
                             "app":  "mth_MTHCRM",
                             "setting":  "m365copilotmodelappenabled",
                             "value":  "2",
-                            "note":  "Microsoft Copilot in the app (app designer: Settings > Features). Also needs a Microsoft 365 Copilot license per user and tenant/environment settings, see docs/system/app.md"
+                            "note":  "Microsoft Copilot in the app (app designer: Settings \u003e Features). Also needs a Microsoft 365 Copilot license per user and tenant/environment settings, see docs/system/app.md"
                         }
                     ]
 }

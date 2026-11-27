@@ -5,6 +5,7 @@ Assembly: `Mth.Crm.Plugins` (`plugins/Mth.Crm.Plugins`), .NET Framework 4.6.2, s
 | Plugin | Besked / tabel | Fase | Tilstand | Formål |
 |---|---|---|---|---|
 | `NoteMentionNotifier` | Create / `annotation` (note) | PostOperation (40) | Asynkron | In-app notifikation til brugere, der er @omtalt i en ny note |
+| `FollowNotifier` | Update af `mth_opportunity`, `mth_lead`, `account` (sporede felter, images `pre`/`post`) og Create af `annotation` | PostOperation (40) | Asynkron | Notifikation til dem, der følger posten, når et sporet felt ændres, eller der skrives en note. Se [follow.md](follow.md) |
 | `LeadQueueSync` | Create/Update af `mth_lead` og `mth_leadqueue` | PostOperation (40) | Asynkron | Vedligeholder lead-tildelinger (`mth_leadassignment`): opretter status New for køer, leadet matcher, og fjerner New-tildelinger, der ikke længere matcher. Rører aldrig Rejected/Converted/Lost. Giver kømedlemmer besked. Se [smart.md](smart.md) |
 | `RejectLead` | Custom API `mth_RejectLeadAssignment` (én kø) og `mth_RejectLead` (alle brugerens køer) | Main operation | Synkron | Sætter tildelingen til Rejected, kun for køens medlemmer. Lukker leadet som Fravalgt, når ingen kø har det. Se [smart.md](smart.md) |
 | `ConvertLead` | Custom API `mth_ConvertLead` | Main operation | Synkron | Konverterer Lead → Salgsmulighed, første vinder. Se [smart.md](smart.md) |

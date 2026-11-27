@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{921f410c-34ea-f111-84e7-000d3a496ae5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
+        <row name="result" id="mth_opportunityid">
+          <cell name="mth_name" width="250" />
+          <cell name="mth_accountid" width="180" />
+          <cell name="mth_status" width="180" />
+          <cell name="mth_statusnumber" width="80" />
+          <cell name="mth_amount" width="120" />
+          <cell name="mth_closedate" width="110" />
+          <cell name="mth_orderdepartmentid" width="150" />
+          <cell name="ownerid" width="140" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="mth_opportunity">
+          <attribute name="mth_opportunityid" />
+          <attribute name="mth_name" />
+          <attribute name="mth_accountid" />
+          <attribute name="mth_status" />
+          <attribute name="mth_statusnumber" />
+          <attribute name="mth_amount" />
+          <attribute name="mth_closedate" />
+          <attribute name="mth_orderdepartmentid" />
+          <attribute name="ownerid" />
+          <order attribute="mth_closedate" descending="false" />
+          <link-entity name="mth_follow" from="mth_opportunityid" to="mth_opportunityid" link-type="inner">
+            <filter>
+              <condition attribute="ownerid" operator="eq-userid" />
+              <condition attribute="statecode" operator="eq" value="0" />
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="MTH Opportunities I Follow" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

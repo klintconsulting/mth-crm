@@ -22,6 +22,7 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_smartlookup` | SMART Lookup | Custom | OrganizationOwned | SMART_Lookup__c |
 | `mth_integrationstate` | Integration State | Custom | OrganizationOwned | SMART_Sync_State__c |
 | `mth_leadassignment` | Lead Assignment | Custom | OrganizationOwned | (new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11) |
+| `mth_follow` | Follow | Custom | UserOwned | (new) EntitySubscription (Salesforce "Follow") |
 
 ## Relationer (opslag)
 
@@ -44,6 +45,9 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_lead_mth_leadassignment` | `mth_leadassignment.mth_leadid` | `mth_lead` | Parental | Ja | Lead_Assignment__c.Lead__c |
 | `mth_leadqueue_mth_leadassignment` | `mth_leadassignment.mth_leadqueueid` | `mth_leadqueue` | RemoveLink | Ja | Lead_Assignment__c.Department_Queue__c |
 | `mth_systemuser_mth_leadassignment_ChangedBy` | `mth_leadassignment.mth_statuschangedbyid` | `systemuser` | RemoveLink |  | (new) |
+| `mth_opportunity_mth_follow` | `mth_follow.mth_opportunityid` | `mth_opportunity` | DeleteOnly |  | EntitySubscription.ParentId |
+| `mth_lead_mth_follow` | `mth_follow.mth_leadid` | `mth_lead` | RemoveLink |  | EntitySubscription.ParentId |
+| `mth_account_mth_follow` | `mth_follow.mth_accountid` | `account` | RemoveLink |  | EntitySubscription.ParentId |
 
 ## Organizational Unit (`mth_organizationalunit`)
 
@@ -779,3 +783,15 @@ Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new) name of the qu
 | 273280003 | Lost | Lost |
 
 </details>
+
+## Follow (`mth_follow`)
+
+One row per user and record the user follows. Owner = the follower. Followers get an in-app notification when a tracked field changes or a note is added (plugin FollowNotifier). Created and deleted by the Follow command (webresources/mth_/scripts/follow.js).
+
+Primær navnekolonne: `mth_name` (tekst, maks. 400). Kilde: (new) name of the followed record
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_recordtable` | Record Table | string | maks. 100 | `EntitySubscription.Parent type` |
+| `mth_recordid` | Record Id | string | maks. 100 | `EntitySubscription.ParentId (guid, lower case, no braces)` |
+| `mth_key` | Key | string | maks. 200 | `(new) <record id>|<user id>, unique so a user follows a record once` |

@@ -60,6 +60,7 @@ foreach ($s in $def.steps) {
     if ($s.filteringAttributes) { $body.filteringattributes = (@($s.filteringAttributes) -join ',') }
     $st = (Invoke-Dataverse GET "sdkmessageprocessingsteps?`$select=sdkmessageprocessingstepid&`$filter=name eq '$($s.name)'").value
     if ($st) {
+        $stepId = $st[0].sdkmessageprocessingstepid
         [void](Invoke-Dataverse PATCH "sdkmessageprocessingsteps($($st[0].sdkmessageprocessingstepid))" $body -Solution $sol)
         # A solution import can leave steps disabled (the exported step XML carries no state; seen 2026-11-24 for
         # all asynchronous steps), and the PATCH above does not change state. Always (re-)enable.
@@ -69,8 +70,20 @@ foreach ($s in $def.steps) {
             Write-Host "  ~ step $($s.name) (was disabled, enabled)"
         } else { Write-Host "  ~ step $($s.name)" }
     } else {
-        [void](Invoke-Dataverse POST 'sdkmessageprocessingsteps' $body -Solution $sol)
+        $stepId = IdOf (Invoke-Dataverse POST 'sdkmessageprocessingsteps' $body -Solution $sol)
         Write-Host "  + step $($s.name)"
+    }
+    # Entity images: { "name": "pre", "type": "PreImage" | "PostImage", "attributes": [ ... ] } (alias = name, property Target)
+    foreach ($img in @($s.images)) {
+        if (-not $img) { continue }
+        $imgBody = @{
+            name = $img.name; entityalias = $img.name; imagetype = @{ PreImage = 0; PostImage = 1 }[$img.type]
+            messagepropertyname = 'Target'; attributes = (@($img.attributes) -join ',')
+            'sdkmessageprocessingstepid@odata.bind' = "/sdkmessageprocessingsteps($stepId)"
+        }
+        $ei = (Invoke-Dataverse GET "sdkmessageprocessingstepimages?`$select=sdkmessageprocessingstepimageid&`$filter=_sdkmessageprocessingstepid_value eq $stepId and entityalias eq '$($img.name)'").value
+        if ($ei) { [void](Invoke-Dataverse PATCH "sdkmessageprocessingstepimages($($ei[0].sdkmessageprocessingstepimageid))" $imgBody -Solution $sol); Write-Host "    ~ image $($img.name)" }
+        else { [void](Invoke-Dataverse POST 'sdkmessageprocessingstepimages' $imgBody -Solution $sol); Write-Host "    + image $($img.name)" }
     }
 }
 

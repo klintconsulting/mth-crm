@@ -143,7 +143,8 @@
                                                                     "Delete":  "None",
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
-                                                                }
+                                                                },
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Basic", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
                                      }
                   },
                   {
@@ -286,7 +287,8 @@
                                                                     "Delete":  "Global",
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
-                                                                }
+                                                                },
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Basic", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
                                      }
                   },
                   {
@@ -443,7 +445,8 @@
                                                                     "Delete":  "Global",
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
-                                                                }
+                                                                },
+                                         "mth_follow":  { "Create":  "Global", "Read":  "Global", "Write":  "Global", "Delete":  "Global", "Append":  "Global", "AppendTo":  "Global" }
                                      }
                   },
                   {
