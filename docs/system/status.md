@@ -23,6 +23,7 @@ POC'en kører i udviklermiljøet `https://org558bead0.crm4.dynamics.com` (app-id
 | Global søgning og søgning i lister | [search.md](search.md) |
 | Systemoplysninger (oprettet/ændret af og hvornår) og auditering på Lead og Salgsmulighed | [app.md](app.md) |
 | MTH-branding | [branding.md](branding.md) |
+| Ressourceoverblik: sagsteamsroller med start, slut og belastning %, fravær, tilbudsafdelinger, Gantt med redigering (forespørgsler afprøvet som Lars, siden ikke klikket i browseren) | [resources.md](resources.md), beslutning B25 |
 | Følg (Follow) på Salgsmulighed, Lead og Account med besked ved ændringer og noter (afprøvet via API som Lars, ikke klikket i browseren) | [follow.md](follow.md), beslutning B24 |
 
 **Forskelle mod Salesforce** samles i [GAP-analysen](../gap-analysis.md). Skriv nye mangler ind dér.

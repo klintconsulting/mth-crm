@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{c2a8c03d-3dea-f111-84e7-000d3a496ae5}</formid>
+    <IntroducedVersion>0.1.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="general" id="{ea1510b7-b4c9-4ef8-982e-330de41aab08}" IsUserDefined="1" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="absence" id="{85317cdb-fb60-4bd2-b518-01f4ebaa8e98}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Vacation, leave or reduced capacity (Capacity 0 % = away; e.g. 60 % = works 60 % of normal time)" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{714cae8c-daf6-4e17-b0d9-f873e3d58c89}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Person" languagecode="1033" />
+                        </labels>
+                        <control id="mth_userid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="mth_userid" disabled="false" uniqueid="{cd14ade2-8bc8-4d17-969e-fb9c16b65b41}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02aeda3e-319b-4659-860d-024d8fc82078}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Type" languagecode="1033" />
+                        </labels>
+                        <control id="mth_type" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="mth_type" disabled="false" uniqueid="{2fa7009a-94c9-4a89-989f-8002377e4b10}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ae4ea4c5-1749-4256-a392-63952cca99b5}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Start Date" languagecode="1033" />
+                        </labels>
+                        <control id="mth_startdate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_startdate" disabled="false" uniqueid="{ab1b62f7-486c-4d82-937c-834e311c7988}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{213fbb59-420c-4a11-ba7c-cc2de4c0bd7e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="mth_enddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="mth_enddate" disabled="false" uniqueid="{7afc0a78-634c-47ae-b989-4f8a03753c89}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{450fc810-4041-4285-a2a8-8ff944ec0797}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Capacity (%)" languagecode="1033" />
+                        </labels>
+                        <control id="mth_capacity" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="mth_capacity" disabled="false" uniqueid="{ef36e1a7-33e3-40dc-9f77-15eee94d42ae}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{86a10c2a-7c0c-4509-b036-dffbd6bc37e8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="mth_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="mth_description" disabled="false" uniqueid="{81787f93-d665-4f9c-bc0d-6d995a041c77}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bb493593-56ac-47d1-8084-3f40dcc6289e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="mth_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mth_name" disabled="false" uniqueid="{2a4f3d6f-f8f2-45a1-a05b-f3ef4880bb13}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="systeminfo" id="{30783a29-d9c6-4e34-b778-a3171934e817}" IsUserDefined="1" showlabel="true" showbar="false" locklevel="0" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="System Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f0395676-ca98-4654-9fb7-ee7d7ca9fa9a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                          <label description="Ejer" languagecode="1030" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" uniqueid="{ef98e805-07da-4ec6-96d5-8a5a26c7acb3}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6cd2eb73-3b39-4776-9626-3820313aa665}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created By" languagecode="1033" />
+                          <label description="Oprettet af" languagecode="1030" />
+                        </labels>
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" uniqueid="{7018ef26-b892-4f42-9f9d-e9c7de60faa3}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bec5a245-975e-4369-97a6-9f4f27c1c746}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                          <label description="Oprettet" languagecode="1030" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" uniqueid="{d553f7e1-175c-48b7-8301-4bb8c0a6d093}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2c39fa58-f07e-41a0-aa45-4f6c29014cef}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified By" languagecode="1033" />
+                          <label description="Ændret af" languagecode="1030" />
+                        </labels>
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" uniqueid="{b242dffc-671f-4ea2-9639-d4d631030674}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{10059841-3377-4aff-a9cd-b2c107f186a9}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified On" languagecode="1033" />
+                          <label description="Ændret" languagecode="1030" />
+                        </labels>
+                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" uniqueid="{eb8c772c-a0f6-458d-901d-2c7a188ce562}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="MTH Availability" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Defined in scripts/app/app.json" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -313,6 +313,61 @@
                                                         ]
                                      }
                                  ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.ResourceDefaults",
+                      "name":  "Mth.Crm.Plugins.ResourceDefaults: Create of mth_opportunityrole",
+                      "description":  "Defaults Start/End Date from the opportunity and Allocation 100 %; End Date not before Start Date.",
+                      "message":  "Create",
+                      "table":  "mth_opportunityrole",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.ResourceDefaults",
+                      "name":  "Mth.Crm.Plugins.ResourceDefaults: Update of mth_opportunityrole",
+                      "description":  "Defaults Start/End Date from the opportunity and Allocation 100 %; End Date not before Start Date.",
+                      "message":  "Update",
+                      "table":  "mth_opportunityrole",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_role",
+                                                  "mth_userid",
+                                                  "mth_opportunityid",
+                                                  "mth_startdate",
+                                                  "mth_enddate",
+                                                  "mth_allocation"
+                                              ]
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.ResourceDefaults",
+                      "name":  "Mth.Crm.Plugins.ResourceDefaults: Create of mth_availability",
+                      "description":  "Sets the name and default Capacity 0 % for vacation/leave; End Date not before Start Date.",
+                      "message":  "Create",
+                      "table":  "mth_availability",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1
+                  },
+                  {
+                      "type":  "Mth.Crm.Plugins.ResourceDefaults",
+                      "name":  "Mth.Crm.Plugins.ResourceDefaults: Update of mth_availability",
+                      "description":  "Sets the name and default Capacity 0 % for vacation/leave; End Date not before Start Date.",
+                      "message":  "Update",
+                      "table":  "mth_availability",
+                      "stage":  20,
+                      "mode":  "Synchronous",
+                      "rank":  1,
+                      "filteringAttributes":  [
+                                                  "mth_type",
+                                                  "mth_userid",
+                                                  "mth_startdate",
+                                                  "mth_enddate",
+                                                  "mth_capacity"
+                                              ]
                   }
               ],
     "customApis":  [

@@ -13,6 +13,7 @@
         { "id": "mth_grp_sales", "title": "Sales", "tables": [ "mth_opportunity" ] },
         { "id": "mth_grp_customers", "title": "Customers", "tables": [ "account", "contact" ], "links": [ { "id": "mth_sub_nnesearch", "title": "NNE Search", "webresource": "mth_/nne/search.html" } ] },
         { "id": "mth_grp_tender", "title": "Tender (ESP)", "tables": [ "mth_buildingcontract", "mth_collaboratingpartner" ] },
+        { "id": "mth_grp_resources", "title": "Resources", "tables": [ "mth_availability" ], "links": [ { "id": "mth_sub_resourceoverview", "title": "Resource Overview", "webresource": "mth_/resources/overview.html" } ] },
         { "id": "mth_grp_setup", "title": "Setup", "tables": [ "mth_organizationalunit", "mth_trade", "mth_espemailtemplate" ] }
       ]
     }
@@ -61,8 +62,13 @@
     },
     {
       "table": "mth_opportunityrole", "name": "MTH Opportunity Roles", "default": false,
-      "columns": [ ["mth_role", 180], ["mth_userid", 200] ],
+      "columns": [ ["mth_role", 170], ["mth_userid", 170], ["mth_startdate", 100], ["mth_enddate", 100], ["mth_allocation", 90] ],
       "order": { "attribute": "mth_role", "descending": false }, "activeOnly": true
+    },
+    {
+      "table": "mth_availability", "name": "MTH Availability", "default": true,
+      "columns": [ ["mth_userid", 180], ["mth_type", 140], ["mth_startdate", 100], ["mth_enddate", 100], ["mth_capacity", 90], ["mth_description", 250] ],
+      "order": { "attribute": "mth_startdate", "descending": true }, "activeOnly": true
     },
     {
       "table": "account", "name": "MTH Active Accounts", "default": false,
@@ -248,7 +254,15 @@
       "table": "mth_opportunityrole", "name": "MTH Opportunity Role",
       "tabs": [
         { "name": "general", "label": "General",
-          "columns": [ [ { "name": "role", "label": "Role", "fields": [ "mth_opportunityid", "mth_role", "mth_userid", "mth_name" ] } ] ] }
+          "columns": [ [ { "name": "role", "label": "Role", "fields": [ "mth_opportunityid", "mth_role", "mth_userid", "mth_name" ] } ],
+                       [ { "name": "planning", "label": "Resource planning (empty dates are filled from the opportunity's tender or order dates)", "fields": [ "mth_startdate", "mth_enddate", "mth_allocation" ] } ] ] }
+      ]
+    },
+    {
+      "table": "mth_availability", "name": "MTH Availability",
+      "tabs": [
+        { "name": "general", "label": "General",
+          "columns": [ [ { "name": "absence", "label": "Vacation, leave or reduced capacity (Capacity 0 % = away; e.g. 60 % = works 60 % of normal time)", "fields": [ "mth_userid", "mth_type", "mth_startdate", "mth_enddate", "mth_capacity", "mth_description", "mth_name" ] } ] ] }
       ]
     },
     {
@@ -310,7 +324,10 @@
       "tabs": [
         { "name": "general", "label": "General",
           "columns": [ [ { "name": "unit", "label": "Organizational Unit", "fields": [ "mth_name", "mth_departmentno", "mth_costcenterno", "mth_istenderdepartment" ] } ],
-                       [ { "name": "hierarchy", "label": "Hierarchy", "fields": [ "mth_divisionno", "mth_divisionname", "mth_businessunitno", "mth_businessunitname" ] } ] ] }
+                       [ { "name": "hierarchy", "label": "Hierarchy", "fields": [ "mth_divisionno", "mth_divisionname", "mth_businessunitno", "mth_businessunitname" ] } ] ] },
+        { "name": "staff", "label": "Tender Staff",
+          "columns": [ [ { "name": "staff", "label": "Tender staff in this department (used to filter the Resource Overview; a person can be in several departments)",
+                           "subgrid": { "id": "TenderStaff", "table": "systemuser", "relationship": "mth_orgunit_systemuser_TenderDept", "systemView": "User Associated View", "rows": 10 } } ] ] }
       ]
     },
     {

@@ -10,8 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="mth_name" select="1" icon="1" preview="1">
         <row name="result" id="mth_opportunityroleid">
-          <cell name="mth_role" width="180" />
-          <cell name="mth_userid" width="200" />
+          <cell name="mth_role" width="170" />
+          <cell name="mth_userid" width="170" />
+          <cell name="mth_startdate" width="100" />
+          <cell name="mth_enddate" width="100" />
+          <cell name="mth_allocation" width="90" />
         </row>
       </grid>
     </layoutxml>
@@ -22,6 +25,9 @@
           <attribute name="mth_opportunityroleid" />
           <attribute name="mth_role" />
           <attribute name="mth_userid" />
+          <attribute name="mth_startdate" />
+          <attribute name="mth_enddate" />
+          <attribute name="mth_allocation" />
           <order attribute="mth_role" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />

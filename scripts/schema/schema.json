@@ -1545,6 +1545,26 @@
                                                                "sourceValue":  "Primary_Responsible2__c"
                                                            }
                                                        ]
+                                       },
+                                       {
+                                           "schemaName":  "mth_StartDate",
+                                           "displayName":  "Start Date",
+                                           "type":  "date",
+                                           "source":  "(new) when the person starts working on the case. Defaulted by plugin OpportunityRoleDefaults from the tender or order dates of the opportunity"
+                                       },
+                                       {
+                                           "schemaName":  "mth_EndDate",
+                                           "displayName":  "End Date",
+                                           "type":  "date",
+                                           "source":  "(new) when the person stops working on the case. Defaulted like Start Date"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Allocation",
+                                           "displayName":  "Allocation (%)",
+                                           "type":  "integer",
+                                           "min":  0,
+                                           "max":  100,
+                                           "source":  "(new) share of the person\u0027s working time on the case in the period. Default 100. Used by the Resource Overview"
                                        }
                                    ]
                    },
@@ -2923,12 +2943,88 @@
                                            "type":  "string",
                                            "maxLength":  200,
                                            "source":  "(new) \u003crecord id\u003e|\u003cuser id\u003e, unique so a user follows a record once"
-                                    },
-                                    {
-                                        "schemaName":  "mth_Following",
-                                        "displayName":  "Following",
-                                        "type":  "boolean",
-                                        "source":  "(new) always Yes; list views show it for the current user through an outer join, so followed records are marked"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Following",
+                                           "displayName":  "Following",
+                                           "type":  "boolean",
+                                           "source":  "(new) always Yes; list views show it for the current user through an outer join, so followed records are marked"
+                                       }
+                                   ]
+                   },
+                   {
+                       "schemaName":  "mth_Availability",
+                       "displayName":  "Availability",
+                       "pluralName":  "Availability",
+                       "standard":  false,
+                       "ownership":  "UserOwned",
+                       "source":  "(new) not in Salesforce",
+                       "description":  "Vacation, leave or reduced capacity for a person in a period. Capacity (%) is the share of normal working time the person is available (0 for vacation and leave). Used by the Resource Overview (webresources/mth_/resources/overview.html).",
+                       "primary":  {
+                                       "schemaName":  "mth_Name",
+                                       "displayName":  "Name",
+                                       "maxLength":  200,
+                                       "source":  "(new) set by plugin OpportunityRoleDefaults: type, person and period"
+                                   },
+                       "columns":  [
+                                       {
+                                           "schemaName":  "mth_Type",
+                                           "displayName":  "Type",
+                                           "type":  "choice",
+                                           "source":  "(new)",
+                                           "options":  [
+                                                           {
+                                                               "value":  273280000,
+                                                               "label":  "Vacation",
+                                                               "labelDa":  "Ferie",
+                                                               "sourceValue":  "Vacation"
+                                                           },
+                                                           {
+                                                               "value":  273280001,
+                                                               "label":  "Leave",
+                                                               "labelDa":  "Orlov",
+                                                               "sourceValue":  "Leave"
+                                                           },
+                                                           {
+                                                               "value":  273280002,
+                                                               "label":  "Reduced Capacity",
+                                                               "labelDa":  "Nedsat belastning",
+                                                               "sourceValue":  "Reduced"
+                                                           },
+                                                           {
+                                                               "value":  273280003,
+                                                               "label":  "Other Absence",
+                                                               "labelDa":  "Andet fravær",
+                                                               "sourceValue":  "Other"
+                                                           }
+                                                       ]
+                                       },
+                                       {
+                                           "schemaName":  "mth_StartDate",
+                                           "displayName":  "Start Date",
+                                           "type":  "date",
+                                           "source":  "(new) first day"
+                                       },
+                                       {
+                                           "schemaName":  "mth_EndDate",
+                                           "displayName":  "End Date",
+                                           "type":  "date",
+                                           "source":  "(new) last day (inclusive)"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Capacity",
+                                           "displayName":  "Capacity (%)",
+                                           "type":  "integer",
+                                           "min":  0,
+                                           "max":  100,
+                                           "source":  "(new) available share of normal working time in the period. Vacation, leave and other absence: 0 (set by plugin if empty). Reduced capacity: e.g. 60"
+                                       },
+                                       {
+                                           "schemaName":  "mth_Description",
+                                           "displayName":  "Description",
+                                           "type":  "memo",
+                                           "maxLength":  2000,
+                                           "source":  "(new)"
                                        }
                                    ]
                    }
@@ -3121,6 +3217,16 @@
                         "displayName":  "Account",
                         "source":  "EntitySubscription.ParentId",
                         "cascade":  "RemoveLink"
+                    },
+                    {
+                        "schemaName":  "mth_systemuser_mth_availability_User",
+                        "referencing":  "mth_availability",
+                        "referenced":  "systemuser",
+                        "lookupSchemaName":  "mth_UserId",
+                        "displayName":  "Person",
+                        "source":  "(new) the person who is away or has reduced capacity",
+                        "cascade":  "RemoveLink",
+                        "required":  true
                     }
                 ],
     "manyToMany":  [
@@ -3147,6 +3253,14 @@
                            "entity1Label":  "Collaborating Partners",
                            "entity2Label":  "Selected Contacts",
                            "source":  "Collaborating_Partner__c.Selected_Contacts__c (;-separated ids)"
+                       },
+                       {
+                           "schemaName":  "mth_orgunit_systemuser_TenderDept",
+                           "entity1":  "mth_organizationalunit",
+                           "entity2":  "systemuser",
+                           "entity1Label":  "Tender Departments",
+                           "entity2Label":  "Tender Staff",
+                           "source":  "(new) tender staff can belong to one or more tender departments; used to filter the Resource Overview"
                        }
                    ],
     "keys":  [

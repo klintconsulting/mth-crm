@@ -1,3 +1,4 @@
+| `scripts/New-ResourceTestData.ps1` | Demodata til Ressourceoverblikket: fordeler sagsteamsroller på demobrugerne med procent og datoer, ét delt eksempel, tilbudsafdelinger og fravær | Kun i udviklermiljøet, kan køres igen. Se [resources.md](resources.md) |
 | `scripts/New-FollowRibbon.ps1` | Skriver de klassiske knapper Follow og Unfollow i RibbonDiff.xml for Salgsmulighed, Lead og Account i den udpakkede solution | Efter `pac solution sync`, før build og import af solutionen. Se [follow.md](follow.md) |
 # Scripts
 

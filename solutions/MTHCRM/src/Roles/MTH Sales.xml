@@ -6,6 +6,7 @@
   <RolePrivileges>
     <RolePrivilege name="prvAppendAccount" level="Global" />
     <RolePrivilege name="prvAppendContact" level="Global" />
+    <RolePrivilege name="prvAppendmth_Availability" level="Basic" />
     <RolePrivilege name="prvAppendmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvAppendmth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvAppendmth_Follow" level="Basic" />
@@ -17,6 +18,7 @@
     <RolePrivilege name="prvAppendmth_Trade" level="Global" />
     <RolePrivilege name="prvAppendToAccount" level="Global" />
     <RolePrivilege name="prvAppendToContact" level="Global" />
+    <RolePrivilege name="prvAppendTomth_Availability" level="Basic" />
     <RolePrivilege name="prvAppendTomth_BuildingContract" level="Global" />
     <RolePrivilege name="prvAppendTomth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvAppendTomth_Follow" level="Basic" />
@@ -39,6 +41,7 @@
     <RolePrivilege name="prvCreateappnotification" level="Global" />
     <RolePrivilege name="prvCreateAppUserSetting" level="Global" />
     <RolePrivilege name="prvCreateContact" level="Global" />
+    <RolePrivilege name="prvCreatemth_Availability" level="Basic" />
     <RolePrivilege name="prvCreatemth_BuildingContract" level="Basic" />
     <RolePrivilege name="prvCreatemth_CollaboratingPartner" level="Basic" />
     <RolePrivilege name="prvCreatemth_Follow" level="Basic" />
@@ -48,6 +51,7 @@
     <RolePrivilege name="prvCreatemth_OpportunityRole" level="Global" />
     <RolePrivilege name="prvCreateSharePointData" level="Global" />
     <RolePrivilege name="prvDeleteappnotification" level="Basic" />
+    <RolePrivilege name="prvDeletemth_Availability" level="Basic" />
     <RolePrivilege name="prvDeletemth_BuildingContract" level="Basic" />
     <RolePrivilege name="prvDeletemth_CollaboratingPartner" level="Basic" />
     <RolePrivilege name="prvDeletemth_Follow" level="Basic" />
@@ -58,6 +62,7 @@
     <RolePrivilege name="prvReadappnotification" level="Basic" />
     <RolePrivilege name="prvReadAppUserSetting" level="Global" />
     <RolePrivilege name="prvReadContact" level="Global" />
+    <RolePrivilege name="prvReadmth_Availability" level="Global" />
     <RolePrivilege name="prvReadmth_BuildingContract" level="Global" />
     <RolePrivilege name="prvReadmth_CollaboratingPartner" level="Global" />
     <RolePrivilege name="prvReadmth_EspEmailTemplate" level="Global" />
@@ -89,6 +94,7 @@
     <RolePrivilege name="prvWriteappnotification" level="Basic" />
     <RolePrivilege name="prvWriteAppUserSetting" level="Global" />
     <RolePrivilege name="prvWriteContact" level="Global" />
+    <RolePrivilege name="prvWritemth_Availability" level="Basic" />
     <RolePrivilege name="prvWritemth_BuildingContract" level="Basic" />
     <RolePrivilege name="prvWritemth_CollaboratingPartner" level="Basic" />
     <RolePrivilege name="prvWritemth_Follow" level="Basic" />

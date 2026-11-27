@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_mth_availability" />
   <EntityRelationship Name="business_unit_mth_buildingcontract" />
   <EntityRelationship Name="business_unit_mth_collaboratingpartner" />
   <EntityRelationship Name="business_unit_mth_follow" />
@@ -7,6 +8,8 @@
   <EntityRelationship Name="business_unit_mth_leadqueue" />
   <EntityRelationship Name="business_unit_mth_opportunity" />
   <EntityRelationship Name="business_unit_mth_opportunityrole" />
+  <EntityRelationship Name="lk_mth_availability_createdby" />
+  <EntityRelationship Name="lk_mth_availability_modifiedby" />
   <EntityRelationship Name="lk_mth_buildingcontract_createdby" />
   <EntityRelationship Name="lk_mth_buildingcontract_modifiedby" />
   <EntityRelationship Name="lk_mth_collaboratingpartner_createdby" />
@@ -52,6 +55,8 @@
   <EntityRelationship Name="mth_opportunity_mth_opportunityrole" />
   <EntityRelationship Name="mth_orgunit_mth_opportunity_OrderDept" />
   <EntityRelationship Name="mth_orgunit_mth_opportunity_TenderDept" />
+  <EntityRelationship Name="mth_orgunit_systemuser_TenderDept" />
+  <EntityRelationship Name="mth_systemuser_mth_availability_User" />
   <EntityRelationship Name="mth_systemuser_mth_lead_ConvertedBy" />
   <EntityRelationship Name="mth_systemuser_mth_leadassignment_ChangedBy" />
   <EntityRelationship Name="mth_systemuser_mth_opportunityrole_User" />
@@ -62,6 +67,7 @@
   <EntityRelationship Name="organization_mth_organizationalunit" />
   <EntityRelationship Name="organization_mth_smartlookup" />
   <EntityRelationship Name="organization_mth_trade" />
+  <EntityRelationship Name="owner_mth_availability" />
   <EntityRelationship Name="owner_mth_buildingcontract" />
   <EntityRelationship Name="owner_mth_collaboratingpartner" />
   <EntityRelationship Name="owner_mth_follow" />
@@ -69,6 +75,7 @@
   <EntityRelationship Name="owner_mth_leadqueue" />
   <EntityRelationship Name="owner_mth_opportunity" />
   <EntityRelationship Name="owner_mth_opportunityrole" />
+  <EntityRelationship Name="team_mth_availability" />
   <EntityRelationship Name="team_mth_buildingcontract" />
   <EntityRelationship Name="team_mth_collaboratingpartner" />
   <EntityRelationship Name="team_mth_follow" />
@@ -78,6 +85,7 @@
   <EntityRelationship Name="team_mth_opportunityrole" />
   <EntityRelationship Name="TransactionCurrency_mth_CollaboratingPartner" />
   <EntityRelationship Name="TransactionCurrency_mth_Opportunity" />
+  <EntityRelationship Name="user_mth_availability" />
   <EntityRelationship Name="user_mth_buildingcontract" />
   <EntityRelationship Name="user_mth_collaboratingpartner" />
   <EntityRelationship Name="user_mth_follow" />

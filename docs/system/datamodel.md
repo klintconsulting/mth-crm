@@ -23,6 +23,7 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_integrationstate` | Integration State | Custom | OrganizationOwned | SMART_Sync_State__c |
 | `mth_leadassignment` | Lead Assignment | Custom | OrganizationOwned | (new) Lead_Assignment__c from the parallel-queue design (Salesforce proposal 2026-09-11) |
 | `mth_follow` | Follow | Custom | UserOwned | (new) EntitySubscription (Salesforce "Follow") |
+| `mth_availability` | Availability | Custom | UserOwned | (new) not in Salesforce |
 
 ## Relationer (opslag)
 
@@ -48,6 +49,7 @@ Solution: `MTHCRM` · publisher-præfiks: `mth` · option value-præfiks: `27328
 | `mth_opportunity_mth_follow` | `mth_follow.mth_opportunityid` | `mth_opportunity` | DeleteOnly |  | EntitySubscription.ParentId |
 | `mth_lead_mth_follow` | `mth_follow.mth_leadid` | `mth_lead` | RemoveLink |  | EntitySubscription.ParentId |
 | `mth_account_mth_follow` | `mth_follow.mth_accountid` | `account` | RemoveLink |  | EntitySubscription.ParentId |
+| `mth_systemuser_mth_availability_User` | `mth_availability.mth_userid` | `systemuser` | RemoveLink | Ja | (new) the person who is away or has reduced capacity |
 
 ## Organizational Unit (`mth_organizationalunit`)
 
@@ -397,6 +399,9 @@ Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (role + employee)
 | Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
 |---|---|---|---|---|
 | `mth_role` | Role | choice | 10 valg | `(field name)` |
+| `mth_startdate` | Start Date | date |  | `(new) when the person starts working on the case. Defaulted by plugin OpportunityRoleDefaults from the tender or order dates of the opportunity` |
+| `mth_enddate` | End Date | date |  | `(new) when the person stops working on the case. Defaulted like Start Date` |
+| `mth_allocation` | Allocation (%) | integer | 0–100 | `(new) share of the person's working time on the case in the period. Default 100. Used by the Resource Overview` |
 
 <details><summary>Valg for <code>mth_role</code> (10)</summary>
 
@@ -796,3 +801,28 @@ Primær navnekolonne: `mth_name` (tekst, maks. 400). Kilde: (new) name of the fo
 | `mth_recordid` | Record Id | string | maks. 100 | `EntitySubscription.ParentId (guid, lower case, no braces)` |
 | `mth_key` | Key | string | maks. 200 | `(new) <record id>|<user id>, unique so a user follows a record once` |
 | `mth_following` | Following | boolean |  | `(new) always Yes; list views show it for the current user through an outer join, so followed records are marked` |
+
+## Availability (`mth_availability`)
+
+Vacation, leave or reduced capacity for a person in a period. Capacity (%) is the share of normal working time the person is available (0 for vacation and leave). Used by the Resource Overview (webresources/mth_/resources/overview.html).
+
+Primær navnekolonne: `mth_name` (tekst, maks. 200). Kilde: (new) set by plugin OpportunityRoleDefaults: type, person and period
+
+| Kolonne (logisk navn) | Visningsnavn | Type | Detaljer | Kilde i Salesforce |
+|---|---|---|---|---|
+| `mth_type` | Type | choice | 4 valg | `(new)` |
+| `mth_startdate` | Start Date | date |  | `(new) first day` |
+| `mth_enddate` | End Date | date |  | `(new) last day (inclusive)` |
+| `mth_capacity` | Capacity (%) | integer | 0–100 | `(new) available share of normal working time in the period. Vacation, leave and other absence: 0 (set by plugin if empty). Reduced capacity: e.g. 60` |
+| `mth_description` | Description | memo | maks. 2000 | `(new)` |
+
+<details><summary>Valg for <code>mth_type</code> (4)</summary>
+
+| Værdi | Label | Salesforce-værdi |
+|---|---|---|
+| 273280000 | Vacation | Vacation |
+| 273280001 | Leave | Leave |
+| 273280002 | Reduced Capacity | Reduced |
+| 273280003 | Other Absence | Other |
+
+</details>

@@ -82,6 +82,7 @@
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="1" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="mth_availability" behavior="0" />
       <RootComponent type="1" schemaName="mth_buildingcontract" behavior="0" />
       <RootComponent type="1" schemaName="mth_collaboratingpartner" behavior="0" />
       <RootComponent type="1" schemaName="mth_espemailtemplate" behavior="0" />
@@ -107,6 +108,8 @@
       <RootComponent type="61" schemaName="mth_/icons/follow.svg" behavior="0" />
       <RootComponent type="61" schemaName="mth_/nne/search.html" behavior="0" />
       <RootComponent type="61" schemaName="mth_/nne/search.js" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/resources/overview.html" behavior="0" />
+      <RootComponent type="61" schemaName="mth_/resources/overview.js" behavior="0" />
       <RootComponent type="61" schemaName="mth_/scripts/account.js" behavior="0" />
       <RootComponent type="61" schemaName="mth_/scripts/follow.js" behavior="0" />
       <RootComponent type="61" schemaName="mth_/scripts/lead.js" behavior="0" />
@@ -120,6 +123,10 @@
       <RootComponent type="92" id="{64dd09d8-33ea-f111-84e7-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{6add09d8-33ea-f111-84e7-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{6b78a4b5-d2e4-f111-84e8-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{70ad63b8-3cea-f111-84e7-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{73ad63b8-3cea-f111-84e7-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{76ad63b8-3cea-f111-84e7-000d3a496ae5}" behavior="0" />
+      <RootComponent type="92" id="{7bad63b8-3cea-f111-84e7-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{c00b0a4d-a1e4-f111-84e8-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{cb13a5e7-20e8-f111-84e7-000d3a496ae5}" behavior="0" />
       <RootComponent type="92" id="{ce13a5e7-20e8-f111-84e7-000d3a496ae5}" behavior="0" />

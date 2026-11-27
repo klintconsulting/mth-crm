@@ -144,7 +144,8 @@
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
                                                                 },
-                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" },
+                                         "mth_availability":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
                                      }
                   },
                   {
@@ -288,7 +289,8 @@
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
                                                                 },
-                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" }
+                                         "mth_follow":  { "Create":  "Basic", "Read":  "Global", "Write":  "Basic", "Delete":  "Basic", "Append":  "Basic", "AppendTo":  "Basic" },
+                                         "mth_availability":  { "Create":  "Global", "Read":  "Global", "Write":  "Global", "Delete":  "Global", "Append":  "Global", "AppendTo":  "Global" }
                                      }
                   },
                   {
@@ -446,7 +448,8 @@
                                                                     "Append":  "Global",
                                                                     "AppendTo":  "Global"
                                                                 },
-                                         "mth_follow":  { "Create":  "Global", "Read":  "Global", "Write":  "Global", "Delete":  "Global", "Append":  "Global", "AppendTo":  "Global" }
+                                         "mth_follow":  { "Create":  "Global", "Read":  "Global", "Write":  "Global", "Delete":  "Global", "Append":  "Global", "AppendTo":  "Global" },
+                                         "mth_availability":  { "Create":  "Global", "Read":  "Global", "Write":  "Global", "Delete":  "Global", "Append":  "Global", "AppendTo":  "Global" }
                                      }
                   },
                   {

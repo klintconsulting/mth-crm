@@ -42,6 +42,17 @@
         <SubArea Id="mth_sub_mth_buildingcontract" Entity="mth_buildingcontract" />
         <SubArea Id="mth_sub_mth_collaboratingpartner" Entity="mth_collaboratingpartner" />
       </Group>
+      <Group Id="mth_grp_resources" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Resources" />
+        </Titles>
+        <SubArea Id="mth_sub_mth_availability" Entity="mth_availability" />
+        <SubArea Id="mth_sub_resourceoverview" Url="$webresource:mth_/resources/overview.html" Client="All" AvailableOffline="false" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Resource Overview" />
+          </Titles>
+        </SubArea>
+      </Group>
       <Group Id="mth_grp_setup" IsProfile="false">
         <Titles>
           <Title LCID="1033" Title="Setup" />

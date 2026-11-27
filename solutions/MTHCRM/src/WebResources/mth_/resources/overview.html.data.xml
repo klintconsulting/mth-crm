@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{cf323824-3dea-f111-84e7-000d3a496ae5}</WebResourceId>
+  <Name>mth_/resources/overview.html</Name>
+  <DisplayName>mth_/resources/overview.html</DisplayName>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/mth_resourcesoverviewhtmlCF323824-3DEA-F111-84E7-000D3A496AE5</FileName>
+</WebResource>

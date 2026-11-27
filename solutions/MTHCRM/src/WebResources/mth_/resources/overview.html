@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resource Overview</title>
+<!-- Resource Overview (Gantt + weekly load per person). Opened from the sitemap (Resources > Resource Overview).
+     Reads case team roles (mth_opportunityrole: start, end, allocation), availability (mth_availability: vacation, leave,
+     reduced capacity) and tender department membership (N:N mth_orgunit_systemuser_TenderDept). See docs/system/resources.md. -->
+<style>
+  :root { --brand:#002F67; --slate:#2C365A; --line:#d6dbe3; --muted:#5b6575; --bg:#f5f7fa;
+          --ok:#dff6dd; --okt:#0e5c0e; --warn:#fff4ce; --warnt:#7a5a00; --over:#fde7e9; --overt:#a4262c;
+          --tender:#2b6cb0; --exec:#2f855a; --wk:46px; --left:240px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI","Segoe UI Web (West European)",-apple-system,sans-serif; font-size:13px; color:#1b1f24; background:#fff; }
+  header { padding:12px 16px 4px; }
+  h1 { font-size:18px; font-weight:600; margin:0; color:var(--brand); }
+  .sub { color:var(--muted); font-size:12px; margin-top:2px; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px 14px; align-items:flex-end; padding:10px 16px; border-bottom:1px solid var(--line); }
+  label { display:flex; flex-direction:column; font-size:12px; color:var(--muted); gap:3px; }
+  .check { flex-direction:row; align-items:center; gap:6px; color:#1b1f24; font-size:13px; padding-bottom:6px; }
+  input, select { font:inherit; padding:5px 8px; border:1px solid var(--line); border-radius:4px; background:#fff; }
+  button { font:inherit; border-radius:4px; padding:5px 12px; cursor:pointer; border:1px solid var(--line); background:#fff; }
+  button.primary { background:var(--brand); border-color:var(--brand); color:#fff; font-weight:600; }
+  .legend { display:flex; gap:12px; align-items:center; font-size:12px; color:var(--muted); padding:6px 16px; flex-wrap:wrap; }
+  .sw { display:inline-block; width:14px; height:12px; border-radius:2px; vertical-align:middle; margin-right:4px; border:1px solid rgba(0,0,0,.08); }
+  .status { color:var(--muted); padding:8px 16px; }
+  .error { color:var(--overt); }
+  .wrap { overflow:auto; max-height:calc(100vh - 165px); border-top:1px solid var(--line); }
+  .grid { position:relative; min-width:max-content; }
+  .row { display:flex; border-bottom:1px solid #eef0f4; min-height:28px; }
+  .row.head { position:sticky; top:0; z-index:3; background:var(--bg); border-bottom:1px solid var(--line); font-weight:600; }
+  .row.head .cell { font-size:11px; color:var(--muted); text-align:center; padding:4px 0; line-height:1.25; }
+  .row.head .cell.now { color:var(--brand); }
+  .name { position:sticky; left:0; z-index:2; width:var(--left); min-width:var(--left); background:#fff; padding:5px 10px; border-right:1px solid var(--line);
+          display:flex; align-items:center; gap:6px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  .row.head .name { background:var(--bg); }
+  .person .name { font-weight:600; cursor:pointer; }
+  .person .name .tw { color:var(--muted); width:10px; display:inline-block; }
+  .tag { font-size:10px; font-weight:400; color:var(--slate); background:#e6ebf2; border-radius:8px; padding:0 6px; overflow:hidden; text-overflow:ellipsis; }
+  .cells { display:flex; }
+  .cell { width:var(--wk); min-width:var(--wk); border-right:1px solid #f0f2f5; text-align:center; font-size:11px; padding:6px 0; }
+  .cell.now { box-shadow:inset 2px 0 0 var(--brand); }
+  .load-ok { background:var(--ok); color:var(--okt); }
+  .load-warn { background:var(--warn); color:var(--warnt); font-weight:600; }
+  .load-over { background:var(--over); color:var(--overt); font-weight:700; }
+  .load-away { background:repeating-linear-gradient(45deg,#eceff3,#eceff3 4px,#f7f8fa 4px,#f7f8fa 8px); color:var(--muted); }
+  .part { box-shadow:inset 0 -3px 0 #9aa5b5; }
+  .detail .name { padding-left:28px; color:var(--muted); font-size:12px; }
+  .lane { position:relative; height:26px; }
+  .gbar { position:absolute; top:4px; height:18px; border-radius:3px; color:#fff; font-size:11px; padding:1px 6px; white-space:nowrap; overflow:hidden;
+          text-overflow:ellipsis; cursor:pointer; border:1px solid rgba(0,0,0,.15); }
+  .gbar.tender { background:var(--tender); }
+  .gbar.exec { background:var(--exec); }
+  .gbar.away { background:repeating-linear-gradient(45deg,#c9ced6,#c9ced6 4px,#dfe3e8 4px,#dfe3e8 8px); color:#1b1f24; }
+  .gbar:hover { filter:brightness(1.1); }
+  .empty { padding:24px 16px; color:var(--muted); }
+  .gbar.role { cursor:grab; }
+  .gbar.role:active { cursor:grabbing; }
+  .gbar.dragging { opacity:.85; outline:2px solid var(--brand); z-index:4; }
+  .gbar .grip { position:absolute; top:0; bottom:0; width:6px; cursor:ew-resize; }
+  .gbar .grip.l { left:0; } .gbar .grip.r { right:0; }
+  .add { color:var(--brand); font-weight:600; margin-left:auto; padding:0 4px; border:0; background:none; cursor:pointer; font-size:15px; line-height:1; }
+  .modal { position:fixed; inset:0; background:rgba(20,30,50,.35); display:flex; align-items:flex-start; justify-content:center; padding-top:8vh; z-index:10; }
+  .modal.hidden { display:none; }
+  .dlg { background:#fff; border-radius:6px; box-shadow:0 8px 30px rgba(0,0,0,.25); width:min(460px,94vw); padding:16px 18px; }
+  .dlg h2 { font-size:16px; margin:0 0 2px; color:var(--brand); }
+  .dlg .sub { margin-bottom:10px; }
+  .dlg .f { display:grid; grid-template-columns:1fr 1fr; gap:10px 12px; }
+  .dlg .f .wide { grid-column:span 2; }
+  .dlg .opp { display:flex; gap:6px; align-items:center; }
+  .dlg .opp span { flex:1; padding:5px 8px; border:1px solid var(--line); border-radius:4px; min-height:30px; background:var(--bg); }
+  .dlg .acts { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+  .dlg .acts .right { margin-left:auto; }
+  .dlg .split { display:flex; gap:6px; align-items:flex-end; margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
+  button.danger { color:var(--overt); border-color:#f1c0c4; }
+  .msg { color:var(--overt); font-size:12px; margin-top:8px; min-height:16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 data-t="title"></h1>
+  <div class="sub" data-t="subtitle"></div>
+</header>
+<div class="bar">
+  <label><span data-t="from"></span><input type="date" id="from"></label>
+  <label><span data-t="weeks"></span><select id="weeks"><option>8</option><option>13</option><option selected>26</option><option>52</option></select></label>
+  <label><span data-t="dept"></span><select id="dept"></select></label>
+  <label><span data-t="roles"></span><select id="roles"></select></label>
+  <label><span data-t="person"></span><input type="text" id="search" size="16"></label>
+  <label class="check"><input type="checkbox" id="expand"><span data-t="expand"></span></label>
+  <label class="check"><input type="checkbox" id="onlyBusy" checked><span data-t="onlyBusy"></span></label>
+  <button class="primary" id="addRole" data-t="addRole"></button>
+  <button id="addAbsence" data-t="addAbsence"></button>
+  <button id="reload" data-t="reload"></button>
+</div>
+<div class="legend">
+  <span><i class="sw load-ok"></i><span data-t="lOk"></span></span>
+  <span><i class="sw load-warn"></i><span data-t="lWarn"></span></span>
+  <span><i class="sw load-over"></i><span data-t="lOver"></span></span>
+  <span><i class="sw load-away"></i><span data-t="lAway"></span></span>
+  <span><i class="sw" style="background:var(--tender)"></i><span data-t="lTender"></span></span>
+  <span><i class="sw" style="background:var(--exec)"></i><span data-t="lExec"></span></span>
+</div>
+<div class="status" id="status"></div>
+<div class="wrap"><div class="grid" id="grid"></div></div>
+<div class="modal hidden" id="modal">
+  <div class="dlg">
+    <h2 id="dTitle"></h2>
+    <div class="sub" id="dSub"></div>
+    <div class="f">
+      <label class="wide"><span data-t="case"></span><div class="opp"><span id="dOpp"></span><button id="dPick" data-t="pick"></button></div></label>
+      <label><span data-t="person"></span><select id="dUser"></select></label>
+      <label><span data-t="role"></span><select id="dRole"></select></label>
+      <label><span data-t="start"></span><input type="date" id="dStart"></label>
+      <label><span data-t="end"></span><input type="date" id="dEnd"></label>
+      <label><span data-t="alloc"></span><input type="number" id="dAlloc" min="0" max="100" step="5"></label>
+    </div>
+    <div class="split" id="dSplitBox">
+      <label><span data-t="splitAt"></span><input type="date" id="dSplitDate"></label>
+      <label><span data-t="splitAlloc"></span><input type="number" id="dSplitAlloc" min="0" max="100" step="5" style="width:90px"></label>
+      <button id="dSplit" data-t="split"></button>
+    </div>
+    <div class="msg" id="dMsg"></div>
+    <div class="acts">
+      <button class="primary" id="dSave" data-t="save"></button>
+      <button class="danger" id="dDelete" data-t="remove"></button>
+      <button id="dOpen" data-t="openCase"></button>
+      <button class="right" id="dCancel" data-t="cancel"></button>
+    </div>
+  </div>
+</div>
+<script src="overview.js"></script>
+</body>
+</html>

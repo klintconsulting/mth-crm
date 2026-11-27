@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Mth.Crm.Plugins.ResourceDefaults: Update of mth_availability" SdkMessageProcessingStepId="{7bad63b8-3cea-f111-84e7-000d3a496ae5}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Mth.Crm.Plugins.ResourceDefaults, Mth.Crm.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=409bde6e67654ae3</PluginTypeName>
+  <PluginTypeId>6fad63b8-3cea-f111-84e7-000d3a496ae5</PluginTypeId>
+  <PrimaryEntity>mth_availability</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Sets the name and default Capacity 0 % for vacation/leave; End Date not before Start Date.</Description>
+  <FilteringAttributes>mth_type,mth_userid,mth_startdate,mth_enddate,mth_capacity</FilteringAttributes>
+  <ImpersonatingUserIdName></ImpersonatingUserIdName>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>0.1.0.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>
