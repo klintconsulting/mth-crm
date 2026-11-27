@@ -237,12 +237,14 @@ $areas = foreach ($ar in $def.sitemap) {
 }
 $siteXml = "<SiteMap IntroducedVersion=`"7.0.0.0`">$($areas -join '')</SiteMap>"
 $sm = (Invoke-Dataverse GET "sitemaps?`$select=sitemapid&`$filter=sitemapnameunique eq '$($def.app.uniqueName)'").value
+# Collapsible groups: each user can fold the navigation groups; the choice is kept in the browser (app.json "collapsibleGroups", default on)
+$collapsible = if ($null -eq $def.app.collapsibleGroups) { $true } else { [bool]$def.app.collapsibleGroups }
 if ($sm) {
     $siteMapId = $sm[0].sitemapid
-    [void](Invoke-Dataverse PATCH "sitemaps($siteMapId)" @{ sitemapxml = $siteXml } -Solution $sol)
+    [void](Invoke-Dataverse PATCH "sitemaps($siteMapId)" @{ sitemapxml = $siteXml; enablecollapsiblegroups = $collapsible } -Solution $sol)
     Write-Host '  ~ sitemap'
 } else {
-    $siteMapId = Get-Id (Invoke-Dataverse POST 'sitemaps' @{ sitemapname = $def.app.name; sitemapnameunique = $def.app.uniqueName; sitemapxml = $siteXml; isappaware = $true } -Solution $sol) 'sitemapid'
+    $siteMapId = Get-Id (Invoke-Dataverse POST 'sitemaps' @{ sitemapname = $def.app.name; sitemapnameunique = $def.app.uniqueName; sitemapxml = $siteXml; isappaware = $true; enablecollapsiblegroups = $collapsible } -Solution $sol) 'sitemapid'
     Write-Host '  + sitemap'
 }
 

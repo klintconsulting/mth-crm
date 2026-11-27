@@ -13,6 +13,8 @@ En model-driven app (`mth_MTHCRM`), defineret i `scripts/app/app.json` og oprett
 
 `systemuser` er med i appen uden formular eller visning, kun så opslag til brugere (ejer og sagsteam) virker. Valideringen giver derfor advarslen "Entity doesn't reference a form or view". Den er forventet.
 
+**Sammenfoldelige grupper:** sitemappet har `enablecollapsiblegroups` = true (sat af `Deploy-App.ps1`, kan slås fra med `"collapsibleGroups": false` under `app` i app.json). Hver bruger kan folde grupperne i venstre menu ind og ud, og valget huskes i browseren. Resources-gruppen ligger lige under Sales.
+
 ## Formularer (main forms)
 
 | Tabel | Formular | Faner |
